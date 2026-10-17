@@ -18,12 +18,12 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
 
   const checklistItems = [
     {
-      title: 'Wordmark Logo',
-      placeholder: '[LOGO PLACEHOLDER]',
-      file: 'src/components/Navbar.tsx & Footer.tsx',
-      status: 'Placeholder in use',
+      title: 'Brand Crest Logo',
+      placeholder: 'PGT-Global Crest Logo (Active)',
+      file: 'src/components/Navbar.tsx & Footer.tsx & index.html',
+      status: 'Configured with official logo asset',
       actionPage: 'home' as PageId,
-      detail: 'Replace clean gold text "Jewels" with your SVG or image logo when ready.',
+      detail: 'Official athletic crest logo and browser favicon are active on the website.',
     },
     {
       title: 'Profile Photo',

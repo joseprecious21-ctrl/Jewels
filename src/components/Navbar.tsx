@@ -52,20 +52,23 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Strict 3-zone Top Bar Contract: Brand — Links — CTA */}
         <div className="flex items-center justify-between gap-8">
           
-          {/* ZONE 1: BRAND WORDMARK (Single text element with [LOGO PLACEHOLDER]) */}
+          {/* ZONE 1: BRAND LOGO & WORDMARK */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* [LOGO PLACEHOLDER]: Replace with SVG/Image logo asset when available */}
             <button
               onClick={() => handleLinkClick('home')}
-              className="group flex items-baseline gap-1.5 text-left cursor-pointer focus-visible:outline-none"
+              className="group flex items-center gap-2.5 text-left cursor-pointer focus-visible:outline-none"
               aria-label="Jewels SEO Homepage"
             >
+              <img
+                src="https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png"
+                alt="Jewels Logo"
+                className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 rounded-sm"
+                referrerPolicy="no-referrer"
+              />
               <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[#D4AF37] group-hover:text-[#FFF3D0] transition-colors whitespace-nowrap">
                 Jewels
               </span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#D4AF37]/60 group-hover:bg-[#D4AF37]" />
             </button>
-            {/* <!-- [LOGO PLACEHOLDER] END --> */}
           </div>
 
           {/* ZONE 2: 7 PRIMARY NAV LINKS (Single-line, unboxed text links) */}

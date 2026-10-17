@@ -30,16 +30,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
           
           {/* Brand & Mission Column */}
           <div className="md:col-span-2 space-y-4">
-            {/* [LOGO PLACEHOLDER]: Replace with SVG/Image logo asset when available */}
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl font-semibold tracking-tight text-[#D4AF37]">
-                Jewels
-              </span>
-              <span className="text-xs uppercase tracking-widest font-mono text-neutral-500">
-                SEO & Optimization
-              </span>
+            <div className="flex items-center gap-3">
+              <img
+                src="https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png"
+                alt="Jewels Logo"
+                className="h-10 w-auto object-contain rounded-sm"
+                referrerPolicy="no-referrer"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-semibold tracking-tight text-[#D4AF37]">
+                  Jewels
+                </span>
+                <span className="text-[11px] uppercase tracking-widest font-mono text-neutral-500">
+                  SEO & Optimization
+                </span>
+              </div>
             </div>
-            {/* <!-- [LOGO PLACEHOLDER] END --> */}
 
             <p className="text-neutral-400 text-sm leading-relaxed max-w-md font-light">
               Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.

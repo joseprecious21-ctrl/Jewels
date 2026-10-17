@@ -10,7 +10,7 @@ export const PLACEHOLDERS = {
   LINKEDIN_URL: '[YOUR LINKEDIN URL]',
   TWITTER_URL: '[YOUR TWITTER URL]',
   FORM_ENDPOINT: '[FORM ENDPOINT]', // e.g. https://formspree.io/f/your_id or https://api.web3forms.com/submit
-  LOGO: '[LOGO PLACEHOLDER]',
+  LOGO: 'https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png',
   PROFILE_PHOTO: '[PROFILE PHOTO PLACEHOLDER]',
 };
 
