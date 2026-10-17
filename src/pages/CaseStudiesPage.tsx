@@ -278,46 +278,76 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
               Project Deliverables & Visual Verification
             </h3>
             <p className="text-xs text-neutral-400 mt-1">
-              Project screenshots 1 to 4 are labeled with neutral titles until confirmed by the owner.
+              Project screenshots 1 to 5 are labeled with neutral titles until confirmed by the owner.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {PORTFOLIO_PROJECTS.slice(2, 6).map((project) => (
-              <div
-                key={project.id}
-                id={project.id}
-                className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-colors"
-              >
-                <div className="relative aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 mb-5">
-                  {project.imageUrl && (
-                    <img
-                      src={project.imageUrl}
-                      alt={project.imageAlt || project.title}
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                  <div className="absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded bg-black/80 backdrop-blur-sm border border-neutral-800 text-[#D4AF37]">
-                    {project.category}
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PORTFOLIO_PROJECTS.slice(2).map((project) => {
+              const isNewScreenshot = project.id === 'project-screenshot-5';
+              const isActive = project.id === activeProjectId;
 
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
-                    <span>{project.subtitle}</span>
-                    <span className="text-[#D4AF37]">[Pending Confirmation]</span>
+              return (
+                <div
+                  key={project.id}
+                  id={project.id}
+                  className={`p-6 rounded-2xl bg-neutral-950 border transition-all duration-300 flex flex-col justify-between ${
+                    isActive
+                      ? 'border-[#D4AF37] ring-1 ring-[#D4AF37]/30 shadow-lg shadow-[#D4AF37]/10'
+                      : 'border-neutral-800 hover:border-neutral-700'
+                  }`}
+                >
+                  <div>
+                    {/* Visual Screenshot Thumbnail - Gold-bordered frame for Project screenshot 5 as requested */}
+                    <div 
+                      className={`relative aspect-[4/3] rounded-xl overflow-hidden bg-neutral-900 mb-5 ${
+                        isNewScreenshot
+                          ? 'border border-[#C9A227] shadow-md shadow-[#C9A227]/20 ring-1 ring-[#C9A227]/40'
+                          : 'border border-neutral-800'
+                      }`}
+                    >
+                      {project.imageUrl && (
+                        <img
+                          src={project.imageUrl}
+                          alt={project.imageAlt || project.title}
+                          width={800}
+                          height={600}
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                        />
+                      )}
+                      
+                      {/* Category Tag */}
+                      <div className="absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded bg-black/80 backdrop-blur-sm border border-neutral-800 text-[#D4AF37]">
+                        {project.category}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
+                        <span>{project.subtitle}</span>
+                        <span className="text-[#D4AF37]">[Pending Confirmation]</span>
+                      </div>
+                      
+                      <h4 className="text-lg font-serif font-medium text-white">
+                        {project.title}
+                      </h4>
+                      
+                      {isNewScreenshot ? (
+                        <p className="text-xs text-neutral-300 leading-relaxed font-mono">
+                          Add project details and verified results here.
+                        </p>
+                      ) : (
+                        <p className="text-xs text-neutral-400 leading-relaxed font-light">
+                          {project.caption}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <h4 className="text-lg font-serif font-medium text-white">
-                    {project.title}
-                  </h4>
-                  <p className="text-xs text-neutral-400 leading-relaxed font-light">
-                    {project.caption}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

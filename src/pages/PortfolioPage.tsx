@@ -71,15 +71,17 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
               key={project.id}
               className="rounded-2xl border border-neutral-800 bg-neutral-950/70 overflow-hidden flex flex-col justify-between group hover:border-[#D4AF37]/60 transition-all duration-300 shadow-lg"
             >
-              {/* Visual Project Thumbnail */}
-              <div className="relative aspect-video bg-neutral-900 overflow-hidden border-b border-neutral-800">
+              {/* Visual Project Thumbnail (4:3 ratio, object-fit: cover, object-position: top) */}
+              <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden border-b border-neutral-800">
                 {project.imageUrl ? (
                   <img
                     src={project.imageUrl}
                     alt={project.imageAlt || project.title}
+                    width={800}
+                    height={600}
                     loading="lazy"
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 group-hover:brightness-105"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-neutral-600 text-xs font-mono">
@@ -126,10 +128,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        {/* Note on Images 3 to 6 */}
+        {/* Note on Images */}
         <div className="mt-12 text-center p-4 rounded-xl bg-neutral-950/60 border border-neutral-900 max-w-2xl mx-auto">
           <p className="text-xs text-neutral-500 font-mono">
-            Note: Project screenshots 1 to 4 are labeled with neutral titles until confirmed by the owner.
+            Note: Project screenshots 1 to 5 are labeled with neutral titles until confirmed by the owner.
           </p>
         </div>
       </section>

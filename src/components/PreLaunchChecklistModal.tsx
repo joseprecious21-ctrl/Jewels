@@ -74,12 +74,12 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       detail: 'Connected to Web3Forms (Access Key: 328096a4... / submissions delivered directly to inbox).',
     },
     {
-      title: 'Confirm Images 3 to 6 Details',
-      placeholder: 'Project screenshots 1 to 4',
+      title: 'Confirm Images 3 to 7 Details',
+      placeholder: 'Project screenshots 1 to 5',
       file: 'src/data/seoData.ts',
       status: 'Awaiting owner confirmation',
       actionPage: 'portfolio' as PageId,
-      detail: 'Confirm what images 3 to 6 show, then update their titles, category tags, and captions.',
+      detail: 'Confirm what images 3 to 7 show, then update their titles, category tags, and captions.',
     },
     {
       title: 'Culture Perfumes Screenshots & Data',

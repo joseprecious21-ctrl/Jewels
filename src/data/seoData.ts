@@ -221,6 +221,24 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     ],
     placeholderNote: 'Update title, category tag, and caption once project background is confirmed.',
   },
+  {
+    id: 'project-screenshot-5',
+    title: 'Project screenshot 5',
+    subtitle: 'Google Business Profile Work',
+    category: 'Google Business Profile',
+    categorySlug: 'google-business-profile',
+    caption: 'Add caption describing this project.',
+    imageUrl: 'https://i.postimg.cc/Dfb9LbBg/photo-5938439676190462041-y-%281%29.jpg',
+    imageAlt: 'SEO project screenshot, Jewels portfolio',
+    description: 'Add project details and verified results here.',
+    workPerformed: [
+      'Google Business Profile setup, local alignment, and verification',
+      'Local search keyword structure and service listing optimization',
+      'Local presence tracking and search performance documentation',
+      'Add project details and verified results here.'
+    ],
+    placeholderNote: 'Add project details and verified results here.',
+  },
 ];
 
 /**
