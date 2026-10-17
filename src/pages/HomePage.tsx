@@ -33,92 +33,91 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen">
       
-      {/* 1. HERO SECTION (With Image 1 framed in gold beside the text) */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Subtle background ambient lighting */}
+      {/* 1. HERO SECTION (Full-width Background Video with 90vh min-height) */}
+      <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        
+        {/* Native Background Video Element */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          poster="https://i.postimg.cc/6Q8hGCtm/Enterprise-SEO-Growth-Dashboard.png"
+          ref={(el) => {
+            if (el) {
+              el.muted = true;
+              el.play().catch(() => {});
+            }
+          }}
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none motion-reduce:hidden"
+        >
+          <source
+            src="https://www.image2url.com/r2/default/videos/1792255592411-950fb60e-3b69-4717-a25c-6c18ccc23b08.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Dark contrast scrim overlay (60% black with gradient to solid #0A0A0A at bottom) */}
         <div 
-          className="absolute top-1/4 left-1/3 w-[600px] h-[350px] bg-[#D4AF37]/8 blur-[150px] pointer-events-none rounded-full" 
+          className="absolute inset-0 bg-black/60 bg-gradient-to-b from-black/55 via-black/65 to-[#0A0A0A] z-[1] pointer-events-none"
           aria-hidden="true"
         />
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            
-            {/* Left Column: Bold Headline & Copy */}
-            <div className="lg:col-span-7 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-[#D4AF37] mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span className="tracking-wide uppercase font-medium text-[11px]">
-                  Professional SEO Portfolio & Optimization
-                </span>
-              </div>
+        {/* Ambient gold radial glow */}
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#D4AF37]/10 blur-[150px] pointer-events-none rounded-full z-[1]" 
+          aria-hidden="true"
+        />
 
-              {/* Bold headline introducing Jewels and its SEO expertise */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-white mb-6 leading-[1.15]">
-                Strategic SEO & Website Optimization for High-Growth Brands
-              </h1>
-
-              {/* Supporting line from Section 1 only */}
-              <p className="text-base sm:text-lg text-neutral-300 mb-8 leading-relaxed font-light max-w-2xl">
-                Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
-              </p>
-
-              {/* Two Buttons: Request an SEO Consultation (gold) and View SEO Portfolio (outline) */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <button
-                  onClick={() => onNavigate('contact')}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap cursor-pointer active:scale-95"
-                >
-                  <span>Request an SEO Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => onNavigate('portfolio')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-transparent hover:bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-neutral-200 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer"
-                >
-                  <span>View SEO Portfolio</span>
-                </button>
-              </div>
-
-              <div className="mt-8 flex items-center gap-2 text-xs text-neutral-500 font-mono">
-                <span>Enterprise & Local SEO</span>
-                <span aria-hidden="true">·</span>
-                <span>All Services Quoted Individually</span>
-                <span aria-hidden="true">·</span>
-                <span>Verified Outcomes</span>
-              </div>
-            </div>
-
-            {/* Right Column: Hero Visual Image 1 Framed in Gold */}
-            <div className="lg:col-span-5">
-              <div className="relative group">
-                {/* Gold glowing border frame */}
-                <div className="rounded-2xl border-2 border-[#D4AF37]/70 p-2 bg-gradient-to-b from-[#D4AF37]/20 via-neutral-900/60 to-black shadow-2xl shadow-[#D4AF37]/20 hover:border-[#D4AF37] transition-all duration-300">
-                  <div className="relative rounded-xl overflow-hidden bg-neutral-950 aspect-video sm:aspect-4/3 flex items-center justify-center">
-                    <img
-                      src="https://i.postimg.cc/6Q8hGCtm/Enterprise-SEO-Growth-Dashboard.png"
-                      alt="Enterprise SEO Growth Dashboard visual showcasing search performance analytics"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="mt-2.5 px-3 py-2 bg-neutral-950/90 rounded-lg border border-neutral-800/80 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                      <span className="text-xs font-mono text-neutral-300">
-                        Enterprise SEO Growth Dashboard
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-[#D4AF37]">
-                      Live Visual
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+        {/* Hero Content (Above overlay with high contrast) */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          {/* Subtle kicker badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900/90 border border-neutral-800 text-xs text-[#D4AF37] mb-6 backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span className="tracking-wide uppercase font-medium text-[11px]">
+              Professional SEO Portfolio & Optimization
+            </span>
           </div>
+
+          {/* Bold headline introducing Jewels and its SEO expertise */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white mb-6 leading-[1.1] text-balance">
+            Strategic SEO & Website Optimization for High-Growth Brands
+          </h1>
+
+          {/* Supporting line from Section 1 only */}
+          <p className="text-base sm:text-xl text-neutral-200 max-w-3xl mx-auto mb-10 leading-relaxed font-light drop-shadow-sm">
+            Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
+          </p>
+
+          {/* Two Buttons: Request an SEO Consultation (gold) and View SEO Portfolio (outline) */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
+            <button
+              onClick={() => onNavigate('contact')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[#D4AF37]/25 hover:shadow-[#D4AF37]/35 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap cursor-pointer active:scale-95"
+            >
+              <span>Request an SEO Consultation</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => onNavigate('portfolio')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg bg-black/60 hover:bg-neutral-900 border border-neutral-600 hover:border-neutral-400 text-neutral-200 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer backdrop-blur-sm"
+            >
+              <span>View SEO Portfolio</span>
+            </button>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs text-neutral-400 font-mono">
+            <span>Enterprise & Local SEO</span>
+            <span aria-hidden="true">·</span>
+            <span>All Services Quoted Individually</span>
+            <span aria-hidden="true">·</span>
+            <span>Verified Outcomes</span>
+          </div>
+
         </div>
       </section>
 
