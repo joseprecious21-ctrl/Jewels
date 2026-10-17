@@ -67,11 +67,11 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
     },
     {
       title: 'Contact Form Endpoint',
-      placeholder: '[FORM ENDPOINT]',
-      file: 'src/pages/ContactPage.tsx',
-      status: 'Placeholder in use',
+      placeholder: 'Web3Forms API (Active)',
+      file: 'src/pages/ContactPage.tsx & src/data/seoData.ts',
+      status: 'Configured & active',
       actionPage: 'contact' as PageId,
-      detail: 'Add your free Formspree, Web3Forms, or custom submission URL.',
+      detail: 'Connected to Web3Forms (Access Key: 328096a4... / submissions delivered directly to inbox).',
     },
     {
       title: 'Confirm Images 3 to 6 Details',

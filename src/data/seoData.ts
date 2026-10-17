@@ -9,7 +9,8 @@ export const CONTACT_DETAILS = {
   WHATSAPP_URL: 'https://wa.me/qr/ALZSABNAHJVZC1',
   INSTAGRAM_URL: 'https://www.instagram.com/jewelsteamgrowth_seo_solution/',
   LINKEDIN_URL: 'https://www.linkedin.com/in/precious-ayofe-b252a5428/',
-  FORM_ENDPOINT: '[FORM ENDPOINT]', // e.g. https://formspree.io/f/your_id or https://api.web3forms.com/submit
+  FORM_ENDPOINT: 'https://api.web3forms.com/submit',
+  WEB3FORMS_ACCESS_KEY: '328096a4-bc44-47c1-967b-7db736f64d3a',
   LOGO: 'https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png',
   PROFILE_PHOTO: '[PROFILE PHOTO PLACEHOLDER]',
 };

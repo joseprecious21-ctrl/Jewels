@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Mail, MessageCircle, Linkedin, Instagram, Send, CheckCircle2, 
-  AlertCircle, Sparkles, ExternalLink, Globe, ArrowRight 
+  AlertCircle, Sparkles, ExternalLink, ArrowRight, Loader2 
 } from 'lucide-react';
 import { PageId } from '../types';
 import { SERVICES, CONTACT_DETAILS } from '../data/seoData';
@@ -23,6 +23,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     if (initialServiceId) {
@@ -47,23 +48,48 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
       newErrors.serviceOfInterest = 'Please select a service of interest.';
     }
     if (!formData.message.trim()) {
-      newErrors.message = 'Please provide brief details about your website or objectives.';
+      newErrors.message = 'Please describe your search objectives or project scope.';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulated reliable submit with endpoint dispatch hook
-    setTimeout(() => {
+    try {
+      const formElement = e.currentTarget;
+      const formDataPayload = new FormData(formElement);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: formDataPayload,
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200 && result.success) {
+        setIsSubmitted(true);
+        resetForm();
+      } else {
+        setSubmitError(
+          'Could not send your enquiry. Please email joseprecious21@gmail.com or use WhatsApp instead.'
+        );
+      }
+    } catch {
+      setSubmitError(
+        'Could not send your enquiry. Please email joseprecious21@gmail.com or use WhatsApp instead.'
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 600);
+    }
   };
 
   const resetForm = () => {
@@ -75,7 +101,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
       message: '',
     });
     setErrors({});
+  };
+
+  const handleSendAnother = () => {
+    resetForm();
     setIsSubmitted(false);
+    setSubmitError(null);
   };
 
   return (
@@ -117,29 +148,94 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
               </p>
             </div>
 
+            {/* Submission Failure Alert */}
+            {submitError && (
+              <div 
+                role="alert"
+                className="mb-6 p-4 rounded-xl bg-red-950/40 border border-red-500/50 flex items-start gap-3 text-sm text-red-200 animate-in fade-in"
+              >
+                <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-medium text-white">{submitError}</p>
+                  <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
+                    <a 
+                      href={`mailto:${CONTACT_DETAILS.EMAIL}`} 
+                      className="text-[#D4AF37] underline hover:text-white"
+                    >
+                      Email directly ({CONTACT_DETAILS.EMAIL})
+                    </a>
+                    <span>·</span>
+                    <a 
+                      href={CONTACT_DETAILS.WHATSAPP_URL} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-emerald-400 underline hover:text-white"
+                    >
+                      Open WhatsApp Chat
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {isSubmitted ? (
               <div className="py-12 px-6 text-center bg-neutral-900/50 rounded-xl border border-neutral-800 animate-in fade-in duration-300">
                 <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] mx-auto mb-4">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-serif font-medium text-white mb-2">
-                  Consultation Request Received
+                  Thanks, your enquiry has been sent.
                 </h3>
                 <p className="text-sm text-neutral-300 max-w-md mx-auto leading-relaxed mb-6 font-light">
-                  Thank you for reaching out. We will review your website details and reply promptly to discuss your search goals and customized proposal.
+                  Jewels will get back to you soon to review your website details and discuss your search goals.
                 </p>
                 <button
                   type="button"
-                  onClick={resetForm}
+                  onClick={handleSendAnother}
                   className="px-5 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono text-neutral-300 transition-colors cursor-pointer"
                 >
-                  Send Another Inquiry
+                  Send another enquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              <form 
+                action="https://api.web3forms.com/submit" 
+                method="POST" 
+                onSubmit={handleSubmit} 
+                noValidate 
+                className="space-y-6"
+              >
                 
-                {/* Name */}
+                {/* 2. Web3Forms Hidden Access Key */}
+                <input 
+                  type="hidden" 
+                  name="access_key" 
+                  value="328096a4-bc44-47c1-967b-7db736f64d3a" 
+                />
+
+                {/* 3. Hidden inputs: Subject and From Name */}
+                <input 
+                  type="hidden" 
+                  name="subject" 
+                  value="New SEO enquiry from the Jewels website" 
+                />
+                <input 
+                  type="hidden" 
+                  name="from_name" 
+                  value="Jewels Website" 
+                />
+
+                {/* 4. Honeypot anti-spam check (hidden from users) */}
+                <input 
+                  type="checkbox" 
+                  name="botcheck" 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  style={{ display: 'none' }} 
+                  className="hidden" 
+                />
+                
+                {/* Field 1: Name (required) */}
                 <div>
                   <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
                     Your Name <span className="text-[#D4AF37]">*</span>
@@ -147,6 +243,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sarah Jenkins"
@@ -162,7 +260,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   )}
                 </div>
 
-                {/* Email */}
+                {/* Field 2: Email (required, valid email) */}
                 <div>
                   <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
                     Email Address <span className="text-[#D4AF37]">*</span>
@@ -170,6 +268,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. sarah@yourcompany.com"
@@ -185,14 +285,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   )}
                 </div>
 
-                {/* Website URL */}
+                {/* Field 3: Website URL (optional) */}
                 <div>
-                  <label htmlFor="websiteUrl" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
+                  <label htmlFor="website" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
                     Website URL <span className="text-neutral-500 text-[11px] font-normal">(Optional)</span>
                   </label>
                   <input
                     type="url"
-                    id="websiteUrl"
+                    id="website"
+                    name="website"
                     value={formData.websiteUrl}
                     onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
                     placeholder="https://yourwebsite.com"
@@ -200,14 +301,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   />
                 </div>
 
-                {/* Service of Interest (Dropdown with all 12 services) */}
+                {/* Field 4: Service of Interest (Dropdown with all 12 services) */}
                 <div>
-                  <label htmlFor="serviceOfInterest" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
+                  <label htmlFor="service" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
                     Service of Interest <span className="text-[#D4AF37]">*</span>
                   </label>
                   <div className="relative">
                     <select
-                      id="serviceOfInterest"
+                      id="service"
+                      name="service"
+                      required
                       value={formData.serviceOfInterest}
                       onChange={(e) => setFormData({ ...formData, serviceOfInterest: e.target.value })}
                       className={`w-full px-4 py-3 rounded-lg bg-neutral-900 border text-sm text-white focus:outline-none focus:border-[#D4AF37] transition-colors appearance-none cursor-pointer ${
@@ -235,13 +338,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   )}
                 </div>
 
-                {/* Message */}
+                {/* Field 5: Message (required) */}
                 <div>
                   <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
                     Project Details & Objectives <span className="text-[#D4AF37]">*</span>
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -258,24 +363,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   )}
                 </div>
 
-                {/* Form endpoint placeholder notice for owner */}
-                <div className="p-3 bg-neutral-900/60 rounded-lg border border-neutral-800/80 text-[11px] font-mono text-neutral-400">
-                  <span className="text-[#D4AF37]">Form Endpoint Placeholder: </span>
-                  Connect to your preferred service (e.g., Formspree, Web3Forms) at 
-                  <code className="text-neutral-300 ml-1">action="{CONTACT_DETAILS.FORM_ENDPOINT}"</code>
-                </div>
-
-                {/* Submit button */}
+                {/* Submit button with sending state */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide uppercase transition-all duration-200 shadow-xl shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] cursor-pointer active:scale-95 disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide uppercase transition-all duration-200 shadow-xl shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] cursor-pointer active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    <span>Submitting Request...</span>
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-black" />
+                      <span>Sending...</span>
+                    </>
                   ) : (
                     <>
-                      <span>Submit Consultation Request</span>
+                      <span>Send enquiry</span>
                       <Send className="w-4 h-4" />
                     </>
                   )}
