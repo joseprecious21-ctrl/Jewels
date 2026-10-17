@@ -66,12 +66,20 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       detail: 'Add your free Formspree, Web3Forms, or custom submission URL.',
     },
     {
+      title: 'Confirm Images 3 to 6 Details',
+      placeholder: 'Project screenshots 1 to 4',
+      file: 'src/data/seoData.ts',
+      status: 'Awaiting owner confirmation',
+      actionPage: 'portfolio' as PageId,
+      detail: 'Confirm what images 3 to 6 show, then update their titles, category tags, and captions.',
+    },
+    {
       title: 'Culture Perfumes Screenshots & Data',
       placeholder: '[BEFORE / AFTER SCREENSHOT PLACEHOLDER]',
       file: 'src/pages/CaseStudiesPage.tsx',
       status: 'Placeholder in use',
       actionPage: 'case-studies' as PageId,
-      detail: 'Replace placeholder frames with real Google Search Console & Rank Math screenshots.',
+      detail: 'Replace placeholder frames with real Google Search Console & Rank Math screenshots and verified results.',
     },
     {
       title: 'Revive Wellness Verification Proof',
@@ -79,7 +87,7 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       file: 'src/pages/CaseStudiesPage.tsx',
       status: 'Placeholder in use',
       actionPage: 'case-studies' as PageId,
-      detail: 'Insert verified Google Business Profile live map listing screenshots.',
+      detail: 'Insert verified Google Business Profile live map listing screenshots and verified results.',
     },
     {
       title: 'GBP & SEO Audit Project Screenshots',

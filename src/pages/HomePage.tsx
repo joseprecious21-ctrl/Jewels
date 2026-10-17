@@ -1,10 +1,11 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ChevronRight, Sparkles, LayoutTemplate, FileText, Cpu, MapPin, Store, ShieldCheck, Search, Settings, Building2, Award } from 'lucide-react';
+import { 
+  ArrowRight, ChevronRight, Sparkles, LayoutTemplate, 
+  FileText, Cpu, MapPin, Store, ShieldCheck, Search, ArrowLeftRight 
+} from 'lucide-react';
 import { PageId } from '../types';
 import { SERVICES, PORTFOLIO_PROJECTS, CORE_AREAS } from '../data/seoData';
-import { PlaceholderFrame } from '../components/PlaceholderFrame';
 import { FaqAccordion } from '../components/FaqAccordion';
-import { TestimonialsSection } from '../components/TestimonialsSection';
 import { CtaBand } from '../components/CtaBand';
 
 interface HomePageProps {
@@ -12,10 +13,10 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  // 6 preview services for the home page teaser
+  // Six service cards preview
   const previewServices = SERVICES.slice(0, 6);
-  // Featured portfolio projects
-  const featuredProjects = PORTFOLIO_PROJECTS.slice(0, 3);
+  // Three portfolio cards from the table (Images 1, 2, and 3)
+  const selectedWork = PORTFOLIO_PROJECTS.slice(0, 3);
 
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -32,60 +33,92 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen">
       
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION (With Image 1 framed in gold beside the text) */}
       <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Subtle background ambient lighting */}
         <div 
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D4AF37]/7 blur-[140px] pointer-events-none rounded-full" 
+          className="absolute top-1/4 left-1/3 w-[600px] h-[350px] bg-[#D4AF37]/8 blur-[150px] pointer-events-none rounded-full" 
           aria-hidden="true"
         />
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          
-          {/* Subtle kicker */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-[#D4AF37] mb-8">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="tracking-wide uppercase font-medium text-[11px]">
-              Professional SEO Portfolio & Optimization
-            </span>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            
+            {/* Left Column: Bold Headline & Copy */}
+            <div className="lg:col-span-7 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-[#D4AF37] mb-6">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span className="tracking-wide uppercase font-medium text-[11px]">
+                  Professional SEO Portfolio & Optimization
+                </span>
+              </div>
+
+              {/* Bold headline introducing Jewels and its SEO expertise */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-white mb-6 leading-[1.15]">
+                Strategic SEO & Website Optimization for High-Growth Brands
+              </h1>
+
+              {/* Supporting line from Section 1 only */}
+              <p className="text-base sm:text-lg text-neutral-300 mb-8 leading-relaxed font-light max-w-2xl">
+                Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
+              </p>
+
+              {/* Two Buttons: Request an SEO Consultation (gold) and View SEO Portfolio (outline) */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap cursor-pointer active:scale-95"
+                >
+                  <span>Request an SEO Consultation</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={() => onNavigate('portfolio')}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-transparent hover:bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-neutral-200 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer"
+                >
+                  <span>View SEO Portfolio</span>
+                </button>
+              </div>
+
+              <div className="mt-8 flex items-center gap-2 text-xs text-neutral-500 font-mono">
+                <span>Enterprise & Local SEO</span>
+                <span aria-hidden="true">·</span>
+                <span>All Services Quoted Individually</span>
+                <span aria-hidden="true">·</span>
+                <span>Verified Outcomes</span>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Visual Image 1 Framed in Gold */}
+            <div className="lg:col-span-5">
+              <div className="relative group">
+                {/* Gold glowing border frame */}
+                <div className="rounded-2xl border-2 border-[#D4AF37]/70 p-2 bg-gradient-to-b from-[#D4AF37]/20 via-neutral-900/60 to-black shadow-2xl shadow-[#D4AF37]/20 hover:border-[#D4AF37] transition-all duration-300">
+                  <div className="relative rounded-xl overflow-hidden bg-neutral-950 aspect-video sm:aspect-4/3 flex items-center justify-center">
+                    <img
+                      src="https://i.postimg.cc/6Q8hGCtm/Enterprise-SEO-Growth-Dashboard.png"
+                      alt="Enterprise SEO Growth Dashboard visual showcasing search performance analytics"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="mt-2.5 px-3 py-2 bg-neutral-950/90 rounded-lg border border-neutral-800/80 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                      <span className="text-xs font-mono text-neutral-300">
+                        Enterprise SEO Growth Dashboard
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-[#D4AF37]">
+                      Live Visual
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          {/* Bold headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white mb-6 text-balance leading-[1.1]">
-            Strategic Search Engine Optimization & Website Presence
-          </h1>
-
-          {/* Supporting line based ONLY on Section 1 */}
-          <p className="text-base sm:text-xl text-neutral-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-            Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
-          </p>
-
-          {/* Two Buttons: Request an SEO Consultation (primary, gold) and View SEO Portfolio (secondary) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
-            <button
-              onClick={() => onNavigate('contact')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[#D4AF37]/20 hover:shadow-[#D4AF37]/30 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap cursor-pointer active:scale-95"
-            >
-              <span>Request an SEO Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={() => onNavigate('portfolio')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-200 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer"
-            >
-              <span>View SEO Portfolio</span>
-            </button>
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-neutral-500 font-mono">
-            <span>Client Engagements</span>
-            <span aria-hidden="true">·</span>
-            <span>All Services Quoted Individually</span>
-            <span aria-hidden="true">·</span>
-            <span>No Artificial Tiers</span>
-          </div>
-
         </div>
       </section>
 
@@ -106,7 +139,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 3. SERVICES PREVIEW */}
+      {/* 3. SERVICES PREVIEW (Six service cards with 'View all services' link) */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
@@ -122,7 +155,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('services')}
             className="inline-flex items-center gap-2 text-sm font-medium text-[#D4AF37] hover:text-[#FFF3D0] transition-colors cursor-pointer group"
           >
-            <span>View All 12 Services</span>
+            <span>View all services</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
@@ -147,10 +180,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               <div className="mt-6 pt-5 border-t border-neutral-900">
                 <button
-                  onClick={() => onNavigate('contact')}
+                  onClick={() => onNavigate('contact', service.id)}
                   className="text-xs font-semibold text-[#D4AF37] hover:text-[#FFF3D0] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span>Request a Custom Quote</span>
+                  <span>Request a custom quote</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -160,12 +193,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
         <div className="mt-10 text-center">
           <p className="text-xs text-neutral-500">
-            All services are quoted individually based on website scale and project requirements.
+            All services are quoted individually. Request a Custom Quote.
           </p>
         </div>
       </section>
 
-      {/* 4. FEATURED PORTFOLIO */}
+      {/* 4. SELECTED WORK (Three portfolio cards from the portfolio table) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-neutral-900 bg-neutral-950/40">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -174,7 +207,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 Demonstrated Work
               </div>
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white">
-                Featured SEO Engagements
+                Selected Work
               </h2>
             </div>
 
@@ -188,39 +221,47 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredProjects.map((project) => (
+            {selectedWork.map((project) => (
               <div
                 key={project.id}
-                className="rounded-xl border border-neutral-800 bg-neutral-950/80 overflow-hidden flex flex-col justify-between group hover:border-neutral-700 transition-colors"
+                className="rounded-xl border border-neutral-800 bg-neutral-950/80 overflow-hidden flex flex-col justify-between group hover:border-[#D4AF37]/50 transition-colors"
               >
-                <div className="p-4 bg-neutral-900/30 border-b border-neutral-800">
-                  <PlaceholderFrame 
-                    label={`Screenshot: ${project.title}`}
-                    hint={project.placeholderNote}
-                    aspectRatio="video"
-                    tag={project.category}
-                  />
+                {/* Visual Thumbnail */}
+                <div className="relative aspect-video bg-neutral-900 overflow-hidden border-b border-neutral-800">
+                  {project.imageUrl ? (
+                    <img
+                      src={project.imageUrl}
+                      alt={project.imageAlt || project.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-neutral-600 text-xs font-mono">
+                      [Screenshot]
+                    </div>
+                  )}
+                  <div className="absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded bg-black/80 backdrop-blur-sm border border-neutral-800 text-[#D4AF37]">
+                    {project.category}
+                  </div>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="text-xs font-mono text-[#D4AF37] mb-1">
-                      {project.subtitle}
-                    </div>
-                    <h3 className="text-xl font-serif font-medium text-white mb-2">
+                    <h3 className="text-xl font-serif font-medium text-white mb-2 group-hover:text-[#FFF3D0] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-neutral-400 line-clamp-3 leading-relaxed mb-4">
-                      {project.description}
+                    <p className="text-xs text-neutral-400 line-clamp-3 leading-relaxed mb-4 font-light">
+                      {project.caption}
                     </p>
                   </div>
 
                   <div className="pt-4 border-t border-neutral-900">
                     <button
-                      onClick={() => onNavigate('case-studies')}
+                      onClick={() => onNavigate('case-studies', project.id)}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D4AF37] hover:text-white transition-colors cursor-pointer"
                     >
-                      <span>View Case Study</span>
+                      <span>View case study</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -231,69 +272,54 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 5. FEATURED CASE STUDY TEASER (BEFORE & AFTER) */}
+      {/* 5. BEFORE AND AFTER SECTION (Image 2 with a link to Case Studies) */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-neutral-900/60 to-neutral-950 border border-neutral-800">
-          <div className="max-w-3xl mb-8">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#D4AF37]">
-              Case Study Teaser
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white mt-2 mb-3">
-              Culture Perfumes: Google Search Console & Rank Math SEO
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-light">
-              Demonstrating search optimization progress for South African perfume brand Culture Perfumes. Side-by-side performance documentation captures crawl status, sitemap health, and keyword targeting.
-            </p>
-          </div>
-
-          {/* Side-by-side Before & After screenshot teaser slots */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-            <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2 flex items-center justify-between">
-                <span>Before Optimization</span>
-                <span className="text-[#D4AF37] text-[11px]">Initial State</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div className="lg:col-span-5 space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#D4AF37]">
+                <ArrowLeftRight className="w-3.5 h-3.5" />
+                <span>Performance Documentation</span>
               </div>
-              <PlaceholderFrame 
-                label="Before: Initial Setup Screenshot"
-                hint="Add initial Search Console / Rank Math setup screenshot here once verified."
-                aspectRatio="video"
-              />
-            </div>
-
-            <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2 flex items-center justify-between">
-                <span>After Optimization</span>
-                <span className="text-emerald-400 text-[11px]">Optimized State</span>
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white">
+                Before and After SEO Results
+              </h2>
+              <p className="text-sm text-neutral-300 font-light leading-relaxed">
+                Documenting direct comparative search progression. Systematic optimization of technical crawlability, structured keywords, and localized visibility generates measurable search trajectory over time.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => onNavigate('case-studies', 'results-before-after')}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+                >
+                  <span>Explore Case Studies</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <PlaceholderFrame 
-                label="After: Verified Outcome Screenshot"
-                hint="Add optimized Search Console performance screenshot here once verified."
-                aspectRatio="video"
-              />
             </div>
-          </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-neutral-800/80">
-            <div className="text-xs text-neutral-500 font-mono">
-              [Note: Strict adherence to verified metrics — no fabricated statistics or mock figures.]
+            <div className="lg:col-span-7">
+              <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-2 shadow-2xl overflow-hidden group">
+                <img
+                  src="https://i.postimg.cc/hGX07Vc6/SEO-Results-Before-and-After.png"
+                  alt="SEO Results Before and After comparative performance screenshot"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto rounded-lg object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+                <div className="p-3 bg-neutral-950/80 rounded-b-lg border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400 font-mono">
+                  <span>Image 2: SEO Results Before & After</span>
+                  <span className="text-[#D4AF37]">Comparative Evidence</span>
+                </div>
+              </div>
             </div>
-            <button
-              onClick={() => onNavigate('case-studies')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs font-medium text-white transition-colors cursor-pointer"
-            >
-              <span>Explore All Case Studies</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
-            </button>
+
           </div>
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS SECTION (READY-TO-ENABLE COMPONENT) */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <TestimonialsSection />
-      </section>
-
-      {/* 7. FAQ ACCORDION */}
+      {/* 6. FAQ ACCORDION */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-neutral-900 bg-neutral-950/30">
         <div className="max-w-4xl mx-auto text-center mb-12">
           <span className="text-xs font-mono uppercase tracking-wider text-[#D4AF37] mb-2 block">
@@ -303,14 +329,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto">
-            Clear information about services, consultation workflows, and custom quoting.
+            Clear information about services, custom quotes, and getting started.
           </p>
         </div>
 
-        <FaqAccordion showOwnerNotice={true} />
+        <FaqAccordion showOwnerNotice={false} />
       </section>
 
-      {/* 8. FINAL CTA BAND */}
+      {/* 7. FINAL CTA BAND */}
       <CtaBand onNavigate={onNavigate} />
 
     </div>

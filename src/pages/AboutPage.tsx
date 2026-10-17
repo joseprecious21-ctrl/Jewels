@@ -77,10 +77,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 Purpose & Philosophy
               </span>
 
-              {/* Exact mandated sentence from prompt Section 4:
-                  "Jewels is focused on helping businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization." */}
-              <p className="text-lg sm:text-xl text-neutral-100 font-serif leading-relaxed italic border-l-2 border-[#D4AF37] pl-5 py-1">
-                “Jewels is focused on helping businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.”
+              {/* Exact mandated copy from Section 5: */}
+              <p className="text-lg sm:text-xl text-neutral-100 font-serif leading-relaxed italic border-l-2 border-[#D4AF37] pl-5 py-2">
+                “Jewels is focused on helping businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization. The portfolio showcases SEO projects, website improvements, Google Business Profile work, and case studies showing project progress and outcomes.”
               </p>
             </div>
 

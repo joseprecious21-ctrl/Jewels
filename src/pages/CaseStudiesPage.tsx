@@ -1,7 +1,10 @@
 import React from 'react';
-import { Sparkles, ArrowRight, CheckCircle2, Shield, ArrowLeftRight, HelpCircle } from 'lucide-react';
+import { 
+  Sparkles, CheckCircle2, Shield, ArrowLeftRight, 
+  BarChart3, LayoutDashboard, Store, Sparkle, ExternalLink 
+} from 'lucide-react';
 import { PageId } from '../types';
-import { PORTFOLIO_PROJECTS } from '../data/seoData';
+import { VERIFIED_CASE_STUDIES, PORTFOLIO_PROJECTS } from '../data/seoData';
 import { PlaceholderFrame } from '../components/PlaceholderFrame';
 import { CtaBand } from '../components/CtaBand';
 
@@ -26,179 +29,299 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
         </h1>
 
         <p className="text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed font-light">
-          Detailed project breakdowns demonstrating optimization progress, verified technical implementations, and before-and-after search improvements.
+          Detailed project breakdowns demonstrating optimization progress, verified technical implementations, and before-and-after search outcomes.
         </p>
 
         <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-neutral-900/90 border border-neutral-800 text-xs font-mono text-neutral-400">
           <Shield className="w-3.5 h-3.5 text-[#D4AF37]" />
-          <span>Strict Policy: No invented metrics or fabricated ranking graphs</span>
+          <span>Strict Policy: No invented numbers or fabricated metrics</span>
         </div>
       </section>
 
-      {/* Case Study Detailed List */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20 space-y-16">
-        {PORTFOLIO_PROJECTS.map((project, index) => {
-          const isHighlighted = activeProjectId === project.id;
-          return (
-            <article 
-              key={project.id}
-              id={project.id}
-              className={`p-8 sm:p-12 rounded-2xl bg-neutral-950/80 border transition-all duration-300 ${
-                isHighlighted ? 'border-[#D4AF37] ring-1 ring-[#D4AF37]/50 shadow-2xl' : 'border-neutral-800 hover:border-neutral-700'
-              }`}
-            >
-              {/* Header meta */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-neutral-800/80">
-                <div>
-                  <span className="text-xs font-mono text-[#D4AF37] block mb-1">
-                    Case Study #{String(index + 1).padStart(2, '0')} · {project.subtitle}
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
-                    {project.title}
-                  </h2>
-                </div>
-
-                <div className="shrink-0">
-                  <span className="text-xs font-mono px-3 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-300">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Overview */}
-              <div className="py-6 border-b border-neutral-800/60">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
-                  Project Overview
-                </h3>
-                <p className="text-base text-neutral-300 font-light leading-relaxed max-w-4xl">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Work Performed (Confirmed Only) */}
-              <div className="py-6 border-b border-neutral-800/60">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">
-                  Work Performed
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {project.workPerformed.map((work, wIdx) => (
-                    <div 
-                      key={wIdx}
-                      className="flex items-start gap-2.5 p-3 rounded-lg bg-neutral-900/50 border border-neutral-800/80 text-sm text-neutral-200 font-light"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                      <span>{work}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Before-and-After Side-by-Side Layout */}
-              <div className="pt-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <ArrowLeftRight className="w-4 h-4 text-[#D4AF37]" />
-                  <h3 className="text-sm font-serif font-medium text-white tracking-wide uppercase">
-                    Side-by-Side Visual Documentation
-                  </h3>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Before slot */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-medium text-neutral-400 uppercase tracking-wider">
-                        Before Optimization
-                      </span>
-                      <span className="text-[11px] font-mono text-neutral-500 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-                        Baseline Frame
-                      </span>
-                    </div>
-                    <PlaceholderFrame 
-                      label={`Before: ${project.title}`}
-                      hint={project.beforePlaceholder}
-                      aspectRatio="video"
-                      tag="Before"
-                    />
-                  </div>
-
-                  {/* After slot */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-medium text-[#D4AF37] uppercase tracking-wider">
-                        After Optimization
-                      </span>
-                      <span className="text-[11px] font-mono text-[#D4AF37] bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-                        Verified Outcome
-                      </span>
-                    </div>
-                    <PlaceholderFrame 
-                      label={`After: ${project.title}`}
-                      hint={project.afterPlaceholder}
-                      aspectRatio="video"
-                      tag="After"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4 text-right">
-                  <span className="text-[11px] font-mono text-neutral-500">
-                    [{project.placeholderNote}]
-                  </span>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </section>
-
-      {/* BEFORE-AND-AFTER SEO PERFORMANCE EXAMPLES BLOCK */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-24">
-        <div className="p-8 sm:p-12 rounded-2xl bg-neutral-900/40 border border-dashed border-neutral-800">
-          <div className="max-w-3xl mb-8">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#D4AF37]">
-              Comparative Performance Framework
+      <div className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20 space-y-16">
+        
+        {/* CASE STUDY 1: BEFORE AND AFTER (USING IMAGE 2) */}
+        <article 
+          id="results-before-after"
+          className="p-8 sm:p-12 rounded-2xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 transition-all duration-300"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-neutral-800/80">
+            <div>
+              <span className="text-xs font-mono text-[#D4AF37] block mb-1">
+                Featured Case Study · Comparative Growth Analysis
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
+                SEO Results: Before and After
+              </h2>
+            </div>
+            <span className="text-xs font-mono px-3 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-300 w-fit">
+              Reporting & Analytics
             </span>
-            <h2 className="text-3xl font-serif font-medium text-white mt-1 mb-3">
-              Before-and-After SEO Performance Examples
-            </h2>
-            <p className="text-sm text-neutral-400 font-light leading-relaxed">
-              Standard comparative documentation structure used to record search improvements across technical audits, crawl errors, click-through performance, and Google Business Profile discovery.
+          </div>
+
+          <div className="py-6 border-b border-neutral-800/60">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+              Project Overview
+            </h3>
+            <p className="text-base text-neutral-300 font-light leading-relaxed max-w-4xl">
+              Comparative search performance evaluation documenting metric improvements from initial technical audit through structured implementation, indexation stabilization, and organic ranking maturation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
-            <div>
-              <div className="p-3 bg-neutral-950 rounded-t-xl border-x border-t border-neutral-800 text-xs font-mono text-neutral-400 flex items-center justify-between">
-                <span>Example 1: Initial Crawl Diagnostics</span>
-                <span className="text-neutral-500">Pre-engagement</span>
-              </div>
-              <PlaceholderFrame 
-                label="Baseline Technical Audit Report"
-                hint="Add unoptimized technical crawl error logs or index status report here."
-                aspectRatio="video"
-                tag="Example Before"
-              />
-            </div>
-
-            <div>
-              <div className="p-3 bg-neutral-950 rounded-t-xl border-x border-t border-neutral-800 text-xs font-mono text-[#D4AF37] flex items-center justify-between">
-                <span>Example 2: Resolved Indexing & Health</span>
-                <span className="text-[#D4AF37]">Post-engagement</span>
-              </div>
-              <PlaceholderFrame 
-                label="Optimized Health & Coverage Report"
-                hint="Add verified Search Console index resolution and valid status report here."
-                aspectRatio="video"
-                tag="Example After"
-              />
+          <div className="py-6 border-b border-neutral-800/60">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">
+              Work Performed
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                'Baseline search engine audit & crawl error cataloging',
+                'Comprehensive on-page tag and keyword hierarchy realignment',
+                'Google Search Console indexing cleanup and coverage monitoring',
+                'Ongoing comparative ranking and query capture tracking'
+              ].map((work, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 p-3 rounded-lg bg-neutral-900/50 border border-neutral-800/80 text-sm text-neutral-200 font-light">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                  <span>{work}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="p-4 rounded-lg bg-neutral-950/80 border border-neutral-800 text-xs text-neutral-400 font-mono text-center">
-            Verification Protocol: Real screenshots and authenticated Google Search Console / Google Business Profile reports will be embedded upon client approval. Zero invented numbers.
+          {/* Visual Showcase: Image 2 with "Before" and "After" callouts */}
+          <div className="pt-8">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <ArrowLeftRight className="w-4 h-4 text-[#D4AF37]" />
+                <h3 className="text-sm font-serif font-medium text-white tracking-wide uppercase">
+                  Before-and-After Performance Documentation
+                </h3>
+              </div>
+              <div className="flex items-center gap-3 text-xs font-mono">
+                <span className="px-2.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400">Before</span>
+                <span className="text-[#D4AF37]">→</span>
+                <span className="px-2.5 py-0.5 rounded bg-[#D4AF37]/10 border border-[#D4AF37]/40 text-[#D4AF37]">After</span>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-2 overflow-hidden shadow-2xl">
+              <img
+                src="https://i.postimg.cc/hGX07Vc6/SEO-Results-Before-and-After.png"
+                alt="SEO Results Before and After comparative growth analytics documentation"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="w-full h-auto rounded-lg object-contain"
+              />
+              <div className="mt-2 p-3 bg-neutral-950/90 rounded-b-lg border-t border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-neutral-400 font-mono">
+                <span>Visual 2: Verified Before and After Comparison</span>
+                <span className="text-neutral-500">[Documented search outcome]</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {/* CASE STUDY 2: ENTERPRISE SEO GROWTH DASHBOARD (USING IMAGE 1) */}
+        <article 
+          id="enterprise-dashboard"
+          className="p-8 sm:p-12 rounded-2xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 transition-all duration-300"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-neutral-800/80">
+            <div>
+              <span className="text-xs font-mono text-[#D4AF37] block mb-1">
+                Enterprise Case Study · Visibility Analytics
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
+                Enterprise SEO Growth Dashboard
+              </h2>
+            </div>
+            <span className="text-xs font-mono px-3 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-300 w-fit">
+              Reporting & Dashboard
+            </span>
+          </div>
+
+          <div className="py-6 border-b border-neutral-800/60">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+              Project Overview
+            </h3>
+            <p className="text-base text-neutral-300 font-light leading-relaxed max-w-4xl">
+              Centralized enterprise search reporting and data tracking architecture displaying aggregate impressions, keyword expansion trends, and search engine visibility indexing across target commercial categories.
+            </p>
+          </div>
+
+          <div className="py-6 border-b border-neutral-800/60">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">
+              Work Performed
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                'Enterprise organic visibility tracking architecture',
+                'Unified Google Search Console and analytics data synthesis',
+                'Keyword ranking trajectory and click-through rate monitoring',
+                'Executive performance reporting and milestone verification'
+              ].map((work, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 p-3 rounded-lg bg-neutral-900/50 border border-neutral-800/80 text-sm text-neutral-200 font-light">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                  <span>{work}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Visual Showcase: Image 1 */}
+          <div className="pt-8">
+            <div className="flex items-center gap-2 mb-4">
+              <LayoutDashboard className="w-4 h-4 text-[#D4AF37]" />
+              <h3 className="text-sm font-serif font-medium text-white tracking-wide uppercase">
+                Enterprise Dashboard Visual Documentation
+              </h3>
+            </div>
+
+            <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-2 overflow-hidden shadow-2xl">
+              <img
+                src="https://i.postimg.cc/6Q8hGCtm/Enterprise-SEO-Growth-Dashboard.png"
+                alt="Enterprise SEO Growth Dashboard tracking organic keyword progression"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="w-full h-auto rounded-lg object-contain"
+              />
+              <div className="mt-2 p-3 bg-neutral-950/90 rounded-b-lg border-t border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-neutral-400 font-mono">
+                <span>Visual 1: Enterprise SEO Growth Dashboard</span>
+                <span className="text-[#D4AF37]">Aggregate Organic Analytics</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {/* CASE STUDY 3 & 4: CULTURE PERFUMES & REVIVE WELLNESS (PLACEHOLDERS AS MANDATED) */}
+        {VERIFIED_CASE_STUDIES.map((study) => (
+          <article 
+            key={study.id}
+            id={study.id}
+            className="p-8 sm:p-12 rounded-2xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 transition-all duration-300"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-neutral-800/80">
+              <div>
+                <span className="text-xs font-mono text-[#D4AF37] block mb-1">
+                  Client Project · {study.subtitle}
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-serif font-medium text-white">
+                  {study.title}
+                </h2>
+              </div>
+              <span className="text-xs font-mono px-3 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-300 w-fit">
+                {study.category}
+              </span>
+            </div>
+
+            <div className="py-6 border-b border-neutral-800/60">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                Project Overview
+              </h3>
+              <p className="text-base text-neutral-300 font-light leading-relaxed max-w-4xl">
+                {study.description}
+              </p>
+            </div>
+
+            <div className="py-6 border-b border-neutral-800/60">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">
+                Work Performed (Confirmed)
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {study.workPerformed.map((work, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-lg bg-neutral-900/50 border border-neutral-800/80 text-sm text-neutral-200 font-light">
+                    <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <span>{work}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Placeholder for screenshots and verified results */}
+            <div className="pt-8">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono uppercase tracking-wider text-neutral-400">
+                  Screenshots & Verified Results
+                </span>
+                <span className="text-[11px] font-mono text-[#D4AF37] bg-neutral-900 px-2.5 py-0.5 rounded border border-neutral-800">
+                  [Awaiting Owner Submission]
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PlaceholderFrame 
+                  label={`Before: ${study.title}`}
+                  hint={study.beforePlaceholder}
+                  aspectRatio="video"
+                  tag="Before"
+                />
+                <PlaceholderFrame 
+                  label={`After: ${study.title}`}
+                  hint={study.afterPlaceholder}
+                  aspectRatio="video"
+                  tag="After"
+                />
+              </div>
+
+              <p className="mt-4 text-xs text-neutral-500 font-mono text-right">
+                [{study.placeholderNote}]
+              </p>
+            </div>
+          </article>
+        ))}
+
+        {/* ADDITIONAL DOCUMENTED PROJECTS (IMAGES 3 TO 6 WITH NEUTRAL TITLES) */}
+        <div className="pt-6">
+          <div className="mb-8">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#D4AF37] block mb-1">
+              Documented Deliverables
+            </span>
+            <h3 className="text-2xl font-serif font-medium text-white">
+              Project Deliverables & Visual Verification
+            </h3>
+            <p className="text-xs text-neutral-400 mt-1">
+              Project screenshots 1 to 4 are labeled with neutral titles until confirmed by the owner.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {PORTFOLIO_PROJECTS.slice(2, 6).map((project) => (
+              <div
+                key={project.id}
+                id={project.id}
+                className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-colors"
+              >
+                <div className="relative aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 mb-5">
+                  {project.imageUrl && (
+                    <img
+                      src={project.imageUrl}
+                      alt={project.imageAlt || project.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  <div className="absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded bg-black/80 backdrop-blur-sm border border-neutral-800 text-[#D4AF37]">
+                    {project.category}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
+                    <span>{project.subtitle}</span>
+                    <span className="text-[#D4AF37]">[Pending Confirmation]</span>
+                  </div>
+                  <h4 className="text-lg font-serif font-medium text-white">
+                    {project.title}
+                  </h4>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-light">
+                    {project.caption}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+
+      </div>
 
       {/* CTA Band */}
       <CtaBand onNavigate={onNavigate} />
