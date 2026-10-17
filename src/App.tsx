@@ -11,6 +11,7 @@ import { PortfolioPage } from './pages/PortfolioPage';
 import { CaseStudiesPage } from './pages/CaseStudiesPage';
 import { BlogPage } from './pages/BlogPage';
 import { ContactPage } from './pages/ContactPage';
+import { CONTACT_DETAILS } from './data/seoData';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -59,6 +60,20 @@ export default function App() {
     if (metaDescription) {
       metaDescription.setAttribute('content', descriptions[currentPage] || descriptions.home);
     }
+
+    // Dynamic Open Graph & Twitter Card tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', titles[currentPage] || titles.home);
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', descriptions[currentPage] || descriptions.home);
+
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    const targetImage = currentPage === 'about' ? CONTACT_DETAILS.PROFILE_PHOTO : CONTACT_DETAILS.LOGO;
+
+    if (ogImage) ogImage.setAttribute('content', targetImage);
+    if (twitterImage) twitterImage.setAttribute('content', targetImage);
   }, [currentPage]);
 
   const handleNavigate = (page: PageId, extraId?: string) => {

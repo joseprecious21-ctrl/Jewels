@@ -9,6 +9,8 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+  const [imgError, setImgError] = React.useState(false);
+
   return (
     <div className="pt-28 sm:pt-36 min-h-screen">
       
@@ -28,45 +30,47 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </p>
       </section>
 
-      {/* Main About Layout: Profile Photo Placeholder & Strict Text Content */}
+      {/* Main About Layout: Profile Photo & Strict Text Content */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 items-center p-8 sm:p-12 rounded-2xl bg-neutral-950/70 border border-neutral-800">
           
-          {/* PROFILE PHOTO PLACEHOLDER SLOT */}
+          {/* PROFILE PHOTO WITH THIN GOLD BORDER (#C9A227) AND OFFSET */}
           <div className="md:col-span-5 flex flex-col items-center">
-            {/* [PROFILE PHOTO PLACEHOLDER]: Replace with owner headshot image asset */}
-            <div 
-              className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-2xl border-2 border-dashed border-neutral-800 bg-neutral-900/60 p-6 flex flex-col items-center justify-center text-center group hover:border-[#D4AF37]/50 transition-colors overflow-hidden"
-              role="region"
-              aria-label="Profile photo placeholder"
-            >
+            <div className="relative max-w-[420px] w-full mx-auto group">
+              {/* Subtle offset gold accent border behind */}
               <div 
-                className="absolute inset-0 opacity-10 pointer-events-none" 
-                style={{
-                  backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.3) 1px, transparent 1px)',
-                  backgroundSize: '16px 16px'
-                }}
+                className="absolute -inset-1.5 sm:-inset-2 rounded-2xl border border-[#C9A227]/50 translate-x-2 translate-y-2 pointer-events-none transition-transform duration-300 group-hover:translate-x-2.5 group-hover:translate-y-2.5"
+                aria-hidden="true"
               />
 
-              <div className="w-16 h-16 rounded-full bg-neutral-800/80 border border-neutral-700 flex items-center justify-center text-[#D4AF37] mb-4 group-hover:scale-105 transition-transform">
-                <User className="w-8 h-8 stroke-[1.5]" />
-              </div>
-
-              <span className="text-sm font-medium text-neutral-300">
-                Profile Photo Placeholder
-              </span>
-              <p className="text-xs text-neutral-500 mt-1 max-w-[200px] leading-relaxed">
-                Add your professional portrait or studio headshot here.
-              </p>
-
-              <div className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-mono text-[#D4AF37] bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
-                {PLACEHOLDERS.PROFILE_PHOTO}
+              {/* Main image container (4:5 portrait ratio, thin #C9A227 border, centered, no awkward crop) */}
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[#C9A227] bg-black shadow-2xl flex items-center justify-center">
+                {imgError ? (
+                  /* Fallback to dark card with gold 'J' monogram */
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 to-black text-center p-6">
+                    <div className="w-20 h-20 rounded-full border-2 border-[#C9A227] flex items-center justify-center mb-3">
+                      <span className="font-serif text-4xl font-bold text-[#D4AF37]">J</span>
+                    </div>
+                    <span className="text-sm font-serif text-neutral-300">Jewels Founder</span>
+                    <span className="text-xs font-mono text-neutral-500 mt-1">SEO Specialist</span>
+                  </div>
+                ) : (
+                  <img
+                    src={CONTACT_DETAILS.PROFILE_PHOTO}
+                    alt="Profile photo of the founder of Jewels, SEO specialist"
+                    width={420}
+                    height={525}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    onError={() => setImgError(true)}
+                    className="w-full h-full object-contain p-3 sm:p-4 bg-black transition-transform duration-500 group-hover:scale-102 motion-reduce:transform-none motion-reduce:transition-none"
+                  />
+                )}
               </div>
             </div>
-            {/* <!-- [PROFILE PHOTO PLACEHOLDER] END --> */}
 
-            <p className="text-[11px] font-mono text-neutral-500 mt-3 text-center">
-              [Spot reserved for Jewels profile photo]
+            <p className="text-[11px] font-mono text-neutral-500 mt-4 text-center">
+              Founder & SEO Specialist · Jewels
             </p>
           </div>
 

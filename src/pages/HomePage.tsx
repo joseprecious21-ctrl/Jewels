@@ -382,7 +382,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 7. FINAL CTA BAND */}
-      <CtaBand onNavigate={onNavigate} />
+      <CtaBand onNavigate={onNavigate} showFounderBadge={true} />
 
     </div>
   );

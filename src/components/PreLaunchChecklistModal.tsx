@@ -27,11 +27,11 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
     },
     {
       title: 'Profile Photo',
-      placeholder: '[PROFILE PHOTO PLACEHOLDER]',
-      file: 'src/pages/AboutPage.tsx',
-      status: 'Placeholder in use',
+      placeholder: 'Official Founder Headshot (Active)',
+      file: 'src/pages/AboutPage.tsx & HomePage.tsx',
+      status: 'Configured & active',
       actionPage: 'about' as PageId,
-      detail: 'Upload your professional headshot into the designated about photo slot.',
+      detail: 'Professional headshot active on About page (with gold offset frame) and Home CTA band.',
     },
     {
       title: 'Contact Email',

@@ -7,13 +7,16 @@ interface CtaBandProps {
   headline?: string;
   subline?: string;
   onNavigate: (page: PageId) => void;
+  showFounderBadge?: boolean;
 }
 
 export const CtaBand: React.FC<CtaBandProps> = ({
   headline = 'Strengthen your search presence and reach potential customers.',
   subline = 'Discuss your search goals, review your website opportunities, and receive a tailored quote.',
   onNavigate,
+  showFounderBadge = false,
 }) => {
+  const [avatarError, setAvatarError] = React.useState(false);
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-neutral-800/80 bg-gradient-to-b from-neutral-950 to-[#0A0A0A] overflow-hidden">
       {/* Subtle gold ambient glow */}
@@ -32,9 +35,37 @@ export const CtaBand: React.FC<CtaBandProps> = ({
           {headline}
         </h2>
 
-        <p className="text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+        <p className="text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto mb-8 leading-relaxed font-light">
           {subline}
         </p>
+
+        {/* Small circular profile photo with gold ring */}
+        {showFounderBadge && (
+          <div className="inline-flex items-center justify-center gap-3.5 mb-8 px-4 py-2 rounded-full bg-neutral-900/60 border border-neutral-800">
+            <div className="relative w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shadow-md shadow-[#D4AF37]/10 shrink-0">
+              <div className="w-full h-full rounded-full overflow-hidden bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+                {!avatarError ? (
+                  <img
+                    src={CONTACT_DETAILS.PROFILE_PHOTO}
+                    alt="Profile photo of the founder of Jewels, SEO specialist"
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    onError={() => setAvatarError(true)}
+                    className="w-full h-full object-contain p-1 bg-black"
+                  />
+                ) : (
+                  <span className="font-serif text-[#D4AF37] font-bold text-lg">J</span>
+                )}
+              </div>
+            </div>
+            <div className="text-left pr-2">
+              <span className="block text-xs sm:text-sm font-medium text-white">Direct SEO Consultation with Jewels</span>
+              <span className="block text-[11px] text-[#D4AF37] font-mono">Let's discuss your organic search strategy</span>
+            </div>
+          </div>
+        )}
 
         {/* Action Buttons: Consultation Button + WhatsApp Button + Portfolio link */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -12,7 +12,7 @@ export const CONTACT_DETAILS = {
   FORM_ENDPOINT: 'https://api.web3forms.com/submit',
   WEB3FORMS_ACCESS_KEY: '328096a4-bc44-47c1-967b-7db736f64d3a',
   LOGO: 'https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png',
-  PROFILE_PHOTO: '[PROFILE PHOTO PLACEHOLDER]',
+  PROFILE_PHOTO: 'https://i.postimg.cc/6qsCDSsj/photo-5927181862533009600-w-%282%29.jpg',
 };
 
 export const PLACEHOLDERS = CONTACT_DETAILS;
