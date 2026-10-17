@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-gold-50: #FCF9EE;
+  --color-gold-100: #F7F0D4;
+  --color-gold-200: #EFE0AA;
+  --color-gold-300: #E5CD7C;
+  --color-gold-400: #DCBA54;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #C9A227;
+  --color-gold-700: #A8831A;
+  --color-gold-800: #7F6114;
+  --color-gold-900: #553F0E;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0A0A0A;
+  color: #EDEDED;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-serif);
+}
+
+/* Subtle luxury gold gradient utilities */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF3D0 0%, #D4AF37 50%, #C9A227 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-border {
+  border-image: linear-gradient(to right, rgba(212, 175, 55, 0.4), rgba(201, 162, 39, 0.1), transparent) 1;
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+  box-sizing: border-box;
+}
