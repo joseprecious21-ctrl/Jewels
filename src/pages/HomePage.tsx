@@ -122,19 +122,65 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 2. EXPERTISE STRIP */}
-      <section className="border-y border-neutral-800/80 bg-neutral-950/70 py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-y-4 gap-x-8 text-xs sm:text-sm font-medium text-neutral-300">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500">
-              Core Areas:
-            </span>
-            {CORE_AREAS.map((area, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                <span className="whitespace-nowrap">{area}</span>
-              </div>
-            ))}
+      {/* 2. EXPERTISE STRIP (Continuous right-to-left animation movement) */}
+      <section className="relative border-y border-neutral-800/80 bg-neutral-950/80 py-5 overflow-hidden">
+        {/* Edge fade gradients for polished visual entry/exit */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+
+        <div className="w-full overflow-hidden">
+          <div className="animate-marquee-left flex items-center gap-12 text-xs sm:text-sm font-medium text-neutral-300">
+            {/* Loop Segment A */}
+            <div className="flex items-center gap-10 shrink-0">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4AF37] px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segA-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment B (Identical for seamless infinite scroll) */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4AF37] px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segB-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment C */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4AF37] px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segC-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment D */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4AF37] px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segD-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
