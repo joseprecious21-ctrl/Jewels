@@ -63,7 +63,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     loading="lazy"
                     referrerPolicy="no-referrer"
                     onError={() => setImgError(true)}
-                    className="w-full h-full object-contain p-3 sm:p-4 bg-black transition-transform duration-500 group-hover:scale-102 motion-reduce:transform-none motion-reduce:transition-none"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                   />
                 )}
               </div>

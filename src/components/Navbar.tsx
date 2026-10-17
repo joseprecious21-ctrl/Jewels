@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, ClipboardCheck } from 'lucide-react';
 import { PageId } from '../types';
+import { CONTACT_DETAILS } from '../data/seoData';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -15,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,15 +58,25 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => handleLinkClick('home')}
-              className="group flex items-center gap-2.5 text-left cursor-pointer focus-visible:outline-none"
+              className="group flex items-center gap-2.5 sm:gap-3 text-left cursor-pointer focus-visible:outline-none"
               aria-label="Jewels SEO Homepage"
             >
-              <img
-                src="https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png"
-                alt="Jewels Logo"
-                className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 rounded-sm"
-                referrerPolicy="no-referrer"
-              />
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] via-[#F4E07B] to-[#C9A227] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+                <div className="w-full h-full rounded-full overflow-hidden bg-neutral-950 flex items-center justify-center">
+                  {!logoError ? (
+                    <img
+                      src="/logo-source.jpg"
+                      alt="Jewels logo"
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover object-center"
+                      onError={() => setLogoError(true)}
+                    />
+                  ) : (
+                    <span className="font-serif font-bold text-sm text-[#D4AF37]">J</span>
+                  )}
+                </div>
+              </div>
               <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[#D4AF37] group-hover:text-[#FFF3D0] transition-colors whitespace-nowrap">
                 Jewels
               </span>
@@ -112,6 +124,24 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden xl:inline">Checklist</span>
             </button>
 
+            {/* Founder Avatar Quick Link */}
+            <button
+              onClick={() => handleLinkClick('about')}
+              title="Founder & SEO Specialist · Jewels"
+              className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-[#D4AF37]/50 text-xs font-mono text-neutral-300 hover:text-white transition-all cursor-pointer"
+            >
+              <div className="w-5 h-5 rounded-full p-[1px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0 overflow-hidden">
+                <img
+                  src={CONTACT_DETAILS.PROFILE_PHOTO}
+                  alt="Jewels founder profile"
+                  width={20}
+                  height={20}
+                  className="w-full h-full rounded-full object-cover object-top"
+                />
+              </div>
+              <span>Jewels</span>
+            </button>
+
             <button
               onClick={() => handleLinkClick('contact')}
               className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
@@ -146,6 +176,29 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* MOBILE COLLAPSIBLE MENU */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-[#0F0F0F] border-b border-neutral-800 px-4 pt-3 pb-6 animate-in slide-in-from-top-2 duration-200">
+          {/* Founder Identity Card in Mobile Drawer */}
+          <div 
+            onClick={() => handleLinkClick('about')}
+            className="flex items-center gap-3 p-3 mb-3 rounded-xl bg-neutral-900/80 border border-neutral-800 cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+          >
+            <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0">
+              <div className="w-full h-full rounded-full overflow-hidden bg-black">
+                <img
+                  src={CONTACT_DETAILS.PROFILE_PHOTO}
+                  alt="Jewels founder profile photo"
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm font-medium text-white truncate">Jewels</div>
+              <div className="text-xs text-[#D4AF37] font-mono">SEO Specialist · Direct Inquiry</div>
+            </div>
+          </div>
+
           <nav className="flex flex-col space-y-1" aria-label="Mobile Navigation">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;

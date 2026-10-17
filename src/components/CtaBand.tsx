@@ -53,7 +53,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({
                     loading="lazy"
                     referrerPolicy="no-referrer"
                     onError={() => setAvatarError(true)}
-                    className="w-full h-full object-contain p-1 bg-black"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : (
                   <span className="font-serif text-[#D4AF37] font-bold text-lg">J</span>

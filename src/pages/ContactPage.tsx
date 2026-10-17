@@ -390,6 +390,54 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
           {/* DIRECT CONTACT CHANNELS & SOCIAL PROFILES */}
           <div className="lg:col-span-5 space-y-6">
             
+            {/* Founder Profile Card */}
+            <div className="bg-gradient-to-b from-neutral-900/90 via-neutral-950 to-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-7 shadow-xl">
+              <div className="flex items-center gap-4 mb-5">
+                {/* Profile Photo with Gold Ring */}
+                <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl p-[2px] bg-gradient-to-br from-[#D4AF37] via-[#C9A227] to-neutral-800 shrink-0 shadow-lg shadow-[#D4AF37]/10">
+                  <div className="w-full h-full rounded-[14px] overflow-hidden bg-black flex items-center justify-center">
+                    <img
+                      src={CONTACT_DETAILS.PROFILE_PHOTO}
+                      alt="Profile photo of the founder of Jewels, SEO specialist"
+                      width={72}
+                      height={72}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+
+                <div className="min-w-0">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-[10px] font-mono text-emerald-400 mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Accepting New Inquiries</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-serif font-medium text-white truncate">
+                    Jewels
+                  </h3>
+                  <p className="text-xs font-mono text-[#D4AF37]">
+                    Founder & SEO Specialist
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mb-4 pb-4 border-b border-neutral-800/80">
+                Direct, one-on-one collaboration. You discuss your website goals directly with Jewels to review organic search visibility, Google Business Profile performance, and technical architecture.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-neutral-400">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                  <span>Custom Scoped</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                  <span>No Junior Handoffs</span>
+                </div>
+              </div>
+            </div>
+
             {/* Direct contact card */}
             <div className="bg-neutral-950/80 border border-neutral-800 rounded-2xl p-8">
               <span className="text-xs font-mono uppercase tracking-wider text-[#D4AF37] block mb-2">

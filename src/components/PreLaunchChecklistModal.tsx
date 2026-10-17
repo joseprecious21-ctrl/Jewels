@@ -18,12 +18,12 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
 
   const checklistItems = [
     {
-      title: 'Brand Crest Logo',
-      placeholder: 'PGT-Global Crest Logo (Active)',
+      title: 'Brand Logo & Favicon',
+      placeholder: '/logo-source.jpg (Active)',
       file: 'src/components/Navbar.tsx & Footer.tsx & index.html',
-      status: 'Configured with official logo asset',
+      status: 'Configured & active',
       actionPage: 'home' as PageId,
-      detail: 'Official athletic crest logo and browser favicon are active on the website.',
+      detail: 'Official circular gold-ringed logo and multi-resolution favicon suite active across website and browser tabs.',
     },
     {
       title: 'Profile Photo',

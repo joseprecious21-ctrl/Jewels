@@ -4,7 +4,7 @@ import {
   FileText, Cpu, MapPin, Store, ShieldCheck, Search, ArrowLeftRight 
 } from 'lucide-react';
 import { PageId } from '../types';
-import { SERVICES, PORTFOLIO_PROJECTS, CORE_AREAS } from '../data/seoData';
+import { SERVICES, PORTFOLIO_PROJECTS, CORE_AREAS, CONTACT_DETAILS } from '../data/seoData';
 import { FaqAccordion } from '../components/FaqAccordion';
 import { CtaBand } from '../components/CtaBand';
 
@@ -314,6 +314,74 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 4B. FOUNDER SPOTLIGHT: MEET JEWELS */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-neutral-900">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center p-8 sm:p-12 rounded-2xl bg-neutral-950/70 border border-neutral-800">
+          
+          {/* Framed Profile Photo with thin gold border (#C9A227) */}
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="relative max-w-[340px] sm:max-w-[380px] w-full mx-auto group">
+              <div 
+                className="absolute -inset-1.5 rounded-2xl border border-[#C9A227]/50 translate-x-2 translate-y-2 pointer-events-none transition-transform duration-300 group-hover:translate-x-2.5 group-hover:translate-y-2.5"
+                aria-hidden="true"
+              />
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[#C9A227] bg-black shadow-2xl">
+                <img
+                  src={CONTACT_DETAILS.PROFILE_PHOTO}
+                  alt="Profile photo of the founder of Jewels, SEO specialist"
+                  width={380}
+                  height={475}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none"
+                />
+              </div>
+            </div>
+            <p className="text-[11px] font-mono text-neutral-500 mt-4 text-center">
+              Founder & SEO Specialist · Jewels
+            </p>
+          </div>
+
+          {/* Direct Collaboration Story */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-[#D4AF37]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="tracking-wide uppercase font-medium text-[11px]">Direct Practitioner Collaboration</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight">
+              Work Directly With Jewels
+            </h2>
+
+            <p className="text-lg text-neutral-200 font-serif italic border-l-2 border-[#D4AF37] pl-4 py-1 leading-relaxed">
+              “Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.”
+            </p>
+
+            <p className="text-sm text-neutral-400 font-light leading-relaxed">
+              When you engage Jewels, you work directly with a dedicated SEO practitioner rather than being handed off to account managers. Every audit, keyword strategy, and technical recommendation is crafted specifically for your domain and commercial objectives.
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+              <button
+                onClick={() => onNavigate('contact')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+              >
+                <span>Request an SEO Consultation</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => onNavigate('about')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors cursor-pointer"
+              >
+                <span>About Jewels & Expertise</span>
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 

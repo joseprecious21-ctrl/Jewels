@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, MessageCircle, Linkedin, Instagram, ArrowUp, Sparkles, ClipboardCheck } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
@@ -9,6 +9,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) => {
+  const [logoError, setLogoError] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -30,26 +32,73 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
           
           {/* Brand & Mission Column */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <img
-                src={CONTACT_DETAILS.LOGO}
-                alt="Jewels Logo"
-                className="h-10 w-auto object-contain rounded-sm"
-                referrerPolicy="no-referrer"
-              />
+            <button
+              onClick={() => {
+                onNavigate('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group flex items-center gap-3 text-left cursor-pointer focus-visible:outline-none"
+              aria-label="Jewels SEO Homepage"
+            >
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] via-[#F4E07B] to-[#C9A227] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+                <div className="w-full h-full rounded-full overflow-hidden bg-neutral-950 flex items-center justify-center">
+                  {!logoError ? (
+                    <img
+                      src="/logo-source.jpg"
+                      alt="Jewels logo"
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover object-center"
+                      onError={() => setLogoError(true)}
+                    />
+                  ) : (
+                    <span className="font-serif font-bold text-sm text-[#D4AF37]">J</span>
+                  )}
+                </div>
+              </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-semibold tracking-tight text-[#D4AF37]">
+                <span className="font-serif text-2xl font-semibold tracking-tight text-[#D4AF37] group-hover:text-[#FFF3D0] transition-colors">
                   Jewels
                 </span>
                 <span className="text-[11px] uppercase tracking-widest font-mono text-neutral-500">
                   SEO & Optimization
                 </span>
               </div>
-            </div>
+            </button>
 
             <p className="text-neutral-400 text-sm leading-relaxed max-w-md font-light">
               Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
             </p>
+
+            {/* Founder Sign-off Badge */}
+            <div 
+              onClick={() => {
+                onNavigate('about');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-3 p-2.5 pr-4 rounded-xl bg-neutral-950/80 border border-neutral-800/80 hover:border-[#D4AF37]/40 transition-colors cursor-pointer group"
+            >
+              <div className="w-10 h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0">
+                <div className="w-full h-full rounded-full overflow-hidden bg-black">
+                  <img
+                    src={CONTACT_DETAILS.PROFILE_PHOTO}
+                    alt="Jewels founder profile"
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="block text-xs font-medium text-white group-hover:text-[#D4AF37] transition-colors">
+                  Jewels
+                </span>
+                <span className="block text-[11px] text-neutral-500 font-mono">
+                  Founder & SEO Specialist
+                </span>
+              </div>
+            </div>
 
             <div className="pt-2">
               <button
