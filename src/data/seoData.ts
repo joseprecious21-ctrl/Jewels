@@ -1,18 +1,20 @@
 import { ServiceItem, PortfolioProject, FaqItem } from '../types';
 
 /**
- * PLACEHOLDER CONFIGURATION
- * Replace these placeholder values with your real details prior to launching.
+ * VERIFIED CONTACT DETAILS & PROFILE LINKS
+ * Section 2 Specification: Real verified channels for Jewels.
  */
-export const PLACEHOLDERS = {
-  EMAIL: '[YOUR EMAIL]',
-  WHATSAPP_NUMBER: '[YOUR WHATSAPP NUMBER]',
-  LINKEDIN_URL: '[YOUR LINKEDIN URL]',
-  TWITTER_URL: '[YOUR TWITTER URL]',
+export const CONTACT_DETAILS = {
+  EMAIL: 'joseprecious21@gmail.com',
+  WHATSAPP_URL: 'https://wa.me/qr/ALZSABNAHJVZC1',
+  INSTAGRAM_URL: 'https://www.instagram.com/jewelsteamgrowth_seo_solution/',
+  LINKEDIN_URL: 'https://www.linkedin.com/in/precious-ayofe-b252a5428/',
   FORM_ENDPOINT: '[FORM ENDPOINT]', // e.g. https://formspree.io/f/your_id or https://api.web3forms.com/submit
   LOGO: 'https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png',
   PROFILE_PHOTO: '[PROFILE PHOTO PLACEHOLDER]',
 };
+
+export const PLACEHOLDERS = CONTACT_DETAILS;
 
 /**
  * EXACT 12 SERVICES
@@ -275,8 +277,8 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: 'How do I request an SEO consultation?',
-    answer: 'You can request an SEO consultation by completing the enquiry form on our Contact page, sending an email directly to [YOUR EMAIL], or messaging via WhatsApp at [YOUR WHATSAPP NUMBER]. We will review your website details and schedule a discussion.',
-    ownerNote: 'Flagged for owner review: Update placeholder contact details prior to publishing.',
+    answer: 'You can request an SEO consultation by completing the enquiry form on our Contact page, sending an email directly to joseprecious21@gmail.com, or messaging via WhatsApp at https://wa.me/qr/ALZSABNAHJVZC1. We will review your website details and schedule a discussion.',
+    ownerNote: 'Direct inquiry channels: contact form, direct email (joseprecious21@gmail.com), or direct WhatsApp chat.',
   },
   {
     question: 'Does Jewels specialize in WordPress and Google Business Profile?',

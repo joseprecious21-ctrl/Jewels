@@ -1,7 +1,7 @@
 import React from 'react';
-import { User, CheckCircle2, Sparkles, ArrowRight } from 'lucide-react';
+import { User, CheckCircle2, Sparkles, ArrowRight, Linkedin, Instagram } from 'lucide-react';
 import { PageId } from '../types';
-import { ABOUT_EXPERTISE, PLACEHOLDERS } from '../data/seoData';
+import { ABOUT_EXPERTISE, PLACEHOLDERS, CONTACT_DETAILS } from '../data/seoData';
 import { CtaBand } from '../components/CtaBand';
 
 interface AboutPageProps {
@@ -102,7 +102,35 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+            {/* Verified Profile Links (LinkedIn and Instagram) */}
+            <div className="pt-2">
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
+                Connect Directly
+              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={CONTACT_DETAILS.LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-[#D4AF37]/50 text-neutral-200 hover:text-white text-xs font-medium transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 text-[#D4AF37]" />
+                  <span>LinkedIn Profile</span>
+                </a>
+
+                <a
+                  href={CONTACT_DETAILS.INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-[#D4AF37]/50 text-neutral-200 hover:text-white text-xs font-medium transition-colors"
+                >
+                  <Instagram className="w-4 h-4 text-[#D4AF37]" />
+                  <span>Instagram @jewelsteamgrowth_seo_solution</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
               <button
                 onClick={() => onNavigate('contact')}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"

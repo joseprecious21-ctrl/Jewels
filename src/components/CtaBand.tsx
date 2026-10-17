@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageCircle } from 'lucide-react';
 import { PageId } from '../types';
+import { CONTACT_DETAILS } from '../data/seoData';
 
 interface CtaBandProps {
   headline?: string;
@@ -35,6 +36,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({
           {subline}
         </p>
 
+        {/* Action Buttons: Consultation Button + WhatsApp Button + Portfolio link */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => onNavigate('contact')}
@@ -44,16 +46,26 @@ export const CtaBand: React.FC<CtaBandProps> = ({
             <ArrowRight className="w-4 h-4" />
           </button>
 
+          <a
+            href={CONTACT_DETAILS.WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 hover:text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-emerald-950/20 whitespace-nowrap cursor-pointer"
+          >
+            <MessageCircle className="w-4 h-4 text-emerald-400" />
+            <span>Chat on WhatsApp</span>
+          </a>
+
           <button
             onClick={() => onNavigate('portfolio')}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white font-medium text-sm transition-colors whitespace-nowrap cursor-pointer"
           >
-            <span>View SEO Portfolio</span>
+            <span>View Portfolio</span>
           </button>
         </div>
 
-        <p className="text-xs text-neutral-500 mt-6 tracking-wide">
-          All services are quoted individually. No arbitrary packages or fixed tiers.
+        <p className="text-xs text-neutral-500 mt-6 tracking-wide font-mono">
+          joseprecious21@gmail.com · All services quoted individually
         </p>
       </div>
     </section>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Mail, MessageCircle, Linkedin, Twitter, Send, CheckCircle2, 
+  Mail, MessageCircle, Linkedin, Instagram, Send, CheckCircle2, 
   AlertCircle, Sparkles, ExternalLink, Globe, ArrowRight 
 } from 'lucide-react';
 import { PageId } from '../types';
-import { SERVICES, PLACEHOLDERS } from '../data/seoData';
+import { SERVICES, CONTACT_DETAILS } from '../data/seoData';
 
 interface ContactPageProps {
   initialServiceId?: string;
@@ -262,7 +262,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 <div className="p-3 bg-neutral-900/60 rounded-lg border border-neutral-800/80 text-[11px] font-mono text-neutral-400">
                   <span className="text-[#D4AF37]">Form Endpoint Placeholder: </span>
                   Connect to your preferred service (e.g., Formspree, Web3Forms) at 
-                  <code className="text-neutral-300 ml-1">action="{PLACEHOLDERS.FORM_ENDPOINT}"</code>
+                  <code className="text-neutral-300 ml-1">action="{CONTACT_DETAILS.FORM_ENDPOINT}"</code>
                 </div>
 
                 {/* Submit button */}
@@ -301,76 +301,76 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
               <div className="space-y-4">
                 {/* WhatsApp Button */}
                 <a
-                  href={`https://wa.me/${PLACEHOLDERS.WHATSAPP_NUMBER}`}
+                  href={CONTACT_DETAILS.WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 rounded-xl bg-neutral-900/90 border border-neutral-800 hover:border-[#D4AF37]/50 hover:bg-neutral-900 transition-all duration-200 group"
+                  className="flex items-center justify-between p-4 rounded-xl bg-neutral-900/90 border border-neutral-800 hover:border-emerald-500/50 hover:bg-neutral-900 transition-all duration-200 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-950/60 border border-emerald-800/50 flex items-center justify-center text-emerald-400">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
                       <MessageCircle className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs font-mono text-neutral-400">WhatsApp Message</div>
-                      <div className="text-sm font-medium text-white group-hover:text-[#D4AF37] transition-colors">
-                        {PLACEHOLDERS.WHATSAPP_NUMBER}
+                      <div className="text-xs font-mono text-neutral-400">WhatsApp Instant Chat</div>
+                      <div className="text-sm font-medium text-white group-hover:text-emerald-400 transition-colors">
+                        Direct Chat Link
                       </div>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-neutral-500 group-hover:text-emerald-400 transition-colors" />
                 </a>
 
                 {/* Email Link */}
                 <a
-                  href={`mailto:${PLACEHOLDERS.EMAIL}`}
+                  href={`mailto:${CONTACT_DETAILS.EMAIL}`}
                   className="flex items-center justify-between p-4 rounded-xl bg-neutral-900/90 border border-neutral-800 hover:border-[#D4AF37]/50 hover:bg-neutral-900 transition-all duration-200 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#D4AF37]">
+                    <div className="w-10 h-10 rounded-lg bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#D4AF37] group-hover:scale-105 transition-transform">
                       <Mail className="w-5 h-5" />
                     </div>
-                    <div>
-                      <div className="text-xs font-mono text-neutral-400">Direct Email</div>
-                      <div className="text-sm font-medium text-white group-hover:text-[#D4AF37] transition-colors truncate max-w-[200px] sm:max-w-none">
-                        {PLACEHOLDERS.EMAIL}
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-neutral-400">Email Address</div>
+                      <div className="text-sm font-medium text-white group-hover:text-[#D4AF37] transition-colors truncate">
+                        {CONTACT_DETAILS.EMAIL}
                       </div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors shrink-0" />
                 </a>
               </div>
 
-              {/* Social Profile Links */}
+              {/* Social Profile Links: LinkedIn & Instagram */}
               <div className="mt-8 pt-6 border-t border-neutral-900">
                 <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3">
-                  Professional Profiles
+                  Verified Profiles
                 </span>
                 
                 <div className="flex flex-col gap-2.5">
                   <a
-                    href={PLACEHOLDERS.LINKEDIN_URL}
+                    href={CONTACT_DETAILS.LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-lg bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 text-neutral-300 hover:text-white transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-lg bg-neutral-900/60 border border-neutral-800 hover:border-[#D4AF37]/50 hover:bg-neutral-900 text-neutral-300 hover:text-white transition-colors group"
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-3">
                       <Linkedin className="w-4 h-4 text-[#D4AF37]" />
                       <span className="text-xs font-medium">LinkedIn Profile</span>
                     </div>
-                    <span className="text-[11px] font-mono text-neutral-500">{PLACEHOLDERS.LINKEDIN_URL}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
                   </a>
 
                   <a
-                    href={PLACEHOLDERS.TWITTER_URL}
+                    href={CONTACT_DETAILS.INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-lg bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 text-neutral-300 hover:text-white transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-lg bg-neutral-900/60 border border-neutral-800 hover:border-[#D4AF37]/50 hover:bg-neutral-900 text-neutral-300 hover:text-white transition-colors group"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <Twitter className="w-4 h-4 text-[#D4AF37]" />
-                      <span className="text-xs font-medium">X / Professional Twitter</span>
+                    <div className="flex items-center gap-3">
+                      <Instagram className="w-4 h-4 text-[#D4AF37]" />
+                      <span className="text-xs font-medium">Instagram Profile</span>
                     </div>
-                    <span className="text-[11px] font-mono text-neutral-500">{PLACEHOLDERS.TWITTER_URL}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
                   </a>
                 </div>
               </div>

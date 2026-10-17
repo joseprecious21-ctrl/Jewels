@@ -1,7 +1,7 @@
 import React from 'react';
-import { Mail, MessageCircle, Linkedin, Twitter, ArrowUp, Sparkles, ClipboardCheck } from 'lucide-react';
+import { Mail, MessageCircle, Linkedin, Instagram, ArrowUp, Sparkles, ClipboardCheck } from 'lucide-react';
 import { PageId } from '../types';
-import { PLACEHOLDERS } from '../data/seoData';
+import { CONTACT_DETAILS } from '../data/seoData';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="https://i.ibb.co/7NjxXKX7/PGT-Global-athletic-crest-logo.png"
+                src={CONTACT_DETAILS.LOGO}
                 alt="Jewels Logo"
                 className="h-10 w-auto object-contain rounded-sm"
                 referrerPolicy="no-referrer"
@@ -57,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono text-neutral-400 hover:text-[#D4AF37] bg-neutral-900 border border-neutral-800 transition-colors cursor-pointer"
               >
                 <ClipboardCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>Pre-Launch Checklist (10 Items)</span>
+                <span>Pre-Launch Checklist</span>
               </button>
             </div>
           </div>
@@ -93,48 +93,48 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href={`mailto:${PLACEHOLDERS.EMAIL}`}
+                  href={`mailto:${CONTACT_DETAILS.EMAIL}`}
                   className="flex items-center gap-2.5 hover:text-[#D4AF37] transition-colors group"
                 >
                   <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                  <span className="truncate">{PLACEHOLDERS.EMAIL}</span>
+                  <span className="truncate">{CONTACT_DETAILS.EMAIL}</span>
                 </a>
               </li>
 
               <li>
                 <a
-                  href={`https://wa.me/${PLACEHOLDERS.WHATSAPP_NUMBER}`}
+                  href={CONTACT_DETAILS.WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 hover:text-[#D4AF37] transition-colors group"
+                  className="flex items-center gap-2.5 hover:text-emerald-400 transition-colors group"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                  <span>WhatsApp: {PLACEHOLDERS.WHATSAPP_NUMBER}</span>
+                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>WhatsApp Jewels</span>
                 </a>
               </li>
             </ul>
 
             <div className="pt-2">
-              <p className="text-xs font-mono text-neutral-500 mb-2">Professional Profiles</p>
+              <p className="text-xs font-mono text-neutral-400 mb-2">Verified Profiles</p>
               <div className="flex items-center gap-3">
                 <a
-                  href={PLACEHOLDERS.LINKEDIN_URL}
+                  href={CONTACT_DETAILS.LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
+                  className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
 
                 <a
-                  href={PLACEHOLDERS.TWITTER_URL}
+                  href={CONTACT_DETAILS.INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="X / Twitter profile"
-                  className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
+                  aria-label="Instagram profile"
+                  className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Instagram className="w-4 h-4" />
                 </a>
               </div>
             </div>
