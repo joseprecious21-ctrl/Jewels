@@ -9,6 +9,8 @@ export const CONTACT_DETAILS = {
   WHATSAPP_URL: 'https://wa.me/qr/ALZSABNAHJVZC1',
   INSTAGRAM_URL: 'https://www.instagram.com/jewelsteamgrowth_seo_solution/',
   LINKEDIN_URL: 'https://www.linkedin.com/in/precious-ayofe-b252a5428/',
+  TIKTOK_URL: 'https://www.tiktok.com/@jewelsteam_1?lang=en',
+  TIKTOK_HANDLE: '@jewelsteam_1',
   FORM_ENDPOINT: 'https://api.web3forms.com/submit',
   WEB3FORMS_ACCESS_KEY: '328096a4-bc44-47c1-967b-7db736f64d3a',
   LOGO: '/logo-source.jpg',

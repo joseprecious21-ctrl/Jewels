@@ -66,6 +66,14 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       detail: 'Official LinkedIn profile configured in About, Contact, Footer, and Schema.',
     },
     {
+      title: 'TikTok Profile',
+      placeholder: '@jewelsteam_1',
+      file: 'src/data/seoData.ts',
+      status: 'Verified & active',
+      actionPage: 'contact' as PageId,
+      detail: 'Official TikTok profile configured in About, Contact, Footer, and Schema.',
+    },
+    {
       title: 'Contact Form Endpoint',
       placeholder: 'Web3Forms API (Active)',
       file: 'src/pages/ContactPage.tsx & src/data/seoData.ts',

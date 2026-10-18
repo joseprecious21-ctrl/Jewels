@@ -439,91 +439,130 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId }) =>
             </div>
 
             {/* Direct contact card */}
-            <div className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-8">
+            <div className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-6 sm:p-8 shadow-xl">
               <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-2">
-                Fast Response Channels
+                Fast Response & Verified Profiles
               </span>
               <h3 className="text-xl font-serif font-medium text-[var(--white)] mb-6">
                 Direct Communication
               </h3>
 
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
                 {/* WhatsApp Button (Success / Green #34A853) */}
                 <a
                   href={CONTACT_DETAILS.WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--success)] transition-all duration-200 group"
+                  aria-label="Jewels on WhatsApp (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--success)] hover:bg-[#1E1E1E] transition-all duration-200 group"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-950/80 border border-[var(--success)]/60 flex items-center justify-center text-[var(--success)] group-hover:scale-105 transition-transform">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-950/80 border border-[var(--success)]/60 flex items-center justify-center text-[var(--success)] group-hover:scale-105 transition-transform shrink-0">
                       <MessageCircle className="w-5 h-5" />
                     </div>
-                    <div>
-                      <div className="text-xs font-mono text-[var(--muted)]">WhatsApp Instant Chat</div>
-                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--success)] transition-colors">
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">WhatsApp</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--success)] transition-colors truncate">
                         Direct Chat Link
                       </div>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--success)] transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--success)] transition-colors shrink-0 ml-2" />
                 </a>
 
                 {/* Email Link (Dark button lightening with gold border) */}
                 <a
                   href={`mailto:${CONTACT_DETAILS.EMAIL}`}
+                  aria-label={`Email Jewels directly at ${CONTACT_DETAILS.EMAIL}`}
                   className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:scale-105 transition-transform">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:scale-105 transition-transform shrink-0">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">Email Address</div>
+                      <div className="text-xs font-mono text-[var(--muted)]">Email</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
                         {CONTACT_DETAILS.EMAIL}
                       </div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0" />
+                  <ArrowRight className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
+                </a>
+
+                {/* TikTok Contact Card */}
+                <a
+                  href={CONTACT_DETAILS.TIKTOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jewels on TikTok (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[#C9A227] group-hover:text-[#E2C25A] group-hover:scale-105 transition-all shrink-0">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="w-5 h-5 text-[#C9A227] group-hover:text-[#E2C25A] transition-colors"
+                        aria-hidden="true"
+                      >
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">TikTok</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
+                        @jewelsteam_1
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
+                </a>
+
+                {/* Instagram Contact Card */}
+                <a
+                  href={CONTACT_DETAILS.INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jewels on Instagram (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:text-[var(--gold-hover)] group-hover:scale-105 transition-all shrink-0">
+                      <Instagram className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">Instagram</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
+                        @jewelsteamgrowth_seo_solution
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
+                </a>
+
+                {/* LinkedIn Contact Card */}
+                <a
+                  href={CONTACT_DETAILS.LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jewels on LinkedIn (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:text-[var(--gold-hover)] group-hover:scale-105 transition-all shrink-0">
+                      <Linkedin className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">LinkedIn</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
+                        Precious Ayofe
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
                 </a>
               </div>
-
-              {/* Social Profile Links: LinkedIn & Instagram */}
-              <div className="mt-8 pt-6 border-t border-[var(--line)]">
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--muted)] block mb-3">
-                  Verified Profiles
-                </span>
-                
-                <div className="flex flex-col gap-2.5">
-                  <a
-                    href={CONTACT_DETAILS.LINKEDIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-lg bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] text-[var(--muted)] hover:text-[var(--white)] transition-all group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Linkedin className="w-4 h-4 text-[var(--gold)]" />
-                      <span className="text-xs font-medium">LinkedIn Profile</span>
-                    </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors" />
-                  </a>
-
-                  <a
-                    href={CONTACT_DETAILS.INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-lg bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] text-[var(--muted)] hover:text-[var(--white)] transition-all group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Instagram className="w-4 h-4 text-[var(--gold)]" />
-                      <span className="text-xs font-medium">Instagram Profile</span>
-                    </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors" />
-                  </a>
-                </div>
-              </div>
-
             </div>
 
             {/* Privacy & Custom Scoping Guarantee */}
