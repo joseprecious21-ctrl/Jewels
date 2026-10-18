@@ -22,9 +22,18 @@ export const PlaceholderFrame: React.FC<PlaceholderFrameProps> = ({
     aspectRatio === 'portrait' ? 'aspect-4/3' :
     aspectRatio === 'wide' ? 'aspect-21/9' : '';
 
+  const isBefore = tag?.toLowerCase().includes('before');
+  const isAfter = tag?.toLowerCase().includes('after');
+
+  const tagStyle = isBefore
+    ? 'bg-[var(--alert)]/10 text-[var(--alert)] border-[var(--alert)]/40'
+    : isAfter
+    ? 'bg-[var(--success)]/10 text-[var(--success)] border-[var(--success)]/40'
+    : 'bg-[var(--card)] text-[var(--gold)] border-[var(--line)]';
+
   return (
     <div 
-      className={`relative w-full ${aspectClass} rounded-xl border border-dashed border-neutral-800 bg-neutral-950/60 p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-[#D4AF37]/50 group overflow-hidden ${className}`}
+      className={`relative w-full ${aspectClass} rounded-xl border border-dashed border-[var(--line)] bg-[var(--card)]/60 p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-[var(--gold)]/50 group overflow-hidden ${className}`}
       role="region"
       aria-label={label}
     >
@@ -32,34 +41,34 @@ export const PlaceholderFrame: React.FC<PlaceholderFrameProps> = ({
       <div 
         className="absolute inset-0 opacity-15 pointer-events-none" 
         style={{
-          backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.25) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(201, 162, 39, 0.25) 1px, transparent 1px)',
           backgroundSize: '20px 20px'
         }}
       />
 
       {tag && (
-        <div className="absolute top-3 left-3 text-[11px] font-mono tracking-wider uppercase px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800 text-[#D4AF37]">
+        <div className={`absolute top-3 left-3 text-[11px] font-mono tracking-wider uppercase px-2.5 py-1 rounded border ${tagStyle}`}>
           {tag}
         </div>
       )}
 
       <div className="relative z-10 flex flex-col items-center max-w-md px-4">
-        <div className="w-12 h-12 rounded-full bg-neutral-900/90 border border-neutral-800 flex items-center justify-center text-[#D4AF37] mb-3 group-hover:scale-105 group-hover:border-[#D4AF37]/40 transition-transform">
+        <div className="w-12 h-12 rounded-full bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-3 group-hover:scale-105 group-hover:border-[var(--gold)]/40 transition-transform">
           <ImageIcon className="w-5 h-5 stroke-[1.5]" />
         </div>
         
-        <p className="text-sm font-medium text-neutral-300 group-hover:text-white transition-colors">
+        <p className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold-hover)] transition-colors">
           {label}
         </p>
         
         {hint && (
-          <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+          <p className="text-xs text-[var(--muted)] mt-1 leading-relaxed">
             {hint}
           </p>
         )}
 
-        <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono text-neutral-500 bg-neutral-900/60 px-2.5 py-0.5 rounded border border-neutral-800/80">
-          <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+        <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--muted)] bg-[var(--ink)] px-2.5 py-0.5 rounded border border-[var(--line)]">
+          <Sparkles className="w-3 h-3 text-[var(--gold)]" />
           <span>[SCREENSHOT PLACEHOLDER]</span>
         </div>
       </div>

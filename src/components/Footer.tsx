@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Linkedin, Instagram, ArrowUp, Sparkles, ClipboardCheck } from 'lucide-react';
+import { Mail, MessageCircle, Linkedin, Instagram, ArrowUp, ClipboardCheck } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
 
@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
   ];
 
   return (
-    <footer className="bg-[#080808] border-t border-neutral-900 text-neutral-400 text-sm">
+    <footer className="bg-[var(--ink)] border-t border-[var(--line)] text-[var(--muted)] text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-12">
           
@@ -40,8 +40,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
               className="group flex items-center gap-3 text-left cursor-pointer focus-visible:outline-none"
               aria-label="Jewels SEO Homepage"
             >
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] via-[#F4E07B] to-[#C9A227] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
-                <div className="w-full h-full rounded-full overflow-hidden bg-neutral-950 flex items-center justify-center">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] via-[var(--gold-hover)] to-[var(--gold)] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)] flex items-center justify-center">
                   {!logoError ? (
                     <img
                       src="/logo-source.jpg"
@@ -52,21 +52,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                       onError={() => setLogoError(true)}
                     />
                   ) : (
-                    <span className="font-serif font-bold text-sm text-[#D4AF37]">J</span>
+                    <span className="font-serif font-bold text-sm text-[var(--gold)]">J</span>
                   )}
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-semibold tracking-tight text-[#D4AF37] group-hover:text-[#FFF3D0] transition-colors">
+                <span className="font-serif text-2xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors">
                   Jewels
                 </span>
-                <span className="text-[11px] uppercase tracking-widest font-mono text-neutral-500">
+                <span className="text-[11px] uppercase tracking-widest font-mono text-[var(--muted)]">
                   SEO & Optimization
                 </span>
               </div>
             </button>
 
-            <p className="text-neutral-400 text-sm leading-relaxed max-w-md font-light">
+            <p className="text-[var(--muted)] text-sm leading-relaxed max-w-md font-light">
               Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
             </p>
 
@@ -76,10 +76,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 onNavigate('about');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-3 p-2.5 pr-4 rounded-xl bg-neutral-950/80 border border-neutral-800/80 hover:border-[#D4AF37]/40 transition-colors cursor-pointer group"
+              className="inline-flex items-center gap-3 p-2.5 pr-4 rounded-xl bg-[var(--card)] border border-[var(--line)] hover:border-[var(--gold)]/50 transition-colors cursor-pointer group"
             >
-              <div className="w-10 h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0">
-                <div className="w-full h-full rounded-full overflow-hidden bg-black">
+              <div className="w-10 h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shrink-0">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)]">
                   <img
                     src={CONTACT_DETAILS.PROFILE_PHOTO}
                     alt="Jewels founder profile"
@@ -91,10 +91,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 </div>
               </div>
               <div>
-                <span className="block text-xs font-medium text-white group-hover:text-[#D4AF37] transition-colors">
+                <span className="block text-xs font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
                   Jewels
                 </span>
-                <span className="block text-[11px] text-neutral-500 font-mono">
+                <span className="block text-[11px] text-[var(--muted)] font-mono">
                   Founder & SEO Specialist
                 </span>
               </div>
@@ -103,9 +103,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
             <div className="pt-2">
               <button
                 onClick={onOpenChecklist}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono text-neutral-400 hover:text-[#D4AF37] bg-neutral-900 border border-neutral-800 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
               >
-                <ClipboardCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
                 <span>Pre-Launch Checklist</span>
               </button>
             </div>
@@ -113,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
 
           {/* Quick Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-300">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--white)]">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                       onNavigate(link.id);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="hover:text-[#D4AF37] transition-colors cursor-pointer"
+                    className="text-[var(--muted)] hover:text-[var(--gold)] transition-colors cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -135,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
 
           {/* Direct Inquiries & Social */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-300">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--white)]">
               Direct Contact
             </h4>
             
@@ -143,9 +143,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
               <li>
                 <a
                   href={`mailto:${CONTACT_DETAILS.EMAIL}`}
-                  className="flex items-center gap-2.5 hover:text-[#D4AF37] transition-colors group"
+                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[var(--gold)] transition-colors group"
                 >
-                  <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                  <Mail className="w-4 h-4 text-[var(--gold)] shrink-0" />
                   <span className="truncate">{CONTACT_DETAILS.EMAIL}</span>
                 </a>
               </li>
@@ -155,23 +155,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                   href={CONTACT_DETAILS.WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 hover:text-emerald-400 transition-colors group"
+                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[var(--success)] transition-colors group"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <MessageCircle className="w-4 h-4 text-[var(--success)] shrink-0" />
                   <span>WhatsApp Jewels</span>
                 </a>
               </li>
             </ul>
 
             <div className="pt-2">
-              <p className="text-xs font-mono text-neutral-400 mb-2">Verified Profiles</p>
+              <p className="text-xs font-mono text-[var(--muted)] mb-2">Verified Profiles</p>
               <div className="flex items-center gap-3">
                 <a
                   href={CONTACT_DETAILS.LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
+                  className="w-9 h-9 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--gold)] transition-all"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -181,7 +181,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram profile"
-                  className="w-9 h-9 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
+                  className="w-9 h-9 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--gold)] transition-all"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -192,17 +192,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-neutral-900/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+        <div className="mt-12 pt-8 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
           <div>
             © {new Date().getFullYear()} Jewels. All rights reserved. All services are custom quoted.
           </div>
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 hover:text-neutral-300 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-[var(--muted)] hover:text-[var(--white)] transition-colors cursor-pointer"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <ArrowUp className="w-3.5 h-3.5 text-[var(--gold)]" />
           </button>
         </div>
 

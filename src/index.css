@@ -1,24 +1,37 @@
 @import "tailwindcss";
 
+:root {
+  --ink: #0A0A0A;
+  --card: #141414;
+  --line: #2A2A2A;
+  --gold: #C9A227;
+  --gold-hover: #E2C25A;
+  --white: #FFFFFF;
+  --muted: #A8A8A8;
+  --google-blue: #4285F4;
+  --success: #34A853;
+  --alert: #EA4335;
+}
+
 @theme {
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-gold-50: #FCF9EE;
-  --color-gold-100: #F7F0D4;
-  --color-gold-200: #EFE0AA;
-  --color-gold-300: #E5CD7C;
-  --color-gold-400: #DCBA54;
-  --color-gold-500: #D4AF37;
-  --color-gold-600: #C9A227;
-  --color-gold-700: #A8831A;
-  --color-gold-800: #7F6114;
-  --color-gold-900: #553F0E;
+  --color-ink: var(--ink);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-white: var(--white);
+  --color-muted: var(--muted);
+  --color-google-blue: var(--google-blue);
+  --color-success: var(--success);
+  --color-alert: var(--alert);
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #0A0A0A;
-  color: #EDEDED;
+  background-color: var(--ink);
+  color: var(--white);
   overflow-x: hidden;
 }
 
@@ -28,19 +41,58 @@ h1, h2, h3, .font-display {
 
 /* Subtle luxury gold gradient utilities */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FFF3D0 0%, #D4AF37 50%, #C9A227 100%);
+  background: linear-gradient(135deg, #FFF3D0 0%, var(--gold) 50%, var(--gold-hover) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-gradient-border {
-  border-image: linear-gradient(to right, rgba(212, 175, 55, 0.4), rgba(201, 162, 39, 0.1), transparent) 1;
+  border-image: linear-gradient(to right, rgba(201, 162, 39, 0.4), rgba(226, 194, 90, 0.1), transparent) 1;
 }
 
 /* Focus styles for keyboard accessibility */
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
+}
+
+/* Button & Form Input Requirements */
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-gold:hover {
+  background-color: var(--gold-hover);
+}
+
+.btn-dark {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+.btn-dark:hover {
+  background-color: #1F1F1F;
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+/* Form inputs on dark backgrounds */
+.dark-form-input {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  color: var(--white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dark-form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+  outline: none;
+}
+.dark-form-input::placeholder {
+  color: var(--muted);
 }
 
 /* Continuous Right-to-Left Marquee Movement */

@@ -4,29 +4,45 @@ import { FAQS } from '../data/seoData';
 
 interface FaqAccordionProps {
   showOwnerNotice?: boolean;
+  theme?: 'dark' | 'light';
 }
 
-export const FaqAccordion: React.FC<FaqAccordionProps> = ({ showOwnerNotice = true }) => {
+export const FaqAccordion: React.FC<FaqAccordionProps> = ({ 
+  showOwnerNotice = true,
+  theme = 'dark' 
+}) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const isLight = theme === 'light';
+
   return (
     <div className="w-full max-w-3xl mx-auto">
       {showOwnerNotice && (
-        <div className="mb-6 p-3.5 rounded-lg bg-neutral-900/80 border border-neutral-800 flex items-start gap-3 text-xs text-neutral-400">
-          <AlertCircle className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+        <div className={`mb-6 p-3.5 rounded-lg flex items-start gap-3 text-xs ${
+          isLight 
+            ? 'bg-[#FAFAFA] border border-[#E4E4E4] text-[#555555]' 
+            : 'bg-[var(--card)] border border-[var(--line)] text-[var(--muted)]'
+        }`}>
+          <AlertCircle className="w-4 h-4 text-[var(--gold)] shrink-0 mt-0.5" />
           <div>
-            <span className="font-semibold text-neutral-300">Owner Review Note: </span>
+            <span className={`font-semibold ${isLight ? 'text-[var(--ink)]' : 'text-[var(--white)]'}`}>
+              Owner Review Note:{' '}
+            </span>
             FAQ responses below are strictly factual and avoid timeline or ranking claims. Review and edit copy in{' '}
-            <code className="text-[#D4AF37] font-mono text-[11px]">src/data/seoData.ts</code> to match your exact client onboarding preferences.
+            <code className="text-[var(--gold)] font-mono text-[11px]">src/data/seoData.ts</code> to match your exact client onboarding preferences.
           </div>
         </div>
       )}
 
-      <div className="divide-y divide-neutral-800 border-y border-neutral-800">
+      <div className={`divide-y border-y ${
+        isLight 
+          ? 'divide-[#E4E4E4] border-[#E4E4E4]' 
+          : 'divide-[var(--line)] border-[var(--line)]'
+      }`}>
         {FAQS.map((faq, index) => {
           const isOpen = openIndex === index;
           return (
@@ -37,13 +53,21 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ showOwnerNotice = tr
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}
                 id={`faq-question-${index}`}
-                className="w-full flex items-center justify-between text-left group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] rounded-sm py-1 cursor-pointer"
+                className="w-full flex items-center justify-between text-left group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--gold)] rounded-sm py-1 cursor-pointer"
               >
-                <span className="text-base sm:text-lg font-medium text-neutral-200 group-hover:text-white transition-colors pr-4 flex items-center gap-3">
-                  <HelpCircle className="w-4 h-4 text-[#D4AF37]/70 shrink-0" />
+                <span className={`text-base sm:text-lg font-medium transition-colors pr-4 flex items-center gap-3 ${
+                  isLight 
+                    ? 'text-[var(--ink)] group-hover:text-[var(--gold)]' 
+                    : 'text-[var(--white)] group-hover:text-[var(--gold-hover)]'
+                }`}>
+                  <HelpCircle className="w-4 h-4 text-[var(--gold)] shrink-0" />
                   {faq.question}
                 </span>
-                <span className={`w-7 h-7 rounded-full bg-neutral-900 flex items-center justify-center shrink-0 border border-neutral-800 text-neutral-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#D4AF37] border-[#D4AF37]/40' : ''}`}>
+                <span className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 border transition-all duration-200 ${
+                  isLight 
+                    ? (isOpen ? 'rotate-180 text-[var(--gold)] bg-white border-[var(--gold)]' : 'bg-white border-[#E4E4E4] text-[#666666]') 
+                    : (isOpen ? 'rotate-180 text-[var(--gold)] bg-[var(--card)] border-[var(--gold)]' : 'bg-[var(--card)] border-[var(--line)] text-[var(--muted)]')
+                }`}>
                   <ChevronDown className="w-4 h-4" />
                 </span>
               </button>
@@ -57,11 +81,15 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ showOwnerNotice = tr
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="text-sm sm:text-base text-neutral-400 leading-relaxed pl-7">
+                  <p className={`text-sm sm:text-base leading-relaxed pl-7 font-light ${
+                    isLight ? 'text-[#555555]' : 'text-[var(--muted)]'
+                  }`}>
                     {faq.answer}
                   </p>
                   {faq.ownerNote && (
-                    <div className="pl-7 mt-2 text-[11px] font-mono text-neutral-500">
+                    <div className={`pl-7 mt-2 text-[11px] font-mono ${
+                      isLight ? 'text-[#888888]' : 'text-neutral-500'
+                    }`}>
                       [{faq.ownerNote}]
                     </div>
                   )}

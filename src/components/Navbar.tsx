@@ -46,8 +46,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-neutral-800/80 shadow-xl shadow-black/40 py-3.5'
-          : 'bg-[#0A0A0A]/80 backdrop-blur-sm border-b border-neutral-900 py-4 sm:py-5'
+          ? 'bg-[var(--ink)]/95 backdrop-blur-md border-b border-[var(--line)] shadow-xl shadow-black/50 py-3.5'
+          : 'bg-[var(--ink)]/85 backdrop-blur-sm border-b border-[var(--line)]/60 py-4 sm:py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,8 +61,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="group flex items-center gap-2.5 sm:gap-3 text-left cursor-pointer focus-visible:outline-none"
               aria-label="Jewels SEO Homepage"
             >
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] via-[#F4E07B] to-[#C9A227] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
-                <div className="w-full h-full rounded-full overflow-hidden bg-neutral-950 flex items-center justify-center">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] via-[var(--gold-hover)] to-[var(--gold)] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)] flex items-center justify-center">
                   {!logoError ? (
                     <img
                       src="/logo-source.jpg"
@@ -73,11 +73,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onError={() => setLogoError(true)}
                     />
                   ) : (
-                    <span className="font-serif font-bold text-sm text-[#D4AF37]">J</span>
+                    <span className="font-serif font-bold text-sm text-[var(--gold)]">J</span>
                   )}
                 </div>
               </div>
-              <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[#D4AF37] group-hover:text-[#FFF3D0] transition-colors whitespace-nowrap">
+              <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors whitespace-nowrap">
                 Jewels
               </span>
             </button>
@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* ZONE 2: 7 PRIMARY NAV LINKS (Single-line, unboxed text links) */}
           <nav 
-            className="hidden lg:flex items-center gap-7 text-sm font-medium text-neutral-300"
+            className="hidden lg:flex items-center gap-7 text-sm font-medium text-[var(--muted)]"
             aria-label="Primary Navigation"
           >
             {navLinks.map((link) => {
@@ -96,15 +96,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleLinkClick(link.id)}
                   className={`relative py-1.5 tracking-wide transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     isActive
-                      ? 'text-[#D4AF37] font-semibold'
-                      : 'text-neutral-300 hover:text-white'
+                      ? 'text-[var(--gold)] font-semibold'
+                      : 'text-[var(--muted)] hover:text-[var(--white)]'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {link.label}
                   {isActive && (
                     <span 
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4AF37] rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--gold)] rounded-full"
                       aria-hidden="true" 
                     />
                   )}
@@ -117,10 +117,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenChecklist}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono text-neutral-400 hover:text-[#D4AF37] bg-neutral-900/60 hover:bg-neutral-900 border border-neutral-800 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
               title="Open Pre-Launch Checklist"
             >
-              <ClipboardCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
               <span className="hidden xl:inline">Checklist</span>
             </button>
 
@@ -128,9 +128,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => handleLinkClick('about')}
               title="Founder & SEO Specialist · Jewels"
-              className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-[#D4AF37]/50 text-xs font-mono text-neutral-300 hover:text-white transition-all cursor-pointer"
+              className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer"
             >
-              <div className="w-5 h-5 rounded-full p-[1px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0 overflow-hidden">
+              <div className="w-5 h-5 rounded-full p-[1px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shrink-0 overflow-hidden">
                 <img
                   src={CONTACT_DETAILS.PROFILE_PHOTO}
                   alt="Jewels founder profile"
@@ -144,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => handleLinkClick('contact')}
-              className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 focus-visible:ring-2 focus-visible:ring-[#D4AF37] whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-[var(--gold)]/15 hover:shadow-[var(--gold)]/30 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -155,14 +155,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => handleLinkClick('contact')}
-              className="inline-flex sm:hidden items-center justify-center px-3 py-1.5 rounded-md bg-[#D4AF37] text-black font-semibold text-xs tracking-tight whitespace-nowrap cursor-pointer"
+              className="inline-flex sm:hidden items-center justify-center px-3 py-1.5 rounded-md bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-tight whitespace-nowrap cursor-pointer transition-colors"
             >
               Consultation
             </button>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-800 focus-visible:ring-2 focus-visible:ring-[#D4AF37] cursor-pointer"
+              className="p-2 rounded-lg bg-[var(--card)] text-[var(--muted)] hover:text-[var(--white)] border border-[var(--line)] hover:border-[var(--gold)] focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer transition-colors"
               aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMobileMenuOpen}
             >
@@ -175,14 +175,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE COLLAPSIBLE MENU */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#0F0F0F] border-b border-neutral-800 px-4 pt-3 pb-6 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-[var(--card)] border-b border-[var(--line)] px-4 pt-3 pb-6 animate-in slide-in-from-top-2 duration-200">
           {/* Founder Identity Card in Mobile Drawer */}
           <div 
             onClick={() => handleLinkClick('about')}
-            className="flex items-center gap-3 p-3 mb-3 rounded-xl bg-neutral-900/80 border border-neutral-800 cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+            className="flex items-center gap-3 p-3 mb-3 rounded-xl bg-[var(--ink)] border border-[var(--line)] cursor-pointer hover:border-[var(--gold)]/50 transition-colors"
           >
-            <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-[#C9A227] to-[#D4AF37] shrink-0">
-              <div className="w-full h-full rounded-full overflow-hidden bg-black">
+            <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shrink-0">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)]">
                 <img
                   src={CONTACT_DETAILS.PROFILE_PHOTO}
                   alt="Jewels founder profile photo"
@@ -194,8 +194,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
             <div className="min-w-0">
-              <div className="text-sm font-medium text-white truncate">Jewels</div>
-              <div className="text-xs text-[#D4AF37] font-mono">SEO Specialist · Direct Inquiry</div>
+              <div className="text-sm font-medium text-[var(--white)] truncate">Jewels</div>
+              <div className="text-xs text-[var(--gold)] font-mono">SEO Specialist · Direct Inquiry</div>
             </div>
           </div>
 
@@ -208,22 +208,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleLinkClick(link.id)}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer text-left ${
                     isActive
-                      ? 'bg-neutral-900 text-[#D4AF37]'
-                      : 'text-neutral-300 hover:bg-neutral-900/60 hover:text-white'
+                      ? 'bg-[var(--ink)] text-[var(--gold)] font-semibold'
+                      : 'text-[var(--muted)] hover:bg-[var(--ink)] hover:text-[var(--white)]'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   <span>{link.label}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />}
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />}
                 </button>
               );
             })}
           </nav>
 
-          <div className="mt-4 pt-4 border-t border-neutral-800/80 flex flex-col gap-2.5">
+          <div className="mt-4 pt-4 border-t border-[var(--line)] flex flex-col gap-2.5">
             <button
               onClick={() => handleLinkClick('contact')}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#D4AF37] hover:bg-[#C9A227] text-black font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -234,9 +234,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setIsMobileMenuOpen(false);
                 onOpenChecklist();
               }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-neutral-900 text-neutral-400 text-xs font-mono border border-neutral-800 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--ink)] hover:bg-[#1A1A1A] text-[var(--muted)] hover:text-[var(--gold)] text-xs font-mono border border-[var(--line)] hover:border-[var(--gold)] transition-colors cursor-pointer"
             >
-              <ClipboardCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
               <span>Owner Pre-Launch Checklist</span>
             </button>
           </div>

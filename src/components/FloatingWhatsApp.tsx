@@ -10,7 +10,7 @@ export const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp Consultation with Jewels SEO"
-        className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-2xl shadow-emerald-950/60 transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-400/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+        className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[var(--success)] hover:bg-emerald-500 text-white font-medium text-xs shadow-2xl shadow-black/60 transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-400/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--success)]"
       >
         <span className="relative flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>

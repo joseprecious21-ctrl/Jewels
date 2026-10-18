@@ -91,7 +91,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0A0A0A] text-neutral-100 selection:bg-[#D4AF37] selection:text-black font-sans">
+    <div className="flex flex-col min-h-screen bg-[var(--ink)] text-[var(--white)] selection:bg-[var(--gold)] selection:text-[var(--ink)] font-sans">
       
       {/* Sticky Navigation Bar */}
       <Navbar
