@@ -1,4 +1,4 @@
-import { ServiceItem, PortfolioProject, FaqItem } from '../types';
+import { ServiceItem, PortfolioProject, FaqItem, BlogPost } from '../types';
 
 /**
  * VERIFIED CONTACT DETAILS & PROFILE LINKS
@@ -335,3 +335,121 @@ export const ABOUT_EXPERTISE = [
   'Technical SEO',
   'Online visibility',
 ];
+
+/**
+ * PUBLISHED BLOG POSTS
+ * Verified practical local SEO and Google Business Profile guides written by Jewels.
+ */
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'optimize-google-business-profile',
+    slug: 'optimize-google-business-profile',
+    title: 'How to Optimize Your Google Business Profile to Get Found Locally',
+    metaDescription: 'Learn practical steps to optimize your Google Business Profile so nearby customers can find your business. Tips from Jewels on local SEO.',
+    categories: ['Google Business Profile', 'Local SEO'],
+    excerpt: 'Learn practical steps to optimize your Google Business Profile so nearby customers can find your business. Tips from Jewels on local SEO.',
+    publishDate: 'October 18, 2026',
+    readTime: '7 min read',
+    author: 'Jewels',
+    featuredImagePlaceholderNote: 'Add featured image here',
+    featuredImageAlt: 'Google Business Profile local SEO optimization guide showing map ranking factors and business verification',
+    sections: [
+      {
+        heading: 'Why Google Business Profile Is the Foundation of Local Visibility',
+        sectionNumber: '01',
+        paragraphs: [
+          'When potential clients in your geographic area search for your services—whether "SEO consultant near me", "specialist medical clinic", or "boutique retailer"—Google prioritizes the Local 3-Pack and Maps results above traditional organic rankings. For local businesses, this three-pack captures between 44% and 68% of total search click volume.',
+          'Google decides which businesses to show based on three primary algorithmic pillars: Relevance (how well your listing matches what the user is looking for), Distance (how close your location or service boundary is to the searcher), and Prominence (how authoritative, well-reviewed, and active your business appears across the web).',
+          'Neglecting your Google Business Profile leaves the most lucrative, high-intent local inquiries to direct competitors. The following steps outline how to build an active, prominent, and suspension-resistant listing.'
+        ],
+        keyTakeaways: [
+          'The Google Local 3-Pack captures the majority of local high-intent conversions.',
+          'Local ranking relies on the tri-factor of Relevance, Distance, and Prominence.',
+          'An optimized profile generates inbound phone calls, directions, and website bookings without paid ads.'
+        ]
+      },
+      {
+        heading: 'Step 1: Choose Your Primary and Secondary Business Categories Wisely',
+        sectionNumber: '02',
+        paragraphs: [
+          'Your Primary Category carries the single heaviest weight in Google’s local ranking algorithm. If your business provides multiple complementary services, resist the temptation to pick a vague overarching category. Choose the exact specific discipline that generates your highest margin or most qualified inquiries.',
+          'For example, choosing "Internet Marketing Service" or "Marketing Agency" provides far weaker signals for local discovery than "Website Designer" or specific niche descriptors where applicable. Always audit the top 3 ranking listings in your metropolitan target area using Search to see which primary category dominates their profile.',
+          'After establishing your primary classification, assign up to 9 secondary categories. Secondary categories should reflect distinct, verified services you provide without category stuffing.'
+        ],
+        proTip: 'Never select categories that you cannot verify with on-site service pages. Google cross-references your listing categories against the headings and text of your linked website.'
+      },
+      {
+        heading: 'Step 2: Enforce Strict NAP Consistency and Exact Business Details',
+        sectionNumber: '03',
+        paragraphs: [
+          'NAP stands for Name, Address, and Phone number. Absolute parity between your Google Business Profile, your official website footer, and external directory citations (Yelp, Apple Maps, Yellow Pages, industry registries) is mandatory.',
+          'A frequent mistake made by ambitious business owners is stuffing secondary keywords into their official business name (e.g., "Jewels - Best SEO Agency & Local Web Design Firm"). Google’s automated compliance algorithms actively scan for name discrepancies against company registration records and state filings. Artificial keyword additions can trigger immediate unannounced suspensions.',
+          'If you serve clients at their location rather than hosting them at a physical storefront, designate your profile as a Service Area Business (SAB) and hide your residential street address. Always append campaign UTM parameters to your website button (e.g., ?utm_source=google&utm_medium=gbp&utm_campaign=local_listing) to isolate profile traffic in Google Analytics and Google Search Console.'
+        ],
+        keyTakeaways: [
+          'Match business name letter-for-letter with official business registration.',
+          'Never add unbranded promotional keywords to your profile title.',
+          'Utilize campaign UTM tags on your website URL to measure profile conversions accurately.'
+        ]
+      },
+      {
+        heading: 'Step 3: Write a High-Conversion Business Description and Itemized Services',
+        sectionNumber: '04',
+        paragraphs: [
+          'Google grants you 750 characters for your business description. While the keywords inside this field do not directly dictate algorithmic placement, they profoundly influence conversion rates when prospects view your profile card.',
+          'Front-load the first 250 characters with your core specialty, years of experience, unique value proposition, and the principal regions you serve. The remaining copy should outline your working process, client outcomes, and a clear invitation to schedule a consultation.',
+          'Under the "Services" tab, do not settle for default generic lists. Populate each service with an itemized title, realistic price indicators or consultation tier markers, and a descriptive paragraph detailing deliverables. When searchers query specific service phrases, Google displays bold "Provides: [Service Name]" justifications directly on your map listing.'
+        ]
+      },
+      {
+        heading: 'Step 4: Develop a Consistent Review Velocity and Response Strategy',
+        sectionNumber: '05',
+        paragraphs: [
+          'Review volume alone does not guarantee high rankings. Google’s Prominence algorithms heavily reward review velocity—the steady, consistent arrival of authentic customer testimonials over time—and review sentiment.',
+          'Never purchase fake reviews or run mass review blasts that trigger spam filters. Instead, build a systematic post-project routine: generate your custom Google Review shortlink (accessible in your GBP dashboard) and send it to satisfied clients immediately upon milestone completion.',
+          'Equally vital is your response protocol. Reply to every review within 24 to 48 hours. When answering positive reviews, naturally mention the specific service performed (e.g., "Thank you for trusting Jewels with your WordPress SEO and technical audit"). If an unfavorable review occurs, acknowledge the client’s feedback professionally without defensive debate, and offer an offline resolution channel via email or phone.'
+        ],
+        keyTakeaways: [
+          'Steady review velocity outranks sporadic bursts of historical reviews.',
+          'Include natural service keywords in your owner replies without keyword stuffing.',
+          'Respond to 100% of reviews to signal active business ownership to Google.'
+        ]
+      },
+      {
+        heading: 'Step 5: High-Quality Geotagged Visuals and Weekly Google Posts',
+        sectionNumber: '06',
+        paragraphs: [
+          'Profiles containing genuine, regularly updated photography receive significantly higher engagement than those relying on stock imagery. Upload high-resolution photos of your workspace, team in action, branded collateral, and before-and-after project milestones.',
+          'Ensure all images are taken in crisp lighting, formatted as clean JPEGs or PNGs, and reflect actual premises and deliverables. Avoid heavy promotional overlays or massive phone numbers stamped across images, as Google’s Cloud Vision API flags low-quality promotional banners.',
+          'Utilize Google Posts as your local broadcast channel. Publish at least one weekly update sharing practical advice, recent client case study achievements, or seasonal announcements. Always attach a primary action button—such as "Learn more", "Call now", or "Book"—linking directly to your relevant website page or contact form.'
+        ],
+        proTip: 'Google Posts expire from primary view after several months, but continuous posting signals to the algorithm that the entity is actively operating in real-time.'
+      },
+      {
+        heading: 'Avoiding the Red Flag Suspension Triggers That Derail Local Rankings',
+        sectionNumber: '07',
+        paragraphs: [
+          'Google Business Profile suspensions have surged as Google tightens anti-spam measures. The most frequent causes include using virtual offices, co-working spaces with no permanent physical signage, sudden unverified address changes, or multiple business listings sharing identical phone numbers.',
+          'If your listing is suspended or flagged for deceptive content, avoid panicking and creating a new profile. Duplicate profiles compound violations. Instead, compile authoritative documentation: business utility bills (electricity or water), government business registration certificates, commercial lease agreements, and photographs of permanent outdoor and suite signage.',
+          'Jewels provides dedicated Google Business Profile verification and suspension support, guiding business owners through evidence preparation and direct reinstatement appeals.'
+        ],
+        warningNotice: 'Never attempt to bypass address verification using residential PO Boxes or virtual forwarding addresses. Google will permanently disable non-compliant local entities.'
+      },
+      {
+        heading: 'The Ongoing Routine: Weekly Maintenance and Performance Tracking',
+        sectionNumber: '08',
+        paragraphs: [
+          'Local SEO is not a one-time configuration. Establish a monthly governance routine: check your Google Business Profile Performance tab to monitor Discovery searches versus Direct searches, track customer calls, review directional requests, and observe search queries.',
+          'Cross-reference these metrics with your Google Search Console performance and website analytics. Ensure that location landing pages on your WordPress site maintain schema markup (LocalBusiness and ProfessionalService) that mirrors your GBP attributes.',
+          'By combining an optimized Google Business Profile with sound technical website SEO, structured internal linking, and consistent citation maintenance, your business builds an enduring competitive moat in your local market.'
+        ],
+        keyTakeaways: [
+          'Audit Google Business Profile Performance data monthly to discover emerging search queries.',
+          'Align on-page website schema (LocalBusiness) with Google Business Profile data points.',
+          'Sustained maintenance protects rankings through seasonal shifts and core algorithm updates.'
+        ]
+      }
+    ]
+  }
+];
+

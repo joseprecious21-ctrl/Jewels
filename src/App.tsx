@@ -19,22 +19,46 @@ export default function App() {
   const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>(undefined);
   const [isChecklistOpen, setIsChecklistOpen] = useState(false);
 
-  // Sync hash with current page
+  // Sync pathname and hash with current page
   useEffect(() => {
-    const handleHash = () => {
+    const handleRouting = () => {
+      const pathname = window.location.pathname.toLowerCase();
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'blog', 'contact'].includes(hash)) {
+
+      if (pathname.includes('optimize-google-business-profile') || hash.includes('optimize-google-business-profile')) {
+        setCurrentPage('blog');
+        return;
+      }
+
+      if (pathname === '/blog' || hash.startsWith('blog')) {
+        setCurrentPage('blog');
+        return;
+      }
+
+      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact'].includes(hash)) {
         setCurrentPage(hash as PageId);
       }
     };
 
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    handleRouting();
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('popstate', handleRouting);
+    return () => {
+      window.removeEventListener('hashchange', handleRouting);
+      window.removeEventListener('popstate', handleRouting);
+    };
   }, []);
 
   // Update dynamic document title and meta description based on current page
   useEffect(() => {
+    // If on specific article, BlogArticlePage manages unique title, description, and Article schema
+    if (
+      window.location.pathname.includes('optimize-google-business-profile') || 
+      window.location.hash.includes('optimize-google-business-profile')
+    ) {
+      return;
+    }
+
     const titles: Record<PageId, string> = {
       home: 'Jewels — Professional SEO & Website Optimization',
       about: 'About Jewels — SEO Specialist & Website Visibility',

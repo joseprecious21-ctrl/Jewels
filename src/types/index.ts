@@ -43,3 +43,28 @@ export interface FaqItem {
   answer: string;
   ownerNote?: string;
 }
+
+export interface BlogPostSection {
+  heading: string;
+  sectionNumber?: string;
+  paragraphs: string[];
+  keyTakeaways?: string[];
+  proTip?: string;
+  warningNotice?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  metaDescription: string;
+  categories: string[];
+  excerpt: string;
+  publishDate: string;
+  readTime: string;
+  author: string;
+  featuredImagePlaceholderNote: string;
+  featuredImageAlt: string;
+  sections: BlogPostSection[];
+}
+
