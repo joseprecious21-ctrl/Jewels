@@ -17,6 +17,7 @@ export interface ServiceItem {
 
 export type ProjectCategorySlug = 
   | 'all' 
+  | 'rankings'
   | 'reporting' 
   | 'technical-seo' 
   | 'google-business-profile' 

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Sparkles, CheckCircle2, Shield, ArrowLeftRight, 
-  LayoutDashboard 
+  LayoutDashboard, Maximize2, Image as ImageIcon 
 } from 'lucide-react';
-import { PageId } from '../types';
+import { PageId, PortfolioProject } from '../types';
 import { VERIFIED_CASE_STUDIES, PORTFOLIO_PROJECTS } from '../data/seoData';
 import { PlaceholderFrame } from '../components/PlaceholderFrame';
 import { CtaBand } from '../components/CtaBand';
+import { ImageLightboxModal } from '../components/ImageLightboxModal';
 
 interface CaseStudiesPageProps {
   onNavigate: (page: PageId) => void;
@@ -14,6 +15,40 @@ interface CaseStudiesPageProps {
 }
 
 export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, activeProjectId }) => {
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+  const [lightboxState, setLightboxState] = useState<{
+    isOpen: boolean;
+    imageUrl: string;
+    imageAlt: string;
+    title: string;
+    triggerElement: HTMLElement | null;
+  }>({
+    isOpen: false,
+    imageUrl: '',
+    imageAlt: '',
+    title: '',
+    triggerElement: null,
+  });
+
+  const handleOpenLightbox = (project: PortfolioProject, trigger: HTMLElement | null) => {
+    if (!project.imageUrl) return;
+    setLightboxState({
+      isOpen: true,
+      imageUrl: project.imageUrl,
+      imageAlt: project.imageAlt || project.title,
+      title: project.title,
+      triggerElement: trigger,
+    });
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxState((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  const handleImageError = (projectId: string) => {
+    setFailedImages((prev) => ({ ...prev, [projectId]: true }));
+  };
+
   return (
     <div className="pt-28 sm:pt-36 min-h-screen bg-[var(--ink)]">
       
@@ -323,70 +358,101 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
               Project Deliverables & Visual Verification
             </h3>
             <p className="text-xs text-[var(--muted)] mt-1">
-              Project screenshots 1 to 5 are labeled with neutral titles until confirmed by the owner.
+              Project screenshots 1 to 4 are labeled with neutral titles until confirmed by the owner.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PORTFOLIO_PROJECTS.slice(2).map((project) => {
-              const isNewScreenshot = project.id === 'project-screenshot-5';
+              const isRankingResults = project.id === 'seo-ranking-results';
+              const isGoldFramed = isRankingResults;
               const isGbp = project.category === 'Google Business Profile';
+              const isRankings = project.category === 'Rankings';
               const isActive = project.id === activeProjectId;
+              const hasError = failedImages[project.id];
+              const hasImage = Boolean(project.imageUrl) && !hasError;
+
+              const imgWidth = isRankingResults ? 901 : 800;
+              const imgHeight = isRankingResults ? 352 : 600;
 
               return (
                 <div
                   key={project.id}
                   id={project.id}
-                  className={`p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 flex flex-col justify-between ${
+                  className={`p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 flex flex-col justify-between motion-reduce:transition-none ${
                     isActive
                       ? 'border-[var(--gold)] ring-1 ring-[var(--gold)]/40 shadow-lg shadow-[var(--gold)]/10'
                       : 'border-[var(--line)] hover:border-[var(--gold)]/50'
                   }`}
                 >
                   <div>
-                    {/* Visual Screenshot Thumbnail - Gold-bordered frame for Project screenshot 5 as requested */}
+                    {/* Visual Screenshot Thumbnail - Gold-bordered frame (#C9A227) */}
                     <div 
-                      className={`relative aspect-[4/3] rounded-xl overflow-hidden bg-[var(--ink)] mb-5 ${
-                        isNewScreenshot
+                      className={`relative aspect-[4/3] rounded-xl overflow-hidden bg-[var(--ink)] mb-5 group cursor-pointer ${
+                        isGoldFramed
                           ? 'border border-[var(--gold)] shadow-md shadow-[var(--gold)]/20 ring-1 ring-[var(--gold)]/40'
                           : 'border border-[var(--line)]'
                       }`}
+                      onClick={(e) => {
+                        if (hasImage) {
+                          handleOpenLightbox(project, e.currentTarget);
+                        }
+                      }}
                     >
-                      {project.imageUrl && (
+                      {hasImage ? (
                         <img
                           src={project.imageUrl}
                           alt={project.imageAlt || project.title}
-                          width={800}
-                          height={600}
+                          width={imgWidth}
+                          height={imgHeight}
                           loading="lazy"
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                          onError={() => handleImageError(project.id)}
+                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none select-none"
                         />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-[var(--card)] border border-[var(--gold)]/30 text-[var(--gold)] p-4 text-center">
+                          <ImageIcon className="w-8 h-8 mb-2 opacity-80" />
+                          <span className="font-mono text-xs font-semibold">Add screenshot here</span>
+                        </div>
                       )}
                       
                       {/* Category Tag */}
                       <div className={`absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded backdrop-blur-sm ${
-                        isGbp
+                        isRankings
+                          ? 'bg-black/90 border border-[var(--gold)] text-[var(--gold)] font-medium shadow-sm'
+                          : isGbp
                           ? 'bg-[#4285F4]/20 border border-[#4285F4]/50 text-[var(--google-blue)]'
                           : 'bg-black/80 border border-[var(--line)] text-[var(--gold)]'
                       }`}>
                         {project.category}
                       </div>
+
+                      {/* Click to enlarge overlay indicator */}
+                      {hasImage && (
+                        <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-[var(--gold)] text-[10px] font-mono px-2 py-1 rounded border border-[var(--gold)]/40 flex items-center gap-1 backdrop-blur-sm">
+                          <Maximize2 className="w-3 h-3" />
+                          <span>Enlarge</span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)]">
                         <span>{project.subtitle}</span>
-                        <span className="text-[var(--gold)]">[Pending Confirmation]</span>
+                        {isRankingResults ? (
+                          <span className="text-[var(--success)] font-medium">[Verified Results]</span>
+                        ) : (
+                          <span className="text-[var(--gold)]">[Pending Confirmation]</span>
+                        )}
                       </div>
                       
                       <h4 className="text-lg font-serif font-medium text-[var(--white)]">
                         {project.title}
                       </h4>
                       
-                      {isNewScreenshot ? (
+                      {isRankingResults ? (
                         <p className="text-xs text-[var(--white)] leading-relaxed font-mono">
-                          Add project details and verified results here.
+                          Add project name, keywords, and verified results here.
                         </p>
                       ) : (
                         <p className="text-xs text-[var(--muted)] leading-relaxed font-light">
@@ -395,6 +461,20 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
                       )}
                     </div>
                   </div>
+
+                  {/* Optional View Full Image Trigger */}
+                  {hasImage && (
+                    <div className="pt-4 mt-4 border-t border-[var(--line)] flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={(e) => handleOpenLightbox(project, e.currentTarget)}
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer"
+                      >
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>View full image</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -402,6 +482,16 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
         </div>
 
       </div>
+
+      {/* Lightbox Modal */}
+      <ImageLightboxModal
+        isOpen={lightboxState.isOpen}
+        onClose={handleCloseLightbox}
+        imageUrl={lightboxState.imageUrl}
+        imageAlt={lightboxState.imageAlt}
+        title={lightboxState.title}
+        triggerElement={lightboxState.triggerElement}
+      />
 
       {/* CTA Band */}
       <CtaBand onNavigate={onNavigate} />
