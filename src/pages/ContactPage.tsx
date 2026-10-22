@@ -11,7 +11,7 @@ interface ContactPageProps {
   onNavigate: (page: PageId) => void;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId }) => {
+export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNavigate }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,9 +123,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId }) =>
           Contact Jewels
         </h1>
 
-        <p className="text-base sm:text-lg text-[var(--muted)] max-w-2xl mx-auto leading-relaxed font-light">
+        <p className="text-base sm:text-lg text-[var(--muted)] max-w-2xl mx-auto leading-relaxed font-light mb-8">
           We invite you to discuss your SEO needs, review your current search visibility, and explore strategic optimization opportunities for your website.
         </p>
+
+        {/* Helpful Banner: Prefer to hire through Fiverr, Upwork, or Osdire? */}
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] border border-[var(--line)] text-xs sm:text-sm text-[var(--muted)] shadow-md">
+          <span>Prefer to hire through Fiverr, Upwork, or Osdire?</span>
+          <button
+            type="button"
+            onClick={() => onNavigate('freelance-profiles')}
+            className="inline-flex items-center gap-1.5 text-[var(--gold)] hover:text-[var(--gold-hover)] font-medium transition-colors cursor-pointer underline underline-offset-4"
+          >
+            <span>View our Freelance Profiles</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
       </section>
 
       {/* Main Grid: Form on Left/Center, Direct Contact Channels on Right */}
@@ -563,6 +576,27 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId }) =>
                   <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
                 </a>
               </div>
+            </div>
+
+            {/* Freelance Platforms Alternative Card */}
+            <div className="bg-[var(--card)] border border-[var(--line)] hover:border-[var(--gold)]/50 rounded-2xl p-6 shadow-xl transition-all">
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
+                Freelance Marketplaces
+              </span>
+              <h4 className="text-base font-serif font-medium text-[var(--white)] mb-2">
+                Prefer to hire through Fiverr, Upwork, or Osdire?
+              </h4>
+              <p className="text-xs text-[var(--muted)] font-light leading-relaxed mb-4">
+                Find our verified freelancer profiles to message, order, and pay through your preferred marketplace platform.
+              </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('freelance-profiles')}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ink)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--white)] transition-all cursor-pointer"
+              >
+                <span>View Freelance Profiles</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[var(--gold)]" />
+              </button>
             </div>
 
             {/* Privacy & Custom Scoping Guarantee */}

@@ -40,4 +40,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/#freelance-profiles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>

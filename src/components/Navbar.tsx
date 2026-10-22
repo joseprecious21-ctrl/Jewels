@@ -33,6 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'calculator', label: 'Growth Calculator' },
     { id: 'portfolio', label: 'SEO Portfolio' },
     { id: 'case-studies', label: 'Case Studies' },
+    { id: 'freelance-profiles', label: 'Freelance Profiles' },
     { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -86,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* ZONE 2: PRIMARY NAV LINKS (Single-line, unboxed text links) */}
           <nav 
-            className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-medium text-[var(--muted)]"
+            className="hidden lg:flex items-center gap-3 xl:gap-4 2xl:gap-5 text-[11px] xl:text-xs 2xl:text-sm font-medium text-[var(--muted)]"
             aria-label="Primary Navigation"
           >
             {navLinks.map((link) => {

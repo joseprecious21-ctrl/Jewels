@@ -11,11 +11,54 @@ export const CONTACT_DETAILS = {
   LINKEDIN_URL: 'https://www.linkedin.com/in/precious-ayofe-b252a5428/',
   TIKTOK_URL: 'https://www.tiktok.com/@jewelsteam_1?lang=en',
   TIKTOK_HANDLE: '@jewelsteam_1',
+  FIVERR_URL: 'https://www.fiverr.com/s/bkkxYjX',
+  UPWORK_URL: 'https://www.upwork.com/freelancers/~01324aef0475d420c5?mp_source=share',
+  OSDIRE_URL: 'https://osdire.com/precious12',
   FORM_ENDPOINT: 'https://api.web3forms.com/submit',
   WEB3FORMS_ACCESS_KEY: '328096a4-bc44-47c1-967b-7db736f64d3a',
   LOGO: '/logo-source.jpg',
   PROFILE_PHOTO: 'https://i.postimg.cc/6qsCDSsj/photo-5927181862533009600-w-%282%29.jpg',
 };
+
+export interface FreelanceProfile {
+  id: string;
+  name: string;
+  url: string;
+  logo: string;
+  logoAlt: string;
+  tagline: string;
+  ariaLabel: string;
+}
+
+export const FREELANCE_PROFILES: FreelanceProfile[] = [
+  {
+    id: 'fiverr',
+    name: 'Fiverr',
+    url: 'https://www.fiverr.com/s/bkkxYjX',
+    logo: '/logos/fiverr.svg',
+    logoAlt: 'Fiverr logo',
+    tagline: 'View the Jewels profile on Fiverr.',
+    ariaLabel: 'View Jewels on Fiverr (opens in a new tab)',
+  },
+  {
+    id: 'upwork',
+    name: 'Upwork',
+    url: 'https://www.upwork.com/freelancers/~01324aef0475d420c5?mp_source=share',
+    logo: '/logos/upwork.svg',
+    logoAlt: 'Upwork logo',
+    tagline: 'View the Jewels profile on Upwork.',
+    ariaLabel: 'View Jewels on Upwork (opens in a new tab)',
+  },
+  {
+    id: 'osdire',
+    name: 'Osdire',
+    url: 'https://osdire.com/precious12',
+    logo: '/logos/osdire.svg',
+    logoAlt: 'Osdire logo',
+    tagline: 'View the Jewels profile on Osdire.',
+    ariaLabel: 'View Jewels on Osdire (opens in a new tab)',
+  },
+];
 
 export const PLACEHOLDERS = CONTACT_DETAILS;
 

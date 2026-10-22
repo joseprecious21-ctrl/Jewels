@@ -6,7 +6,8 @@ export type PageId =
   | 'case-studies' 
   | 'blog' 
   | 'contact'
-  | 'calculator';
+  | 'calculator'
+  | 'freelance-profiles';
 
 export interface ServiceItem {
   id: string;

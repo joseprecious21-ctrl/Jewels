@@ -74,6 +74,14 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       detail: 'Official TikTok profile configured in About, Contact, Footer, and Schema.',
     },
     {
+      title: 'Freelance Profiles',
+      placeholder: 'Fiverr, Upwork, Osdire (Active)',
+      file: 'src/pages/FreelanceProfilesPage.tsx & /public/logos/',
+      status: 'Verified & active',
+      actionPage: 'freelance-profiles' as PageId,
+      detail: 'Official freelancer profile links configured with verified SVG brand logos and direct marketplace access.',
+    },
+    {
       title: 'Contact Form Endpoint',
       placeholder: 'Web3Forms API (Active)',
       file: 'src/pages/ContactPage.tsx & src/data/seoData.ts',

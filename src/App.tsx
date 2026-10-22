@@ -12,6 +12,7 @@ import { CaseStudiesPage } from './pages/CaseStudiesPage';
 import { BlogPage } from './pages/BlogPage';
 import { ContactPage } from './pages/ContactPage';
 import { GrowthCalculatorPage } from './pages/GrowthCalculatorPage';
+import { FreelanceProfilesPage } from './pages/FreelanceProfilesPage';
 import { CONTACT_DETAILS } from './data/seoData';
 
 export default function App() {
@@ -41,7 +42,12 @@ export default function App() {
         return;
       }
 
-      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact', 'calculator'].includes(hash)) {
+      if (pathname === '/freelance-profiles' || hash === 'freelance-profiles' || hash === 'freelance') {
+        setCurrentPage('freelance-profiles');
+        return;
+      }
+
+      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact', 'calculator', 'freelance-profiles'].includes(hash)) {
         setCurrentPage(hash as PageId);
       }
     };
@@ -74,6 +80,7 @@ export default function App() {
       blog: 'SEO Insights & Articles — Jewels',
       contact: 'Request an SEO Consultation — Jewels',
       calculator: 'SEO Growth Calculator — Jewels',
+      'freelance-profiles': 'Hire Jewels on Fiverr, Upwork and Osdire | Jewels',
     };
 
     const descriptions: Record<PageId, string> = {
@@ -85,12 +92,20 @@ export default function App() {
       blog: 'Strategic search engine insights, algorithm updates, and website optimization perspectives.',
       contact: 'Request an SEO consultation with Jewels to review your website visibility and receive a tailored quote.',
       calculator: 'Interactive animated tool illustrating website search visibility progression from unranked to the top of Google search results.',
+      'freelance-profiles': 'Find and contact the Jewels SEO team on Fiverr, Upwork, and Osdire, or reach out directly.',
     };
 
     document.title = titles[currentPage] || titles.home;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', descriptions[currentPage] || descriptions.home);
+    }
+
+    // Canonical link synchronization
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      const baseUrl = 'https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/';
+      canonicalLink.setAttribute('href', currentPage === 'home' ? baseUrl : `${baseUrl}#${currentPage}`);
     }
 
     // Dynamic Open Graph & Twitter Card tags
@@ -146,6 +161,9 @@ export default function App() {
           <ContactPage initialServiceId={selectedServiceId} onNavigate={handleNavigate} />
         )}
         {currentPage === 'calculator' && <GrowthCalculatorPage onNavigate={handleNavigate} />}
+        {currentPage === 'freelance-profiles' && (
+          <FreelanceProfilesPage onNavigate={handleNavigate} />
+        )}
       </main>
 
       {/* Professional Footer */}

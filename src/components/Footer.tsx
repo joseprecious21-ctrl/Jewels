@@ -22,6 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
     { id: 'calculator', label: 'Growth Calculator' },
     { id: 'portfolio', label: 'SEO Portfolio' },
     { id: 'case-studies', label: 'Case Studies' },
+    { id: 'freelance-profiles', label: 'Freelance Profiles' },
     { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
