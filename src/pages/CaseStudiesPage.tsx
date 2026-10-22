@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, CheckCircle2, Shield, ArrowLeftRight, 
   LayoutDashboard, Maximize2, Image as ImageIcon 
@@ -8,9 +8,10 @@ import { VERIFIED_CASE_STUDIES, PORTFOLIO_PROJECTS } from '../data/seoData';
 import { PlaceholderFrame } from '../components/PlaceholderFrame';
 import { CtaBand } from '../components/CtaBand';
 import { ImageLightboxModal } from '../components/ImageLightboxModal';
+import { ReviveWellnessCaseStudy } from '../components/ReviveWellnessCaseStudy';
 
 interface CaseStudiesPageProps {
-  onNavigate: (page: PageId) => void;
+  onNavigate: (page: PageId, extraId?: string) => void;
   activeProjectId?: string;
 }
 
@@ -30,6 +31,19 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
     triggerElement: null,
   });
 
+  // Smooth scroll to active project card / case study when navigating with an ID
+  useEffect(() => {
+    if (activeProjectId) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(activeProjectId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [activeProjectId]);
+
   const handleOpenLightbox = (project: PortfolioProject, trigger: HTMLElement | null) => {
     if (!project.imageUrl) return;
     setLightboxState({
@@ -37,6 +51,21 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
       imageUrl: project.imageUrl,
       imageAlt: project.imageAlt || project.title,
       title: project.title,
+      triggerElement: trigger,
+    });
+  };
+
+  const handleOpenDirectLightbox = (
+    imageUrl: string,
+    imageAlt: string,
+    title: string,
+    trigger: HTMLElement | null
+  ) => {
+    setLightboxState({
+      isOpen: true,
+      imageUrl,
+      imageAlt,
+      title,
       triggerElement: trigger,
     });
   };
@@ -246,52 +275,39 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
           </div>
         </article>
 
-        {/* CASE STUDY 3 & 4: CULTURE PERFUMES & REVIVE WELLNESS */}
-        {VERIFIED_CASE_STUDIES.map((study, idx) => {
-          const isWhiteCard = idx % 2 === 1; // alternating rhythm
-          const isGbp = study.category === 'Google Business Profile' || study.title.includes('Google Business Profile');
-
+        {/* CASE STUDY 3: CULTURE PERFUMES (Awaiting Owner Submission) */}
+        {VERIFIED_CASE_STUDIES.filter((s) => s.id === 'culture-perfumes').map((study) => {
           return (
             <article 
               key={study.id}
               id={study.id}
-              className={`p-8 sm:p-12 rounded-2xl transition-all duration-300 ${
-                isWhiteCard 
-                  ? 'bg-[#FAFAFA] border border-[#E4E4E4] text-[var(--ink)] shadow-md' 
-                  : 'bg-[var(--card)] border border-[var(--line)] text-[var(--white)] hover:border-[var(--gold)]/50'
-              }`}
+              className="p-8 sm:p-12 rounded-2xl bg-[#FAFAFA] border border-[#E4E4E4] text-[var(--ink)] shadow-md transition-all duration-300"
             >
-              <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b ${
-                isWhiteCard ? 'border-[#E4E4E4]' : 'border-[var(--line)]'
-              }`}>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#E4E4E4]">
                 <div>
                   <span className="text-xs font-mono text-[var(--gold)] block mb-1">
                     Client Project · {study.subtitle}
                   </span>
-                  <h2 className={`text-2xl sm:text-3xl font-serif font-medium ${isWhiteCard ? 'text-[var(--ink)]' : 'text-[var(--white)]'}`}>
+                  <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--ink)]">
                     {study.title}
                   </h2>
                 </div>
-                <span className={`text-xs font-mono px-3 py-1 rounded w-fit ${
-                  isGbp 
-                    ? 'bg-[#4285F4]/15 border border-[#4285F4]/40 text-[var(--google-blue)] font-medium'
-                    : isWhiteCard ? 'bg-white border border-[#E4E4E4] text-[#666666]' : 'bg-[var(--ink)] border border-[var(--line)] text-[var(--muted)]'
-                }`}>
+                <span className="text-xs font-mono px-3 py-1 rounded w-fit bg-white border border-[#E4E4E4] text-[#666666]">
                   {study.category}
                 </span>
               </div>
 
-              <div className={`py-6 border-b ${isWhiteCard ? 'border-[#E4E4E4]' : 'border-[var(--line)]'}`}>
-                <h3 className={`text-xs font-mono uppercase tracking-wider mb-2 ${isWhiteCard ? 'text-[#777777]' : 'text-[var(--muted)]'}`}>
+              <div className="py-6 border-b border-[#E4E4E4]">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#777777] mb-2">
                   Project Overview
                 </h3>
-                <p className={`text-base font-light leading-relaxed max-w-4xl ${isWhiteCard ? 'text-[var(--ink)]' : 'text-[var(--white)]'}`}>
+                <p className="text-base text-[var(--ink)] font-light leading-relaxed max-w-4xl">
                   {study.description}
                 </p>
               </div>
 
-              <div className={`py-6 border-b ${isWhiteCard ? 'border-[#E4E4E4]' : 'border-[var(--line)]'}`}>
-                <h3 className={`text-xs font-mono uppercase tracking-wider mb-4 ${isWhiteCard ? 'text-[#777777]' : 'text-[var(--muted)]'}`}>
+              <div className="py-6 border-b border-[#E4E4E4]">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#777777] mb-4">
                   Work Performed (Confirmed)
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -300,11 +316,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
                     return (
                       <div 
                         key={workIdx} 
-                        className={`flex items-start gap-2.5 p-3 rounded-lg text-sm font-light ${
-                          isWhiteCard 
-                            ? 'bg-white border border-[#E4E4E4] text-[var(--ink)]' 
-                            : 'bg-[var(--ink)] border border-[var(--line)] text-[var(--white)]'
-                        }`}
+                        className="flex items-start gap-2.5 p-3 rounded-lg text-sm font-light bg-white border border-[#E4E4E4] text-[var(--ink)]"
                       >
                         <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${isGoogleItem ? 'text-[var(--google-blue)]' : 'text-[var(--gold)]'}`} />
                         <span>{work}</span>
@@ -317,7 +329,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
               {/* Placeholder for screenshots and verified results */}
               <div className="pt-8">
                 <div className="flex items-center justify-between mb-4">
-                  <span className={`text-xs font-mono uppercase tracking-wider ${isWhiteCard ? 'text-[#777777]' : 'text-[var(--muted)]'}`}>
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#777777]">
                     Screenshots & Verified Results
                   </span>
                   <span className="text-[11px] font-mono text-[var(--gold)] bg-[var(--ink)] px-2.5 py-0.5 rounded border border-[var(--line)]">
@@ -348,6 +360,13 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
           );
         })}
 
+        {/* CASE STUDY 4: REVIVE WELLNESS (Verified Before-and-After Comparison) */}
+        <ReviveWellnessCaseStudy 
+          onNavigate={onNavigate}
+          onOpenLightbox={handleOpenDirectLightbox}
+          isActive={activeProjectId === 'revive-wellness'}
+        />
+
         {/* ADDITIONAL DOCUMENTED PROJECTS (IMAGES 3 TO 6 WITH NEUTRAL TITLES) */}
         <div className="pt-6">
           <div className="mb-8">
@@ -363,7 +382,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PORTFOLIO_PROJECTS.slice(2).map((project) => {
+            {PORTFOLIO_PROJECTS.slice(2).filter((p) => p.id !== 'revive-wellness').map((project) => {
               const isRankingResults = project.id === 'seo-ranking-results';
               const isGoldFramed = isRankingResults;
               const isGbp = project.category === 'Google Business Profile';

@@ -241,6 +241,20 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     ],
     placeholderNote: 'Add project name, keywords, and verified results here.',
   },
+  {
+    id: 'revive-wellness',
+    title: 'Revive Wellness',
+    subtitle: 'Google Business Profile Verification',
+    category: 'Google Business Profile',
+    categorySlug: 'google-business-profile',
+    caption: 'Google Business Profile status before and after verification.',
+    imageUrl: 'https://i.postimg.cc/hvJ3nVKN/Screenshot-2026-03-02-08-31-55-437-com-android-chrome-%281%29.jpg',
+    imageAlt: 'Revive Wellness Google Business Profile after verification',
+    description: 'Google Business Profile verification for Revive Wellness, shown before and after.',
+    workPerformed: [
+      'Google Business Profile verification.'
+    ],
+  },
 ];
 
 /**
