@@ -11,6 +11,7 @@ import { PortfolioPage } from './pages/PortfolioPage';
 import { CaseStudiesPage } from './pages/CaseStudiesPage';
 import { BlogPage } from './pages/BlogPage';
 import { ContactPage } from './pages/ContactPage';
+import { GrowthCalculatorPage } from './pages/GrowthCalculatorPage';
 import { CONTACT_DETAILS } from './data/seoData';
 
 export default function App() {
@@ -35,7 +36,12 @@ export default function App() {
         return;
       }
 
-      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact'].includes(hash)) {
+      if (pathname === '/calculator' || hash === 'calculator') {
+        setCurrentPage('calculator');
+        return;
+      }
+
+      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact', 'calculator'].includes(hash)) {
         setCurrentPage(hash as PageId);
       }
     };
@@ -67,6 +73,7 @@ export default function App() {
       'case-studies': 'SEO Case Studies & Verified Results — Jewels',
       blog: 'SEO Insights & Articles — Jewels',
       contact: 'Request an SEO Consultation — Jewels',
+      calculator: 'SEO Growth Calculator — Jewels',
     };
 
     const descriptions: Record<PageId, string> = {
@@ -77,6 +84,7 @@ export default function App() {
       'case-studies': 'In-depth case studies with before-and-after search performance documentation and verified technical implementations.',
       blog: 'Strategic search engine insights, algorithm updates, and website optimization perspectives.',
       contact: 'Request an SEO consultation with Jewels to review your website visibility and receive a tailored quote.',
+      calculator: 'Interactive animated tool illustrating website search visibility progression from unranked to the top of Google search results.',
     };
 
     document.title = titles[currentPage] || titles.home;
@@ -137,6 +145,7 @@ export default function App() {
         {currentPage === 'contact' && (
           <ContactPage initialServiceId={selectedServiceId} onNavigate={handleNavigate} />
         )}
+        {currentPage === 'calculator' && <GrowthCalculatorPage onNavigate={handleNavigate} />}
       </main>
 
       {/* Professional Footer */}

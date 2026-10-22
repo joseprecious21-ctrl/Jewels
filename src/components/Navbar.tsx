@@ -30,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
+    { id: 'calculator', label: 'Growth Calculator' },
     { id: 'portfolio', label: 'SEO Portfolio' },
     { id: 'case-studies', label: 'Case Studies' },
     { id: 'blog', label: 'Blog' },
@@ -52,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Strict 3-zone Top Bar Contract: Brand — Links — CTA */}
-        <div className="flex items-center justify-between gap-8">
+        <div className="flex items-center justify-between gap-6 xl:gap-8">
           
           {/* ZONE 1: BRAND LOGO & WORDMARK */}
           <div className="flex items-center gap-3 shrink-0">
@@ -83,9 +84,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* ZONE 2: 7 PRIMARY NAV LINKS (Single-line, unboxed text links) */}
+          {/* ZONE 2: PRIMARY NAV LINKS (Single-line, unboxed text links) */}
           <nav 
-            className="hidden lg:flex items-center gap-7 text-sm font-medium text-[var(--muted)]"
+            className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-medium text-[var(--muted)]"
             aria-label="Primary Navigation"
           >
             {navLinks.map((link) => {

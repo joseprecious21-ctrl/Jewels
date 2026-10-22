@@ -129,6 +129,31 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      {/* Interactive Modeling Tool Banner */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[var(--ink)] border-t border-[var(--line)]">
+        <div className="max-w-5xl mx-auto p-7 sm:p-9 rounded-2xl bg-[var(--card)] border border-[var(--gold)]/40 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Interactive Growth Tool</span>
+            </div>
+            <h3 className="text-2xl font-serif font-medium text-[var(--white)]">
+              See How SEO Services Drive Search Visibility
+            </h3>
+            <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl font-light leading-relaxed">
+              Explore how combining technical audits, on-page optimization, and Google Business Profile management can lift a site from unranked to page one.
+            </p>
+          </div>
+          <button
+            onClick={() => onNavigate('calculator')}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors shrink-0 whitespace-nowrap cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
+          >
+            <span>Launch Growth Calculator</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
+
       {/* 3. Services FAQ (DARK SECTION: #0A0A0A) */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--ink)] text-[var(--white)]">
         <div className="max-w-4xl mx-auto text-center mb-10">

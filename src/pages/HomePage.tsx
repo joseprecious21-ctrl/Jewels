@@ -94,7 +94,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
           </p>
 
-          {/* Two Buttons: Request an SEO Consultation (gold) and View SEO Portfolio (dark) */}
+          {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
             <button
               onClick={() => onNavigate('contact')}
@@ -109,6 +109,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm"
             >
               <span>View SEO Portfolio</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate('calculator')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm"
+            >
+              <Sparkles className="w-4 h-4 text-[var(--gold)]" />
+              <span>Growth Calculator</span>
             </button>
           </div>
 
@@ -243,6 +251,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <p className="text-xs text-[#777777]">
               All services are quoted individually. Request a Custom Quote.
             </p>
+          </div>
+
+          {/* Interactive Growth Calculator Spotlight Banner */}
+          <div className="mt-14 p-7 sm:p-8 rounded-2xl bg-[var(--ink)] border border-[var(--gold)]/30 text-[var(--white)] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
+            <div className="space-y-1.5 max-w-2xl text-left">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Interactive Modeling Tool</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif font-medium text-[var(--white)]">
+                Visualise Your Search Ranking Journey
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
+                Curious what an SEO climb looks like? Test starting positions, competition levels, and focus areas with our animated Growth Calculator.
+              </p>
+            </div>
+            <button
+              onClick={() => onNavigate('calculator')}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
+            >
+              <span>Open Growth Calculator</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </section>
