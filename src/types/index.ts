@@ -4,6 +4,7 @@ export type PageId =
   | 'services' 
   | 'portfolio' 
   | 'case-studies' 
+  | 'reviews'
   | 'blog' 
   | 'contact'
   | 'calculator'

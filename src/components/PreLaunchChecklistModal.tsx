@@ -122,12 +122,12 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
       detail: 'Provide verified audit and ranking reports for showcase cards.',
     },
     {
-      title: 'Client Testimonials',
-      placeholder: 'Ready-to-enable component',
-      file: 'src/components/TestimonialsSection.tsx',
-      status: 'Hidden until feedback provided',
-      actionPage: 'home' as PageId,
-      detail: 'Activate the testimonials module once authentic written client reviews are collected.',
+      title: 'Client Reviews',
+      placeholder: 'Treasure Nobel 5-Star Review (Active)',
+      file: 'src/pages/ReviewsPage.tsx',
+      status: 'Verified & active',
+      actionPage: 'reviews' as PageId,
+      detail: 'Client Reviews page live with genuine client feedback screenshot, 5-star gold rating, and interactive lightbox.',
     },
   ];
 

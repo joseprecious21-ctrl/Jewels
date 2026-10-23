@@ -13,6 +13,7 @@ import { BlogPage } from './pages/BlogPage';
 import { ContactPage } from './pages/ContactPage';
 import { GrowthCalculatorPage } from './pages/GrowthCalculatorPage';
 import { FreelanceProfilesPage } from './pages/FreelanceProfilesPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { CONTACT_DETAILS } from './data/seoData';
 
 export default function App() {
@@ -47,7 +48,12 @@ export default function App() {
         return;
       }
 
-      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'contact', 'calculator', 'freelance-profiles'].includes(hash)) {
+      if (pathname === '/reviews' || hash === 'reviews') {
+        setCurrentPage('reviews');
+        return;
+      }
+
+      if (['home', 'about', 'services', 'portfolio', 'case-studies', 'reviews', 'contact', 'calculator', 'freelance-profiles'].includes(hash)) {
         setCurrentPage(hash as PageId);
       }
     };
@@ -81,6 +87,7 @@ export default function App() {
       contact: 'Request an SEO Consultation — Jewels',
       calculator: 'SEO Growth Calculator — Jewels',
       'freelance-profiles': 'Hire Jewels on Fiverr, Upwork and Osdire | Jewels',
+      reviews: 'Client Reviews | Jewels',
     };
 
     const descriptions: Record<PageId, string> = {
@@ -93,6 +100,7 @@ export default function App() {
       contact: 'Request an SEO consultation with Jewels to review your website visibility and receive a tailored quote.',
       calculator: 'Interactive animated tool illustrating website search visibility progression from unranked to the top of Google search results.',
       'freelance-profiles': 'Find and contact the Jewels SEO team on Fiverr, Upwork, and Osdire, or reach out directly.',
+      reviews: 'Read feedback from clients Jewels has worked with.',
     };
 
     document.title = titles[currentPage] || titles.home;
@@ -156,6 +164,7 @@ export default function App() {
         {currentPage === 'case-studies' && (
           <CaseStudiesPage onNavigate={handleNavigate} activeProjectId={selectedProjectId} />
         )}
+        {currentPage === 'reviews' && <ReviewsPage onNavigate={handleNavigate} />}
         {currentPage === 'blog' && <BlogPage onNavigate={handleNavigate} />}
         {currentPage === 'contact' && (
           <ContactPage initialServiceId={selectedServiceId} onNavigate={handleNavigate} />
