@@ -8,7 +8,9 @@ export type BrandType =
   | 'tiktok' 
   | 'fiverr' 
   | 'upwork' 
-  | 'osdire';
+  | 'osdire'
+  | 'clutch'
+  | 'sortlist';
 
 interface BrandIconProps {
   brand: BrandType;
@@ -56,6 +58,12 @@ export const BrandIcon: React.FC<BrandIconProps> = ({
       case 'osdire':
         colorClasses = 'text-[#C9A227] transition-all duration-200 group-hover:text-[#0052FF] group-focus-visible:text-[#0052FF] motion-reduce:transition-none';
         break;
+      case 'clutch':
+        colorClasses = 'text-[#C9A227] transition-all duration-200 group-hover:text-[#E2C25A] group-focus-visible:text-[#E2C25A] motion-reduce:transition-none';
+        break;
+      case 'sortlist':
+        colorClasses = 'text-[#C9A227] transition-all duration-200 group-hover:text-[#E2C25A] group-focus-visible:text-[#E2C25A] motion-reduce:transition-none';
+        break;
     }
   } else if (variant === 'brand') {
     switch (brand) {
@@ -82,6 +90,12 @@ export const BrandIcon: React.FC<BrandIconProps> = ({
         break;
       case 'osdire':
         colorClasses = 'text-[#0052FF]';
+        break;
+      case 'clutch':
+        colorClasses = 'text-[#142F48]';
+        break;
+      case 'sortlist':
+        colorClasses = 'text-[#1F3DFA]';
         break;
     }
   } else if (variant === 'white') {
@@ -206,6 +220,72 @@ export const BrandIcon: React.FC<BrandIconProps> = ({
         </svg>
       );
 
+    case 'clutch':
+      if (variant === 'gold-hover') {
+        return (
+          /* Replace with the official logo */
+          <svg
+            viewBox="0 0 24 24"
+            width={size}
+            height={size}
+            fill="none"
+            stroke="currentColor"
+            className={combinedClass}
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
+            <path
+              d="M14.5 8.8a4 4 0 1 0 0 6.4"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+            />
+          </svg>
+        );
+      }
+      return (
+        /* Replace with the official logo */
+        <img
+          src="/logos/clutch.svg"
+          alt="Clutch logo"
+          width={size}
+          height={size}
+          className={`${combinedClass} object-contain rounded-full`}
+        />
+      );
+
+    case 'sortlist':
+      if (variant === 'gold-hover') {
+        return (
+          /* Replace with the official logo */
+          <svg
+            viewBox="0 0 24 24"
+            width={size}
+            height={size}
+            fill="none"
+            stroke="currentColor"
+            className={combinedClass}
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9.5" strokeWidth="1.8" />
+            <path
+              d="M14 9.2a2.2 2.2 0 0 0-4 0c0 2.2 4 1.8 4 4a2.2 2.2 0 0 1-4 0"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        );
+      }
+      return (
+        /* Replace with the official logo */
+        <img
+          src="/logos/sortlist.svg"
+          alt="Sortlist logo"
+          width={size}
+          height={size}
+          className={`${combinedClass} object-contain rounded-full`}
+        />
+      );
+
     default:
       return null;
   }
@@ -241,6 +321,28 @@ export const BrandBadge: React.FC<BrandBadgeProps> = ({
   }
 
   const effectiveIconSize = iconSize ?? defaultIconSize;
+
+  if (brand === 'clutch' || brand === 'sortlist') {
+    const isClutch = brand === 'clutch';
+    const logoSrc = isClutch ? '/logos/clutch.svg' : '/logos/sortlist.svg';
+    const altText = isClutch ? 'Clutch logo' : 'Sortlist logo';
+
+    return (
+      <div
+        className={`inline-flex items-center justify-center rounded-xl bg-white text-neutral-900 shadow-sm border border-neutral-200/80 shrink-0 group-hover:scale-105 transition-transform duration-200 motion-reduce:transition-none overflow-hidden ${sizeClasses} ${className}`}
+        aria-hidden="true"
+      >
+        {/* Replace with the official logo */}
+        <img
+          src={logoSrc}
+          alt={altText}
+          width={effectiveIconSize + 8}
+          height={effectiveIconSize + 8}
+          className="w-full h-full p-1.5 object-contain"
+        />
+      </div>
+    );
+  }
 
   return (
     <div

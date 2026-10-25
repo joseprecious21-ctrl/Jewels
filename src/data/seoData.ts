@@ -14,6 +14,8 @@ export const CONTACT_DETAILS = {
   FIVERR_URL: 'https://www.fiverr.com/s/bkkxYjX',
   UPWORK_URL: 'https://www.upwork.com/freelancers/~01324aef0475d420c5?mp_source=share',
   OSDIRE_URL: 'https://osdire.com/precious12',
+  CLUTCH_URL: 'https://clutch.co/profile/jewels-team-growth',
+  SORTLIST_URL: 'https://app.sortlist.com/jewels-team-growth/',
   FORM_ENDPOINT: 'https://api.web3forms.com/submit',
   WEB3FORMS_ACCESS_KEY: '328096a4-bc44-47c1-967b-7db736f64d3a',
   LOGO: '/logo-source.jpg',

@@ -561,6 +561,46 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   </div>
                   <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
                 </a>
+
+                {/* Clutch Contact Card */}
+                <a
+                  href={CONTACT_DETAILS.CLUTCH_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Jewels on Clutch (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <BrandBadge brand="clutch" badgeSize="lg" />
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">Clutch</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
+                        View the Jewels profile on Clutch
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
+                </a>
+
+                {/* Sortlist Contact Card */}
+                <a
+                  href={CONTACT_DETAILS.SORTLIST_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Jewels on Sortlist (opens in a new tab)"
+                  className="flex items-center justify-between p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1E1E1E] transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <BrandBadge brand="sortlist" badgeSize="lg" />
+                    <div className="min-w-0">
+                      <div className="text-xs font-mono text-[var(--muted)]">Sortlist</div>
+                      <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
+                        View the Jewels profile on Sortlist
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors shrink-0 ml-2" />
+                </a>
               </div>
             </div>
 

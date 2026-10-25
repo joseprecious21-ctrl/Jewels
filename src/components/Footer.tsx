@@ -200,6 +200,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 >
                   <BrandIcon brand="tiktok" size={24} variant="gold-hover" />
                 </a>
+
+                <a
+                  href={CONTACT_DETAILS.CLUTCH_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Jewels on Clutch (opens in a new tab)"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                >
+                  <BrandIcon brand="clutch" size={24} variant="gold-hover" />
+                </a>
+
+                <a
+                  href={CONTACT_DETAILS.SORTLIST_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Jewels on Sortlist (opens in a new tab)"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                >
+                  <BrandIcon brand="sortlist" size={24} variant="gold-hover" />
+                </a>
               </div>
             </div>
           </div>

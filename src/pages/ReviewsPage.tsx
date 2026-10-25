@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   Star, Maximize2, Image as ImageIcon, ArrowRight, Sparkles, 
   RotateCcw, CheckCircle2, TrendingUp, MessageSquare, 
-  Eye, FileCheck, Layers, Award, Calendar, ChevronDown, ChevronUp
+  Eye, FileCheck, Layers, Award, Calendar, ChevronDown, ChevronUp, ExternalLink
 } from 'lucide-react';
 import { PageId } from '../types';
+import { CONTACT_DETAILS } from '../data/seoData';
+import { BrandBadge } from '../components/BrandIcon';
 import { ImageLightboxModal } from '../components/ImageLightboxModal';
 
 interface ReviewsPageProps {
@@ -642,7 +644,81 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 3. CTA BAND AT BOTTOM */}
+      {/* 3. LEAVE US A REVIEW SECTION */}
+      <section className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--graphite)] bg-[var(--black)]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+              Client Feedback
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-medium text-[var(--white)] mb-3 text-balance">
+              Worked with Jewels? Leave us a review
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--muted)] max-w-xl mx-auto font-light leading-relaxed">
+              Your feedback helps other businesses find the right SEO partner. You can review Jewels on these platforms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-6">
+            {/* Clutch Review Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[var(--charcoal)] border border-[var(--graphite)] hover:border-[var(--gold)]/50 transition-all flex flex-col justify-between">
+              <div className="flex items-center gap-4 mb-6">
+                <BrandBadge brand="clutch" badgeSize="lg" />
+                <div>
+                  <h3 className="text-lg font-heading font-semibold text-[var(--white)]">
+                    Clutch
+                  </h3>
+                  <p className="text-xs font-mono text-[var(--muted)]">
+                    B2B Platform
+                  </p>
+                </div>
+              </div>
+              <a
+                href={CONTACT_DETAILS.CLUTCH_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Review Jewels on Clutch (opens in a new tab)"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
+              >
+                <span>Review us on Clutch</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Sortlist Review Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[var(--charcoal)] border border-[var(--graphite)] hover:border-[var(--gold)]/50 transition-all flex flex-col justify-between">
+              <div className="flex items-center gap-4 mb-6">
+                <BrandBadge brand="sortlist" badgeSize="lg" />
+                <div>
+                  <h3 className="text-lg font-heading font-semibold text-[var(--white)]">
+                    Sortlist
+                  </h3>
+                  <p className="text-xs font-mono text-[var(--muted)]">
+                    Service Platform
+                  </p>
+                </div>
+              </div>
+              <a
+                href={CONTACT_DETAILS.SORTLIST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Review Jewels on Sortlist (opens in a new tab)"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
+              >
+                <span>Review us on Sortlist</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Platform note under buttons */}
+          <p className="text-xs text-center text-[var(--muted)] font-light leading-relaxed max-w-xl mx-auto">
+            You will be taken to the platform&apos;s own website. Each platform has its own review process.
+          </p>
+        </div>
+      </section>
+
+      {/* 4. CTA BAND AT BOTTOM */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--graphite)] bg-[var(--black)] overflow-hidden text-center">
         
         <div className="relative max-w-3xl mx-auto">
