@@ -88,21 +88,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
       <section 
         ref={heroRef}
-        className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20 sm:pt-36 sm:pb-28"
+        className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20 sm:pt-36 sm:pb-28"
       >
-        {/* Solid #0A0A0A background with poster image fallback */}
+        {/* Solid #0A0A0A background with a faint gold gradient fallback */}
         <div 
-          className="absolute inset-0 bg-[#0A0A0A] z-0 pointer-events-none" 
+          className="absolute inset-0 bg-[#0A0A0A] pointer-events-none z-0" 
+          style={{
+            background: 'radial-gradient(ellipse at 50% 40%, rgba(201, 162, 39, 0.12) 0%, rgba(10, 10, 10, 0) 70%), #0A0A0A'
+          }}
           aria-hidden="true"
-        >
-          <img
-            src="/hero-poster.jpg"
-            alt=""
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
+        />
 
-        {/* Add /videos/hero-1080.mp4 */}
+        {/* For a permanent setup, download the video and host it as /videos/hero.mp4. Streamable links may expire. */}
         {!prefersStatic && !hasVideoError && (
           <video
             ref={videoRef}
@@ -112,36 +109,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             playsInline
             preload="auto"
             aria-hidden="true"
-            poster="/hero-poster.jpg"
             disablePictureInPicture
-            // @ts-expect-error disableRemotePlayback is valid HTMLVideoElement attribute
+            // @ts-expect-error disableRemotePlayback is standard HTMLVideoElement attribute
             disableRemotePlayback=""
             onCanPlay={() => setIsVideoLoaded(true)}
             onPlaying={() => setIsVideoLoaded(true)}
             onError={() => setHasVideoError(true)}
             style={{
+              position: 'absolute',
+              inset: 0,
               width: '100%',
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
+              zIndex: 0,
               backfaceVisibility: 'hidden',
               transform: 'translateZ(0)',
             }}
-            className={`absolute inset-0 z-0 pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
+            className={`pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
               isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <source src="/videos/hero-1080.webm" type="video/webm" />
-            <source src="/videos/hero-720.mp4" type="video/mp4" media="(max-width: 700px)" />
-            <source src="/videos/hero-1080.mp4" type="video/mp4" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src="https://api-f.streamable.com/api/v1/videos/08fdc3/mp4" type="video/mp4" />
           </video>
         )}
 
-        {/* Light cinematic overlay: linear gradient from rgba(10,10,10,0.55) on the left to rgba(10,10,10,0.15) on the right, fading to solid #0A0A0A at bottom edge */}
+        {/* Light cinematic overlay: linear gradient from rgba(10,10,10,0.6) on the left to rgba(10,10,10,0.2) on the right, fading to solid #0A0A0A at bottom edge */}
         <div 
           className="absolute inset-0 pointer-events-none z-[1]"
           style={{
-            background: 'linear-gradient(to right, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.15) 100%), linear-gradient(to bottom, transparent 65%, #0A0A0A 100%)'
+            background: 'linear-gradient(to right, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.2) 100%), linear-gradient(to bottom, transparent 65%, #0A0A0A 100%)'
           }}
           aria-hidden="true"
         />
