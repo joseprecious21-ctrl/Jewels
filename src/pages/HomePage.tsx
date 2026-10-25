@@ -18,6 +18,56 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   // Three portfolio cards from the table (Images 1, 2, and 3)
   const selectedWork = PORTFOLIO_PROJECTS.slice(0, 3);
 
+  // Video playback & accessibility states
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+  const [hasVideoError, setHasVideoError] = React.useState(false);
+  const [prefersStatic, setPrefersStatic] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const heroRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    // 1. Respect prefers-reduced-motion
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // 2. Respect Save-Data connection preference
+    const isDataSaver = typeof navigator !== 'undefined' && 
+      ((navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData === true);
+
+    if (motionQuery.matches || isDataSaver) {
+      setPrefersStatic(true);
+      return;
+    }
+
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersStatic(e.matches);
+    };
+    motionQuery.addEventListener('change', handleMotionChange);
+
+    // 3. Pause video when scrolled out of view and resume when back
+    const heroEl = heroRef.current;
+    const videoEl = videoRef.current;
+    if (!heroEl || !videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoEl.play().catch(() => {});
+          } else {
+            videoEl.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(heroEl);
+
+    return () => {
+      observer.disconnect();
+      motionQuery.removeEventListener('change', handleMotionChange);
+    };
+  }, []);
+
   // Icon mapping with Google Blue #4285F4 for Google Business Profile & Search Console
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -36,41 +86,70 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     <div className="min-h-screen">
       
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
-      <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--ink)] pt-28 pb-20 sm:pt-36 sm:pb-28">
-        
-        {/* Native Background Video Element */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          poster="https://i.postimg.cc/6Q8hGCtm/Enterprise-SEO-Growth-Dashboard.png"
-          ref={(el) => {
-            if (el) {
-              el.muted = true;
-              el.play().catch(() => {});
-            }
-          }}
-          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none motion-reduce:hidden"
-        >
-          <source
-            src="https://www.image2url.com/r2/default/videos/1792255592411-950fb60e-3b69-4717-a25c-6c18ccc23b08.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        {/* Dark contrast scrim overlay (60% black with gradient to solid #0A0A0A at bottom) */}
+      <section 
+        ref={heroRef}
+        className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20 sm:pt-36 sm:pb-28"
+      >
+        {/* Solid #0A0A0A background with poster image fallback */}
         <div 
-          className="absolute inset-0 bg-black/60 bg-gradient-to-b from-black/55 via-black/65 to-[var(--ink)] z-[1] pointer-events-none"
+          className="absolute inset-0 bg-[#0A0A0A] z-0 pointer-events-none" 
+          aria-hidden="true"
+        >
+          <img
+            src="/hero-poster.jpg"
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+
+        {/* Add /videos/hero-1080.mp4 */}
+        {!prefersStatic && !hasVideoError && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            poster="/hero-poster.jpg"
+            disablePictureInPicture
+            // @ts-expect-error disableRemotePlayback is valid HTMLVideoElement attribute
+            disableRemotePlayback=""
+            onCanPlay={() => setIsVideoLoaded(true)}
+            onPlaying={() => setIsVideoLoaded(true)}
+            onError={() => setHasVideoError(true)}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              backfaceVisibility: 'hidden',
+              transform: 'translateZ(0)',
+            }}
+            className={`absolute inset-0 z-0 pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source src="/videos/hero-1080.webm" type="video/webm" />
+            <source src="/videos/hero-720.mp4" type="video/mp4" media="(max-width: 700px)" />
+            <source src="/videos/hero-1080.mp4" type="video/mp4" />
+          </video>
+        )}
+
+        {/* Light cinematic overlay: linear gradient from rgba(10,10,10,0.55) on the left to rgba(10,10,10,0.15) on the right, fading to solid #0A0A0A at bottom edge */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-[1]"
+          style={{
+            background: 'linear-gradient(to right, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.15) 100%), linear-gradient(to bottom, transparent 65%, #0A0A0A 100%)'
+          }}
           aria-hidden="true"
         />
 
-        {/* Ambient gold radial glow */}
+        {/* Thin gold (#C9A227) line at the bottom of the hero */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[var(--gold)]/10 blur-[150px] pointer-events-none rounded-full z-[1]" 
-          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-px bg-[#C9A227] z-10 pointer-events-none" 
+          aria-hidden="true" 
         />
 
         {/* Hero Content (Above overlay with high contrast) */}
@@ -85,17 +164,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Bold headline introducing Jewels and its SEO expertise */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
             Strategic SEO & Website Optimization for High-Growth Brands
           </h1>
 
           {/* Supporting line */}
-          <p className="text-base sm:text-xl text-neutral-200 max-w-3xl mx-auto mb-10 leading-relaxed font-light drop-shadow-sm">
+          <p className="text-base sm:text-xl text-neutral-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
             Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
           </p>
 
           {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
             <button
               onClick={() => onNavigate('contact')}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95"
