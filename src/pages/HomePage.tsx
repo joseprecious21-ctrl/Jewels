@@ -88,61 +88,78 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
       <section 
         ref={heroRef}
-        className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20 sm:pt-36 sm:pb-28"
+        className="relative w-full min-h-[70vh] sm:min-h-[80vh] max-h-[80vh] sm:max-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-24 pb-16 sm:pt-32 sm:pb-24"
       >
-        {/* Solid #0A0A0A background with a faint gold gradient fallback */}
-        <div 
-          className="absolute inset-0 bg-[#0A0A0A] pointer-events-none z-0" 
-          style={{
-            background: 'radial-gradient(ellipse at 50% 40%, rgba(201, 162, 39, 0.12) 0%, rgba(10, 10, 10, 0) 70%), #0A0A0A'
-          }}
-          aria-hidden="true"
-        />
-
-        {/* For a permanent setup, download the video and host it as /videos/hero.mp4. Streamable links may expire. */}
-        {!prefersStatic && !hasVideoError && (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            disablePictureInPicture
-            // @ts-expect-error disableRemotePlayback is standard HTMLVideoElement attribute
-            disableRemotePlayback=""
-            onCanPlay={() => setIsVideoLoaded(true)}
-            onPlaying={() => setIsVideoLoaded(true)}
-            onError={() => setHasVideoError(true)}
+        {/* Hero Video Container: capped at 2560px and centered for screens wider than 1920px */}
+        <div className="absolute inset-0 w-full max-w-[2560px] mx-auto overflow-hidden pointer-events-none z-0">
+          {/* Solid #0A0A0A background with a faint gold gradient fallback */}
+          <div 
+            className="absolute inset-0 bg-[#0A0A0A] pointer-events-none z-0" 
             style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              zIndex: 0,
-              backfaceVisibility: 'hidden',
-              transform: 'translateZ(0)',
+              background: 'radial-gradient(ellipse at 50% 40%, rgba(201, 162, 39, 0.12) 0%, rgba(10, 10, 10, 0) 70%), #0A0A0A'
             }}
-            className={`pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <source src="/videos/hero.mp4" type="video/mp4" />
-            <source src="https://api-f.streamable.com/api/v1/videos/kj5www/mp4" type="video/mp4" />
-          </video>
-        )}
+            aria-hidden="true"
+          />
 
-        {/* Light cinematic overlay: linear gradient from rgba(10,10,10,0.6) on the left to rgba(10,10,10,0.2) on the right, fading to solid #0A0A0A at bottom edge */}
-        <div 
-          className="absolute inset-0 pointer-events-none z-[1]"
-          style={{
-            background: 'linear-gradient(to right, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.2) 100%), linear-gradient(to bottom, transparent 65%, #0A0A0A 100%)'
-          }}
-          aria-hidden="true"
-        />
+          {/* For a permanent setup, download the video and host it as /videos/hero.mp4. Streamable links may expire. */}
+          {!prefersStatic && !hasVideoError && (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              disablePictureInPicture
+              // @ts-expect-error disableRemotePlayback is standard HTMLVideoElement attribute
+              disableRemotePlayback=""
+              onCanPlay={() => setIsVideoLoaded(true)}
+              onPlaying={() => setIsVideoLoaded(true)}
+              onError={() => setHasVideoError(true)}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                zIndex: 0,
+                backfaceVisibility: 'hidden',
+                transform: 'translateZ(0)',
+                filter: 'brightness(1.15) contrast(1.08) saturate(1.1)',
+              }}
+              className={`pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
+                isVideoLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <source src="/videos/hero.mp4" type="video/mp4" />
+              <source src="https://api-f.streamable.com/api/v1/videos/kj5www/mp4" type="video/mp4" />
+            </video>
+          )}
+
+          {/* Subtle gold (#C9A227) light sweep: faint, slow-moving radial gold glow (14s) */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-[1] overflow-hidden motion-reduce:hidden"
+            aria-hidden="true"
+          >
+            <div 
+              className="absolute -top-[20%] -left-[20%] w-[140%] h-[140%] rounded-full animate-gold-sweep pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at 45% 45%, rgba(201, 162, 39, 0.11) 0%, rgba(201, 162, 39, 0.04) 40%, transparent 65%)',
+              }}
+            />
+          </div>
+
+          {/* Reduced light overlay: linear-gradient(90deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.08) 65%, rgba(10,10,10,0) 100%) plus soft fade to solid #0A0A0A in bottom 20% */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.08) 65%, rgba(10, 10, 10, 0) 100%), linear-gradient(to bottom, transparent 80%, #0A0A0A 100%)'
+            }}
+            aria-hidden="true"
+          />
+        </div>
 
         {/* Thin gold (#C9A227) line at the bottom of the hero */}
         <div 
@@ -153,6 +170,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         {/* Hero Content (Above overlay with high contrast) */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
+          {/* Soft, localised dark glow only behind the text block */}
+          <div 
+            className="absolute -inset-x-6 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
+            style={{
+              background: 'radial-gradient(ellipse at left center, rgba(10,10,10,0.55), transparent 70%)'
+            }}
+            aria-hidden="true"
+          />
+
           {/* Subtle kicker badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-xs text-[var(--gold)] mb-6 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5" />
@@ -162,17 +188,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Bold headline introducing Jewels and its SEO expertise */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+          <h1 
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance"
+          >
             Strategic SEO & Website Optimization for High-Growth Brands
           </h1>
 
           {/* Supporting line */}
-          <p className="text-base sm:text-xl text-neutral-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+          <p 
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}
+            className="text-base sm:text-xl text-neutral-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
+          >
             Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
           </p>
 
           {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
             <button
               onClick={() => onNavigate('contact')}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95"
