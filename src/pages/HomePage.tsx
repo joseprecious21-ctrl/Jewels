@@ -131,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             }`}
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
-            <source src="https://api-f.streamable.com/api/v1/videos/08fdc3/mp4" type="video/mp4" />
+            <source src="https://api-f.streamable.com/api/v1/videos/kj5www/mp4" type="video/mp4" />
           </video>
         )}
 
