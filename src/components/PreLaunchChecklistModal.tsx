@@ -123,11 +123,11 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
     },
     {
       title: 'Client Reviews',
-      placeholder: 'Treasure Nobel 5-Star Review (Active)',
+      placeholder: 'Treasure Nobel (5.0) & Luton (4.5) Reviews (Active)',
       file: 'src/pages/ReviewsPage.tsx',
       status: 'Verified & active',
       actionPage: 'reviews' as PageId,
-      detail: 'Client Reviews page live with genuine client feedback screenshot, 5-star gold rating, and interactive lightbox.',
+      detail: 'Client Reviews page live with genuine client feedback screenshots, 5-star & 4.5-star gold ratings, Review JSON-LD schema, and interactive lightboxes.',
     },
   ];
 
