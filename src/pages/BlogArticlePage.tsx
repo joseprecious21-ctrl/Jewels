@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, 
   CheckCircle2, AlertTriangle, Lightbulb, Image as ImageIcon, 
-  ChevronRight, Sparkles, MessageCircle, ExternalLink 
+  ChevronRight, Sparkles, ExternalLink 
 } from 'lucide-react';
 import { PageId, BlogPost, BlogPostSection } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
+import { BrandIcon } from '../components/BrandIcon';
 
 interface BlogArticlePageProps {
   post: BlogPost;
@@ -481,8 +482,10 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
                 href={CONTACT_DETAILS.LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--muted)] hover:text-[var(--white)] transition-colors inline-flex items-center gap-1"
+                aria-label="Jewels on LinkedIn (opens in a new tab)"
+                className="text-[var(--muted)] hover:text-[#0A66C2] transition-colors inline-flex items-center gap-1.5 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--gold)] rounded"
               >
+                <BrandIcon brand="linkedin" size={15} variant="gold-hover" />
                 <span>LinkedIn</span>
                 <ExternalLink className="w-3 h-3 text-[var(--gold)]" />
               </a>
@@ -491,9 +494,10 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
                 href={CONTACT_DETAILS.WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--success)] hover:underline inline-flex items-center gap-1"
+                aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
+                className="text-[var(--muted)] hover:text-[#25D366] transition-colors inline-flex items-center gap-1.5 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--gold)] rounded"
               >
-                <MessageCircle className="w-3 h-3" />
+                <BrandIcon brand="whatsapp" size={15} variant="gold-hover" />
                 <span>WhatsApp</span>
               </a>
             </div>

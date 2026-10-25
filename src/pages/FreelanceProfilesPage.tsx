@@ -1,10 +1,10 @@
 import React from 'react';
 import { 
-  ExternalLink, Mail, MessageCircle, Linkedin, Instagram, 
-  ArrowRight, MessageSquare, CreditCard, CheckSquare, Sparkles 
+  ExternalLink, ArrowRight, MessageSquare, CreditCard, CheckSquare, Sparkles 
 } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS, FREELANCE_PROFILES } from '../data/seoData';
+import { BrandBadge } from '../components/BrandIcon';
 
 interface FreelanceProfilesPageProps {
   onNavigate: (page: PageId) => void;
@@ -104,12 +104,10 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
             <a
               href={`mailto:${CONTACT_DETAILS.EMAIL}`}
               aria-label={`Email Jewels directly at ${CONTACT_DETAILS.EMAIL}`}
-              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group"
+              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:scale-105 transition-transform shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
+                <BrandBadge brand="email" badgeSize="sm" />
                 <div>
                   <div className="text-[11px] font-mono text-[var(--muted)]">Email</div>
                   <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
@@ -127,22 +125,20 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               href={CONTACT_DETAILS.WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Jewels on WhatsApp (opens in a new tab)"
-              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--success)] hover:bg-[#1A1A1A] transition-all group"
+              aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
+              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[#25D366] hover:bg-[#1A1A1A] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-950/80 border border-[var(--success)]/60 flex items-center justify-center text-[var(--success)] group-hover:scale-105 transition-transform shrink-0">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
+                  <BrandBadge brand="whatsapp" badgeSize="sm" />
                   <div>
                     <div className="text-[11px] font-mono text-[var(--muted)]">WhatsApp</div>
-                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--success)] transition-colors">
+                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#25D366] transition-colors">
                       Direct Chat
                     </div>
                   </div>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--success)] transition-colors" />
+                <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[#25D366] transition-colors" />
               </div>
               <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
                 Chat with Jewels
@@ -155,20 +151,11 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jewels on TikTok (opens in a new tab)"
-              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group"
+              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[#C9A227] group-hover:text-[#E2C25A] group-hover:scale-105 transition-all shrink-0">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 text-[#C9A227] group-hover:text-[#E2C25A] transition-colors"
-                      aria-hidden="true"
-                    >
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
-                    </svg>
-                  </div>
+                  <BrandBadge brand="tiktok" badgeSize="sm" />
                   <div>
                     <div className="text-[11px] font-mono text-[var(--muted)]">TikTok</div>
                     <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
@@ -189,16 +176,14 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jewels on Instagram (opens in a new tab)"
-              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group"
+              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[#E4405F] hover:bg-[#1A1A1A] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:text-[var(--gold-hover)] group-hover:scale-105 transition-all shrink-0">
-                    <Instagram className="w-5 h-5" />
-                  </div>
+                  <BrandBadge brand="instagram" badgeSize="sm" />
                   <div>
                     <div className="text-[11px] font-mono text-[var(--muted)]">Instagram</div>
-                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
+                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#E4405F] transition-colors">
                       Instagram
                     </div>
                   </div>
@@ -216,16 +201,14 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jewels on LinkedIn (opens in a new tab)"
-              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] hover:bg-[#1A1A1A] transition-all group"
+              className="flex flex-col justify-between p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[#0A66C2] hover:bg-[#1A1A1A] transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] group-hover:text-[var(--gold-hover)] group-hover:scale-105 transition-all shrink-0">
-                    <Linkedin className="w-5 h-5" />
-                  </div>
+                  <BrandBadge brand="linkedin" badgeSize="sm" />
                   <div>
                     <div className="text-[11px] font-mono text-[var(--muted)]">LinkedIn</div>
-                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
+                    <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#0A66C2] transition-colors">
                       Precious Ayofe
                     </div>
                   </div>

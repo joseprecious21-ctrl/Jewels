@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Linkedin, Instagram, ArrowUp, ClipboardCheck } from 'lucide-react';
+import { ArrowUp, ClipboardCheck } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
+import { BrandIcon } from './BrandIcon';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -146,9 +147,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
               <li>
                 <a
                   href={`mailto:${CONTACT_DETAILS.EMAIL}`}
-                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[var(--gold)] transition-colors group"
+                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[var(--gold)] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] rounded"
                 >
-                  <Mail className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                  <BrandIcon brand="email" size={20} variant="gold-hover" className="shrink-0" />
                   <span className="truncate">{CONTACT_DETAILS.EMAIL}</span>
                 </a>
               </li>
@@ -158,9 +159,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                   href={CONTACT_DETAILS.WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[var(--success)] transition-colors group"
+                  aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
+                  className="flex items-center gap-2.5 text-[var(--muted)] hover:text-[#25D366] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] rounded"
                 >
-                  <MessageCircle className="w-4 h-4 text-[var(--success)] shrink-0" />
+                  <BrandIcon brand="whatsapp" size={20} variant="gold-hover" className="shrink-0" />
                   <span>WhatsApp Jewels</span>
                 </a>
               </li>
@@ -168,25 +170,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
 
             <div className="pt-2">
               <p className="text-xs font-mono text-[var(--muted)] mb-2">Verified Profiles</p>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <a
                   href={CONTACT_DETAILS.LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn profile"
-                  className="w-9 h-9 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--gold)] transition-all"
+                  aria-label="Jewels on LinkedIn (opens in a new tab)"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <BrandIcon brand="linkedin" size={24} variant="gold-hover" />
                 </a>
 
                 <a
                   href={CONTACT_DETAILS.INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram profile"
-                  className="w-9 h-9 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--gold)] transition-all"
+                  aria-label="Jewels on Instagram (opens in a new tab)"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                 >
-                  <Instagram className="w-4 h-4" />
+                  <BrandIcon brand="instagram" size={24} variant="gold-hover" />
                 </a>
 
                 <a
@@ -194,16 +196,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Jewels on TikTok (opens in a new tab)"
-                  className="w-9 h-9 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center text-[#C9A227] hover:text-[#E2C25A] transition-all group"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] flex items-center justify-center transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-4 h-4 text-[#C9A227] group-hover:text-[#E2C25A] transition-colors"
-                    aria-hidden="true"
-                  >
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
-                  </svg>
+                  <BrandIcon brand="tiktok" size={24} variant="gold-hover" />
                 </a>
               </div>
             </div>

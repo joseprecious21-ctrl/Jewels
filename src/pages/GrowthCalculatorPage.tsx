@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
+import { BrandIcon } from '../components/BrandIcon';
 
 interface GrowthCalculatorPageProps {
   onNavigate: (page: PageId, extraId?: string) => void;
@@ -1152,9 +1153,10 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               href={CONTACT_DETAILS.WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--success)] text-[var(--white)] font-medium text-xs tracking-wide uppercase transition-all cursor-pointer"
+              aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[#25D366] text-[var(--white)] hover:text-[#25D366] font-medium text-xs tracking-wide uppercase transition-all cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
-              <MessageCircle className="w-4 h-4 text-[var(--success)]" />
+              <BrandIcon brand="whatsapp" size={16} variant="gold-hover" className="shrink-0" />
               <span>WhatsApp Jewels</span>
             </a>
           </div>

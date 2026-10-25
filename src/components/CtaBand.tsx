@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowRight, Sparkles, MessageCircle } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { PageId } from '../types';
 import { CONTACT_DETAILS } from '../data/seoData';
+import { BrandIcon } from './BrandIcon';
 
 interface CtaBandProps {
   headline?: string;
@@ -89,15 +90,17 @@ export const CtaBand: React.FC<CtaBandProps> = ({
             href={CONTACT_DETAILS.WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-[var(--success)]/60 text-[var(--success)] hover:text-[var(--white)] font-medium text-sm transition-all duration-200 shadow-lg shadow-emerald-950/20 whitespace-nowrap cursor-pointer"
+            aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-[var(--success)]/60 text-[var(--success)] hover:text-[var(--white)] font-medium text-sm transition-all duration-200 shadow-lg shadow-emerald-950/20 whitespace-nowrap cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
           >
-            <MessageCircle className="w-4 h-4 text-[var(--success)]" />
+            <BrandIcon brand="whatsapp" size={18} variant="brand" className="text-[#25D366] group-hover:text-white shrink-0 transition-colors" />
             <span>Chat on WhatsApp</span>
           </a>
         </div>
 
-        <p className="text-xs text-[var(--muted)] mt-6 tracking-wide font-mono">
-          joseprecious21@gmail.com · All services quoted individually
+        <p className="inline-flex items-center justify-center gap-1.5 text-xs text-[var(--muted)] mt-6 tracking-wide font-mono">
+          <BrandIcon brand="email" size={14} variant="currentColor" className="text-[var(--gold)] shrink-0" />
+          <span>{CONTACT_DETAILS.EMAIL} · All services quoted individually</span>
         </p>
       </div>
     </section>

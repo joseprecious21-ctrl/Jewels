@@ -1,8 +1,9 @@
 import React from 'react';
-import { CheckCircle2, Sparkles, ArrowRight, Linkedin, Instagram } from 'lucide-react';
+import { CheckCircle2, Sparkles, ArrowRight } from 'lucide-react';
 import { PageId } from '../types';
 import { ABOUT_EXPERTISE, CONTACT_DETAILS } from '../data/seoData';
 import { CtaBand } from '../components/CtaBand';
+import { BrandIcon } from '../components/BrandIcon';
 
 interface AboutPageProps {
   onNavigate: (page: PageId) => void;
@@ -117,9 +118,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     href={CONTACT_DETAILS.LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors"
+                    aria-label="Jewels on LinkedIn (opens in a new tab)"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
-                    <Linkedin className="w-4 h-4 text-[var(--gold)]" />
+                    <BrandIcon brand="linkedin" size={24} variant="gold-hover" className="shrink-0" />
                     <span>LinkedIn Profile</span>
                   </a>
 
@@ -127,9 +129,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     href={CONTACT_DETAILS.INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors"
+                    aria-label="Jewels on Instagram (opens in a new tab)"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
-                    <Instagram className="w-4 h-4 text-[var(--gold)]" />
+                    <BrandIcon brand="instagram" size={24} variant="gold-hover" className="shrink-0" />
                     <span>Instagram @jewelsteamgrowth_seo_solution</span>
                   </a>
 
@@ -138,16 +141,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Jewels on TikTok (opens in a new tab)"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-4 h-4 text-[#C9A227] group-hover:text-[#E2C25A] transition-colors shrink-0"
-                      aria-hidden="true"
-                    >
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
-                    </svg>
+                    <BrandIcon brand="tiktok" size={24} variant="gold-hover" className="shrink-0" />
                     <span>TikTok @jewelsteam_1</span>
                   </a>
                 </div>
