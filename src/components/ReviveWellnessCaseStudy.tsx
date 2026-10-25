@@ -123,7 +123,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
           <span className="text-xs font-mono text-[var(--gold)] block mb-1">
             Verified Project Showcase · Local Search Verification
           </span>
-          <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--white)]">
+          <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)]">
             Revive Wellness
           </h2>
         </div>
@@ -475,7 +475,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
       <div className="mt-6 pt-6 border-t border-[var(--line)]">
         <div className="p-6 sm:p-8 rounded-xl bg-[var(--ink)] border border-[var(--line)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <div>
-            <h4 className="text-lg font-serif font-medium text-[var(--white)] mb-1">
+            <h4 className="text-lg font-heading font-medium text-[var(--white)] mb-1">
               Need help verifying your Google Business Profile?
             </h4>
             <p className="text-xs text-[var(--muted)] font-light">

@@ -148,7 +148,7 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
               </span>
               <span className="text-xs text-[var(--muted)]">Section 11 Specification</span>
             </div>
-            <h3 id="checklist-modal-title" className="text-xl font-serif font-semibold text-[var(--white)] mt-1">
+            <h3 id="checklist-modal-title" className="text-xl font-heading font-semibold text-[var(--white)] mt-1">
               Owner Pre-Launch Checklist
             </h3>
           </div>

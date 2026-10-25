@@ -88,7 +88,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
           <span className="tracking-wide uppercase font-medium text-[11px]">Real Deliverables & Verification</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           SEO Case Studies
         </h1>
 
@@ -114,7 +114,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
               <span className="text-xs font-mono text-[var(--gold)] block mb-1">
                 Featured Case Study · Comparative Growth Analysis
               </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--white)]">
+              <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)]">
                 SEO Results: Before and After
               </h2>
             </div>
@@ -164,7 +164,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <ArrowLeftRight className="w-4 h-4 text-[var(--gold)]" />
-                <h3 className="text-sm font-serif font-medium text-[var(--white)] tracking-wide uppercase">
+                <h3 className="text-sm font-heading font-medium text-[var(--white)] tracking-wide uppercase">
                   Before-and-After Performance Documentation
                 </h3>
               </div>
@@ -205,7 +205,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
               <span className="text-xs font-mono text-[var(--gold)] block mb-1">
                 Enterprise Case Study · Visibility Analytics
               </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--ink)]">
+              <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--ink)]">
                 Enterprise SEO Growth Dashboard
               </h2>
             </div>
@@ -254,7 +254,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
           <div className="pt-8">
             <div className="flex items-center gap-2 mb-4">
               <LayoutDashboard className="w-4 h-4 text-[var(--gold)]" />
-              <h3 className="text-sm font-serif font-medium text-[var(--ink)] tracking-wide uppercase">
+              <h3 className="text-sm font-heading font-medium text-[var(--ink)] tracking-wide uppercase">
                 Enterprise Dashboard Visual Documentation
               </h3>
             </div>
@@ -288,7 +288,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
                   <span className="text-xs font-mono text-[var(--gold)] block mb-1">
                     Client Project · {study.subtitle}
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--ink)]">
+                  <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--ink)]">
                     {study.title}
                   </h2>
                 </div>
@@ -373,7 +373,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
             <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
               Documented Deliverables
             </span>
-            <h3 className="text-2xl font-serif font-medium text-[var(--white)]">
+            <h3 className="text-2xl font-heading font-medium text-[var(--white)]">
               Project Deliverables & Visual Verification
             </h3>
             <p className="text-xs text-[var(--muted)] mt-1">
@@ -465,7 +465,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate, ac
                         )}
                       </div>
                       
-                      <h4 className="text-lg font-serif font-medium text-[var(--white)]">
+                      <h4 className="text-lg font-heading font-medium text-[var(--white)]">
                         {project.title}
                       </h4>
                       

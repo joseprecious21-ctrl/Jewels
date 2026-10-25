@@ -119,7 +119,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
           <span className="tracking-wide uppercase font-medium text-[11px]">Direct SEO Inquiry</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           Contact Jewels
         </h1>
 
@@ -153,7 +153,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
               <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
                 Consultation Proposal
               </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--white)]">
+              <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)]">
                 Request an SEO Consultation
               </h2>
               <p className="text-xs text-[var(--muted)] mt-1 font-light">
@@ -199,7 +199,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 <div className="w-14 h-14 rounded-full bg-[var(--success)]/10 border border-[var(--success)]/40 flex items-center justify-center text-[var(--success)] mx-auto mb-4">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-serif font-medium text-[var(--white)] mb-2">
+                <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-2">
                   Thanks, your enquiry has been sent.
                 </h3>
                 <p className="text-sm text-[var(--muted)] max-w-md mx-auto leading-relaxed mb-6 font-light">
@@ -410,7 +410,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
             <div className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-6 sm:p-7 shadow-xl">
               <div className="flex items-center gap-4 mb-5">
                 {/* Profile Photo with Gold Ring */}
-                <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl p-[2px] bg-gradient-to-br from-[var(--gold)] via-[var(--gold-hover)] to-[var(--line)] shrink-0 shadow-lg shadow-[var(--gold)]/10">
+                <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl p-[2px] bg-[var(--gold)] shrink-0">
                   <div className="w-full h-full rounded-[14px] overflow-hidden bg-[var(--ink)] flex items-center justify-center">
                     <img
                       src={CONTACT_DETAILS.PROFILE_PHOTO}
@@ -429,7 +429,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
                     <span>Accepting New Inquiries</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-serif font-medium text-[var(--white)] truncate">
+                  <h3 className="text-lg sm:text-xl font-heading font-medium text-[var(--white)] truncate">
                     Jewels
                   </h3>
                   <p className="text-xs font-mono text-[var(--gold)]">
@@ -459,7 +459,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
               <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-2">
                 Fast Response & Verified Profiles
               </span>
-              <h3 className="text-xl font-serif font-medium text-[var(--white)] mb-6">
+              <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-6">
                 Direct Communication
               </h3>
 
@@ -569,7 +569,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
               <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
                 Freelance Marketplaces
               </span>
-              <h4 className="text-base font-serif font-medium text-[var(--white)] mb-2">
+              <h4 className="text-base font-heading font-medium text-[var(--white)] mb-2">
                 Prefer to hire through Fiverr, Upwork, or Osdire?
               </h4>
               <p className="text-xs text-[var(--muted)] font-light leading-relaxed mb-4">

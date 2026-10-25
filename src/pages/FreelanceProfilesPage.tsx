@@ -21,7 +21,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
           <span className="tracking-wide uppercase font-medium text-[11px]">Official Freelance Profiles</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 text-balance">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6 text-balance">
           Hire Jewels on Your Preferred Platform
         </h1>
 
@@ -52,7 +52,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 </div>
 
                 {/* Platform Name Heading */}
-                <h2 className="text-2xl font-serif font-medium text-[var(--white)] mb-3">
+                <h2 className="text-2xl font-heading font-medium text-[var(--white)] mb-3">
                   {profile.name}
                 </h2>
 
@@ -90,7 +90,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
             <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
               Direct Communication
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)] mb-4">
+            <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)] mb-4">
               Prefer to contact us directly?
             </h2>
             <p className="text-sm sm:text-base text-[var(--muted)] font-light leading-relaxed">
@@ -231,7 +231,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
             <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
               Marketplace Features
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)] mb-4">
+            <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)] mb-4">
               Why hire through a platform?
             </h2>
             <p className="text-sm sm:text-base text-[var(--muted)] font-light leading-relaxed">
@@ -244,7 +244,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <div className="w-10 h-10 rounded-lg bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-4">
                 <MessageSquare className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-serif font-medium text-[var(--white)] mb-2">
+              <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Marketplace Messaging
               </h3>
               <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
@@ -256,7 +256,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <div className="w-10 h-10 rounded-lg bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-4">
                 <CreditCard className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-serif font-medium text-[var(--white)] mb-2">
+              <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Payment Tools
               </h3>
               <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
@@ -268,7 +268,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <div className="w-10 h-10 rounded-lg bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-4">
                 <CheckSquare className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-serif font-medium text-[var(--white)] mb-2">
+              <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Order Management
               </h3>
               <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
@@ -280,18 +280,13 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
       </section>
 
       {/* 5. CTA BAND: "REQUEST AN SEO CONSULTATION" LINKING TO CONTACT PAGE */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-gradient-to-b from-[var(--card)] to-[var(--ink)] overflow-hidden text-center">
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[250px] bg-[var(--gold)]/10 blur-[130px] pointer-events-none rounded-full" 
-          aria-hidden="true" 
-        />
-        
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--black)] overflow-hidden text-center">
         <div className="relative max-w-3xl mx-auto">
           <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-3 block">
             Direct Consultation
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)] mb-4 text-balance">
+          <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)] mb-4 text-balance">
             Ready to review your search visibility?
           </h2>
 

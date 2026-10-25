@@ -93,7 +93,7 @@ const SectionRow: React.FC<SectionRowProps> = ({ section, index }) => {
       <h2
         id={`heading-section-${index}`}
         aria-label={headingText}
-        className="text-2xl sm:text-3xl font-serif font-medium text-[var(--white)] tracking-tight mb-5 flex items-baseline gap-2.5 flex-wrap"
+        className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)] tracking-tight mb-5 flex items-baseline gap-2.5 flex-wrap"
       >
         {section.sectionNumber && (
           <span className="text-xs font-mono text-[var(--gold)] font-normal tracking-wider px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--line)] self-center">
@@ -337,7 +337,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
         {/* ARTICLE H1 (TYPES OUT AT 45ms PER CHAR WITH GOLD BLINKING CURSOR) */}
         <h1
           aria-label={post.title}
-          className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-[var(--white)] tracking-tight leading-[1.2] mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl font-heading font-medium text-[var(--white)] tracking-tight leading-[1.2] mb-6"
         >
           {/* Accessible element with complete text from start */}
           <span className="sr-only">{post.title}</span>
@@ -457,7 +457,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
           <div className="text-center sm:text-left flex-1">
             <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
-              <h3 className="text-lg font-serif font-medium text-[var(--white)]">
+              <h3 className="text-lg font-heading font-medium text-[var(--white)]">
                 About the Author: Jewels
               </h3>
               <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/30">
@@ -513,7 +513,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
             </span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium text-[var(--white)] mb-4">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-medium text-[var(--white)] mb-4">
             Ready to Optimize Your Google Business Profile?
           </h3>
 

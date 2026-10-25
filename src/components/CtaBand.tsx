@@ -19,20 +19,14 @@ export const CtaBand: React.FC<CtaBandProps> = ({
 }) => {
   const [avatarError, setAvatarError] = React.useState(false);
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-gradient-to-b from-[var(--card)] to-[var(--ink)] overflow-hidden">
-      {/* Subtle gold ambient glow */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[250px] bg-[var(--gold)]/10 blur-[130px] pointer-events-none rounded-full" 
-        aria-hidden="true"
-      />
-
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--graphite)] bg-[var(--black)] overflow-hidden">
       <div className="relative max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)] text-xs text-[var(--gold)] mb-6">
           <Sparkles className="w-3.5 h-3.5" />
           <span className="tracking-wide uppercase font-medium text-[11px]">Direct Collaboration · Custom Scoped</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-[var(--white)] mb-5 text-balance">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium tracking-tight text-[var(--white)] mb-5 text-balance">
           {headline}
         </h2>
 
@@ -42,9 +36,9 @@ export const CtaBand: React.FC<CtaBandProps> = ({
 
         {/* Small circular profile photo with gold ring */}
         {showFounderBadge && (
-          <div className="inline-flex items-center justify-center gap-3.5 mb-8 px-4 py-2 rounded-full bg-[var(--card)]/80 border border-[var(--line)]">
-            <div className="relative w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shadow-md shadow-[var(--gold)]/15 shrink-0">
-              <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center">
+          <div className="inline-flex items-center justify-center gap-3.5 mb-8 px-4 py-2 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)]">
+            <div className="relative w-14 h-14 rounded-full p-[2px] bg-[var(--gold)] shrink-0">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[var(--black)] border border-[var(--graphite)] flex items-center justify-center">
                 {!avatarError ? (
                   <img
                     src={CONTACT_DETAILS.PROFILE_PHOTO}
@@ -57,7 +51,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({
                     className="w-full h-full object-cover object-top"
                   />
                 ) : (
-                  <span className="font-serif text-[var(--gold)] font-bold text-lg">J</span>
+                  <span className="font-heading text-[var(--gold)] font-bold text-lg">J</span>
                 )}
               </div>
             </div>

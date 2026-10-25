@@ -67,7 +67,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
           <span className="tracking-wide uppercase font-medium text-[11px]">Insights & Strategic Analysis</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           SEO Insights & Practical Guides
         </h1>
 
@@ -124,7 +124,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
                 </div>
 
                 {/* Title */}
-                <h2 className="text-xl sm:text-2xl font-serif font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors leading-snug mb-3">
+                <h2 className="text-xl sm:text-2xl font-heading font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors leading-snug mb-3">
                   {post.title}
                 </h2>
 

@@ -190,7 +190,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Bold headline introducing Jewels and its SEO expertise */}
           <h1 
             style={{ textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance"
+            className="text-4xl sm:text-6xl lg:text-7xl font-heading font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance"
           >
             Strategic SEO & Website Optimization for High-Growth Brands
           </h1>
@@ -311,7 +311,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2">
                 Capabilities & Optimization
               </div>
-              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--ink)]">
+              <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)]">
                 Specialized SEO Services
               </h2>
             </div>
@@ -335,7 +335,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E4E4] flex items-center justify-center mb-5 group-hover:border-[var(--gold)] transition-colors">
                     {getServiceIcon(service.iconName)}
                   </div>
-                  <h3 className="text-lg font-serif font-medium text-[var(--ink)] mb-2.5">
+                  <h3 className="text-lg font-heading font-medium text-[var(--ink)] mb-2.5">
                     {service.title}
                   </h3>
                   <p className="text-sm text-[#555555] leading-relaxed font-light">
@@ -369,7 +369,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Interactive Modeling Tool</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-serif font-medium text-[var(--white)]">
+              <h3 className="text-xl sm:text-2xl font-heading font-medium text-[var(--white)]">
                 Visualise Your Search Ranking Journey
               </h3>
               <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
@@ -395,7 +395,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2">
                 Demonstrated Work
               </div>
-              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)]">
+              <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
                 Selected Work
               </h2>
             </div>
@@ -443,7 +443,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl font-serif font-medium text-[var(--white)] mb-2 group-hover:text-[var(--gold-hover)] transition-colors">
+                      <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-2 group-hover:text-[var(--gold-hover)] transition-colors">
                         {project.title}
                       </h3>
                       <p className="text-xs text-[var(--muted)] line-clamp-3 leading-relaxed mb-4 font-light">
@@ -504,11 +504,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="tracking-wide uppercase font-medium text-[11px]">Direct Practitioner Collaboration</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-[var(--ink)] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium text-[var(--ink)] tracking-tight">
                 Work Directly With Jewels
               </h2>
 
-              <p className="text-lg text-[var(--ink)] font-serif italic border-l-2 border-[var(--gold)] pl-4 py-1 leading-relaxed">
+              <p className="text-lg text-[var(--ink)] font-heading italic border-l-2 border-[var(--gold)] pl-4 py-1 leading-relaxed">
                 “Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.”
               </p>
 
@@ -549,7 +549,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <ArrowLeftRight className="w-3.5 h-3.5" />
                   <span>Performance Documentation</span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)]">
+                <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
                   Before and After SEO Results
                 </h2>
                 <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
@@ -601,7 +601,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
             Common Questions
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--ink)] mb-3">
+          <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)] mb-3">
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-[#555555] max-w-xl mx-auto">

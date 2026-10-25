@@ -336,7 +336,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-5">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-5">
           SEO Growth Calculator
         </h1>
 
@@ -363,7 +363,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
             
             <div className="flex items-center justify-between pb-4 border-b border-[var(--line)]">
               <div>
-                <h2 className="text-base font-semibold text-[var(--white)] font-serif">
+                <h2 className="text-base font-semibold text-[var(--white)] font-heading">
                   Simulation Inputs
                 </h2>
                 <p className="text-xs text-[var(--muted)]">Adjust parameters to model your website's trajectory</p>
@@ -969,7 +969,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
             <Layers className="w-3.5 h-3.5" />
             <span className="font-mono uppercase text-[11px]">Structured Progression</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif font-medium text-[var(--white)]">
+          <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
             Milestone Timeline: The 6 Stages of Organic Ascent
           </h2>
           <p className="text-sm text-[var(--muted)] mt-2">
@@ -1011,7 +1011,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                   </span>
                 </div>
 
-                <h3 className="text-base font-serif font-semibold text-[var(--white)] mb-1">
+                <h3 className="text-base font-heading font-semibold text-[var(--white)] mb-1">
                   {stage.name}
                 </h3>
                 <p className="text-xs text-[var(--gold)] font-mono mb-3">
@@ -1044,7 +1044,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
         <div className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-6 sm:p-9 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-[var(--line)]">
             <div>
-              <h2 className="text-2xl font-serif font-medium text-[var(--white)]">
+              <h2 className="text-2xl font-heading font-medium text-[var(--white)]">
                 Illustrative Results Summary
               </h2>
               <p className="text-xs text-[var(--muted)] mt-1">
@@ -1128,9 +1128,9 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
       </section>
 
       {/* 6. CTA BAND */}
-      <section className="bg-gradient-to-b from-[var(--ink)] via-[var(--card)] to-[var(--ink)] border-t border-[var(--line)] py-16 sm:py-20">
+      <section className="bg-[var(--black)] border-t border-[var(--line)] py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-[var(--white)] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium text-[var(--white)] tracking-tight">
             Want a real plan for your website?
           </h2>
           <p className="text-base text-[var(--muted)] max-w-xl mx-auto font-light leading-relaxed">
@@ -1143,7 +1143,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 onNavigate('contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-all shadow-xl shadow-[var(--gold)]/20 hover:shadow-[var(--gold)]/35 cursor-pointer active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer active:scale-95"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-4 h-4" />

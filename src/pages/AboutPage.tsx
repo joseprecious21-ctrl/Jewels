@@ -22,7 +22,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <span className="tracking-wide uppercase font-medium text-[11px]">Professional SEO Practitioner</span>
         </div>
         
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           About Jewels
         </h1>
 
@@ -49,11 +49,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[var(--gold)] bg-black shadow-xl flex items-center justify-center">
                   {imgError ? (
                     /* Fallback to dark card with gold 'J' monogram */
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[var(--card)] to-black text-center p-6">
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-[var(--charcoal)] text-center p-6">
                       <div className="w-20 h-20 rounded-full border-2 border-[var(--gold)] flex items-center justify-center mb-3">
-                        <span className="font-serif text-4xl font-bold text-[var(--gold)]">J</span>
+                        <span className="font-heading text-4xl font-bold text-[var(--gold)]">J</span>
                       </div>
-                      <span className="text-sm font-serif text-[var(--white)]">Jewels Founder</span>
+                      <span className="text-sm font-heading text-[var(--white)]">Jewels Founder</span>
                       <span className="text-xs font-mono text-[var(--muted)] mt-1">SEO Specialist</span>
                     </div>
                   ) : (
@@ -84,7 +84,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </span>
 
                 {/* Mandated copy: */}
-                <p className="text-lg sm:text-xl text-[var(--ink)] font-serif leading-relaxed italic border-l-2 border-[var(--gold)] pl-5 py-2">
+                <p className="text-lg sm:text-xl text-[var(--ink)] font-heading leading-relaxed italic border-l-2 border-[var(--gold)] pl-5 py-2">
                   “Jewels is focused on helping businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization. The portfolio showcases SEO projects, website improvements, Google Business Profile work, and case studies showing project progress and outcomes.”
                 </p>
               </div>

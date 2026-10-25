@@ -73,7 +73,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
           <span className="tracking-wide uppercase font-medium text-[11px]">Demonstrated Deliverables</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           SEO Portfolio
         </h1>
 
@@ -193,7 +193,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                       )}
                     </div>
 
-                    <h3 className="text-xl font-serif font-medium text-[var(--white)] mb-2.5 group-hover:text-[var(--gold-hover)] transition-colors leading-snug">
+                    <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-2.5 group-hover:text-[var(--gold-hover)] transition-colors leading-snug">
                       {project.title}
                     </h3>
 

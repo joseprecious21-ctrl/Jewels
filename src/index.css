@@ -1,53 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0A0A0A;
-  --card: #141414;
-  --line: #2A2A2A;
-  --gold: #C9A227;
-  --gold-hover: #E2C25A;
-  --white: #FFFFFF;
-  --muted: #A8A8A8;
+  --black: #0A0A0A;     /* main background */
+  --charcoal: #141414;  /* cards on dark sections */
+  --graphite: #2A2A2A;  /* borders and dividers */
+  --gold: #C9A227;      /* brand accent, buttons, icons */
+  --gold-hover: #E2C25A;/* hover and active */
+  --white: #FFFFFF;     /* text on dark, light sections */
+  --muted: #A8A8A8;     /* secondary text on dark */
+  --light-card: #FAFAFA;/* cards on white sections */
+  --light-line: #E4E4E4;/* borders on white sections */
+
+  /* Aliases for backwards compatibility with existing variables */
+  --ink: var(--black);
+  --card: var(--charcoal);
+  --line: var(--graphite);
+
+  /* Functional accent exceptions */
   --google-blue: #4285F4;
   --success: #34A853;
   --alert: #EA4335;
+
+  /* Font stacks */
+  --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 @theme {
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-ink: var(--ink);
-  --color-card: var(--card);
-  --color-line: var(--line);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading); /* Replaces any remaining serif usages with Plus Jakarta Sans */
+
+  --color-black: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-graphite: var(--graphite);
   --color-gold: var(--gold);
   --color-gold-hover: var(--gold-hover);
   --color-white: var(--white);
   --color-muted: var(--muted);
+  --color-light-card: var(--light-card);
+  --color-light-line: var(--light-line);
+
+  --color-ink: var(--black);
+  --color-card: var(--charcoal);
+  --color-line: var(--graphite);
   --color-google-blue: var(--google-blue);
   --color-success: var(--success);
   --color-alert: var(--alert);
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--ink);
+  font-family: var(--font-body);
+  background-color: var(--black);
   color: var(--white);
+  font-size: 1rem;
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
-h1, h2, h3, .font-display {
-  font-family: var(--font-serif);
+/* Headings: Plus Jakarta Sans */
+h1, h2, h3, h4, .font-heading, .logo-wordmark, .section-title, .card-title, .big-number {
+  font-family: var(--font-heading);
 }
 
-/* Subtle luxury gold gradient utilities */
-.gold-gradient-text {
-  background: linear-gradient(135deg, #FFF3D0 0%, var(--gold) 50%, var(--gold-hover) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
-.gold-gradient-border {
-  border-image: linear-gradient(to right, rgba(201, 162, 39, 0.4), rgba(226, 194, 90, 0.1), transparent) 1;
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Body text, paragraphs, forms, buttons, captions: Inter */
+p, li, blockquote, label, input, textarea, select {
+  font-family: var(--font-body);
+}
+
+/* Lead paragraphs */
+.lead-p, p.lead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+/* Buttons and navigation links */
+button, nav a, nav button, .btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Small text and captions: never below 14px (0.875rem) */
+small, .text-caption, caption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.875rem;
 }
 
 /* Focus styles for keyboard accessibility */

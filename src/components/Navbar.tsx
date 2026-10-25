@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="group flex items-center gap-2.5 sm:gap-3 text-left cursor-pointer focus-visible:outline-none"
               aria-label="Jewels SEO Homepage"
             >
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] via-[var(--gold-hover)] to-[var(--gold)] shadow-[0_0_12px_rgba(201,162,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-[var(--gold)] shrink-0 transition-transform group-hover:scale-105">
                 <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)] flex items-center justify-center">
                   {!logoError ? (
                     <img
@@ -76,11 +76,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onError={() => setLogoError(true)}
                     />
                   ) : (
-                    <span className="font-serif font-bold text-sm text-[var(--gold)]">J</span>
+                    <span className="font-heading font-bold text-sm text-[var(--gold)]">J</span>
                   )}
                 </div>
               </div>
-              <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors whitespace-nowrap">
+              <span className="font-heading text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors whitespace-nowrap">
                 Jewels
               </span>
             </button>
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Founder & SEO Specialist · Jewels"
               className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer"
             >
-              <div className="w-5 h-5 rounded-full p-[1px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shrink-0 overflow-hidden">
+              <div className="w-5 h-5 rounded-full p-[1px] bg-[var(--gold)] shrink-0 overflow-hidden">
                 <img
                   src={CONTACT_DETAILS.PROFILE_PHOTO}
                   alt="Jewels founder profile"
@@ -184,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => handleLinkClick('about')}
             className="flex items-center gap-3 p-3 mb-3 rounded-xl bg-[var(--ink)] border border-[var(--line)] cursor-pointer hover:border-[var(--gold)]/50 transition-colors"
           >
-            <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-[var(--gold)] to-[var(--gold-hover)] shrink-0">
+            <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-[var(--gold)] shrink-0">
               <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)]">
                 <img
                   src={CONTACT_DETAILS.PROFILE_PHOTO}

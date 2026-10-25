@@ -43,7 +43,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           <span className="tracking-wide uppercase font-medium text-[11px]">Comprehensive SEO Solutions</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[var(--white)] mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           SEO & Optimization Services
         </h1>
 
@@ -95,7 +95,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-serif font-medium text-[var(--ink)] mb-3 group-hover:text-[var(--gold)] transition-colors leading-snug">
+                    <h3 className="text-xl font-heading font-medium text-[var(--ink)] mb-3 group-hover:text-[var(--gold)] transition-colors leading-snug">
                       {service.title}
                     </h3>
 
@@ -137,7 +137,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Interactive Growth Tool</span>
             </div>
-            <h3 className="text-2xl font-serif font-medium text-[var(--white)]">
+            <h3 className="text-2xl font-heading font-medium text-[var(--white)]">
               See How SEO Services Drive Search Visibility
             </h3>
             <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl font-light leading-relaxed">
@@ -160,7 +160,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
             Service FAQ
           </span>
-          <h2 className="text-3xl font-serif font-medium text-[var(--white)]">
+          <h2 className="text-3xl font-heading font-medium text-[var(--white)]">
             Questions on Services & Quoting
           </h2>
         </div>
