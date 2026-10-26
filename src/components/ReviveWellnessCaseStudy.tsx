@@ -120,21 +120,21 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
       {/* 1. HEADING: "Revive Wellness" with a gold tag "Google Business Profile" */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[var(--line)]">
         <div>
-          <span className="text-xs font-mono text-[var(--gold)] block mb-1">
+          <span className="text-sm font-sans text-[var(--gold)] block mb-1">
             Verified Project Showcase · Local Search Verification
           </span>
           <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)]">
             Revive Wellness
           </h2>
         </div>
-        <span className="px-3 py-1 rounded text-xs font-mono font-medium bg-[var(--gold)]/10 border border-[var(--gold)] text-[var(--gold)] w-fit">
+        <span className="px-3 py-1 rounded text-sm font-sans font-medium bg-[var(--gold)]/10 border border-[var(--gold)] text-[var(--gold)] w-fit">
           Google Business Profile
         </span>
       </div>
 
       {/* 2. SHORT OVERVIEW LINE */}
       <div className="py-6 border-b border-[var(--line)]">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
+        <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-[var(--muted)] mb-2">
           Project Overview
         </h3>
         <p className="text-base text-[var(--white)] font-light leading-relaxed max-w-4xl">
@@ -148,7 +148,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-[var(--gold)]" />
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--white)] font-medium">
+            <span className="text-sm font-sans uppercase tracking-wider text-[var(--white)] font-medium">
               Profile Verification Comparison
             </span>
           </div>
@@ -163,7 +163,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
               role="tab"
               aria-selected={viewMode === 'side-by-side'}
               onClick={() => setViewMode('side-by-side')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-sans font-medium transition-all duration-200 cursor-pointer ${
                 viewMode === 'side-by-side'
                   ? 'bg-[var(--gold)] text-[var(--ink)] shadow-md shadow-[var(--gold)]/20 font-semibold'
                   : 'text-[var(--muted)] hover:text-[var(--white)]'
@@ -177,7 +177,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
               role="tab"
               aria-selected={viewMode === 'slider'}
               onClick={() => setViewMode('slider')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-sans font-medium transition-all duration-200 cursor-pointer ${
                 viewMode === 'slider'
                   ? 'bg-[var(--gold)] text-[var(--ink)] shadow-md shadow-[var(--gold)]/20 font-semibold'
                   : 'text-[var(--muted)] hover:text-[var(--white)]'
@@ -196,10 +196,10 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
             <div className="rounded-xl border border-[#C9A227] bg-[#141414] p-4 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--line)]">
-                  <span className="px-2.5 py-1 rounded bg-[#EA4335]/15 border border-[#EA4335] text-[#EA4335] text-xs font-mono font-semibold">
+                  <span className="px-2.5 py-1 rounded bg-[#EA4335]/15 border border-[#EA4335] text-[#EA4335] text-sm font-sans font-semibold">
                     Before verification
                   </span>
-                  <span className="text-[11px] font-mono text-[var(--muted)]">Initial Status</span>
+                  <span className="text-sm font-sans text-[var(--muted)]">Initial Status</span>
                 </div>
 
                 {/* Frame: object-fit: contain so no detail is cropped */}
@@ -234,13 +234,13 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center bg-[#141414] text-[#C9A227] p-6 text-center border border-[#C9A227]/30">
                       <ImageIcon className="w-10 h-10 mb-2 opacity-80" />
-                      <span className="font-mono text-xs font-semibold">Add screenshot here</span>
+                      <span className="font-sans text-sm font-semibold">Add screenshot here</span>
                     </div>
                   )}
 
                   {!beforeError && (
-                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/85 text-[var(--gold)] text-[10px] font-mono px-2 py-1 rounded border border-[#C9A227]/40 flex items-center gap-1 backdrop-blur-sm pointer-events-none">
-                      <Maximize2 className="w-3 h-3" />
+                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/85 text-[var(--gold)] text-sm font-sans px-2.5 py-1 rounded border border-[#C9A227]/40 flex items-center gap-1 backdrop-blur-sm pointer-events-none">
+                      <Maximize2 className="w-3.5 h-3.5" />
                       <span>Click to enlarge</span>
                     </div>
                   )}
@@ -253,12 +253,12 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                   <button
                     type="button"
                     onClick={(e) => onOpenLightbox(BEFORE_IMAGE_URL, BEFORE_ALT, 'Revive Wellness — Before verification', e.currentTarget)}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer"
                   >
                     <Maximize2 className="w-3.5 h-3.5" />
                     <span>View full image</span>
                   </button>
-                  <span className="text-[11px] font-mono text-[var(--muted)]">100% uncropped</span>
+                  <span className="text-sm font-sans text-[var(--muted)]">100% uncropped</span>
                 </div>
               )}
             </div>
@@ -267,10 +267,10 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
             <div className="rounded-xl border border-[#C9A227] bg-[#141414] p-4 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--line)]">
-                  <span className="px-2.5 py-1 rounded bg-[#34A853]/15 border border-[#34A853] text-[#34A853] text-xs font-mono font-semibold">
+                  <span className="px-2.5 py-1 rounded bg-[#34A853]/15 border border-[#34A853] text-[#34A853] text-sm font-sans font-semibold">
                     After verification
                   </span>
-                  <span className="text-[11px] font-mono text-[#34A853] font-medium flex items-center gap-1">
+                  <span className="text-sm font-sans text-[#34A853] font-medium flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Verified Listing
                   </span>
@@ -308,13 +308,13 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center bg-[#141414] text-[#C9A227] p-6 text-center border border-[#C9A227]/30">
                       <ImageIcon className="w-10 h-10 mb-2 opacity-80" />
-                      <span className="font-mono text-xs font-semibold">Add screenshot here</span>
+                      <span className="font-sans text-sm font-semibold">Add screenshot here</span>
                     </div>
                   )}
 
                   {!afterError && (
-                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/85 text-[var(--gold)] text-[10px] font-mono px-2 py-1 rounded border border-[#C9A227]/40 flex items-center gap-1 backdrop-blur-sm pointer-events-none">
-                      <Maximize2 className="w-3 h-3" />
+                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/85 text-[var(--gold)] text-sm font-sans px-2.5 py-1 rounded border border-[#C9A227]/40 flex items-center gap-1 backdrop-blur-sm pointer-events-none">
+                      <Maximize2 className="w-3.5 h-3.5" />
                       <span>Click to enlarge</span>
                     </div>
                   )}
@@ -327,12 +327,12 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                   <button
                     type="button"
                     onClick={(e) => onOpenLightbox(AFTER_IMAGE_URL, AFTER_ALT, 'Revive Wellness — After verification', e.currentTarget)}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer"
                   >
                     <Maximize2 className="w-3.5 h-3.5" />
                     <span>View full image</span>
                   </button>
-                  <span className="text-[11px] font-mono text-[#34A853]">Live on Google</span>
+                  <span className="text-sm font-sans text-[#34A853]">Live on Google</span>
                 </div>
               )}
             </div>
@@ -371,7 +371,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                 ) : (
                   <div className="flex flex-col items-center justify-center text-[#C9A227]">
                     <ImageIcon className="w-8 h-8 mb-2" />
-                    <span className="font-mono text-xs">Add screenshot here</span>
+                    <span className="font-sans text-sm">Add screenshot here</span>
                   </div>
                 )}
               </div>
@@ -398,7 +398,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                   ) : (
                     <div className="flex flex-col items-center justify-center text-[#C9A227]">
                       <ImageIcon className="w-8 h-8 mb-2" />
-                      <span className="font-mono text-xs">Add screenshot here</span>
+                      <span className="font-sans text-sm">Add screenshot here</span>
                     </div>
                   )}
                 </div>
@@ -419,16 +419,16 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
               </div>
 
               {/* Badges on the slider corners */}
-              <span className="absolute top-3 left-3 z-30 px-2.5 py-1 rounded bg-[#EA4335]/90 border border-[#EA4335] text-white text-xs font-mono font-semibold shadow-md backdrop-blur-sm pointer-events-none">
+              <span className="absolute top-3 left-3 z-30 px-2.5 py-1 rounded bg-[#EA4335]/90 border border-[#EA4335] text-white text-sm font-sans font-semibold shadow-md backdrop-blur-sm pointer-events-none">
                 Before verification
               </span>
-              <span className="absolute top-3 right-3 z-30 px-2.5 py-1 rounded bg-[#34A853]/90 border border-[#34A853] text-white text-xs font-mono font-semibold shadow-md backdrop-blur-sm pointer-events-none">
+              <span className="absolute top-3 right-3 z-30 px-2.5 py-1 rounded bg-[#34A853]/90 border border-[#34A853] text-white text-sm font-sans font-semibold shadow-md backdrop-blur-sm pointer-events-none">
                 After verification
               </span>
             </div>
 
             {/* Slider Controls / Lightbox helpers */}
-            <div className="flex flex-wrap items-center justify-between gap-2 px-1 pt-1 text-xs font-mono">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-1 pt-1 text-sm font-sans">
               <button
                 type="button"
                 onClick={(e) => onOpenLightbox(BEFORE_IMAGE_URL, BEFORE_ALT, 'Revive Wellness — Before verification', e.currentTarget)}
@@ -438,7 +438,7 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
                 <span>View full Before image</span>
               </button>
 
-              <span className="text-[var(--muted)] text-[11px] text-center hidden sm:inline">
+              <span className="text-[var(--muted)] text-sm font-sans text-center hidden sm:inline">
                 Drag divider or use ← → arrow keys to compare
               </span>
 
@@ -455,14 +455,14 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
         )}
 
         {/* 5. CAPTION UNDER THE IMAGES */}
-        <p className="mt-5 text-xs font-mono text-[var(--muted)] leading-relaxed">
+        <p className="mt-5 text-sm font-sans text-[var(--muted)] leading-relaxed">
           Google Business Profile status before and after verification.
         </p>
       </div>
 
       {/* 6. WHAT WAS DONE */}
       <div className="py-6 border-t border-[var(--line)]">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-3">
+        <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-[var(--muted)] mb-3">
           What was done
         </h3>
         <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-[var(--ink)] border border-[var(--line)] text-sm text-[var(--white)] font-light">
@@ -478,14 +478,14 @@ export const ReviveWellnessCaseStudy: React.FC<ReviveWellnessCaseStudyProps> = (
             <h4 className="text-lg font-heading font-medium text-[var(--white)] mb-1">
               Need help verifying your Google Business Profile?
             </h4>
-            <p className="text-xs text-[var(--muted)] font-light">
+            <p className="text-sm text-[var(--muted)] font-light">
               Get direct assistance with ownership verification, reinstatement support, and Google Maps listing setup.
             </p>
           </div>
           <button
             type="button"
             onClick={() => onNavigate('contact', 'google-business-profile')}
-            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--gold)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase hover:bg-[var(--gold-hover)] transition-all duration-200 shadow-md shadow-[var(--gold)]/20 cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] shrink-0"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--gold)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase hover:bg-[var(--gold-hover)] transition-all duration-200 shadow-md shadow-[var(--gold)]/20 cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] shrink-0"
           >
             <span>Request an SEO Consultation</span>
             <ArrowRight className="w-4 h-4" />

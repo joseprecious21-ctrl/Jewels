@@ -143,10 +143,10 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
         <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--line)] bg-[var(--ink)]/60">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--line)]">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--line)]">
                 Site Launch Checklist
               </span>
-              <span className="text-xs text-[var(--muted)]">Section 11 Specification</span>
+              <span className="text-sm text-[var(--muted)]">Section 11 Specification</span>
             </div>
             <h3 id="checklist-modal-title" className="text-xl font-heading font-semibold text-[var(--white)] mt-1">
               Owner Pre-Launch Checklist
@@ -162,7 +162,7 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
         </div>
 
         {/* Info banner */}
-        <div className="p-4 bg-[var(--ink)] border-b border-[var(--line)] text-xs text-[var(--muted)] flex items-center gap-2.5">
+        <div className="p-4 bg-[var(--ink)] border-b border-[var(--line)] text-sm text-[var(--muted)] flex items-center gap-2.5">
           <AlertTriangle className="w-4 h-4 text-[var(--gold)] shrink-0" />
           <span>
             Every item below corresponds to a strict no-invented-content rule. Update them prior to your public release.
@@ -176,12 +176,12 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
               <div className="flex-1 min-w-0 pr-2">
                 <div className="flex items-center gap-2">
                   <h4 className="text-sm font-medium text-[var(--white)]">{item.title}</h4>
-                  <span className="text-[11px] font-mono text-[var(--gold)] bg-[var(--ink)] px-1.5 py-0.5 rounded border border-[var(--line)]">
+                  <span className="text-sm font-sans text-[var(--gold)] bg-[var(--ink)] px-1.5 py-0.5 rounded border border-[var(--line)]">
                     {item.placeholder}
                   </span>
                 </div>
-                <p className="text-xs text-[var(--muted)] mt-1">{item.detail}</p>
-                <p className="text-[11px] font-mono text-[var(--muted)]/70 mt-0.5">Location: {item.file}</p>
+                <p className="text-sm text-[var(--muted)] mt-1">{item.detail}</p>
+                <p className="text-sm font-sans text-[var(--muted)]/70 mt-0.5">Location: {item.file}</p>
               </div>
 
               <button
@@ -189,7 +189,7 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
                   onNavigate(item.actionPage);
                   onClose();
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--ink)] hover:bg-[var(--gold)] hover:text-[var(--ink)] text-[var(--white)] border border-[var(--line)] transition-all shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-[var(--ink)] hover:bg-[var(--gold)] hover:text-[var(--ink)] text-[var(--white)] border border-[var(--line)] transition-all shrink-0 cursor-pointer"
               >
                 <span>Inspect</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -199,7 +199,7 @@ export const PreLaunchChecklistModal: React.FC<PreLaunchChecklistModalProps> = (
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-[var(--line)] bg-[var(--ink)]/50 flex items-center justify-between text-xs text-[var(--muted)]">
+        <div className="px-6 py-4 border-t border-[var(--line)] bg-[var(--ink)]/50 flex items-center justify-between text-sm text-[var(--muted)]">
           <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-[var(--success)]" />
             <span>Clean architecture ready for rapid asset drop-in</span>

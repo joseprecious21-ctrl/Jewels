@@ -180,9 +180,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           />
 
           {/* Subtle kicker badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-xs text-[var(--gold)] mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-sm text-[var(--gold)] mb-6 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5" />
-            <span className="tracking-wide uppercase font-medium text-[11px]">
+            <span className="tracking-wide uppercase font-medium text-sm">
               Professional SEO Portfolio & Optimization
             </span>
           </div>
@@ -229,7 +229,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </button>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--muted)] font-mono">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-[var(--muted)] font-sans">
             <span>Enterprise & Local SEO</span>
             <span aria-hidden="true">·</span>
             <span>All Services Quoted Individually</span>
@@ -247,10 +247,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[var(--ink)] to-transparent z-10 pointer-events-none" />
 
         <div className="w-full overflow-hidden">
-          <div className="animate-marquee-left flex items-center gap-12 text-xs sm:text-sm font-medium text-[var(--muted)]">
+          <div className="animate-marquee-left flex items-center gap-12 text-sm font-medium text-[var(--muted)]">
             {/* Loop Segment A */}
             <div className="flex items-center gap-10 shrink-0">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
                 Core Expertise
               </span>
               {CORE_AREAS.map((area, idx) => (
@@ -263,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             {/* Loop Segment B (Identical for seamless infinite scroll) */}
             <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
                 Core Expertise
               </span>
               {CORE_AREAS.map((area, idx) => (
@@ -276,7 +276,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             {/* Loop Segment C */}
             <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
                 Core Expertise
               </span>
               {CORE_AREAS.map((area, idx) => (
@@ -289,7 +289,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             {/* Loop Segment D */}
             <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
                 Core Expertise
               </span>
               {CORE_AREAS.map((area, idx) => (
@@ -308,7 +308,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2">
+              <div className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2">
                 Capabilities & Optimization
               </div>
               <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)]">
@@ -346,7 +346,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div className="mt-6 pt-5 border-t border-[#E4E4E4]">
                   <button
                     onClick={() => onNavigate('contact', service.id)}
-                    className="text-xs font-semibold text-[var(--gold)] hover:text-[#0A0A0A] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                    className="text-sm font-semibold text-[var(--gold)] hover:text-[#0A0A0A] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>Request a custom quote</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -357,7 +357,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="mt-10 text-center">
-            <p className="text-xs text-[#777777]">
+            <p className="text-sm text-[#777777]">
               All services are quoted individually. Request a Custom Quote.
             </p>
           </div>
@@ -365,20 +365,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Interactive Growth Calculator Spotlight Banner */}
           <div className="mt-14 p-7 sm:p-8 rounded-2xl bg-[var(--ink)] border border-[var(--gold)]/30 text-[var(--white)] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
             <div className="space-y-1.5 max-w-2xl text-left">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 text-sm font-sans uppercase tracking-wider text-[var(--gold)]">
+                <Sparkles className="w-4 h-4" />
                 <span>Interactive Modeling Tool</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-heading font-medium text-[var(--white)]">
                 Visualise Your Search Ranking Journey
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
                 Curious what an SEO climb looks like? Test starting positions, competition levels, and focus areas with our animated Growth Calculator.
               </p>
             </div>
             <button
               onClick={() => onNavigate('calculator')}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
             >
               <span>Open Growth Calculator</span>
               <ArrowRight className="w-4 h-4" />
@@ -392,7 +392,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2">
+              <div className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2">
                 Demonstrated Work
               </div>
               <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
@@ -428,11 +428,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-xs font-mono">
+                      <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-sm font-sans">
                         [Screenshot]
                       </div>
                     )}
-                    <div className={`absolute top-3 left-3 text-[11px] font-mono tracking-wider px-2 py-0.5 rounded backdrop-blur-sm ${
+                    <div className={`absolute top-3 left-3 text-sm font-sans tracking-wider px-2 py-0.5 rounded backdrop-blur-sm ${
                       isGbp 
                         ? 'bg-[#4285F4]/20 border border-[#4285F4]/40 text-[var(--google-blue)]'
                         : 'bg-black/80 border border-[var(--line)] text-[var(--gold)]'
@@ -446,7 +446,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                       <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-2 group-hover:text-[var(--gold-hover)] transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-xs text-[var(--muted)] line-clamp-3 leading-relaxed mb-4 font-light">
+                      <p className="text-sm text-[var(--muted)] line-clamp-3 leading-relaxed mb-4 font-light">
                         {project.caption}
                       </p>
                     </div>
@@ -454,7 +454,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     <div className="pt-4 border-t border-[var(--line)]">
                       <button
                         onClick={() => onNavigate('case-studies', project.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--gold)] hover:text-[var(--white)] transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--gold)] hover:text-[var(--white)] transition-colors cursor-pointer"
                       >
                         <span>View case study</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -492,16 +492,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   />
                 </div>
               </div>
-              <p className="text-[11px] font-mono text-[#777777] mt-4 text-center">
+              <p className="text-sm font-sans text-[#777777] mt-4 text-center">
                 Founder & SEO Specialist · Jewels
               </p>
             </div>
 
             {/* Direct Collaboration Story */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E4E4E4] text-xs text-[var(--gold)]">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span className="tracking-wide uppercase font-medium text-[11px]">Direct Practitioner Collaboration</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E4E4E4] text-sm text-[var(--gold)]">
+                <Sparkles className="w-4 h-4" />
+                <span className="tracking-wide uppercase font-medium text-sm">Direct Practitioner Collaboration</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium text-[var(--ink)] tracking-tight">
@@ -519,7 +519,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
                 >
                   <span>Request an SEO Consultation</span>
                   <ArrowRight className="w-4 h-4" />
@@ -527,7 +527,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                 <button
                   onClick={() => onNavigate('about')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D0D0D0] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-mono transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D0D0D0] hover:border-[var(--gold)] text-[var(--ink)] text-sm font-sans font-medium transition-colors cursor-pointer"
                 >
                   <span>About Jewels & Expertise</span>
                 </button>
@@ -545,8 +545,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               
               <div className="lg:col-span-5 space-y-4">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
-                  <ArrowLeftRight className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 text-sm font-sans uppercase tracking-wider text-[var(--gold)]">
+                  <ArrowLeftRight className="w-4 h-4" />
                   <span>Performance Documentation</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
@@ -558,10 +558,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div className="pt-2">
                   <button
                     onClick={() => onNavigate('case-studies', 'results-before-after')}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
                   >
                     <span>Explore Case Studies</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -575,14 +575,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     referrerPolicy="no-referrer"
                     className="w-full h-auto rounded-lg object-contain transition-transform duration-300 group-hover:scale-[1.01]"
                   />
-                  <div className="p-3 bg-[var(--card)] rounded-b-lg border-t border-[var(--line)] flex items-center justify-between text-xs font-mono">
+                  <div className="p-3 bg-[var(--card)] rounded-b-lg border-t border-[var(--line)] flex items-center justify-between text-sm font-sans">
                     <span className="text-[var(--muted)]">Image 2: SEO Results Before & After</span>
                     <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded bg-[var(--alert)]/10 text-[var(--alert)] border border-[var(--alert)]/40 text-[10px]">
+                      <span className="px-2 py-0.5 rounded bg-[var(--alert)]/10 text-[var(--alert)] border border-[var(--alert)]/40 text-sm font-sans">
                         Before
                       </span>
                       <span className="text-[var(--muted)]">→</span>
-                      <span className="px-2 py-0.5 rounded bg-[var(--success)]/10 text-[var(--success)] border border-[var(--success)]/40 text-[10px]">
+                      <span className="px-2 py-0.5 rounded bg-[var(--success)]/10 text-[var(--success)] border border-[var(--success)]/40 text-sm font-sans">
                         After
                       </span>
                     </div>
@@ -598,7 +598,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 6. FAQ ACCORDION (WHITE SECTION: #FFFFFF rhythm) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#E4E4E4] bg-[var(--white)] text-[var(--ink)]">
         <div className="max-w-4xl mx-auto text-center mb-12">
-          <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+          <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2 block">
             Common Questions
           </span>
           <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)] mb-3">

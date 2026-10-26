@@ -16,9 +16,9 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
       
       {/* 1. HERO SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Official Freelance Profiles</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6">
+          <Sparkles className="w-4 h-4" />
+          <span className="tracking-wide uppercase font-medium text-sm">Official Freelance Profiles</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6 text-balance">
@@ -74,7 +74,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                   <span>View profile on {profile.name}</span>
                   <ExternalLink className="w-4 h-4 shrink-0" />
                 </a>
-                <span className="block text-center text-[11px] font-mono text-[var(--muted)] mt-2.5">
+                <span className="block text-center text-sm font-sans text-[var(--muted)] mt-2.5">
                   Opens in a new tab
                 </span>
               </div>
@@ -87,7 +87,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--card)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+            <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2 block">
               Direct Communication
             </span>
             <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)] mb-4">
@@ -109,13 +109,13 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <div className="flex items-center gap-3 mb-3">
                 <BrandBadge brand="email" badgeSize="sm" />
                 <div>
-                  <div className="text-[11px] font-mono text-[var(--muted)]">Email</div>
+                  <div className="text-sm font-sans text-[var(--muted)]">Email</div>
                   <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
                     Direct Inquiry
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
+              <div className="text-sm text-[var(--muted)] truncate font-sans pt-2 border-t border-[var(--line)]/50">
                 {CONTACT_DETAILS.EMAIL}
               </div>
             </a>
@@ -132,7 +132,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 <div className="flex items-center gap-3">
                   <BrandBadge brand="whatsapp" badgeSize="sm" />
                   <div>
-                    <div className="text-[11px] font-mono text-[var(--muted)]">WhatsApp</div>
+                    <div className="text-sm font-sans text-[var(--muted)]">WhatsApp</div>
                     <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#25D366] transition-colors">
                       Direct Chat
                     </div>
@@ -140,7 +140,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[#25D366] transition-colors" />
               </div>
-              <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
+              <div className="text-sm text-[var(--muted)] truncate font-sans pt-2 border-t border-[var(--line)]/50">
                 Chat with Jewels
               </div>
             </a>
@@ -157,7 +157,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 <div className="flex items-center gap-3">
                   <BrandBadge brand="tiktok" badgeSize="sm" />
                   <div>
-                    <div className="text-[11px] font-mono text-[var(--muted)]">TikTok</div>
+                    <div className="text-sm font-sans text-[var(--muted)]">TikTok</div>
                     <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
                       @jewelsteam_1
                     </div>
@@ -165,7 +165,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors" />
               </div>
-              <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
+              <div className="text-sm text-[var(--muted)] truncate font-sans pt-2 border-t border-[var(--line)]/50">
                 Official profile
               </div>
             </a>
@@ -182,7 +182,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 <div className="flex items-center gap-3">
                   <BrandBadge brand="instagram" badgeSize="sm" />
                   <div>
-                    <div className="text-[11px] font-mono text-[var(--muted)]">Instagram</div>
+                    <div className="text-sm font-sans text-[var(--muted)]">Instagram</div>
                     <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#E4405F] transition-colors">
                       Instagram
                     </div>
@@ -190,7 +190,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors" />
               </div>
-              <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
+              <div className="text-sm text-[var(--muted)] truncate font-sans pt-2 border-t border-[var(--line)]/50">
                 @jewelsteamgrowth
               </div>
             </a>
@@ -207,7 +207,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 <div className="flex items-center gap-3">
                   <BrandBadge brand="linkedin" badgeSize="sm" />
                   <div>
-                    <div className="text-[11px] font-mono text-[var(--muted)]">LinkedIn</div>
+                    <div className="text-sm font-sans text-[var(--muted)]">LinkedIn</div>
                     <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#0A66C2] transition-colors">
                       Precious Ayofe
                     </div>
@@ -215,7 +215,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[var(--white)] transition-colors" />
               </div>
-              <div className="text-xs text-[var(--muted)] truncate font-mono pt-2 border-t border-[var(--line)]/50">
+              <div className="text-sm text-[var(--muted)] truncate font-sans pt-2 border-t border-[var(--line)]/50">
                 Professional network
               </div>
             </a>
@@ -228,7 +228,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--ink)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+            <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2 block">
               Marketplace Features
             </span>
             <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)] mb-4">
@@ -247,7 +247,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Marketplace Messaging
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
                 Use the platform's native chat, file attachments, and notification systems to communicate with the team.
               </p>
             </div>
@@ -259,7 +259,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Payment Tools
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
                 Pay using the marketplace's supported payment methods, invoicing records, and standard currency handling.
               </p>
             </div>
@@ -271,7 +271,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
               <h3 className="text-lg font-heading font-medium text-[var(--white)] mb-2">
                 Order Management
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
                 Track deliverables, scope submissions, and project milestones directly through your platform account.
               </p>
             </div>
@@ -282,7 +282,7 @@ export const FreelanceProfilesPage: React.FC<FreelanceProfilesPageProps> = ({ on
       {/* 5. CTA BAND: "REQUEST AN SEO CONSULTATION" LINKING TO CONTACT PAGE */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--black)] overflow-hidden text-center">
         <div className="relative max-w-3xl mx-auto">
-          <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-3 block">
+          <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-3 block">
             Direct Consultation
           </span>
 

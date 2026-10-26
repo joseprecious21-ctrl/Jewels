@@ -38,9 +38,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       
       {/* 1. Page Heading & Intro Line (DARK SECTION: #0A0A0A) */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Comprehensive SEO Solutions</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6">
+          <Sparkles className="w-4 h-4" />
+          <span className="tracking-wide uppercase font-medium text-sm">Comprehensive SEO Solutions</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
@@ -52,7 +52,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </p>
 
         {/* Mandatory Note: “All services are quoted individually. Request a Custom Quote.” */}
-        <div className="mt-8 inline-block p-4 rounded-xl bg-[var(--card)] border border-[var(--line)] text-xs sm:text-sm text-[var(--white)]">
+        <div className="mt-8 inline-block p-4 rounded-xl bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--white)]">
           <span className="font-semibold text-[var(--gold)]">Pricing Note: </span>
           All services are quoted individually. Request a Custom Quote.
         </div>
@@ -80,16 +80,16 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                       </div>
                       <div className="flex items-center gap-2">
                         {isGoogle && (
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#4285F4]/10 text-[var(--google-blue)] border border-[#4285F4]/30">
+                          <span className="text-sm font-sans px-2.5 py-0.5 rounded bg-[#4285F4]/10 text-[var(--google-blue)] border border-[#4285F4]/30">
                             Google Integration
                           </span>
                         )}
                         {isSuspension && (
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--alert)]/10 text-[var(--alert)] border border-[var(--alert)]/30">
+                          <span className="text-sm font-sans px-2 py-0.5 rounded bg-[var(--alert)]/10 text-[var(--alert)] border border-[var(--alert)]/30">
                             Suspension Support
                           </span>
                         )}
-                        <span className="font-mono text-xs text-[#999999]">
+                        <span className="font-sans text-sm text-[#999999]">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
@@ -105,12 +105,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                   </div>
 
                   <div className="mt-8 pt-5 border-t border-[#E4E4E4] flex items-center justify-between">
-                    <span className="text-xs font-mono text-[#888888]">Custom Scoped</span>
+                    <span className="text-sm font-sans text-[#888888]">Custom Scoped</span>
                     
                     {/* “Request a Custom Quote” link to Contact page */}
                     <button
                       onClick={() => onNavigate('contact', service.id)}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--gold)] hover:text-[#0A0A0A] transition-colors cursor-pointer group-hover:underline"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--gold)] hover:text-[#0A0A0A] transition-colors cursor-pointer group-hover:underline"
                     >
                       <span>Request a Custom Quote</span>
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="mt-12 text-center p-6 rounded-xl bg-[#FAFAFA] border border-[#E4E4E4] max-w-3xl mx-auto">
-            <p className="text-xs text-[#666666] leading-relaxed">
+            <p className="text-sm text-[#666666] leading-relaxed">
               Need multiple services integrated into a cohesive search strategy? We review your full web presence and present a single customized project proposal.
             </p>
           </div>
@@ -133,20 +133,20 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[var(--ink)] border-t border-[var(--line)]">
         <div className="max-w-5xl mx-auto p-7 sm:p-9 rounded-2xl bg-[var(--card)] border border-[var(--gold)]/40 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 text-sm font-sans uppercase tracking-wider text-[var(--gold)]">
+              <Sparkles className="w-4 h-4" />
               <span>Interactive Growth Tool</span>
             </div>
             <h3 className="text-2xl font-heading font-medium text-[var(--white)]">
               See How SEO Services Drive Search Visibility
             </h3>
-            <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl font-light leading-relaxed">
+            <p className="text-sm text-[var(--muted)] max-w-xl font-light leading-relaxed">
               Explore how combining technical audits, on-page optimization, and Google Business Profile management can lift a site from unranked to page one.
             </p>
           </div>
           <button
             onClick={() => onNavigate('calculator')}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors shrink-0 whitespace-nowrap cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors shrink-0 whitespace-nowrap cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
           >
             <span>Launch Growth Calculator</span>
             <ChevronRight className="w-4 h-4" />
@@ -157,7 +157,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       {/* 3. Services FAQ (DARK SECTION: #0A0A0A) */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--ink)] text-[var(--white)]">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+          <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2 block">
             Service FAQ
           </span>
           <h2 className="text-3xl font-heading font-medium text-[var(--white)]">

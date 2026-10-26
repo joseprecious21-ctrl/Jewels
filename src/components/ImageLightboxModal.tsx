@@ -80,7 +80,7 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar with Title & Gold Close Button */}
-        <div className="w-full flex items-center justify-between pb-3 px-1 text-xs font-mono">
+        <div className="w-full flex items-center justify-between pb-3 px-1 text-sm font-sans">
           <div className="flex items-center gap-2 text-[var(--muted)] truncate pr-4">
             <span className="inline-block w-2 h-2 rounded-full bg-[var(--gold)] shrink-0" />
             <span className="text-[var(--white)] font-medium truncate">{title}</span>
@@ -103,8 +103,8 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
           {imageError ? (
             <div className="w-full py-20 px-6 flex flex-col items-center justify-center bg-[var(--ink)] rounded-xl border border-[var(--gold)]/30 text-center">
               <ImageIcon className="w-12 h-12 text-[var(--gold)]/60 mb-3" />
-              <p className="text-sm font-mono text-[var(--gold)] font-medium">Add screenshot here</p>
-              <p className="text-xs text-[var(--muted)] mt-1 font-mono">Image could not be loaded</p>
+              <p className="text-sm font-sans text-[var(--gold)] font-medium">Add screenshot here</p>
+              <p className="text-sm text-[var(--muted)] mt-1 font-sans">Image could not be loaded</p>
             </div>
           ) : (
             <img
@@ -119,7 +119,7 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
         </div>
 
         {/* Bottom Helper Bar */}
-        <div className="w-full pt-3 px-2 flex items-center justify-between text-[11px] font-mono text-[var(--muted)]">
+        <div className="w-full pt-3 px-2 flex items-center justify-between text-sm font-sans text-[var(--muted)]">
           <span>Click outside or press Esc to return</span>
           <span className="text-[var(--gold)]">Jewels SEO Deliverables</span>
         </div>

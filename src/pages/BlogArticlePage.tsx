@@ -96,7 +96,7 @@ const SectionRow: React.FC<SectionRowProps> = ({ section, index }) => {
         className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)] tracking-tight mb-5 flex items-baseline gap-2.5 flex-wrap"
       >
         {section.sectionNumber && (
-          <span className="text-xs font-mono text-[var(--gold)] font-normal tracking-wider px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--line)] self-center">
+          <span className="text-sm text-[var(--gold)] font-medium tracking-wider px-2.5 py-0.5 rounded bg-[var(--card)] border border-[var(--line)] self-center">
             {section.sectionNumber}
           </span>
         )}
@@ -136,7 +136,7 @@ const SectionRow: React.FC<SectionRowProps> = ({ section, index }) => {
         {/* Optional Key Takeaways List */}
         {section.keyTakeaways && section.keyTakeaways.length > 0 && (
           <div className="mt-5 p-5 rounded-xl bg-[var(--card)] border border-[var(--line)]">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] font-semibold mb-3 flex items-center gap-1.5">
+            <h3 className="text-sm uppercase tracking-wider text-[var(--gold)] font-semibold mb-3 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-[var(--success)]" />
               <span>Key Optimization Checklist</span>
             </h3>
@@ -156,7 +156,7 @@ const SectionRow: React.FC<SectionRowProps> = ({ section, index }) => {
           <div className="mt-5 p-5 rounded-xl bg-[var(--card)] border-l-4 border-l-[var(--gold)] border-y border-r border-[var(--line)] flex items-start gap-3.5">
             <Lightbulb className="w-5 h-5 text-[var(--gold)] shrink-0 mt-0.5" />
             <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--gold)] block mb-1">
+              <span className="text-sm font-semibold uppercase tracking-wider text-[var(--gold)] block mb-1">
                 Strategic Pro Tip from Jewels
               </span>
               <p className="text-sm text-[var(--white)] font-light leading-relaxed">
@@ -171,7 +171,7 @@ const SectionRow: React.FC<SectionRowProps> = ({ section, index }) => {
           <div className="mt-5 p-5 rounded-xl bg-[var(--alert)]/10 border-l-4 border-l-[var(--alert)] border-y border-r border-[var(--alert)]/30 flex items-start gap-3.5">
             <AlertTriangle className="w-5 h-5 text-[var(--alert)] shrink-0 mt-0.5" />
             <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--alert)] block mb-1">
+              <span className="text-sm font-semibold uppercase tracking-wider text-[var(--alert)] block mb-1">
                 Suspension Warning
               </span>
               <p className="text-sm text-[var(--white)] font-light leading-relaxed">
@@ -305,7 +305,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
       <div className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto mb-8">
         <nav 
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-xs font-mono text-[var(--muted)] mb-6 flex-wrap"
+          className="flex items-center gap-2 text-sm text-[var(--muted)] mb-6 flex-wrap font-normal"
         >
           <button
             onClick={() => onNavigate('home')}
@@ -321,14 +321,14 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
             Blog
           </button>
           <ChevronRight className="w-3.5 h-3.5 text-[var(--line)]" />
-          <span className="text-[var(--gold)] truncate max-w-[220px] sm:max-w-none">
+          <span className="text-[var(--gold)] truncate max-w-[220px] sm:max-w-none font-medium">
             {post.title}
           </span>
         </nav>
 
         <button
           onClick={onBackToBlog}
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--muted)] hover:text-[var(--gold)] transition-colors cursor-pointer mb-6 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-[var(--muted)] hover:text-[var(--gold)] transition-colors cursor-pointer mb-6 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[var(--gold)]" />
           <span>Back to all articles</span>
@@ -361,13 +361,13 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
               : 'opacity-0 translate-y-3 pointer-events-none'
           }`}
         >
-          <div className="flex flex-wrap items-center gap-2.5 text-xs">
+          <div className="flex flex-wrap items-center gap-2.5 text-sm">
             {post.categories.map((cat, idx) => {
               const isGoogle = cat.toLowerCase().includes('google');
               return (
                 <span
                   key={idx}
-                  className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium border ${
+                  className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border ${
                     isGoogle
                       ? 'bg-[var(--google-blue)]/10 text-[var(--google-blue)] border-[var(--google-blue)]/30'
                       : 'bg-[var(--card)] text-[var(--gold)] border-[var(--line)]'
@@ -387,14 +387,14 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
             <span className="text-[var(--line)] hidden sm:inline">·</span>
 
-            <div className="flex items-center gap-1.5 text-[var(--muted)] font-mono text-[11px]">
+            <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
               <Calendar className="w-3.5 h-3.5 text-[var(--gold)]" />
               <span>{post.publishDate}</span>
             </div>
 
             <span className="text-[var(--line)] hidden sm:inline">·</span>
 
-            <div className="flex items-center gap-1.5 text-[var(--muted)] font-mono text-[11px]">
+            <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
               <Clock className="w-3.5 h-3.5" />
               <span>{post.readTime}</span>
             </div>
@@ -402,7 +402,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
           <button
             onClick={handleShare}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-sm text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer font-medium"
             title="Copy article URL"
           >
             <Share2 className="w-3.5 h-3.5 text-[var(--gold)]" />
@@ -418,17 +418,17 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
               <ImageIcon className="w-8 h-8 stroke-[1.5]" />
             </div>
 
-            <p className="font-mono text-sm uppercase tracking-wider text-[var(--gold)] font-semibold mb-2">
+            <p className="text-sm uppercase tracking-wider text-[var(--gold)] font-semibold mb-2">
               {post.featuredImagePlaceholderNote}
             </p>
 
-            <p className="text-xs sm:text-sm text-[var(--muted)] font-light max-w-lg mb-3">
+            <p className="text-sm text-[var(--muted)] font-light max-w-lg mb-3">
               Recommended illustration: Google Business Profile local 3-pack search layout, map pin ranking metrics, and mobile engagement dashboard.
             </p>
 
             <span className="sr-only">{post.featuredImageAlt}</span>
 
-            <span className="text-[11px] font-mono text-[var(--muted)]/70 bg-[var(--ink)]/80 px-3 py-1 rounded border border-[var(--line)]">
+            <span className="text-sm text-[var(--muted)]/70 bg-[var(--ink)]/80 px-3 py-1 rounded border border-[var(--line)] font-normal">
               Descriptive Alt: {post.featuredImageAlt} · 1200 × 630px
             </span>
           </div>
@@ -460,16 +460,16 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
               <h3 className="text-lg font-heading font-medium text-[var(--white)]">
                 About the Author: Jewels
               </h3>
-              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/30">
+              <span className="text-sm uppercase tracking-wider px-2.5 py-0.5 rounded bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/30 font-medium">
                 SEO Specialist
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed mb-4">
+            <p className="text-sm text-[var(--muted)] font-light leading-relaxed mb-4">
               Jewels helps ambitious businesses, service professionals, and retailers build authoritative search presence, optimize WordPress platforms, and secure top placement in local Google Maps rankings.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-sm">
               <button
                 onClick={() => onNavigate('contact')}
                 className="text-[var(--gold)] hover:text-[var(--gold-hover)] font-medium inline-flex items-center gap-1 cursor-pointer"
@@ -506,9 +506,9 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
         {/* PRIMARY CTA AT END OF ARTICLE: "Request an SEO Consultation" */}
         <div className="mt-12 p-8 sm:p-12 rounded-2xl bg-[var(--card)] border border-[var(--line)] text-center relative overflow-hidden shadow-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--ink)] border border-[var(--line)] text-xs text-[var(--gold)] mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--ink)] border border-[var(--line)] text-sm text-[var(--gold)] mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[var(--gold)]" />
-            <span className="tracking-wide uppercase font-medium text-[11px]">
+            <span className="tracking-wide uppercase font-medium text-sm">
               Take Your Local Rankings to #1
             </span>
           </div>
@@ -524,7 +524,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => onNavigate('contact')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors shadow-lg shadow-black/40 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide uppercase transition-colors shadow-lg shadow-black/40 cursor-pointer"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -532,7 +532,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
             <button
               onClick={onBackToBlog}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--ink)] hover:bg-[#1A1A1A] text-[var(--white)] border border-[var(--line)] hover:border-[var(--gold)] font-medium text-xs tracking-wider uppercase transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--ink)] hover:bg-[#1A1A1A] text-[var(--white)] border border-[var(--line)] hover:border-[var(--gold)] font-medium text-sm tracking-wide uppercase transition-all cursor-pointer"
             >
               <span>Browse All Articles</span>
             </button>

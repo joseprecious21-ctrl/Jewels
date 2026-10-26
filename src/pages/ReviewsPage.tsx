@@ -200,9 +200,9 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
       
       {/* 1. HERO SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-14 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)] text-xs text-[var(--gold)] mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)] text-sm text-[var(--gold)] mb-6">
           <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Client Experience</span>
+          <span className="tracking-wide uppercase font-medium text-sm">Client Experience</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
@@ -229,8 +229,8 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 <h2 className="text-2xl font-heading font-medium text-[var(--white)] tracking-tight">
                   {treasureReview.reviewerName}
                 </h2>
-                <div className="flex flex-wrap items-center gap-2 mt-1 text-xs font-mono">
-                  <span className="text-[var(--gold)]">
+                <div className="flex flex-wrap items-center gap-2 mt-1 text-sm font-normal">
+                  <span className="text-[var(--gold)] font-medium">
                     {treasureReview.role}
                   </span>
                   <span className="text-[var(--graphite)]">·</span>
@@ -253,24 +253,24 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     />
                   ))}
                 </div>
-                <span className="text-xs font-mono text-[var(--muted)]">
-                  <strong className="text-[var(--white)]">5.0</strong> / 5.0
+                <span className="text-sm text-[var(--muted)] font-normal">
+                  <strong className="text-[var(--white)] font-semibold">5.0</strong> / 5.0
                 </span>
               </div>
             </div>
 
             {/* View Toggle on Treasure Card (Animated Form vs Screenshot Frame) */}
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] flex items-center gap-1.5">
+              <span className="text-sm uppercase tracking-wider text-[var(--gold)] flex items-center gap-1.5 font-medium">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Review Details</span>
               </span>
 
-              <div className="inline-flex items-center p-1 rounded-lg bg-[var(--black)] border border-[var(--graphite)] text-[11px] font-mono">
+              <div className="inline-flex items-center p-1 rounded-lg bg-[var(--black)] border border-[var(--graphite)] text-sm font-medium">
                 <button
                   type="button"
                   onClick={() => setTreasureViewMode('animated')}
-                  className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                     treasureViewMode === 'animated'
                       ? 'bg-[var(--gold)] text-[var(--black)] font-semibold'
                       : 'text-[var(--muted)] hover:text-[var(--white)]'
@@ -281,7 +281,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => setTreasureViewMode('screenshot')}
-                  className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+                  className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                     treasureViewMode === 'screenshot'
                       ? 'bg-[var(--gold)] text-[var(--black)] font-semibold'
                       : 'text-[var(--muted)] hover:text-[var(--white)]'
@@ -313,7 +313,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-2 gap-2.5 mb-5">
                   {treasureReview.metrics.map((m, idx) => (
                     <div key={m.label} className="p-2.5 rounded-lg bg-[var(--charcoal)] border border-[var(--graphite)]">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[var(--muted)] mb-1">
+                      <div className="flex items-center justify-between text-sm text-[var(--muted)] mb-1 font-medium">
                         <span>{m.label}</span>
                         <span className="text-[var(--white)] font-semibold">5.0</span>
                       </div>
@@ -325,7 +325,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                       </div>
                       <div className="flex items-center gap-0.5">
                         {[...Array(5)].map((_, s) => (
-                          <Star key={s} className="w-2.5 h-2.5 fill-[var(--gold)] text-[var(--gold)]" aria-hidden="true" />
+                          <Star key={s} className="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]" aria-hidden="true" />
                         ))}
                       </div>
                     </div>
@@ -339,9 +339,9 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                       key={q.id}
                       type="button"
                       onClick={() => setActiveQuestion(idx)}
-                      className={`p-2 rounded-lg text-left text-[11px] font-mono transition-colors cursor-pointer ${
+                      className={`p-2 rounded-lg text-left text-sm transition-colors cursor-pointer ${
                         activeQuestion === idx
-                          ? 'bg-[var(--charcoal)] border border-[var(--gold)] text-[var(--white)]'
+                          ? 'bg-[var(--charcoal)] border border-[var(--gold)] text-[var(--white)] font-medium'
                           : 'bg-[var(--charcoal)]/50 border border-[var(--graphite)] text-[var(--muted)] hover:text-[var(--white)]'
                       }`}
                     >
@@ -353,21 +353,21 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 {/* Active Q&A Text */}
                 <div className="p-4 rounded-xl bg-[var(--charcoal)] border border-[var(--graphite)] min-h-[140px] flex flex-col justify-between">
                   <div>
-                    <span className="text-[11px] font-mono text-[var(--gold)] block mb-1.5">
+                    <span className="text-sm font-medium text-[var(--gold)] block mb-1.5">
                       {treasureReview.questions[activeQuestion].question}
                     </span>
-                    <blockquote className="text-sm font-heading italic text-[var(--white)] leading-relaxed pl-3 border-l-2 border-[var(--gold)]">
+                    <blockquote className="text-base font-heading italic text-[var(--white)] leading-relaxed pl-3 border-l-2 border-[var(--gold)]">
                       “{treasureReview.questions[activeQuestion].answer}”
                     </blockquote>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-[#1F1F1F] flex items-center justify-between text-[10px] font-mono text-[var(--muted)]">
+                  <div className="mt-3 pt-2 border-t border-[#1F1F1F] flex items-center justify-between text-sm text-[var(--muted)] font-normal">
                     <span>Verified Client Feedback</span>
                     <button
                       type="button"
                       onClick={handleReplayAnimation}
-                      className="text-[var(--gold)] hover:underline inline-flex items-center gap-1 cursor-pointer"
+                      className="text-[var(--gold)] hover:underline inline-flex items-center gap-1 cursor-pointer font-medium"
                     >
-                      <RotateCcw className="w-2.5 h-2.5" />
+                      <RotateCcw className="w-3 h-3" />
                       <span>Replay</span>
                     </button>
                   </div>
@@ -379,7 +379,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 {treasureImageFailed ? (
                   <div className="w-full aspect-[16/7] rounded-xl bg-[var(--black)] border border-[var(--gold)]/40 flex flex-col items-center justify-center p-6 text-center">
                     <ImageIcon className="w-8 h-8 text-[var(--gold)]/70 mb-2" />
-                    <span className="font-mono text-xs text-[var(--gold)] font-medium tracking-wide">
+                    <span className="text-sm text-[var(--gold)] font-medium tracking-wide">
                       Review image coming soon
                     </span>
                   </div>
@@ -414,8 +414,8 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                       }}
                       className="w-full h-full object-contain transition-transform duration-300 group-hover/img:scale-[1.01] motion-reduce:transform-none select-none"
                     />
-                    <div className="absolute bottom-2 right-2 opacity-90 group-hover/img:opacity-100 transition-opacity bg-black/80 text-[var(--gold)] text-[10px] font-mono px-2 py-1 rounded border border-[var(--gold)]/40 flex items-center gap-1 backdrop-blur-sm">
-                      <Maximize2 className="w-3 h-3" />
+                    <div className="absolute bottom-2 right-2 opacity-90 group-hover/img:opacity-100 transition-opacity bg-black/80 text-[var(--gold)] text-sm font-medium px-2 py-1 rounded border border-[var(--gold)]/40 flex items-center gap-1 backdrop-blur-sm">
+                      <Maximize2 className="w-3.5 h-3.5" />
                       <span>Enlarge</span>
                     </div>
                   </button>
@@ -424,7 +424,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
             )}
 
             {/* Card Footer */}
-            <div className="pt-4 mt-4 border-t border-[var(--graphite)] flex items-center justify-between text-xs font-mono text-[var(--muted)]">
+            <div className="pt-4 mt-4 border-t border-[var(--graphite)] flex items-center justify-between text-sm text-[var(--muted)] font-normal">
               <span>Review: Treasure Nobel</span>
               <button
                 type="button"
@@ -436,9 +436,9 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     treasureTriggerRef.current
                   )
                 }
-                className="text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer inline-flex items-center gap-1"
+                className="text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer inline-flex items-center gap-1 font-medium"
               >
-                <Maximize2 className="w-3 h-3" />
+                <Maximize2 className="w-3.5 h-3.5" />
                 <span>Full view</span>
               </button>
             </div>
@@ -457,7 +457,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 {lutonImageFailed ? (
                   <div className="w-full aspect-[1200/864] rounded-xl bg-[var(--black)] border border-[var(--gold)]/40 flex flex-col items-center justify-center p-8 text-center">
                     <ImageIcon className="w-10 h-10 text-[var(--gold)]/70 mb-3" />
-                    <span className="font-mono text-sm text-[var(--gold)] font-medium tracking-wide">
+                    <span className="text-sm text-[var(--gold)] font-medium tracking-wide">
                       Review image coming soon
                     </span>
                   </div>
@@ -494,7 +494,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     />
 
                     {/* Enlarge Overlay Indicator */}
-                    <div className="absolute bottom-3 right-3 opacity-90 group-hover/img:opacity-100 transition-opacity bg-black/80 text-[var(--gold)] text-xs font-mono px-3 py-1.5 rounded-lg border border-[var(--gold)]/50 flex items-center gap-1.5 backdrop-blur-sm">
+                    <div className="absolute bottom-3 right-3 opacity-90 group-hover/img:opacity-100 transition-opacity bg-black/80 text-[var(--gold)] text-sm font-medium px-3 py-1.5 rounded-lg border border-[var(--gold)]/50 flex items-center gap-1.5 backdrop-blur-sm">
                       <Maximize2 className="w-3.5 h-3.5" />
                       <span>Click to Enlarge</span>
                     </div>
@@ -513,11 +513,11 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     </h2>
                     
                     {/* Tags: Clinic & AEO and GEO optimization */}
-                    <div className="flex flex-wrap items-center gap-2 mt-2 text-xs font-mono">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[var(--black)] border border-[var(--graphite)] text-[var(--muted)]">
+                    <div className="flex flex-wrap items-center gap-2 mt-2 text-sm font-normal">
+                      <span className="px-3 py-0.5 rounded-full bg-[var(--black)] border border-[var(--graphite)] text-[var(--muted)]">
                         {lutonReview.business}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-[var(--black)] border border-[var(--gold)]/40 text-[var(--gold)]">
+                      <span className="px-3 py-0.5 rounded-full bg-[var(--black)] border border-[var(--gold)]/40 text-[var(--gold)] font-medium">
                         {lutonReview.serviceTag}
                       </span>
                     </div>
@@ -563,7 +563,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                       </svg>
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--muted)]">
+                    <div className="flex items-center gap-1.5 text-sm text-[var(--muted)] font-normal">
                       <span className="text-[var(--white)] font-semibold">4.5</span>
                       <span>/ 5</span>
                       <span>·</span>
@@ -578,7 +578,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                   <button
                     type="button"
                     onClick={() => setIsLutonReviewOpen(!isLutonReviewOpen)}
-                    className="w-full flex items-center justify-between py-2 px-3.5 rounded-lg bg-[var(--black)] border border-[var(--graphite)] hover:border-[var(--gold)]/50 text-xs font-mono text-[var(--muted)] hover:text-[var(--white)] transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between py-2 px-3.5 rounded-lg bg-[var(--black)] border border-[var(--graphite)] hover:border-[var(--gold)]/50 text-sm text-[var(--muted)] hover:text-[var(--white)] transition-colors cursor-pointer font-medium"
                     aria-expanded={isLutonReviewOpen}
                   >
                     <span className="flex items-center gap-2">
@@ -587,7 +587,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                         {isLutonReviewOpen ? 'Hide written review' : 'Read review text'}
                       </span>
                     </span>
-                    <span className="text-[11px] text-[var(--gold)] flex items-center gap-1">
+                    <span className="text-sm text-[var(--gold)] flex items-center gap-1 font-medium">
                       <span>{isLutonReviewOpen ? 'Collapse' : 'Expand'}</span>
                       {isLutonReviewOpen ? (
                         <ChevronUp className="w-3.5 h-3.5" />
@@ -604,11 +604,11 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     }`}
                   >
                     <div className="p-4 sm:p-5 rounded-2xl bg-[var(--black)] border border-[var(--graphite)]">
-                      <blockquote className="text-sm font-heading italic text-[var(--white)] leading-relaxed pl-3.5 border-l-2 border-[var(--gold)]">
+                      <blockquote className="text-base font-heading italic text-[var(--white)] leading-relaxed pl-3.5 border-l-2 border-[var(--gold)]">
                         “{lutonReview.reviewText}”
                       </blockquote>
                       
-                      <div className="mt-3.5 pt-2.5 border-t border-[#1F1F1F] flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[var(--muted)]">
+                      <div className="mt-3.5 pt-2.5 border-t border-[#1F1F1F] flex flex-wrap items-center justify-between gap-2 text-sm text-[var(--muted)] font-normal">
                         <span>Reviewer: Luton · {lutonReview.business}</span>
                         <span>Service: {lutonReview.serviceTag}</span>
                       </div>
@@ -620,7 +620,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
             </div>
 
             {/* Card Footer: Details & Full view trigger */}
-            <div className="pt-4 mt-6 border-t border-[var(--graphite)] flex items-center justify-between text-xs font-mono text-[var(--muted)]">
+            <div className="pt-4 mt-6 border-t border-[var(--graphite)] flex items-center justify-between text-sm text-[var(--muted)] font-normal">
               <span>Review date: {lutonReview.date}</span>
               <button
                 type="button"
@@ -632,9 +632,9 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                     lutonTriggerRef.current
                   )
                 }
-                className="text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer inline-flex items-center gap-1"
+                className="text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer inline-flex items-center gap-1 font-medium"
               >
-                <Maximize2 className="w-3 h-3" />
+                <Maximize2 className="w-3.5 h-3.5" />
                 <span>Full view</span>
               </button>
             </div>
@@ -648,7 +648,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--graphite)] bg-[var(--black)]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] mb-2 block">
+            <span className="text-sm uppercase tracking-wider text-[var(--gold)] mb-2 block font-medium">
               Client Feedback
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-medium text-[var(--white)] mb-3 text-balance">
@@ -668,7 +668,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                   <h3 className="text-lg font-heading font-semibold text-[var(--white)]">
                     Clutch
                   </h3>
-                  <p className="text-xs font-mono text-[var(--muted)]">
+                  <p className="text-sm text-[var(--muted)] font-normal">
                     B2B Platform
                   </p>
                 </div>
@@ -678,7 +678,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Review Jewels on Clutch (opens in a new tab)"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-sm tracking-wide uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
               >
                 <span>Review us on Clutch</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -693,7 +693,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                   <h3 className="text-lg font-heading font-semibold text-[var(--white)]">
                     Sortlist
                   </h3>
-                  <p className="text-xs font-mono text-[var(--muted)]">
+                  <p className="text-sm text-[var(--muted)] font-normal">
                     Service Platform
                   </p>
                 </div>
@@ -703,7 +703,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Review Jewels on Sortlist (opens in a new tab)"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--black)] font-semibold text-sm tracking-wide uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] cursor-pointer active:scale-95"
               >
                 <span>Review us on Sortlist</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -712,7 +712,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Platform note under buttons */}
-          <p className="text-xs text-center text-[var(--muted)] font-light leading-relaxed max-w-xl mx-auto">
+          <p className="text-sm text-center text-[var(--muted)] font-light leading-relaxed max-w-xl mx-auto">
             You will be taken to the platform&apos;s own website. Each platform has its own review process.
           </p>
         </div>

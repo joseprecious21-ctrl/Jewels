@@ -329,9 +329,9 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
       
       {/* 1. HERO SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-10 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-[var(--gold)]" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">
+          <span className="tracking-wide uppercase font-medium text-sm">
             Interactive Visibility Model
           </span>
         </div>
@@ -345,7 +345,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
         </p>
 
         {/* TOP MANDATORY DISCLAIMER BOX */}
-        <div className="mt-8 p-4 rounded-xl bg-[var(--card)] border border-[var(--gold)]/30 text-xs sm:text-sm text-[var(--muted)] max-w-3xl mx-auto flex items-start gap-3 text-left">
+        <div className="mt-8 p-4 rounded-xl bg-[var(--card)] border border-[var(--gold)]/30 text-sm text-[var(--muted)] max-w-3xl mx-auto flex items-start gap-3 text-left">
           <ShieldAlert className="w-5 h-5 text-[var(--gold)] shrink-0 mt-0.5" />
           <p className="leading-relaxed">
             <span className="font-semibold text-[var(--gold)]">Notice: </span>
@@ -366,11 +366,11 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 <h2 className="text-base font-semibold text-[var(--white)] font-heading">
                   Simulation Inputs
                 </h2>
-                <p className="text-xs text-[var(--muted)]">Adjust parameters to model your website's trajectory</p>
+                <p className="text-sm text-[var(--muted)]">Adjust parameters to model your website's trajectory</p>
               </div>
               <button
                 onClick={handleReset}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono text-[var(--muted)] hover:text-[var(--white)] bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-[var(--muted)] hover:text-[var(--white)] bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)] transition-colors cursor-pointer"
                 title="Reset simulation to defaults"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -381,10 +381,10 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
             {/* Input 1: Starting Position */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+                <label className="text-sm uppercase tracking-wider text-[var(--muted)] font-medium">
                   Starting Position
                 </label>
-                <span className="text-xs font-mono font-semibold text-[var(--gold)]">
+                <span className="text-sm font-semibold text-[var(--gold)]">
                   {isUnranked ? 'Not ranking yet (0)' : `Position #${startRankSlider}`}
                 </span>
               </div>
@@ -393,7 +393,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 <button
                   type="button"
                   onClick={() => setIsUnranked(true)}
-                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                  className={`flex-1 py-2.5 px-3 rounded-lg text-sm font-medium border transition-all cursor-pointer ${
                     isUnranked 
                       ? 'bg-[var(--gold)]/10 border-[var(--gold)] text-[var(--gold)] font-semibold' 
                       : 'bg-[var(--ink)] border-[var(--line)] text-[var(--muted)] hover:text-[var(--white)]'
@@ -404,7 +404,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 <button
                   type="button"
                   onClick={() => setIsUnranked(false)}
-                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                  className={`flex-1 py-2.5 px-3 rounded-lg text-sm font-medium border transition-all cursor-pointer ${
                     !isUnranked 
                       ? 'bg-[var(--gold)]/10 border-[var(--gold)] text-[var(--gold)] font-semibold' 
                       : 'bg-[var(--ink)] border-[var(--line)] text-[var(--muted)] hover:text-[var(--white)]'
@@ -425,7 +425,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     className="w-full accent-[var(--gold)] cursor-pointer"
                     aria-label="Starting ranking position from 1 to 100"
                   />
-                  <div className="flex justify-between text-[10px] font-mono text-[var(--muted)] mt-1">
+                  <div className="flex justify-between text-sm text-[var(--muted)] mt-1 font-normal">
                     <span>#1 (Top)</span>
                     <span>#50</span>
                     <span>#100 (Deep)</span>
@@ -436,7 +436,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
             {/* Input 2: Target Position */}
             <div className="space-y-2.5">
-              <label className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+              <label className="text-sm uppercase tracking-wider text-[var(--muted)] font-medium">
                 Target Position
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -445,7 +445,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     key={tr}
                     type="button"
                     onClick={() => setTargetRank(tr)}
-                    className={`py-2.5 px-3 rounded-lg text-xs font-mono font-medium border transition-all cursor-pointer ${
+                    className={`py-2.5 px-3 rounded-lg text-sm font-medium border transition-all cursor-pointer ${
                       targetRank === tr
                         ? 'bg-[var(--gold)] text-[var(--ink)] font-bold border-[var(--gold)] shadow-md shadow-[var(--gold)]/20'
                         : 'bg-[var(--ink)] border-[var(--line)] text-[var(--muted)] hover:text-[var(--white)] hover:border-[var(--gold)]/50'
@@ -459,7 +459,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
             {/* Input 3: Competition Level */}
             <div className="space-y-2.5">
-              <label className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+              <label className="text-sm uppercase tracking-wider text-[var(--muted)] font-medium">
                 Competition Level
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -468,7 +468,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     key={lvl}
                     type="button"
                     onClick={() => setCompetition(lvl)}
-                    className={`py-2 px-3 rounded-lg text-xs font-medium capitalize border transition-all cursor-pointer ${
+                    className={`py-2 px-3 rounded-lg text-sm font-medium capitalize border transition-all cursor-pointer ${
                       competition === lvl
                         ? 'bg-[var(--gold)]/10 border-[var(--gold)] text-[var(--gold)] font-semibold'
                         : 'bg-[var(--ink)] border-[var(--line)] text-[var(--muted)] hover:text-[var(--white)]'
@@ -482,7 +482,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
             {/* Input 4: Website Health */}
             <div className="space-y-2.5">
-              <label className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+              <label className="text-sm uppercase tracking-wider text-[var(--muted)] font-medium">
                 Current Website Health
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -491,7 +491,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     key={wh}
                     type="button"
                     onClick={() => setHealth(wh)}
-                    className={`py-2 px-2.5 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                    className={`py-2 px-2.5 rounded-lg text-sm font-medium border transition-all cursor-pointer ${
                       health === wh
                         ? 'bg-[var(--gold)]/10 border-[var(--gold)] text-[var(--gold)] font-semibold'
                         : 'bg-[var(--ink)] border-[var(--line)] text-[var(--muted)] hover:text-[var(--white)]'
@@ -506,14 +506,14 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
             {/* Input 5: Focus Areas (Checkboxes) */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
+                <label className="text-sm uppercase tracking-wider text-[var(--muted)] font-medium">
                   Focus Areas ({selectedFocus.length} selected)
                 </label>
-                <span className="text-[11px] text-[var(--gold)] font-mono">
+                <span className="text-sm text-[var(--gold)] font-medium">
                   Multi-discipline strategy
                 </span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                 {FOCUS_AREAS.map((fa) => {
                   const isChecked = selectedFocus.includes(fa.id);
                   return (
@@ -543,7 +543,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               <button
                 type="button"
                 onClick={handlePlayToggle}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs uppercase tracking-wider shadow-lg shadow-[var(--gold)]/20 hover:shadow-[var(--gold)]/35 transition-all cursor-pointer active:scale-95"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm uppercase tracking-wider shadow-lg shadow-[var(--gold)]/20 hover:shadow-[var(--gold)]/35 transition-all cursor-pointer active:scale-95"
               >
                 {isPlaying ? (
                   <>
@@ -564,15 +564,15 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               </button>
 
               {/* Speed Controls */}
-              <div className="flex items-center justify-between text-xs text-[var(--muted)]">
-                <span className="font-mono text-[11px]">Animation Speed:</span>
+              <div className="flex items-center justify-between text-sm text-[var(--muted)]">
+                <span className="text-sm font-medium">Animation Speed:</span>
                 <div className="flex items-center gap-1">
                   {([0.5, 1, 2] as number[]).map((sp) => (
                     <button
                       key={sp}
                       type="button"
                       onClick={() => setSpeed(sp)}
-                      className={`px-2 py-1 rounded text-[11px] font-mono transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 rounded text-sm font-medium transition-colors cursor-pointer ${
                         speed === sp
                           ? 'bg-[var(--ink)] text-[var(--gold)] border border-[var(--gold)] font-bold'
                           : 'hover:text-[var(--white)] text-[var(--muted)]'
@@ -597,34 +597,34 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[var(--line)]">
                 <div className="flex items-center gap-2.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-[var(--google-blue)] animate-pulse" />
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--white)]">
+                  <span className="text-sm uppercase tracking-wider text-[var(--white)] font-medium">
                     Search Visibility Trajectory
                   </span>
                 </div>
 
                 {/* Live Counter Badge */}
                 <div className="flex items-center gap-2 bg-[var(--ink)] px-3 py-1.5 rounded-lg border border-[var(--line)]">
-                  <span className="text-[11px] font-mono text-[var(--muted)]">Simulated Rank:</span>
-                  <span className={`text-xs font-mono font-bold ${
+                  <span className="text-sm text-[var(--muted)]">Simulated Rank:</span>
+                  <span className={`text-sm font-bold ${
                     currentAnimatedRank <= 3 ? 'text-[var(--gold)]' : 
                     currentAnimatedRank <= 10 ? 'text-[var(--success)]' : 
                     'text-[var(--google-blue)]'
                   }`}>
                     {currentAnimatedRank >= 100 && isUnranked ? 'Unranked' : `#${currentAnimatedRank}`}
                   </span>
-                  <span className="text-[10px] text-[var(--muted)] font-mono">(Illustrative)</span>
+                  <span className="text-sm text-[var(--muted)]">(Illustrative)</span>
                 </div>
               </div>
 
               {/* Target Reached Banner when at 100% */}
               {progress >= 0.99 && (
-                <div className="mb-4 p-3 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/40 flex items-center justify-between text-xs text-[var(--gold)] animate-in fade-in duration-300">
+                <div className="mb-4 p-3 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/40 flex items-center justify-between text-sm text-[var(--gold)] animate-in fade-in duration-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[var(--gold)]" />
                     <span className="font-semibold">Target position #{targetRank} reached</span>
-                    <span className="text-[11px] text-[var(--muted)]">(Illustrative simulation)</span>
+                    <span className="text-sm text-[var(--muted)]">(Illustrative simulation)</span>
                   </div>
-                  <span className="font-mono text-[11px] text-[var(--gold)]">
+                  <span className="text-sm font-medium text-[var(--gold)]">
                     Stage 6 Complete
                   </span>
                 </div>
@@ -680,8 +680,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(1) + 4}
                     fill={isRank1Reached ? '#34A853' : '#C9A227'}
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     #1
@@ -700,8 +700,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(3) + 4}
                     fill={isTop3Reached ? '#34A853' : '#A0A0A0'}
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     Top 3
@@ -720,8 +720,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(10) + 4}
                     fill={isPage1Reached ? '#34A853' : '#A0A0A0'}
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     Page 1
@@ -740,8 +740,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(20) + 4}
                     fill={isPage2Reached ? '#34A853' : '#737373'}
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     Page 2
@@ -760,8 +760,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(30) + 4}
                     fill="#737373"
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     Page 3
@@ -780,8 +780,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     x={paddingLeft - 8}
                     y={getRankY(100) + 4}
                     fill="#EA4335"
-                    fontSize="10"
-                    fontFamily="monospace"
+                    fontSize="11"
+                    fontFamily="var(--font-body)"
                     textAnchor="end"
                   >
                     Unranked
@@ -805,8 +805,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                           x={sx}
                           y={chartHeight - paddingBottom + 16}
                           fill={isPassed ? '#C9A227' : '#737373'}
-                          fontSize="9"
-                          fontFamily="monospace"
+                          fontSize="10"
+                          fontFamily="var(--font-body)"
                           textAnchor="middle"
                         >
                           S{stg.stageNumber}
@@ -815,7 +815,8 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                           x={sx}
                           y={chartHeight - paddingBottom + 27}
                           fill={isPassed ? '#EDEDED' : '#555555'}
-                          fontSize="8"
+                          fontSize="9"
+                          fontFamily="var(--font-body)"
                           textAnchor="middle"
                         >
                           {stg.name.split(' ')[0]}
@@ -879,31 +880,31 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
               {/* MOCK GOOGLE SERP PANEL (Climbing snippet card) */}
               <div className="mt-5 p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)]">
-                <div className="flex items-center justify-between mb-3 text-xs text-[var(--muted)] pb-2 border-b border-[var(--line)]">
+                <div className="flex items-center justify-between mb-3 text-sm text-[var(--muted)] pb-2 border-b border-[var(--line)]">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[var(--gold)]">SERP Simulation</span>
+                    <span className="font-medium text-[var(--gold)]">SERP Simulation</span>
                     <span>· Google Search Result Hierarchy</span>
                   </div>
-                  <span className="font-mono text-[11px] text-[var(--muted)]">
+                  <span className="text-sm text-[var(--muted)] font-medium">
                     Target: #{targetRank}
                   </span>
                 </div>
 
                 <div className="space-y-2">
                   {/* Competitor 1 (Simulated Apex) */}
-                  <div className={`p-2.5 rounded-lg border text-xs transition-opacity duration-300 ${
+                  <div className={`p-2.5 rounded-lg border text-sm transition-opacity duration-300 ${
                     currentAnimatedRank === 1 
                       ? 'bg-[var(--card)]/40 border-[var(--line)] opacity-60' 
                       : 'bg-[var(--card)] border-[var(--line)]'
                   }`}>
                     <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2 text-[11px] text-[var(--muted)]">
-                        <span className="w-4 h-4 rounded-full bg-neutral-800 text-center font-mono text-[10px] leading-4 text-neutral-400">1</span>
+                      <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
+                        <span className="w-5 h-5 rounded-full bg-neutral-800 text-center text-sm leading-5 text-neutral-400 font-medium">1</span>
                         <span>https://apex-leader.example.com</span>
                       </div>
-                      <span className="text-[10px] text-neutral-500 font-mono">Competitor A</span>
+                      <span className="text-sm text-neutral-400 font-medium">Competitor A</span>
                     </div>
-                    <div className="text-[var(--white)] font-medium text-xs">
+                    <div className="text-[var(--white)] font-medium text-sm">
                       Industry Leader — Premium Solutions & Consultation
                     </div>
                   </div>
@@ -917,38 +918,38 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                       : 'bg-[var(--card)] border-[var(--line)]'
                   }`}>
                     <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2 text-[11px]">
-                        <span className={`w-5 h-5 rounded-full flex items-center justify-center font-mono text-[11px] font-bold ${
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center font-heading text-sm font-bold ${
                           currentAnimatedRank <= 3 ? 'bg-[var(--gold)] text-[var(--ink)]' : 'bg-[var(--google-blue)] text-white'
                         }`}>
                           {currentAnimatedRank >= 100 && isUnranked ? '—' : currentAnimatedRank}
                         </span>
-                        <span className="text-[var(--gold)] font-mono font-medium">https://yourbusiness.com</span>
+                        <span className="text-[var(--gold)] font-medium">https://yourbusiness.com</span>
                       </div>
-                      <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[var(--ink)] text-[var(--gold)] border border-[var(--gold)]/40">
+                      <span className="text-sm font-semibold px-2.5 py-0.5 rounded bg-[var(--ink)] text-[var(--gold)] border border-[var(--gold)]/40">
                         Your Website
                       </span>
                     </div>
-                    <div className="text-sm font-semibold text-[var(--white)] hover:underline cursor-pointer">
+                    <div className="text-base font-semibold text-[var(--white)] hover:underline cursor-pointer">
                       Your Business Name — High-Visibility Local & Organic SEO
                     </div>
-                    <p className="text-xs text-[var(--muted)] mt-1 line-clamp-2">
+                    <p className="text-sm text-[var(--muted)] mt-1 line-clamp-2 font-normal leading-relaxed">
                       Optimized metadata, strong technical architecture, and verified local relevance helping search engines connect your services to ready customers.
                     </p>
                   </div>
 
                   {/* Competitor 2 */}
-                  <div className="p-2.5 rounded-lg bg-[var(--card)] border border-[var(--line)] text-xs opacity-60">
+                  <div className="p-2.5 rounded-lg bg-[var(--card)] border border-[var(--line)] text-sm opacity-60">
                     <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2 text-[11px] text-[var(--muted)]">
-                        <span className="w-4 h-4 rounded-full bg-neutral-800 text-center font-mono text-[10px] leading-4 text-neutral-400">
+                      <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
+                        <span className="w-5 h-5 rounded-full bg-neutral-800 text-center text-sm leading-5 text-neutral-400 font-medium">
                           {currentAnimatedRank <= 2 ? '3' : '2'}
                         </span>
                         <span>https://benchmark-directory.example.org</span>
                       </div>
-                      <span className="text-[10px] text-neutral-500 font-mono">Competitor B</span>
+                      <span className="text-sm text-neutral-400 font-medium">Competitor B</span>
                     </div>
-                    <div className="text-[var(--white)] font-medium text-xs">
+                    <div className="text-[var(--white)] font-medium text-sm">
                       Regional Directory & Listings Service Provider
                     </div>
                   </div>
@@ -965,14 +966,14 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
       {/* 3. MILESTONE TIMELINE (STAGES SHOWN AS STEPS, NO DATES OR MONTH COUNTS) */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-3">
             <Layers className="w-3.5 h-3.5" />
-            <span className="font-mono uppercase text-[11px]">Structured Progression</span>
+            <span className="uppercase text-sm font-medium">Structured Progression</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
             Milestone Timeline: The 6 Stages of Organic Ascent
           </h2>
-          <p className="text-sm text-[var(--muted)] mt-2">
+          <p className="text-sm sm:text-base text-[var(--muted)] mt-2 font-normal">
             Every website progresses through distinct architectural and visibility milestones, regardless of exact duration.
           </p>
         </div>
@@ -996,7 +997,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               >
                 {/* Stage Number & Badge */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono text-xs font-bold ${
+                  <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-heading text-sm font-bold ${
                     isCurrent
                       ? 'bg-[var(--gold)] text-[var(--ink)]'
                       : isCompleted
@@ -1006,7 +1007,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                     0{stage.stageNumber}
                   </span>
 
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--ink)] border border-[var(--line)] text-[var(--gold)]">
+                  <span className="text-sm px-2.5 py-0.5 rounded bg-[var(--ink)] border border-[var(--line)] text-[var(--gold)] font-medium">
                     Illustrative Rank: ~#{stageRank}
                   </span>
                 </div>
@@ -1014,20 +1015,20 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 <h3 className="text-base font-heading font-semibold text-[var(--white)] mb-1">
                   {stage.name}
                 </h3>
-                <p className="text-xs text-[var(--gold)] font-mono mb-3">
+                <p className="text-sm text-[var(--gold)] font-medium mb-3">
                   {stage.subtitle}
                 </p>
-                <p className="text-xs text-[var(--muted)] leading-relaxed mb-4">
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-4 font-normal">
                   {stage.description}
                 </p>
 
                 {/* Key Deliverables */}
                 <div className="space-y-1.5 pt-3 border-t border-[var(--line)]/70">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--muted)] block mb-1">
+                  <span className="text-sm uppercase tracking-wider text-[var(--muted)] block mb-1 font-medium">
                     Core Focus in This Stage:
                   </span>
                   {stage.keyActions.map((act, aIdx) => (
-                    <div key={aIdx} className="flex items-center gap-2 text-xs text-neutral-300">
+                    <div key={aIdx} className="flex items-center gap-2 text-sm text-neutral-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] shrink-0" />
                       <span>{act}</span>
                     </div>
@@ -1047,11 +1048,11 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               <h2 className="text-2xl font-heading font-medium text-[var(--white)]">
                 Illustrative Results Summary
               </h2>
-              <p className="text-xs text-[var(--muted)] mt-1">
+              <p className="text-sm text-[var(--muted)] mt-1 font-normal">
                 Synthesized projection based on your custom input parameters
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--ink)] border border-[var(--line)] text-xs font-mono text-[var(--gold)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--ink)] border border-[var(--line)] text-sm font-medium text-[var(--gold)]">
               <span>Model Target: Top {targetRank}</span>
               <span>·</span>
               <span className="text-[var(--white)]">Illustrative</span>
@@ -1064,13 +1065,13 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               const pos = calculatedPositions[sIdx + 1];
               return (
                 <div key={stg.stageNumber} className="p-3.5 rounded-xl bg-[var(--ink)] border border-[var(--line)] text-center">
-                  <span className="text-[10px] font-mono uppercase text-[var(--muted)] block">
+                  <span className="text-sm uppercase text-[var(--muted)] block font-medium">
                     Stage {stg.stageNumber}
                   </span>
-                  <span className="text-lg font-mono font-bold text-[var(--gold)] block my-1">
+                  <span className="text-xl font-heading font-bold text-[var(--gold)] block my-1">
                     #{pos}
                   </span>
-                  <span className="text-[10px] text-neutral-400 block font-mono">
+                  <span className="text-sm text-neutral-400 block font-normal">
                     (Illustrative)
                   </span>
                 </div>
@@ -1080,17 +1081,17 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
           {/* Focus Area Impact Mapping */}
           <div className="p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] mb-6 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--gold)]">
+            <h3 className="text-sm uppercase tracking-wider text-[var(--gold)] font-medium">
               Active Focus Areas & Stage Lift Contribution:
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm">
               {FOCUS_AREAS.filter((f) => selectedFocus.includes(f.id)).map((f) => (
                 <div key={f.id} className="p-3 rounded-lg bg-[var(--card)] border border-[var(--line)]">
                   <div className="font-semibold text-[var(--white)] mb-1 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
                     <span>{f.name}</span>
                   </div>
-                  <p className="text-[11px] text-[var(--muted)] leading-relaxed">
+                  <p className="text-sm text-[var(--muted)] leading-relaxed font-normal">
                     {f.description} (Primary velocity impact: Stage {f.primaryStage}+)
                   </p>
                 </div>
@@ -1099,15 +1100,15 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
           </div>
 
           {/* Transparent Formula Note */}
-          <div className="p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] text-xs text-[var(--muted)] space-y-2">
-            <div className="flex items-center gap-2 text-[var(--white)] font-mono">
+          <div className="p-4 rounded-xl bg-[var(--ink)] border border-[var(--line)] text-sm text-[var(--muted)] space-y-2">
+            <div className="flex items-center gap-2 text-[var(--white)] font-semibold">
               <HelpCircle className="w-4 h-4 text-[var(--gold)]" />
               <span>How this illustration calculates progression:</span>
             </div>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed font-normal">
               The illustrative trajectory calculates an S-curve ranking progression from your starting position toward your chosen target. Competition level adjusts the resistance (High competition requires deeper authority), website health establishes the baseline indexing velocity (Strong health speeds initial traction), and each active focus area accelerates specific milestone stages with diminishing returns. All figures are strictly illustrative models.
             </p>
-            <p className="text-[11px] text-[var(--gold)] font-mono pt-1">
+            <p className="text-sm text-[var(--gold)] font-medium pt-1">
               Pricing Note: All Jewels engagements are custom quoted following an individualized technical audit. No pre-set packages or automated guarantees.
             </p>
           </div>
@@ -1117,11 +1118,11 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
 
       {/* 5. BOTTOM MANDATORY DISCLAIMER BLOCK */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto mb-16">
-        <div className="p-5 rounded-xl bg-[var(--card)] border border-[var(--line)] text-xs sm:text-sm text-[var(--muted)] text-center space-y-2">
+        <div className="p-5 rounded-xl bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--muted)] text-center space-y-2">
           <p className="text-[var(--white)] font-semibold">
             Important Compliance Notice
           </p>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed font-normal">
             This is an illustration to help you visualise SEO progress. Real results depend on your industry, competition, website, and search engine changes. No rankings or timelines are guaranteed.
           </p>
         </div>
@@ -1143,7 +1144,7 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
                 onNavigate('contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide uppercase transition-all cursor-pointer active:scale-95"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -1154,14 +1155,14 @@ export const GrowthCalculatorPage: React.FC<GrowthCalculatorPageProps> = ({ onNa
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat with Jewels on WhatsApp (opens in a new tab)"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[#25D366] text-[var(--white)] hover:text-[#25D366] font-medium text-xs tracking-wide uppercase transition-all cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[#25D366] text-[var(--white)] hover:text-[#25D366] font-medium text-sm tracking-wide uppercase transition-all cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
             >
               <BrandIcon brand="whatsapp" size={16} variant="gold-hover" className="shrink-0" />
               <span>WhatsApp Jewels</span>
             </a>
           </div>
 
-          <p className="text-xs text-[var(--muted)] font-mono pt-4">
+          <p className="text-sm text-[var(--muted)] pt-4 font-normal">
             Custom quote provided after discovery · Direct response from Jewels
           </p>
         </div>

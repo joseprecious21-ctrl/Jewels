@@ -23,11 +23,11 @@ export const TestimonialsSection: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold text-[var(--white)]">Testimonials Component</span>
-              <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${isTestimonialsEnabled ? 'bg-emerald-950 text-[var(--success)] border border-[var(--success)]/40' : 'bg-[var(--ink)] text-[var(--muted)] border border-[var(--line)]'}`}>
+              <span className={`text-sm font-sans px-2 py-0.5 rounded ${isTestimonialsEnabled ? 'bg-emerald-950 text-[var(--success)] border border-[var(--success)]/40' : 'bg-[var(--ink)] text-[var(--muted)] border border-[var(--line)]'}`}>
                 {isTestimonialsEnabled ? 'Active in View' : 'Hidden by Default'}
               </span>
             </div>
-            <p className="text-xs text-[var(--muted)] mt-0.5">
+            <p className="text-sm text-[var(--muted)] mt-0.5">
               Ready-to-enable component. Zero filler or invented quotes are shown.
             </p>
           </div>
@@ -35,7 +35,7 @@ export const TestimonialsSection: React.FC = () => {
 
         <button
           onClick={() => setIsTestimonialsEnabled(!isTestimonialsEnabled)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[var(--ink)] hover:bg-[#1E1E1E] text-[var(--muted)] hover:text-[var(--white)] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium bg-[var(--ink)] hover:bg-[#1E1E1E] text-[var(--muted)] hover:text-[var(--white)] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer shrink-0"
         >
           {isTestimonialsEnabled ? (
             <>
@@ -59,10 +59,10 @@ export const TestimonialsSection: React.FC = () => {
               <h4 className="text-base font-medium text-[var(--white)] mb-1">
                 Awaiting Verified Client Feedback
               </h4>
-              <p className="text-xs text-[var(--muted)] max-w-md mx-auto leading-relaxed mb-4">
-                In strict adherence to portfolio credibility standards, no fabricated reviews or mock client quotes are displayed. Once clients provide written feedback, add them to <code className="text-[var(--gold)] font-mono">TestimonialsSection.tsx</code>.
+              <p className="text-sm text-[var(--muted)] max-w-md mx-auto leading-relaxed mb-4">
+                In strict adherence to portfolio credibility standards, no fabricated reviews or mock client quotes are displayed. Once clients provide written feedback, add them to <code className="text-[var(--gold)] font-sans">TestimonialsSection.tsx</code>.
               </p>
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[var(--muted)] bg-[var(--ink)] px-3 py-1.5 rounded border border-[var(--line)]">
+              <div className="inline-flex items-center gap-2 text-sm font-sans text-[var(--muted)] bg-[var(--ink)] px-3 py-1.5 rounded border border-[var(--line)]">
                 <PlusCircle className="w-3.5 h-3.5 text-[var(--gold)]" />
                 <span>Slot ready for verified testimonials</span>
               </div>
@@ -72,8 +72,8 @@ export const TestimonialsSection: React.FC = () => {
               {verifiedTestimonials.map((item) => (
                 <div key={item.id} className="p-5 rounded-lg bg-[var(--ink)]/60 border border-[var(--line)]">
                   <p className="text-sm text-[var(--muted)] italic mb-4">"{item.quote}"</p>
-                  <p className="text-xs font-semibold text-[var(--white)]">{item.clientName}</p>
-                  <p className="text-[11px] text-[var(--muted)]">{item.businessName} · {item.serviceReceived}</p>
+                  <p className="text-sm font-semibold text-[var(--white)]">{item.clientName}</p>
+                  <p className="text-sm text-[var(--muted)]">{item.businessName} · {item.serviceReceived}</p>
                 </div>
               ))}
             </div>

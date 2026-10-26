@@ -62,9 +62,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
       
       {/* Blog Hero Header */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6">
           <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Insights & Strategic Analysis</span>
+          <span className="tracking-wide uppercase font-medium text-sm">Insights & Strategic Analysis</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
@@ -96,10 +96,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
                   <div className="w-12 h-12 rounded-xl bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-2 shadow-inner">
                     <BookOpen className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                  <span className="text-[11px] font-mono text-[var(--gold)] uppercase tracking-wider font-medium">
+                  <span className="text-sm font-medium text-[var(--gold)] uppercase tracking-wider">
                     Google Business Profile Guide
                   </span>
-                  <span className="text-[10px] text-[var(--muted)] font-mono mt-0.5">
+                  <span className="text-sm text-[var(--muted)] mt-0.5 font-normal">
                     Local Search Framework
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
                     return (
                       <span
                         key={idx}
-                        className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full border ${
+                        className={`text-sm font-medium px-3 py-0.5 rounded-full border ${
                           isGoogle
                             ? 'bg-[var(--google-blue)]/10 text-[var(--google-blue)] border-[var(--google-blue)]/30'
                             : 'bg-[var(--ink)] text-[var(--gold)] border-[var(--line)]'
@@ -129,20 +129,20 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
                 </h2>
 
                 {/* Excerpt */}
-                <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed mb-6 line-clamp-3">
+                <p className="text-sm text-[var(--muted)] font-normal leading-relaxed mb-6 line-clamp-3">
                   {post.excerpt}
                 </p>
               </div>
 
               {/* Card Footer: Metadata and "Read more" link */}
               <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono text-[var(--muted)]">
+                <div className="flex items-center gap-2 text-sm text-[var(--muted)] font-normal">
                   <span>{post.publishDate}</span>
                   <span>·</span>
                   <span>{post.readTime}</span>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--gold)] group-hover:text-[var(--gold-hover)] uppercase tracking-wider transition-colors">
+                <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--gold)] group-hover:text-[var(--gold-hover)] uppercase tracking-wider transition-colors">
                   <span>Read more</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

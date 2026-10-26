@@ -22,7 +22,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
   return (
     <div className="w-full max-w-3xl mx-auto">
       {showOwnerNotice && (
-        <div className={`mb-6 p-3.5 rounded-lg flex items-start gap-3 text-xs ${
+        <div className={`mb-6 p-3.5 rounded-lg flex items-start gap-3 text-sm ${
           isLight 
             ? 'bg-[#FAFAFA] border border-[#E4E4E4] text-[#555555]' 
             : 'bg-[var(--card)] border border-[var(--line)] text-[var(--muted)]'
@@ -33,7 +33,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
               Owner Review Note:{' '}
             </span>
             FAQ responses below are strictly factual and avoid timeline or ranking claims. Review and edit copy in{' '}
-            <code className="text-[var(--gold)] font-mono text-[11px]">src/data/seoData.ts</code> to match your exact client onboarding preferences.
+            <code className="text-[var(--gold)] font-sans text-sm">src/data/seoData.ts</code> to match your exact client onboarding preferences.
           </div>
         </div>
       )}
@@ -87,7 +87,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
                     {faq.answer}
                   </p>
                   {faq.ownerNote && (
-                    <div className={`pl-7 mt-2 text-[11px] font-mono ${
+                    <div className={`pl-7 mt-2 text-sm font-sans ${
                       isLight ? 'text-[#888888]' : 'text-neutral-500'
                     }`}>
                       [{faq.ownerNote}]

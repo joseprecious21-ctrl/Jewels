@@ -21,9 +21,9 @@ export const CtaBand: React.FC<CtaBandProps> = ({
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--graphite)] bg-[var(--black)] overflow-hidden">
       <div className="relative max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)] text-xs text-[var(--gold)] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Direct Collaboration · Custom Scoped</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--charcoal)] border border-[var(--graphite)] text-sm text-[var(--gold)] mb-6">
+          <Sparkles className="w-4 h-4" />
+          <span className="tracking-wide uppercase font-medium text-sm">Direct Collaboration · Custom Scoped</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium tracking-tight text-[var(--white)] mb-5 text-balance">
@@ -56,8 +56,8 @@ export const CtaBand: React.FC<CtaBandProps> = ({
               </div>
             </div>
             <div className="text-left pr-2">
-              <span className="block text-xs sm:text-sm font-medium text-[var(--white)]">Direct SEO Consultation with Jewels</span>
-              <span className="block text-[11px] text-[var(--gold)] font-mono">Let's discuss your organic search strategy</span>
+              <span className="block text-sm font-medium text-[var(--white)]">Direct SEO Consultation with Jewels</span>
+              <span className="block text-sm text-[var(--gold)] font-sans">Let's discuss your organic search strategy</span>
             </div>
           </div>
         )}
@@ -92,7 +92,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({
           </a>
         </div>
 
-        <p className="inline-flex items-center justify-center gap-1.5 text-xs text-[var(--muted)] mt-6 tracking-wide font-mono">
+        <p className="inline-flex items-center justify-center gap-1.5 text-sm text-[var(--muted)] mt-6 tracking-wide font-sans">
           <BrandIcon brand="email" size={14} variant="currentColor" className="text-[var(--gold)] shrink-0" />
           <span>{CONTACT_DETAILS.EMAIL} · All services quoted individually</span>
         </p>

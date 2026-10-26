@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 <span className="font-heading text-2xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors">
                   Jewels
                 </span>
-                <span className="text-[11px] uppercase tracking-widest font-mono text-[var(--muted)]">
+                <span className="text-sm uppercase tracking-wider font-sans text-[var(--muted)]">
                   SEO & Optimization
                 </span>
               </div>
@@ -95,10 +95,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 </div>
               </div>
               <div>
-                <span className="block text-xs font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
+                <span className="block text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors">
                   Jewels
                 </span>
-                <span className="block text-[11px] text-[var(--muted)] font-mono">
+                <span className="block text-sm text-[var(--muted)] font-sans">
                   Founder & SEO Specialist
                 </span>
               </div>
@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
             <div className="pt-2">
               <button
                 onClick={onOpenChecklist}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-sans font-medium text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
               >
                 <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
                 <span>Pre-Launch Checklist</span>
@@ -117,7 +117,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
 
           {/* Quick Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--white)]">
+            <h4 className="text-sm font-heading font-semibold uppercase tracking-wider text-[var(--white)]">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
 
           {/* Direct Inquiries & Social */}
           <div className="space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--white)]">
+            <h4 className="text-sm font-heading font-semibold uppercase tracking-wider text-[var(--white)]">
               Direct Contact
             </h4>
             
@@ -169,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
             </ul>
 
             <div className="pt-2">
-              <p className="text-xs font-mono text-[var(--muted)] mb-2">Verified Profiles</p>
+              <p className="text-sm font-sans text-[var(--muted)] mb-2">Verified Profiles</p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href={CONTACT_DETAILS.LINKEDIN_URL}
@@ -227,7 +227,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
+        <div className="mt-12 pt-8 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--muted)]">
           <div>
             © {new Date().getFullYear()} Jewels. All rights reserved. All services are custom quoted.
           </div>

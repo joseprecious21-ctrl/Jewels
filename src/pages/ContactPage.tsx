@@ -114,9 +114,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
       
       {/* Page Heading & Invite Line (DARK SECTION: #0A0A0A) */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-14 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Direct SEO Inquiry</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6">
+          <Sparkles className="w-4 h-4" />
+          <span className="tracking-wide uppercase font-medium text-sm">Direct SEO Inquiry</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
@@ -128,7 +128,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
         </p>
 
         {/* Helpful Banner: Prefer to hire through Fiverr, Upwork, or Osdire? */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] border border-[var(--line)] text-xs sm:text-sm text-[var(--muted)] shadow-md">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--muted)] shadow-md">
           <span>Prefer to hire through Fiverr, Upwork, or Osdire?</span>
           <button
             type="button"
@@ -150,13 +150,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
             
             {/* Clear Heading above form: "Request an SEO Consultation" */}
             <div className="mb-8 pb-6 border-b border-[var(--line)]">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] block mb-1">
                 Consultation Proposal
               </span>
               <h2 className="text-2xl sm:text-3xl font-heading font-medium text-[var(--white)]">
                 Request an SEO Consultation
               </h2>
-              <p className="text-xs text-[var(--muted)] mt-1 font-light">
+              <p className="text-sm text-[var(--muted)] mt-1 font-light">
                 All consultations and quotes are tailored to your domain scale and competition.
               </p>
             </div>
@@ -170,7 +170,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 <AlertCircle className="w-5 h-5 text-[var(--alert)] shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <p className="font-medium text-[var(--white)]">{submitError}</p>
-                  <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
+                  <div className="flex flex-wrap items-center gap-3 pt-2 text-sm">
                     <a 
                       href={`mailto:${CONTACT_DETAILS.EMAIL}`} 
                       className="inline-flex items-center gap-1.5 text-[var(--gold)] underline hover:text-[var(--white)]"
@@ -208,7 +208,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 <button
                   type="button"
                   onClick={handleSendAnother}
-                  className="px-5 py-2.5 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--white)] transition-all cursor-pointer"
+                  className="px-5 py-2.5 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-sm font-sans font-medium text-[var(--white)] transition-all cursor-pointer"
                 >
                   Send another enquiry
                 </button>
@@ -253,7 +253,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 
                 {/* Field 1: Name (required) */}
                 <div>
-                  <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
+                  <label htmlFor="name" className="block text-sm font-sans uppercase tracking-wider text-[var(--muted)] mb-2">
                     Your Name <span className="text-[var(--gold)]">*</span>
                   </label>
                   <input
@@ -269,8 +269,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                     }`}
                   />
                   {errors.name && (
-                    <p className="text-xs text-[var(--alert)] mt-1.5 flex items-center gap-1 font-mono">
-                      <AlertCircle className="w-3 h-3" />
+                    <p className="text-sm text-[var(--alert)] mt-1.5 flex items-center gap-1 font-sans">
+                      <AlertCircle className="w-3.5 h-3.5" />
                       <span>{errors.name}</span>
                     </p>
                   )}
@@ -278,7 +278,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
                 {/* Field 2: Email (required, valid email) */}
                 <div>
-                  <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
+                  <label htmlFor="email" className="block text-sm font-sans uppercase tracking-wider text-[var(--muted)] mb-2">
                     Email Address <span className="text-[var(--gold)]">*</span>
                   </label>
                   <input
@@ -294,8 +294,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                     }`}
                   />
                   {errors.email && (
-                    <p className="text-xs text-[var(--alert)] mt-1.5 flex items-center gap-1 font-mono">
-                      <AlertCircle className="w-3 h-3" />
+                    <p className="text-sm text-[var(--alert)] mt-1.5 flex items-center gap-1 font-sans">
+                      <AlertCircle className="w-3.5 h-3.5" />
                       <span>{errors.email}</span>
                     </p>
                   )}
@@ -303,8 +303,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
                 {/* Field 3: Website URL (optional) */}
                 <div>
-                  <label htmlFor="website" className="block text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
-                    Website URL <span className="text-[var(--muted)] text-[11px] font-normal">(Optional)</span>
+                  <label htmlFor="website" className="block text-sm font-sans uppercase tracking-wider text-[var(--muted)] mb-2">
+                    Website URL <span className="text-[var(--muted)] text-sm font-normal">(Optional)</span>
                   </label>
                   <input
                     type="url"
@@ -319,7 +319,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
                 {/* Field 4: Service of Interest (Dropdown with all 12 services) */}
                 <div>
-                  <label htmlFor="service" className="block text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
+                  <label htmlFor="service" className="block text-sm font-sans uppercase tracking-wider text-[var(--muted)] mb-2">
                     Service of Interest <span className="text-[var(--gold)]">*</span>
                   </label>
                   <div className="relative">
@@ -347,8 +347,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                     </select>
                   </div>
                   {errors.serviceOfInterest && (
-                    <p className="text-xs text-[var(--alert)] mt-1.5 flex items-center gap-1 font-mono">
-                      <AlertCircle className="w-3 h-3" />
+                    <p className="text-sm text-[var(--alert)] mt-1.5 flex items-center gap-1 font-sans">
+                      <AlertCircle className="w-3.5 h-3.5" />
                       <span>{errors.serviceOfInterest}</span>
                     </p>
                   )}
@@ -356,7 +356,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
                 {/* Field 5: Message (required) */}
                 <div>
-                  <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-[var(--muted)] mb-2">
+                  <label htmlFor="message" className="block text-sm font-sans uppercase tracking-wider text-[var(--muted)] mb-2">
                     Project Details & Objectives <span className="text-[var(--gold)]">*</span>
                   </label>
                   <textarea
@@ -372,8 +372,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                     }`}
                   />
                   {errors.message && (
-                    <p className="text-xs text-[var(--alert)] mt-1.5 flex items-center gap-1 font-mono">
-                      <AlertCircle className="w-3 h-3" />
+                    <p className="text-sm text-[var(--alert)] mt-1.5 flex items-center gap-1 font-sans">
+                      <AlertCircle className="w-3.5 h-3.5" />
                       <span>{errors.message}</span>
                     </p>
                   )}
@@ -425,24 +425,24 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                 </div>
 
                 <div className="min-w-0">
-                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--success)]/10 border border-[var(--success)]/40 text-[10px] font-mono text-[var(--success)] mb-1">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--success)]/10 border border-[var(--success)]/40 text-sm font-sans text-[var(--success)] mb-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
                     <span>Accepting New Inquiries</span>
                   </div>
                   <h3 className="text-lg sm:text-xl font-heading font-medium text-[var(--white)] truncate">
                     Jewels
                   </h3>
-                  <p className="text-xs font-mono text-[var(--gold)]">
+                  <p className="text-sm font-sans text-[var(--gold)]">
                     Founder & SEO Specialist
                   </p>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[var(--muted)] font-light leading-relaxed mb-4 pb-4 border-b border-[var(--line)]">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed mb-4 pb-4 border-b border-[var(--line)]">
                 Direct, one-on-one collaboration. You discuss your website goals directly with Jewels to review organic search visibility, <span className="text-[var(--google-blue)] font-medium">Google Business Profile</span> performance, and technical architecture.
               </p>
 
-              <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-[var(--muted)]">
+              <div className="grid grid-cols-2 gap-2 text-sm font-sans text-[var(--muted)]">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[var(--gold)] shrink-0" />
                   <span>Custom Scoped</span>
@@ -456,7 +456,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
             {/* Direct contact card */}
             <div className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-6 sm:p-8 shadow-xl">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-2">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] block mb-2">
                 Fast Response & Verified Profiles
               </span>
               <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-6">
@@ -475,7 +475,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="whatsapp" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">WhatsApp</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">WhatsApp</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#25D366] transition-colors truncate">
                         Direct Chat Link
                       </div>
@@ -493,7 +493,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="email" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">Email</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">Email</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
                         {CONTACT_DETAILS.EMAIL}
                       </div>
@@ -513,7 +513,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="tiktok" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">TikTok</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">TikTok</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
                         @jewelsteam_1
                       </div>
@@ -533,7 +533,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="instagram" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">Instagram</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">Instagram</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#E4405F] transition-colors truncate">
                         @jewelsteamgrowth_seo_solution
                       </div>
@@ -553,7 +553,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="linkedin" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">LinkedIn</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">LinkedIn</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[#0A66C2] transition-colors truncate">
                         Precious Ayofe
                       </div>
@@ -573,7 +573,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="clutch" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">Clutch</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">Clutch</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
                         View the Jewels profile on Clutch
                       </div>
@@ -593,7 +593,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
                   <div className="flex items-center gap-3.5 min-w-0">
                     <BrandBadge brand="sortlist" badgeSize="lg" />
                     <div className="min-w-0">
-                      <div className="text-xs font-mono text-[var(--muted)]">Sortlist</div>
+                      <div className="text-sm font-sans text-[var(--muted)]">Sortlist</div>
                       <div className="text-sm font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors truncate">
                         View the Jewels profile on Sortlist
                       </div>
@@ -606,19 +606,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
 
             {/* Freelance Platforms Alternative Card */}
             <div className="bg-[var(--card)] border border-[var(--line)] hover:border-[var(--gold)]/50 rounded-2xl p-6 shadow-xl transition-all">
-              <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-1">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] block mb-1">
                 Freelance Marketplaces
               </span>
               <h4 className="text-base font-heading font-medium text-[var(--white)] mb-2">
                 Prefer to hire through Fiverr, Upwork, or Osdire?
               </h4>
-              <p className="text-xs text-[var(--muted)] font-light leading-relaxed mb-4">
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed mb-4">
                 Find our verified freelancer profiles to message, order, and pay through your preferred marketplace platform.
               </p>
               <button
                 type="button"
                 onClick={() => onNavigate('freelance-profiles')}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ink)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--white)] transition-all cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--ink)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-sm font-sans font-medium text-[var(--white)] transition-all cursor-pointer"
               >
                 <span>View Freelance Profiles</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[var(--gold)]" />
@@ -626,7 +626,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialServiceId, onNa
             </div>
 
             {/* Privacy & Custom Scoping Guarantee */}
-            <div className="p-6 rounded-2xl bg-[var(--card)]/60 border border-[var(--line)] text-xs text-[var(--muted)] space-y-2">
+            <div className="p-6 rounded-2xl bg-[var(--card)]/60 border border-[var(--line)] text-sm text-[var(--muted)] space-y-2">
               <div className="text-[var(--white)] font-medium">Consultation Protocol:</div>
               <p className="leading-relaxed">
                 All client submissions and site audits are handled with complete confidentiality. Jewels provides clear, actionable feedback with custom scope-of-work documentation.

@@ -17,16 +17,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       
       {/* 1. Page Heading & Header (DARK SECTION: #0A0A0A) */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs text-[var(--gold)] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="tracking-wide uppercase font-medium text-[11px]">Professional SEO Practitioner</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-sm text-[var(--gold)] mb-6">
+          <Sparkles className="w-4 h-4" />
+          <span className="tracking-wide uppercase font-medium text-sm">Professional SEO Practitioner</span>
         </div>
         
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-[var(--white)] mb-6">
           About Jewels
         </h1>
 
-        <p className="text-xs font-mono uppercase tracking-widest text-[var(--muted)]">
+        <p className="text-sm font-sans uppercase tracking-wider text-[var(--muted)]">
           Strategic Search Engine Optimization & Website Consultation
         </p>
       </section>
@@ -54,7 +54,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                         <span className="font-heading text-4xl font-bold text-[var(--gold)]">J</span>
                       </div>
                       <span className="text-sm font-heading text-[var(--white)]">Jewels Founder</span>
-                      <span className="text-xs font-mono text-[var(--muted)] mt-1">SEO Specialist</span>
+                      <span className="text-sm font-sans text-[var(--muted)] mt-1">SEO Specialist</span>
                     </div>
                   ) : (
                     <img
@@ -71,7 +71,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              <p className="text-[11px] font-mono text-[#777777] mt-4 text-center">
+              <p className="text-sm font-sans text-[#777777] mt-4 text-center">
                 Founder & SEO Specialist · Jewels
               </p>
             </div>
@@ -79,7 +79,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             {/* Strict About Text & Areas of Expertise */}
             <div className="md:col-span-7 space-y-8">
               <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--gold)] block mb-2">
+                <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] block mb-2">
                   Purpose & Philosophy
                 </span>
 
@@ -91,7 +91,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
               {/* Areas of Expertise List */}
               <div className="pt-2">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-[var(--ink)] mb-4">
+                <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-[var(--ink)] mb-4">
                   Areas of Expertise:
                 </h3>
                 
@@ -110,7 +110,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
               {/* Verified Profile Links (LinkedIn and Instagram) */}
               <div className="pt-2">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#666666] block mb-3">
+                <span className="text-sm font-sans uppercase tracking-wider text-[#666666] block mb-3">
                   Connect Directly
                 </span>
                 <div className="flex flex-wrap items-center gap-3">
@@ -119,7 +119,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Jewels on LinkedIn (opens in a new tab)"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-sm font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
                     <BrandIcon brand="linkedin" size={24} variant="gold-hover" className="shrink-0" />
                     <span>LinkedIn Profile</span>
@@ -130,7 +130,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Jewels on Instagram (opens in a new tab)"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-sm font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
                     <BrandIcon brand="instagram" size={24} variant="gold-hover" className="shrink-0" />
                     <span>Instagram @jewelsteamgrowth_seo_solution</span>
@@ -141,7 +141,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Jewels on TikTok (opens in a new tab)"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-xs font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D5D5D5] hover:border-[var(--gold)] text-[var(--ink)] text-sm font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
                   >
                     <BrandIcon brand="tiktok" size={24} variant="gold-hover" className="shrink-0" />
                     <span>TikTok @jewelsteam_1</span>
@@ -152,7 +152,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
                 >
                   <span>Request an SEO Consultation</span>
                   <ArrowRight className="w-4 h-4" />
@@ -160,7 +160,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
                 <button
                   onClick={() => onNavigate('portfolio')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-white hover:bg-[#F2F2F2] text-[var(--ink)] text-xs font-medium border border-[#D0D0D0] hover:border-[var(--gold)] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-white hover:bg-[#F2F2F2] text-[var(--ink)] text-sm font-medium border border-[#D0D0D0] hover:border-[var(--gold)] transition-colors cursor-pointer"
                 >
                   <span>View Portfolio Projects</span>
                 </button>

@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* ZONE 2: PRIMARY NAV LINKS (Single-line, unboxed text links) */}
           <nav 
-            className="hidden lg:flex items-center gap-3 xl:gap-4 2xl:gap-5 text-[11px] xl:text-xs 2xl:text-sm font-medium text-[var(--muted)]"
+            className="hidden lg:flex items-center gap-3 xl:gap-4 2xl:gap-5 text-sm font-medium text-[var(--muted)]"
             aria-label="Primary Navigation"
           >
             {navLinks.map((link) => {
@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenChecklist}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm font-sans font-medium text-[var(--muted)] hover:text-[var(--gold)] bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] transition-all cursor-pointer"
               title="Open Pre-Launch Checklist"
             >
               <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => handleLinkClick('about')}
               title="Founder & SEO Specialist · Jewels"
-              className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-xs font-mono text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer"
+              className="hidden xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-sm font-sans font-medium text-[var(--muted)] hover:text-[var(--white)] transition-all cursor-pointer"
             >
               <div className="w-5 h-5 rounded-full p-[1px] bg-[var(--gold)] shrink-0 overflow-hidden">
                 <img
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => handleLinkClick('contact')}
-              className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-[var(--gold)]/15 hover:shadow-[var(--gold)]/30 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-all duration-200 shadow-md shadow-[var(--gold)]/15 hover:shadow-[var(--gold)]/30 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -158,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => handleLinkClick('contact')}
-              className="inline-flex sm:hidden items-center justify-center px-3 py-1.5 rounded-md bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-tight whitespace-nowrap cursor-pointer transition-colors"
+              className="inline-flex sm:hidden items-center justify-center px-3 py-1.5 rounded-md bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-tight whitespace-nowrap cursor-pointer transition-colors"
             >
               Consultation
             </button>
@@ -198,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="min-w-0">
               <div className="text-sm font-medium text-[var(--white)] truncate">Jewels</div>
-              <div className="text-xs text-[var(--gold)] font-mono">SEO Specialist · Direct Inquiry</div>
+              <div className="text-sm text-[var(--gold)] font-sans">SEO Specialist · Direct Inquiry</div>
             </div>
           </div>
 
@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="mt-4 pt-4 border-t border-[var(--line)] flex flex-col gap-2.5">
             <button
               onClick={() => handleLinkClick('contact')}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
             >
               <span>Request an SEO Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -237,7 +237,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setIsMobileMenuOpen(false);
                 onOpenChecklist();
               }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--ink)] hover:bg-[#1A1A1A] text-[var(--muted)] hover:text-[var(--gold)] text-xs font-mono border border-[var(--line)] hover:border-[var(--gold)] transition-colors cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--ink)] hover:bg-[#1A1A1A] text-[var(--muted)] hover:text-[var(--gold)] text-sm font-sans border border-[var(--line)] hover:border-[var(--gold)] transition-colors cursor-pointer"
             >
               <ClipboardCheck className="w-3.5 h-3.5 text-[var(--gold)]" />
               <span>Owner Pre-Launch Checklist</span>

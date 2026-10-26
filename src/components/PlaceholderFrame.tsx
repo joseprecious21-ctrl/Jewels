@@ -47,7 +47,7 @@ export const PlaceholderFrame: React.FC<PlaceholderFrameProps> = ({
       />
 
       {tag && (
-        <div className={`absolute top-3 left-3 text-[11px] font-mono tracking-wider uppercase px-2.5 py-1 rounded border ${tagStyle}`}>
+        <div className={`absolute top-3 left-3 text-sm font-sans tracking-wider uppercase px-2.5 py-1 rounded border ${tagStyle}`}>
           {tag}
         </div>
       )}
@@ -62,13 +62,13 @@ export const PlaceholderFrame: React.FC<PlaceholderFrameProps> = ({
         </p>
         
         {hint && (
-          <p className="text-xs text-[var(--muted)] mt-1 leading-relaxed">
+          <p className="text-sm text-[var(--muted)] mt-1 leading-relaxed">
             {hint}
           </p>
         )}
 
-        <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--muted)] bg-[var(--ink)] px-2.5 py-0.5 rounded border border-[var(--line)]">
-          <Sparkles className="w-3 h-3 text-[var(--gold)]" />
+        <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-sans text-[var(--muted)] bg-[var(--ink)] px-2.5 py-0.5 rounded border border-[var(--line)]">
+          <Sparkles className="w-3.5 h-3.5 text-[var(--gold)]" />
           <span>[SCREENSHOT PLACEHOLDER]</span>
         </div>
       </div>
