@@ -88,7 +88,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
       <section 
         ref={heroRef}
-        className="relative w-full min-h-[70vh] sm:min-h-[80vh] max-h-[80vh] sm:max-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-24 pb-16 sm:pt-32 sm:pb-24"
+        className="relative w-full min-h-[70vh] sm:min-h-[80vh] max-h-[80vh] sm:max-h-[90vh] flex items-center overflow-hidden bg-[#0A0A0A] pt-24 pb-16 sm:pt-32 sm:pb-24"
       >
         {/* Hero Video Container: capped at 2560px and centered for screens wider than 1920px */}
         <div className="absolute inset-0 w-full max-w-[2560px] mx-auto overflow-hidden pointer-events-none z-0">
@@ -151,11 +151,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             />
           </div>
 
-          {/* Reduced light overlay: linear-gradient(90deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.08) 65%, rgba(10,10,10,0) 100%) plus soft fade to solid #0A0A0A in bottom 20% */}
+          {/* Darker left-side overlay: linear-gradient(90deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.2) 100%) plus soft fade to solid #0A0A0A in bottom 20% */}
           <div 
             className="absolute inset-0 pointer-events-none z-[1]"
             style={{
-              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.08) 65%, rgba(10, 10, 10, 0) 100%), linear-gradient(to bottom, transparent 80%, #0A0A0A 100%)'
+              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.2) 100%), linear-gradient(to bottom, transparent 80%, #0A0A0A 100%)'
             }}
             aria-hidden="true"
           />
@@ -167,74 +167,76 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           aria-hidden="true" 
         />
 
-        {/* Hero Content (Above overlay with high contrast) */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Hero Content (Above overlay with high contrast, left-aligned matching navigation logo left edge) */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-start">
           
-          {/* Soft, localised dark glow only behind the text block */}
-          <div 
-            className="absolute -inset-x-6 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
-            style={{
-              background: 'radial-gradient(ellipse at left center, rgba(10,10,10,0.55), transparent 70%)'
-            }}
-            aria-hidden="true"
-          />
+          <div className="relative w-full max-w-[640px] text-left flex flex-col items-start justify-center">
+            {/* Soft, localised dark glow only behind the text block */}
+            <div 
+              className="absolute -inset-x-6 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(ellipse at left center, rgba(10,10,10,0.65), transparent 75%)'
+              }}
+              aria-hidden="true"
+            />
 
-          {/* Subtle kicker badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-sm text-[var(--gold)] mb-6 backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="tracking-wide uppercase font-medium text-sm">
-              Professional SEO Portfolio & Optimization
-            </span>
-          </div>
+            {/* Subtle kicker badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-sm text-[var(--gold)] mb-6 backdrop-blur-sm">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="tracking-wide uppercase font-medium text-sm">
+                Professional SEO Portfolio & Optimization
+              </span>
+            </div>
 
-          {/* Bold headline introducing Jewels and its SEO expertise */}
-          <h1 
-            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-heading font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.1] text-balance"
-          >
-            Strategic SEO & Website Optimization for High-Growth Brands
-          </h1>
-
-          {/* Supporting line */}
-          <p 
-            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}
-            className="text-base sm:text-xl text-neutral-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
-          >
-            Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
-          </p>
-
-          {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
-            <button
-              onClick={() => onNavigate('contact')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95"
+            {/* Bold headline introducing Jewels and its SEO expertise */}
+            <h1 
+              style={{ textShadow: '0 2px 16px rgba(0,0,0,0.65)' }}
+              className="text-[clamp(2rem,5vw,3.75rem)] font-heading font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.14] text-left"
             >
-              <span>Request an SEO Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              Strategic SEO & Website Optimization for High-Growth Brands
+            </h1>
 
-            <button
-              onClick={() => onNavigate('portfolio')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm"
+            {/* Supporting line */}
+            <p 
+              style={{ textShadow: '0 2px 16px rgba(0,0,0,0.65)' }}
+              className="text-base sm:text-lg lg:text-xl text-neutral-100 max-w-[580px] mb-8 leading-relaxed font-light text-left"
             >
-              <span>View SEO Portfolio</span>
-            </button>
+              Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
+            </p>
 
-            <button
-              onClick={() => onNavigate('calculator')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm"
-            >
-              <Sparkles className="w-4 h-4 text-[var(--gold)]" />
-              <span>Growth Calculator</span>
-            </button>
-          </div>
+            {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
+            <div className="flex flex-wrap items-center justify-start gap-[14px] w-full">
+              <button
+                onClick={() => onNavigate('contact')}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[48px]"
+              >
+                <span>Request an SEO Consultation</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-[var(--muted)] font-sans">
-            <span>Enterprise & Local SEO</span>
-            <span aria-hidden="true">·</span>
-            <span>All Services Quoted Individually</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-[var(--success)]">Verified Outcomes</span>
+              <button
+                onClick={() => onNavigate('portfolio')}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+              >
+                <span>View SEO Portfolio</span>
+              </button>
+
+              <button
+                onClick={() => onNavigate('calculator')}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+              >
+                <Sparkles className="w-4 h-4 text-[var(--gold)]" />
+                <span>Growth Calculator</span>
+              </button>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-start gap-2 text-sm text-[var(--muted)] font-sans text-left">
+              <span>Enterprise & Local SEO</span>
+              <span aria-hidden="true">·</span>
+              <span>All Services Quoted Individually</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[var(--success)]">Verified Outcomes</span>
+            </div>
           </div>
 
         </div>
