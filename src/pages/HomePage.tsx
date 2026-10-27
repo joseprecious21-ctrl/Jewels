@@ -88,7 +88,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
       <section 
         ref={heroRef}
-        className="relative w-full min-h-[70vh] sm:min-h-[80vh] max-h-[80vh] sm:max-h-[90vh] flex items-center overflow-hidden bg-[#0A0A0A] pt-24 pb-16 sm:pt-32 sm:pb-24"
+        className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-[#0A0A0A] pt-[100px] min-[700px]:pt-[120px] pb-12 min-[700px]:pb-16"
       >
         {/* Hero Video Container: capped at 2560px and centered for screens wider than 1920px */}
         <div className="absolute inset-0 w-full max-w-[2560px] mx-auto overflow-hidden pointer-events-none z-0">
@@ -151,11 +151,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             />
           </div>
 
-          {/* Darker left-side overlay: linear-gradient(90deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.2) 100%) plus soft fade to solid #0A0A0A in bottom 20% */}
+          {/* Smooth overlay gradient (78% to 55% to 15%) + soft fade to solid #0A0A0A over bottom 15% */}
           <div 
             className="absolute inset-0 pointer-events-none z-[1]"
             style={{
-              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.2) 100%), linear-gradient(to bottom, transparent 80%, #0A0A0A 100%)'
+              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.78) 0%, rgba(10, 10, 10, 0.55) 45%, rgba(10, 10, 10, 0.15) 100%), linear-gradient(to bottom, transparent 85%, #0A0A0A 100%)'
             }}
             aria-hidden="true"
           />
@@ -168,47 +168,33 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         />
 
         {/* Hero Content (Above overlay with high contrast, left-aligned matching navigation logo left edge) */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-start">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 min-[700px]:px-6 lg:px-8 flex justify-start">
           
-          <div className="relative w-full max-w-[640px] text-left flex flex-col items-start justify-center">
-            {/* Soft, localised dark glow only behind the text block */}
-            <div 
-              className="absolute -inset-x-6 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
-              style={{
-                background: 'radial-gradient(ellipse at left center, rgba(10,10,10,0.65), transparent 75%)'
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Subtle kicker badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)]/90 border border-[var(--line)] text-sm text-[var(--gold)] mb-6 backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span className="tracking-wide uppercase font-medium text-sm">
-                Professional SEO Portfolio & Optimization
-              </span>
-            </div>
-
+          <div className="relative w-full max-w-[640px] lg:max-w-[58%] text-left flex flex-col items-start justify-center">
             {/* Bold headline introducing Jewels and its SEO expertise */}
             <h1 
-              style={{ textShadow: '0 2px 16px rgba(0,0,0,0.65)' }}
-              className="text-[clamp(2rem,5vw,3.75rem)] font-heading font-medium tracking-tight text-[var(--white)] mb-6 leading-[1.14] text-left"
+              style={{ 
+                textShadow: '0 2px 18px rgba(0,0,0,0.6)',
+                textWrap: 'balance'
+              }}
+              className="text-[clamp(1.75rem,7vw,2.4rem)] min-[700px]:text-[clamp(2rem,4.2vw,3.6rem)] font-heading font-[800] tracking-[-0.02em] text-[#FFFFFF] mb-[20px] leading-[1.12] text-left max-w-[17ch]"
             >
               Strategic SEO & Website Optimization for High-Growth Brands
             </h1>
 
             {/* Supporting line */}
             <p 
-              style={{ textShadow: '0 2px 16px rgba(0,0,0,0.65)' }}
-              className="text-base sm:text-lg lg:text-xl text-neutral-100 max-w-[580px] mb-8 leading-relaxed font-light text-left"
+              style={{ textShadow: '0 2px 18px rgba(0,0,0,0.6)' }}
+              className="text-[1.05rem] min-[700px]:text-[1.125rem] text-[#E8E8E8] max-w-[52ch] mb-[28px] leading-[1.6] font-light text-left"
             >
               Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
             </p>
 
             {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
-            <div className="flex flex-wrap items-center justify-start gap-[14px] w-full">
+            <div className="flex flex-col min-[700px]:flex-row flex-wrap items-stretch min-[700px]:items-center justify-start gap-[14px] w-full">
               <button
                 onClick={() => onNavigate('contact')}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[48px]"
+                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[48px]"
               >
                 <span>Request an SEO Consultation</span>
                 <ArrowRight className="w-4 h-4" />
@@ -216,21 +202,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               <button
                 onClick={() => onNavigate('portfolio')}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
               >
                 <span>View SEO Portfolio</span>
               </button>
 
               <button
                 onClick={() => onNavigate('calculator')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
               >
                 <Sparkles className="w-4 h-4 text-[var(--gold)]" />
                 <span>Growth Calculator</span>
               </button>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center justify-start gap-2 text-sm text-[var(--muted)] font-sans text-left">
+            <div className="mt-7 flex flex-wrap items-center justify-start gap-2 text-sm text-[var(--muted)] font-sans text-left">
               <span>Enterprise & Local SEO</span>
               <span aria-hidden="true">·</span>
               <span>All Services Quoted Individually</span>

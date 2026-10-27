@@ -54,6 +54,10 @@
   --color-alert: var(--alert);
 }
 
+html {
+  scroll-padding-top: 72px;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--black);

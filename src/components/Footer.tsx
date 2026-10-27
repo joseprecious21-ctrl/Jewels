@@ -10,8 +10,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) => {
-  const [logoError, setLogoError] = useState(false);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -41,32 +39,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenChecklist }) =
                 onNavigate('home');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="group flex items-center gap-3 text-left cursor-pointer focus-visible:outline-none"
-              aria-label="Jewels SEO Homepage"
+              className="group flex items-center text-left cursor-pointer focus-visible:outline-none"
+              aria-label="Jewels Team SEO Homepage"
             >
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-[var(--gold)] shrink-0 transition-transform group-hover:scale-105">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[var(--ink)] flex items-center justify-center">
-                  {!logoError ? (
-                    <img
-                      src="/logo-source.jpg"
-                      alt="Jewels logo"
-                      width={40}
-                      height={40}
-                      className="w-full h-full object-cover object-center"
-                      onError={() => setLogoError(true)}
-                    />
-                  ) : (
-                    <span className="font-heading font-bold text-sm text-[var(--gold)]">J</span>
-                  )}
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading text-2xl font-semibold tracking-tight text-[var(--gold)] group-hover:text-[var(--gold-hover)] transition-colors">
-                  Jewels
-                </span>
-                <span className="text-sm uppercase tracking-wider font-sans text-[var(--muted)]">
-                  SEO & Optimization
-                </span>
+              <div className="relative h-12 w-12 rounded-lg overflow-hidden border border-[var(--gold)]/40 bg-black flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 shadow-md shadow-black/40">
+                <img
+                  src="/logo-source.jpg"
+                  alt="Jewels Team logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </button>
 
