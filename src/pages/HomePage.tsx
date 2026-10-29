@@ -88,7 +88,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
       <section 
         ref={heroRef}
-        className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-[#0A0A0A] pt-[100px] min-[700px]:pt-[120px] pb-12 min-[700px]:pb-16"
+        className="relative w-full min-h-[85vh] flex items-center bg-[#0A0A0A] pt-[96px] min-[700px]:pt-[108px] pb-10 min-[700px]:pb-14"
       >
         {/* Hero Video Container: capped at 2560px and centered for screens wider than 1920px */}
         <div className="absolute inset-0 w-full max-w-[2560px] mx-auto overflow-hidden pointer-events-none z-0">
@@ -101,7 +101,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             aria-hidden="true"
           />
 
-          {/* For a permanent setup, download the video and host it as /videos/hero.mp4. Streamable links may expire. */}
           {!prefersStatic && !hasVideoError && (
             <video
               ref={videoRef}
@@ -110,6 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               loop
               playsInline
               preload="auto"
+              poster="/hero-poster.jpg"
               aria-hidden="true"
               disablePictureInPicture
               // @ts-expect-error disableRemotePlayback is standard HTMLVideoElement attribute
@@ -127,12 +127,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 zIndex: 0,
                 backfaceVisibility: 'hidden',
                 transform: 'translateZ(0)',
-                filter: 'brightness(1.15) contrast(1.08) saturate(1.1)',
+                imageRendering: 'auto',
+                filter: 'brightness(1.2) contrast(1.1) saturate(1.15)',
               }}
               className={`pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
                 isVideoLoaded ? 'opacity-100' : 'opacity-0'
               }`}
             >
+              <source src="/videos/hero-1080.webm" type="video/webm" />
+              <source src="/videos/hero-1080.mp4" type="video/mp4" />
+              <source src="/videos/hero-720.mp4" type="video/mp4" media="(max-width: 700px)" />
               <source src="/videos/hero.mp4" type="video/mp4" />
               <source src="https://api-f.streamable.com/api/v1/videos/kj5www/mp4" type="video/mp4" />
             </video>
@@ -151,11 +155,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             />
           </div>
 
-          {/* Smooth overlay gradient (78% to 55% to 15%) + soft fade to solid #0A0A0A over bottom 15% */}
+          {/* Light overlay that only darkens behind the text (55% -> 25% -> 0% at 75%) + bottom 12% fade */}
           <div 
             className="absolute inset-0 pointer-events-none z-[1]"
             style={{
-              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.78) 0%, rgba(10, 10, 10, 0.55) 45%, rgba(10, 10, 10, 0.15) 100%), linear-gradient(to bottom, transparent 85%, #0A0A0A 100%)'
+              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.25) 40%, rgba(10, 10, 10, 0) 75%), linear-gradient(to bottom, transparent 88%, #0A0A0A 100%)'
             }}
             aria-hidden="true"
           />
@@ -170,14 +174,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         {/* Hero Content (Above overlay with high contrast, left-aligned matching navigation logo left edge) */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-5 min-[700px]:px-6 lg:px-8 flex justify-start">
           
-          <div className="relative w-full max-w-[640px] lg:max-w-[58%] text-left flex flex-col items-start justify-center">
+          <div className="relative w-full max-w-[620px] lg:max-w-[58%] text-left flex flex-col items-start justify-center">
+            {/* Soft local shadow behind the text block instead of darkening the whole video */}
+            <div 
+              className="absolute -inset-x-8 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(ellipse at 20% 50%, rgba(10,10,10,0.5), transparent 65%)'
+              }}
+              aria-hidden="true"
+            />
             {/* Bold headline introducing Jewels and its SEO expertise */}
             <h1 
               style={{ 
                 textShadow: '0 2px 18px rgba(0,0,0,0.6)',
                 textWrap: 'balance'
               }}
-              className="text-[clamp(1.75rem,7vw,2.4rem)] min-[700px]:text-[clamp(2rem,4.2vw,3.6rem)] font-heading font-[800] tracking-[-0.02em] text-[#FFFFFF] mb-[20px] leading-[1.12] text-left max-w-[17ch]"
+              className="text-[clamp(1.5rem,6vw,2.1rem)] min-[700px]:text-[clamp(1.8rem,3.5vw,2.85rem)] font-heading font-[800] tracking-[-0.02em] text-[#FFFFFF] mb-3.5 leading-[1.15] text-left max-w-[18ch]"
             >
               Strategic SEO & Website Optimization for High-Growth Brands
             </h1>
@@ -185,16 +197,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {/* Supporting line */}
             <p 
               style={{ textShadow: '0 2px 18px rgba(0,0,0,0.6)' }}
-              className="text-[1.05rem] min-[700px]:text-[1.125rem] text-[#E8E8E8] max-w-[52ch] mb-[28px] leading-[1.6] font-light text-left"
+              className="text-[0.95rem] min-[700px]:text-[1.05rem] text-[#E8E8E8] max-w-[48ch] mb-5 leading-[1.55] font-light text-left"
             >
               Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
             </p>
 
             {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
-            <div className="flex flex-col min-[700px]:flex-row flex-wrap items-stretch min-[700px]:items-center justify-start gap-[14px] w-full">
+            <div className="flex flex-wrap items-center justify-start gap-3 w-full">
               <button
                 onClick={() => onNavigate('contact')}
-                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[44px]"
               >
                 <span>Request an SEO Consultation</span>
                 <ArrowRight className="w-4 h-4" />
@@ -202,21 +214,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               <button
                 onClick={() => onNavigate('portfolio')}
-                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[44px]"
               >
                 <span>View SEO Portfolio</span>
               </button>
 
               <button
                 onClick={() => onNavigate('calculator')}
-                className="w-full min-[700px]:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[44px]"
               >
                 <Sparkles className="w-4 h-4 text-[var(--gold)]" />
                 <span>Growth Calculator</span>
               </button>
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center justify-start gap-2 text-sm text-[var(--muted)] font-sans text-left">
+            <div className="mt-5 flex flex-wrap items-center justify-start gap-2 text-xs sm:text-sm text-[var(--muted)] font-sans text-left">
               <span>Enterprise & Local SEO</span>
               <span aria-hidden="true">·</span>
               <span>All Services Quoted Individually</span>
