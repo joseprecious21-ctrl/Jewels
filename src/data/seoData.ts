@@ -511,6 +511,170 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'technical-seo-guide',
+    slug: 'technical-seo-guide',
+    title: 'Technical SEO Explained: How to Make Your Website Easy for Google to Crawl and Index',
+    metaDescription: 'Learn the basics of technical SEO, including crawling, indexing, site speed, mobile-friendliness, and structured data. A practical guide from Jewels.',
+    categories: ['Technical SEO', 'Website Optimization'],
+    excerpt: 'A practical guide to the behind-the-scenes fixes that help search engines find, read, and index your website.',
+    publishDate: 'October 29, 2026',
+    datePublishedIso: '2026-10-29',
+    readTime: '6 min read',
+    author: 'Jewels',
+    intro: "Great content can't rank if search engines struggle to find it, read it, or load it. Technical SEO is the work that makes your website easy for search engines to crawl and understand, and easy for visitors to use. Here are the areas that matter most.",
+    featuredImagePlaceholderNote: 'Technical SEO Crawl Architecture & Sitemaps',
+    featuredImageAlt: 'Diagram showing technical SEO pillars: crawling, indexing, XML sitemap validation, and Core Web Vitals',
+    sections: [
+      {
+        heading: '1. Make sure your site can be crawled',
+        sectionNumber: '01',
+        paragraphs: [
+          "Search engines discover pages by following links. If important pages are blocked or hard to reach, they may never be found. Check your robots.txt file to be sure you haven't blocked pages you want in search results, and make sure every important page is linked from somewhere on your site.",
+          "Use internal links throughout your content so crawlers can discover new articles and service pages naturally without relying solely on direct visits."
+        ],
+        keyTakeaways: [
+          'Verify robots.txt allows access to all indexable sections.',
+          'Ensure every critical landing page has at least one internal link.',
+          'Avoid orphan pages that search engines cannot reach through site navigation.'
+        ]
+      },
+      {
+        heading: '2. Submit an XML sitemap',
+        sectionNumber: '02',
+        paragraphs: [
+          'A sitemap is a list of the pages you want search engines to know about. Create one, make sure it only lists pages you want indexed, keep it updated as your website changes, and submit it directly through Google Search Console.',
+          'Ensure your sitemap excludes canonicalized duplicates, 404 error pages, or non-indexable admin pages so search engines spend their crawl budget on valuable content.'
+        ],
+        proTip: 'Whenever you publish new core service pages or articles, verify that your sitemap automatically updates and re-ping Google Search Console.'
+      },
+      {
+        heading: '3. Improve page load speed and performance',
+        sectionNumber: '03',
+        paragraphs: [
+          'Page speed directly affects user experience and crawl efficiency. Compress images before uploading, enable browser caching, minimize unnecessary JavaScript and render-blocking scripts, and use a fast, stable web host.',
+          'Audit your server response times and consider content delivery networks (CDNs) or lightweight WordPress themes to keep resource requests lean.'
+        ],
+        keyTakeaways: [
+          'Optimize image dimensions and compress file sizes before uploading.',
+          'Enable browser caching and Gzip/Brotli compression on your web server.',
+          'Eliminate unused plugins, scripts, and heavy third-party tracking tags.'
+        ]
+      },
+      {
+        heading: '4. Ensure full mobile-friendliness',
+        sectionNumber: '04',
+        paragraphs: [
+          'Google uses mobile-first indexing for almost all websites. Your site must adapt seamlessly to smartphones and tablets, with legible typography, properly sized touch targets, and content that does not require horizontal scrolling.',
+          'Test pages on various mobile screen widths to confirm that interactive elements remain accessible and clear.'
+        ]
+      },
+      {
+        heading: '5. Fix broken links and manage redirects',
+        sectionNumber: '05',
+        paragraphs: [
+          'Broken links (404 errors) frustrate visitors and waste search engine crawl resources. Regularly test internal and external links, update outdated paths, and implement clean 301 redirects when pages move to new permanent URLs.',
+          'Avoid redirect chains or loops that delay page loading and confuse search engine crawlers.'
+        ],
+        proTip: 'Direct 301 redirects straight to the final destination URL rather than chaining through intermediate URLs.'
+      },
+      {
+        heading: '6. Implement structured data markup',
+        sectionNumber: '06',
+        paragraphs: [
+          'Structured data (Schema.org markup) gives search engines clear context about what your business offers. Adding Article, Organization, LocalBusiness, and Service schemas clarifies entity relationships.',
+          'Valid structured data helps search engines display rich snippets, enhancing your presence and search result clarity.'
+        ],
+        keyTakeaways: [
+          'Use JSON-LD format for Schema.org structured data.',
+          'Validate markup using Google Rich Results Test.',
+          'Keep structured data aligned with visible on-page content.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'on-page-seo-guide',
+    slug: 'on-page-seo-guide',
+    title: 'On-Page SEO Best Practices: How to Optimize Your Content and Structure',
+    metaDescription: 'Practical on-page SEO best practices from Jewels, covering keyword placement, heading tags, title tags, internal links, and content quality.',
+    categories: ['On-Page SEO', 'Content Strategy'],
+    excerpt: 'A clear, actionable guide to optimizing your webpage content, headings, meta tags, and internal links for higher search rankings.',
+    publishDate: 'October 29, 2026',
+    datePublishedIso: '2026-10-29',
+    readTime: '6 min read',
+    author: 'Jewels',
+    intro: 'On-page SEO involves optimizing individual web pages so search engines understand their relevance and visitors find immediate value. When your content and structure align with search intent, pages stand the best chance of ranking well. Here are the core practices to focus on.',
+    featuredImagePlaceholderNote: 'On-Page SEO Content Architecture & Headings',
+    featuredImageAlt: 'Infographic illustrating on-page SEO best practices: title tags, heading structure, search intent, and internal links',
+    sections: [
+      {
+        heading: '1. Craft clear title tags and meta descriptions',
+        sectionNumber: '01',
+        paragraphs: [
+          'Your title tag is one of the strongest on-page relevance signals and serves as the headline in search engine result pages. Keep it concise, descriptive, and focused on the primary topic of the page.',
+          'Write a compelling meta description that accurately summarizes what the reader will learn. While meta descriptions do not directly influence rankings, they directly influence click-through rates.'
+        ],
+        keyTakeaways: [
+          'Include your primary topic naturally near the front of the title tag.',
+          'Keep title tags between 50 and 60 characters to avoid truncation in search snippets.',
+          'Write unique, descriptive meta descriptions for every page on your site.'
+        ]
+      },
+      {
+        heading: '2. Structure content with logical headings (H1, H2, H3)',
+        sectionNumber: '02',
+        paragraphs: [
+          'Every page should have one clear H1 heading that defines the central topic. Use H2 headings to divide the article into major subsections, and H3 headings for supporting points.',
+          'A clean heading hierarchy allows visitors to scan the content quickly and helps search engines understand how ideas are organized.'
+        ],
+        proTip: 'Never skip heading levels (e.g. going directly from H1 to H3). Maintain an orderly, nested outline structure.'
+      },
+      {
+        heading: '3. Match search intent and use keywords naturally',
+        sectionNumber: '03',
+        paragraphs: [
+          'Understand what the searcher is trying to accomplish before creating content. Whether they are looking for practical instructions, local services, or answers to a specific question, address that need directly.',
+          'Incorporate primary and related terms naturally into headings, opening paragraphs, and throughout the text without forced repetition or keyword stuffing.'
+        ],
+        keyTakeaways: [
+          'Align content format with what searchers expect: guides, lists, or direct answers.',
+          'Prioritize natural readability over arbitrary keyword density ratios.',
+          'Answer core questions early in the article before expanding into details.'
+        ]
+      },
+      {
+        heading: '4. Build a helpful internal linking structure',
+        sectionNumber: '04',
+        paragraphs: [
+          'Connect related articles and service pages across your website using descriptive anchor text. Internal links guide readers to relevant next steps and help search engines explore deeper pages.',
+          'Make sure links provide genuine value to the reader rather than creating clutter or linking out of context.'
+        ]
+      },
+      {
+        heading: '5. Optimize images with descriptive alt text',
+        sectionNumber: '05',
+        paragraphs: [
+          'Search engine crawlers rely on image file names and alt attributes to understand graphic content. Give image files meaningful names before uploading and write concise alt text explaining what is shown.',
+          'Descriptive alt text also ensures accessibility for visitors who rely on screen readers to navigate your website.'
+        ],
+        proTip: 'Write alt text as a concise, objective description of the image content rather than a list of keywords.'
+      },
+      {
+        heading: '6. Focus on clarity, readability, and depth',
+        sectionNumber: '06',
+        paragraphs: [
+          'Publish thorough, original content that answers questions completely. Avoid unnecessary fluff or repetitive filler that dilutes the main message.',
+          'Use short paragraphs, bullet points, and clean formatting so that visitors can easily read, understand, and apply your guidance.'
+        ],
+        keyTakeaways: [
+          'Keep paragraphs short and focused on one central point.',
+          'Use bulleted or numbered lists for sequential steps and key takeaways.',
+          'Write for human readers first, ensuring information is straightforward to implement.'
+        ]
+      }
+    ]
   }
 ];
 

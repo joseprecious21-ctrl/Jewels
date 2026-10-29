@@ -65,8 +65,10 @@ export interface BlogPost {
   categories: string[];
   excerpt: string;
   publishDate: string;
+  datePublishedIso?: string;
   readTime: string;
   author: string;
+  intro?: string;
   featuredImagePlaceholderNote: string;
   featuredImageAlt: string;
   sections: BlogPostSection[];

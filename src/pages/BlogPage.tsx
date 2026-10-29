@@ -19,11 +19,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
       const pathname = window.location.pathname;
       const hash = window.location.hash;
 
-      if (pathname === '/blog/optimize-google-business-profile' || hash.includes('optimize-google-business-profile')) {
-        setActiveSlug('optimize-google-business-profile');
+      const found = BLOG_POSTS.find(
+        (p) => pathname === `/blog/${p.slug}` || hash.includes(p.slug)
+      );
+
+      if (found) {
+        setActiveSlug(found.slug);
       } else if (initialPostSlug) {
         setActiveSlug(initialPostSlug);
-      } else if (pathname === '/blog' || hash === '#blog') {
+      } else if (pathname === '/blog' || hash === '#blog' || hash === 'blog') {
         setActiveSlug(null);
       }
     };
@@ -46,6 +50,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
       <BlogArticlePage
         post={activePost}
         onNavigate={onNavigate}
+        onSelectPost={(slug) => {
+          setActiveSlug(slug);
+          window.history.pushState(null, '', `/blog/${slug}`);
+          window.location.hash = `blog/${slug}`;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onBackToBlog={() => {
           setActiveSlug(null);
           window.history.pushState(null, '', '/blog');
@@ -97,10 +107,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
                     <BookOpen className="w-6 h-6 stroke-[1.5]" />
                   </div>
                   <span className="text-sm font-medium text-[var(--gold)] uppercase tracking-wider">
-                    Google Business Profile Guide
+                    {post.categories[0] || 'SEO Guide'}
                   </span>
                   <span className="text-sm text-[var(--muted)] mt-0.5 font-normal">
-                    Local Search Framework
+                    {post.categories[1] || 'Practical Guide'}
                   </span>
                 </div>
 

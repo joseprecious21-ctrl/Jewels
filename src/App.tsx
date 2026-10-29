@@ -28,12 +28,7 @@ export default function App() {
       const pathname = window.location.pathname.toLowerCase();
       const hash = window.location.hash.replace('#', '').toLowerCase();
 
-      if (pathname.includes('optimize-google-business-profile') || hash.includes('optimize-google-business-profile')) {
-        setCurrentPage('blog');
-        return;
-      }
-
-      if (pathname === '/blog' || hash.startsWith('blog')) {
+      if (pathname.startsWith('/blog') || hash.startsWith('blog') || hash.startsWith('#blog')) {
         setCurrentPage('blog');
         return;
       }
@@ -71,8 +66,10 @@ export default function App() {
   useEffect(() => {
     // If on specific article, BlogArticlePage manages unique title, description, and Article schema
     if (
-      window.location.pathname.includes('optimize-google-business-profile') || 
-      window.location.hash.includes('optimize-google-business-profile')
+      window.location.pathname.startsWith('/blog/') || 
+      window.location.hash.includes('optimize-google-business-profile') ||
+      window.location.hash.includes('technical-seo-guide') ||
+      window.location.hash.includes('on-page-seo-guide')
     ) {
       return;
     }

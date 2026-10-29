@@ -2,16 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, 
   CheckCircle2, AlertTriangle, Lightbulb, Image as ImageIcon, 
-  ChevronRight, Sparkles, ExternalLink 
+  ChevronRight, Sparkles, ExternalLink, BookOpen 
 } from 'lucide-react';
 import { PageId, BlogPost, BlogPostSection } from '../types';
-import { CONTACT_DETAILS } from '../data/seoData';
+import { CONTACT_DETAILS, BLOG_POSTS } from '../data/seoData';
 import { BrandIcon } from '../components/BrandIcon';
 
 interface BlogArticlePageProps {
   post: BlogPost;
   onNavigate: (page: PageId, extraId?: string) => void;
   onBackToBlog: () => void;
+  onSelectPost?: (slug: string) => void;
 }
 
 /**
@@ -189,6 +190,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
   post,
   onNavigate,
   onBackToBlog,
+  onSelectPost,
 }) => {
   // Title H1 Typewriter State
   const [h1Length, setH1Length] = useState(0);
@@ -272,8 +274,8 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           url: 'https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/logo-source.jpg',
         },
       },
-      datePublished: '2026-10-18',
-      dateModified: '2026-10-18',
+      datePublished: post.datePublishedIso || '2026-10-29',
+      dateModified: post.datePublishedIso || '2026-10-29',
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': `https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/blog/${post.slug}`,
@@ -297,6 +299,36 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
       setTimeout(() => setCopied(false), 2500);
     }
   };
+
+  // Related reading logic: linking between technical SEO and on-page SEO, or other guides
+  const relatedPosts = post.slug === 'technical-seo-guide'
+    ? BLOG_POSTS.filter((p) => p.slug === 'on-page-seo-guide')
+    : post.slug === 'on-page-seo-guide'
+    ? BLOG_POSTS.filter((p) => p.slug === 'technical-seo-guide')
+    : BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
+
+  // Adaptable CTA copy tailored to the topic
+  const ctaData = (() => {
+    if (post.slug === 'technical-seo-guide') {
+      return {
+        badge: 'Technical SEO & Crawl Audits',
+        heading: 'Need Help With Your Technical SEO & Website Architecture?',
+        paragraph: 'Schedule a technical SEO consultation with Jewels to audit crawlability, fix indexation blockers, and improve site performance.',
+      };
+    }
+    if (post.slug === 'on-page-seo-guide') {
+      return {
+        badge: 'On-Page SEO Optimization',
+        heading: 'Ready to Optimize Your Content & Headings for Search?',
+        paragraph: 'Schedule an on-page SEO consultation with Jewels to refine your content architecture, heading hierarchies, and internal links.',
+      };
+    }
+    return {
+      badge: 'Take Your Local Rankings to #1',
+      heading: 'Ready to Optimize Your Google Business Profile?',
+      paragraph: 'Schedule a thorough local SEO and Google Business Profile audit with Jewels to identify ranking opportunities, eliminate compliance risks, and convert nearby searchers into loyal clients.',
+    };
+  })();
 
   return (
     <article className="pt-28 sm:pt-36 min-h-screen bg-[var(--ink)] text-[var(--white)] pb-24">
@@ -423,7 +455,11 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
             </p>
 
             <p className="text-sm text-[var(--muted)] font-light max-w-lg mb-3">
-              Recommended illustration: Google Business Profile local 3-pack search layout, map pin ranking metrics, and mobile engagement dashboard.
+              {post.slug === 'technical-seo-guide'
+                ? 'Recommended diagram: Technical crawl architecture, XML sitemap validation, page speed metrics, and schema markup.'
+                : post.slug === 'on-page-seo-guide'
+                ? 'Recommended diagram: On-page content hierarchy, heading structure, search intent alignment, and internal linking flow.'
+                : 'Recommended illustration: Google Business Profile local 3-pack search layout, map pin ranking metrics, and mobile engagement dashboard.'}
             </p>
 
             <span className="sr-only">{post.featuredImageAlt}</span>
@@ -434,6 +470,15 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           </div>
         </div>
 
+        {/* OPTIONAL ARTICLE INTRO LEAD PARAGRAPH */}
+        {post.intro && (
+          <div className="mb-12 p-6 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--line)]">
+            <p className="text-lg sm:text-xl text-[var(--white)] font-light leading-relaxed">
+              {post.intro}
+            </p>
+          </div>
+        )}
+
         {/* ARTICLE BODY SECTIONS WITH SCROLL-INTO-VIEW H2 TYPEWRITER & SLIDE-UP TEXT */}
         <div className="prose-invert max-w-none">
           {post.sections.map((section, idx) => (
@@ -441,8 +486,74 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           ))}
         </div>
 
+        {/* RELATED READING SECTION (Links between posts and to Services) */}
+        <div className="mt-14 mb-14 p-6 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--line)]">
+          <div className="flex items-center gap-2 mb-4">
+            <BookOpen className="w-4 h-4 text-[var(--gold)]" />
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--gold)]">
+              Related Reading
+            </h3>
+          </div>
+          <p className="text-sm text-[var(--muted)] font-light mb-6">
+            Continue learning with practical guides from Jewels and explore our professional optimization services.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {relatedPosts.map((related) => (
+              <div
+                key={related.id}
+                onClick={() => {
+                  if (onSelectPost) {
+                    onSelectPost(related.slug);
+                  } else {
+                    onNavigate('blog');
+                  }
+                }}
+                className="p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)]/60 transition-all cursor-pointer group flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-[var(--gold)] font-medium block mb-1.5">
+                    {related.categories[0]}
+                  </span>
+                  <h4 className="text-base font-heading font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors leading-snug mb-2">
+                    {related.title}
+                  </h4>
+                  <p className="text-xs text-[var(--muted)] font-light line-clamp-2 leading-relaxed">
+                    {related.excerpt}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--gold)] group-hover:text-[var(--gold-hover)]">
+                  <span>Read Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            ))}
+
+            <div
+              onClick={() => onNavigate('services')}
+              className="p-5 rounded-xl bg-[var(--ink)] border border-[var(--line)] hover:border-[var(--gold)]/60 transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div>
+                <span className="text-xs uppercase tracking-wider text-[var(--gold)] font-medium block mb-1.5">
+                  SEO Services
+                </span>
+                <h4 className="text-base font-heading font-medium text-[var(--white)] group-hover:text-[var(--gold)] transition-colors leading-snug mb-2">
+                  Explore Professional SEO & Optimization Services
+                </h4>
+                <p className="text-xs text-[var(--muted)] font-light line-clamp-2 leading-relaxed">
+                  Discover how Jewels helps businesses improve crawlability, content architecture, local visibility, and search performance.
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--gold)] group-hover:text-[var(--gold-hover)]">
+                <span>View All Services</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* AUTHOR BIO CARD */}
-        <div className="mt-16 p-8 rounded-2xl bg-[var(--card)] border border-[var(--line)] flex flex-col sm:flex-row items-center sm:items-start gap-6 shadow-xl">
+        <div className="mt-12 p-8 rounded-2xl bg-[var(--card)] border border-[var(--line)] flex flex-col sm:flex-row items-center sm:items-start gap-6 shadow-xl">
           <div className="relative shrink-0">
             <img
               src={CONTACT_DETAILS.PROFILE_PHOTO}
@@ -509,16 +620,16 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--ink)] border border-[var(--line)] text-sm text-[var(--gold)] mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[var(--gold)]" />
             <span className="tracking-wide uppercase font-medium text-sm">
-              Take Your Local Rankings to #1
+              {ctaData.badge}
             </span>
           </div>
 
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-medium text-[var(--white)] mb-4">
-            Ready to Optimize Your Google Business Profile?
+            {ctaData.heading}
           </h3>
 
           <p className="text-sm sm:text-base text-[var(--muted)] font-light max-w-xl mx-auto mb-8 leading-relaxed">
-            Schedule a thorough local SEO and Google Business Profile audit with Jewels to identify ranking opportunities, eliminate compliance risks, and convert nearby searchers into loyal clients.
+            {ctaData.paragraph}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
