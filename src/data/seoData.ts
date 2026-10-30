@@ -410,8 +410,12 @@ export const BLOG_POSTS: BlogPost[] = [
     categories: ['Google Business Profile', 'Local SEO'],
     excerpt: 'Learn practical steps to optimize your Google Business Profile so nearby customers can find your business. Tips from Jewels on local SEO.',
     publishDate: 'October 18, 2026',
+    datePublishedIso: '2026-10-18',
     readTime: '7 min read',
     author: 'Jewels',
+    profileImageUrl: 'https://i.postimg.cc/MT5WCsZ2/mybusiness-closes.jpg',
+    profileImageAlt: 'Google Business Profile optimization guide from Jewels',
+    fallbackInitial: 'G',
     featuredImagePlaceholderNote: 'Add featured image here',
     featuredImageAlt: 'Google Business Profile local SEO optimization guide showing map ranking factors and business verification',
     sections: [
