@@ -7,6 +7,7 @@ import {
 import { PageId, BlogPost, BlogPostSection } from '../types';
 import { CONTACT_DETAILS, BLOG_POSTS } from '../data/seoData';
 import { BrandIcon } from '../components/BrandIcon';
+import { BlogProfileImage } from '../components/BlogProfileImage';
 
 interface BlogArticlePageProps {
   post: BlogPost;
@@ -248,9 +249,17 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDesc = document.querySelector('meta[property="og:description"]');
     const ogType = document.querySelector('meta[property="og:type"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    const previousOgImage = ogImage?.getAttribute('content') || '';
+    const previousTwitterImage = twitterImage?.getAttribute('content') || '';
+    const articleImage = post.profileImageUrl || 'https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/logo-source.jpg';
+
     if (ogTitle) ogTitle.setAttribute('content', `${post.title} — Jewels`);
     if (ogDesc) ogDesc.setAttribute('content', post.metaDescription);
     if (ogType) ogType.setAttribute('content', 'article');
+    if (ogImage) ogImage.setAttribute('content', articleImage);
+    if (twitterImage) twitterImage.setAttribute('content', articleImage);
 
     // Article Schema (JSON-LD)
     const schemaScript = document.createElement('script');
@@ -261,7 +270,7 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
       '@type': 'Article',
       headline: post.title,
       description: post.metaDescription,
-      image: 'https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/logo-source.jpg',
+      image: articleImage,
       author: {
         '@type': 'Person',
         name: post.author,
@@ -287,6 +296,8 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
     return () => {
       document.title = previousTitle;
       if (metaDescription) metaDescription.setAttribute('content', previousDesc);
+      if (ogImage && previousOgImage) ogImage.setAttribute('content', previousOgImage);
+      if (twitterImage && previousTwitterImage) twitterImage.setAttribute('content', previousTwitterImage);
       const existingScript = document.getElementById('article-structured-data');
       if (existingScript) existingScript.remove();
     };
@@ -387,48 +398,60 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
         {/* CATEGORY TAGS & META LINE: FADES IN AFTER H1 FINISHES */}
         <div
-          className={`transition-all duration-700 ease-out flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[var(--line)] mb-10 ${
+          className={`transition-all duration-700 ease-out flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-[var(--line)] mb-10 ${
             isH1Finished || prefersReducedMotion
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-3 pointer-events-none'
           }`}
         >
-          <div className="flex flex-wrap items-center gap-2.5 text-sm">
-            {post.categories.map((cat, idx) => {
-              const isGoogle = cat.toLowerCase().includes('google');
-              return (
-                <span
-                  key={idx}
-                  className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border ${
-                    isGoogle
-                      ? 'bg-[var(--google-blue)]/10 text-[var(--google-blue)] border-[var(--google-blue)]/30'
-                      : 'bg-[var(--card)] text-[var(--gold)] border-[var(--line)]'
-                  }`}
-                >
-                  {cat}
-                </span>
-              );
-            })}
+          <div className="flex items-center gap-4 sm:gap-5 flex-wrap">
+            {post.profileImageUrl && (
+              <BlogProfileImage
+                src={post.profileImageUrl}
+                alt={post.profileImageAlt || post.title}
+                fallbackInitial={post.fallbackInitial || 'J'}
+                size="article"
+                lazy={false}
+              />
+            )}
 
-            <span className="text-[var(--line)] hidden sm:inline">|</span>
+            <div className="flex flex-wrap items-center gap-2.5 text-sm">
+              {post.categories.map((cat, idx) => {
+                const isGoogle = cat.toLowerCase().includes('google');
+                return (
+                  <span
+                    key={idx}
+                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border ${
+                      isGoogle
+                        ? 'bg-[var(--google-blue)]/10 text-[var(--google-blue)] border-[var(--google-blue)]/30'
+                        : 'bg-[var(--card)] text-[var(--gold)] border-[var(--line)]'
+                    }`}
+                  >
+                    {cat}
+                  </span>
+                );
+              })}
 
-            <div className="flex items-center gap-1.5 text-[var(--muted)]">
-              <User className="w-3.5 h-3.5 text-[var(--gold)]" />
-              <span className="text-[var(--white)] font-medium">{post.author}</span>
-            </div>
+              <span className="text-[var(--line)] hidden sm:inline">|</span>
 
-            <span className="text-[var(--line)] hidden sm:inline">·</span>
+              <div className="flex items-center gap-1.5 text-[var(--muted)]">
+                <User className="w-3.5 h-3.5 text-[var(--gold)]" />
+                <span className="text-[var(--white)] font-medium">{post.author}</span>
+              </div>
 
-            <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
-              <Calendar className="w-3.5 h-3.5 text-[var(--gold)]" />
-              <span>{post.publishDate}</span>
-            </div>
+              <span className="text-[var(--line)] hidden sm:inline">·</span>
 
-            <span className="text-[var(--line)] hidden sm:inline">·</span>
+              <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
+                <Calendar className="w-3.5 h-3.5 text-[var(--gold)]" />
+                <span>{post.publishDate}</span>
+              </div>
 
-            <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
-              <Clock className="w-3.5 h-3.5" />
-              <span>{post.readTime}</span>
+              <span className="text-[var(--line)] hidden sm:inline">·</span>
+
+              <div className="flex items-center gap-1.5 text-[var(--muted)] text-sm font-normal">
+                <Clock className="w-3.5 h-3.5" />
+                <span>{post.readTime}</span>
+              </div>
             </div>
           </div>
 
@@ -442,33 +465,35 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
           </button>
         </div>
 
-        {/* GOLD-BORDERED FEATURED IMAGE PLACEHOLDER */}
-        <div className="relative rounded-2xl border border-[var(--gold)]/40 hover:border-[var(--gold)] transition-colors bg-[var(--card)] p-8 sm:p-12 text-center mb-14 overflow-hidden shadow-xl">
-          <div className="absolute inset-0 bg-radial from-[var(--gold)]/5 via-transparent to-transparent opacity-70 pointer-events-none" />
-          <div className="relative z-10 flex flex-col items-center justify-center">
-            <div className="w-16 h-16 rounded-2xl bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-4 shadow-inner">
-              <ImageIcon className="w-8 h-8 stroke-[1.5]" />
+        {/* GOLD-BORDERED FEATURED IMAGE PLACEHOLDER (Only for posts without a profile image) */}
+        {!post.profileImageUrl && (
+          <div className="relative rounded-2xl border border-[var(--gold)]/40 hover:border-[var(--gold)] transition-colors bg-[var(--card)] p-8 sm:p-12 text-center mb-14 overflow-hidden shadow-xl">
+            <div className="absolute inset-0 bg-radial from-[var(--gold)]/5 via-transparent to-transparent opacity-70 pointer-events-none" />
+            <div className="relative z-10 flex flex-col items-center justify-center">
+              <div className="w-16 h-16 rounded-2xl bg-[var(--ink)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-4 shadow-inner">
+                <ImageIcon className="w-8 h-8 stroke-[1.5]" />
+              </div>
+
+              <p className="text-sm uppercase tracking-wider text-[var(--gold)] font-semibold mb-2">
+                {post.featuredImagePlaceholderNote}
+              </p>
+
+              <p className="text-sm text-[var(--muted)] font-light max-w-lg mb-3">
+                {post.slug === 'technical-seo-guide'
+                  ? 'Recommended diagram: Technical crawl architecture, XML sitemap validation, page speed metrics, and schema markup.'
+                  : post.slug === 'on-page-seo-guide'
+                  ? 'Recommended diagram: On-page content hierarchy, heading structure, search intent alignment, and internal linking flow.'
+                  : 'Recommended illustration: Google Business Profile local 3-pack search layout, map pin ranking metrics, and mobile engagement dashboard.'}
+              </p>
+
+              <span className="sr-only">{post.featuredImageAlt}</span>
+
+              <span className="text-sm text-[var(--muted)]/70 bg-[var(--ink)]/80 px-3 py-1 rounded border border-[var(--line)] font-normal">
+                Descriptive Alt: {post.featuredImageAlt} · 1200 × 630px
+              </span>
             </div>
-
-            <p className="text-sm uppercase tracking-wider text-[var(--gold)] font-semibold mb-2">
-              {post.featuredImagePlaceholderNote}
-            </p>
-
-            <p className="text-sm text-[var(--muted)] font-light max-w-lg mb-3">
-              {post.slug === 'technical-seo-guide'
-                ? 'Recommended diagram: Technical crawl architecture, XML sitemap validation, page speed metrics, and schema markup.'
-                : post.slug === 'on-page-seo-guide'
-                ? 'Recommended diagram: On-page content hierarchy, heading structure, search intent alignment, and internal linking flow.'
-                : 'Recommended illustration: Google Business Profile local 3-pack search layout, map pin ranking metrics, and mobile engagement dashboard.'}
-            </p>
-
-            <span className="sr-only">{post.featuredImageAlt}</span>
-
-            <span className="text-sm text-[var(--muted)]/70 bg-[var(--ink)]/80 px-3 py-1 rounded border border-[var(--line)] font-normal">
-              Descriptive Alt: {post.featuredImageAlt} · 1200 × 630px
-            </span>
           </div>
-        </div>
+        )}
 
         {/* OPTIONAL ARTICLE INTRO LEAD PARAGRAPH */}
         {post.intro && (

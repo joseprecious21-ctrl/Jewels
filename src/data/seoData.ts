@@ -524,6 +524,9 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '6 min read',
     author: 'Jewels',
     intro: "Great content can't rank if search engines struggle to find it, read it, or load it. Technical SEO is the work that makes your website easy for search engines to crawl and understand, and easy for visitors to use. Here are the areas that matter most.",
+    profileImageUrl: 'https://i.postimg.cc/ZZWMqQJ7/From-Klickpin-com-Smart-bathroom-storage-ideas-for-your-next-Pinterest-save-with-simple-details-tha.jpg',
+    profileImageAlt: 'Technical SEO guide from Jewels',
+    fallbackInitial: 'T',
     featuredImagePlaceholderNote: 'Technical SEO Crawl Architecture & Sitemaps',
     featuredImageAlt: 'Diagram showing technical SEO pillars: crawling, indexing, XML sitemap validation, and Core Web Vitals',
     sections: [
@@ -606,6 +609,9 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '6 min read',
     author: 'Jewels',
     intro: 'On-page SEO involves optimizing individual web pages so search engines understand their relevance and visitors find immediate value. When your content and structure align with search intent, pages stand the best chance of ranking well. Here are the core practices to focus on.',
+    profileImageUrl: 'https://i.postimg.cc/ZZWMqQJ7/From-Klickpin-com-Smart-bathroom-storage-ideas-for-your-next-Pinterest-save-with-simple-details-tha.jpg',
+    profileImageAlt: 'On-page SEO checklist from Jewels',
+    fallbackInitial: 'O',
     featuredImagePlaceholderNote: 'On-Page SEO Content Architecture & Headings',
     featuredImageAlt: 'Infographic illustrating on-page SEO best practices: title tags, heading structure, search intent, and internal links',
     sections: [

@@ -3,6 +3,7 @@ import { Sparkles, Calendar, Clock, ArrowRight, BookOpen, ChevronRight, User } f
 import { PageId } from '../types';
 import { BLOG_POSTS } from '../data/seoData';
 import { BlogArticlePage } from './BlogArticlePage';
+import { BlogProfileImage } from '../components/BlogProfileImage';
 import { CtaBand } from '../components/CtaBand';
 
 interface BlogPageProps {
@@ -101,18 +102,30 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, initialPostSlug 
               className="rounded-2xl bg-[var(--card)] border border-[var(--line)] hover:border-[var(--gold)]/60 transition-all p-6 sm:p-7 flex flex-col justify-between group cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-black/60 relative overflow-hidden"
             >
               <div>
-                {/* Visual Thumbnail Placeholder with Gold Accent */}
-                <div className="aspect-video w-full rounded-xl bg-[var(--ink)] border border-[var(--line)] group-hover:border-[var(--gold)]/40 transition-colors flex flex-col items-center justify-center p-4 text-center mb-6 relative overflow-hidden">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-2 shadow-inner">
-                    <BookOpen className="w-6 h-6 stroke-[1.5]" />
+                {/* Circular Profile-Style Picture for Post A & Post B, or original thumbnail box for others */}
+                {post.profileImageUrl ? (
+                  <div className="mb-6 pt-1 pb-1 flex justify-start">
+                    <BlogProfileImage
+                      src={post.profileImageUrl}
+                      alt={post.profileImageAlt || post.title}
+                      fallbackInitial={post.fallbackInitial || 'J'}
+                      size="card"
+                      lazy={true}
+                    />
                   </div>
-                  <span className="text-sm font-medium text-[var(--gold)] uppercase tracking-wider">
-                    {post.categories[0] || 'SEO Guide'}
-                  </span>
-                  <span className="text-sm text-[var(--muted)] mt-0.5 font-normal">
-                    {post.categories[1] || 'Practical Guide'}
-                  </span>
-                </div>
+                ) : (
+                  <div className="aspect-video w-full rounded-xl bg-[var(--ink)] border border-[var(--line)] group-hover:border-[var(--gold)]/40 transition-colors flex flex-col items-center justify-center p-4 text-center mb-6 relative overflow-hidden">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--card)] border border-[var(--line)] flex items-center justify-center text-[var(--gold)] mb-2 shadow-inner">
+                      <BookOpen className="w-6 h-6 stroke-[1.5]" />
+                    </div>
+                    <span className="text-sm font-medium text-[var(--gold)] uppercase tracking-wider">
+                      {post.categories[0] || 'SEO Guide'}
+                    </span>
+                    <span className="text-sm text-[var(--muted)] mt-0.5 font-normal">
+                      {post.categories[1] || 'Practical Guide'}
+                    </span>
+                  </div>
+                )}
 
                 {/* Categories & Meta */}
                 <div className="flex flex-wrap items-center gap-2 mb-3">

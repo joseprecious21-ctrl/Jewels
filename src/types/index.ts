@@ -69,6 +69,9 @@ export interface BlogPost {
   readTime: string;
   author: string;
   intro?: string;
+  profileImageUrl?: string;
+  profileImageAlt?: string;
+  fallbackInitial?: string;
   featuredImagePlaceholderNote: string;
   featuredImageAlt: string;
   sections: BlogPostSection[];
