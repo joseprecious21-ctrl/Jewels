@@ -227,12 +227,11 @@ export const BlogArticlePage: React.FC<BlogArticlePageProps> = ({
 
   // Handle URL updates and SEO metadata dynamically
   useEffect(() => {
-    // Sync browser URL to /blog/optimize-google-business-profile
-    const targetPath = `/blog/${post.slug}`;
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState(null, '', targetPath);
-    }
-    window.location.hash = `blog/${post.slug}`;
+   const targetPath = `/blog/${post.slug}`;
+
+if (window.location.pathname !== targetPath) {
+  window.history.pushState(null, '', targetPath);
+}
 
     // Unique title tag
     const previousTitle = document.title;
