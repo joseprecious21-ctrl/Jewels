@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-dev-xzibcz4icre3mlfp543zid-404684149747.europe-west2.run.app/sitemap.xml
+Sitemap: https://jewels-sandy.vercel.app/sitemap.xml
