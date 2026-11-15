@@ -1,0 +1,620 @@
+import React from 'react';
+import { 
+  ArrowRight, ChevronRight, Sparkles, LayoutTemplate, 
+  FileText, Cpu, MapPin, Store, ShieldCheck, Search, ArrowLeftRight 
+} from 'lucide-react';
+import { PageId } from '../types';
+import { SERVICES, PORTFOLIO_PROJECTS, CORE_AREAS, CONTACT_DETAILS } from '../data/seoData';
+import { FaqAccordion } from '../components/FaqAccordion';
+import { CtaBand } from '../components/CtaBand';
+
+interface HomePageProps {
+  onNavigate: (page: PageId, projectId?: string) => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  // Six service cards preview
+  const previewServices = SERVICES.slice(0, 6);
+  // Three portfolio cards from the table (Images 1, 2, and 3)
+  const selectedWork = PORTFOLIO_PROJECTS.slice(0, 3);
+
+  // Video playback & accessibility states
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+  const [hasVideoError, setHasVideoError] = React.useState(false);
+  const [prefersStatic, setPrefersStatic] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const heroRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    // 1. Respect prefers-reduced-motion
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // 2. Respect Save-Data connection preference
+    const isDataSaver = typeof navigator !== 'undefined' && 
+      ((navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData === true);
+
+    if (motionQuery.matches || isDataSaver) {
+      setPrefersStatic(true);
+      return;
+    }
+
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersStatic(e.matches);
+    };
+    motionQuery.addEventListener('change', handleMotionChange);
+
+    // 3. Pause video when scrolled out of view and resume when back
+    const heroEl = heroRef.current;
+    const videoEl = videoRef.current;
+    if (!heroEl || !videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoEl.play().catch(() => {});
+          } else {
+            videoEl.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(heroEl);
+
+    return () => {
+      observer.disconnect();
+      motionQuery.removeEventListener('change', handleMotionChange);
+    };
+  }, []);
+
+  // Icon mapping with Google Blue #4285F4 for Google Business Profile & Search Console
+  const getServiceIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'LayoutTemplate': return <LayoutTemplate className="w-5 h-5 text-[var(--gold)]" />;
+      case 'FileText': return <FileText className="w-5 h-5 text-[var(--gold)]" />;
+      case 'Cpu': return <Cpu className="w-5 h-5 text-[var(--gold)]" />;
+      case 'MapPin': return <MapPin className="w-5 h-5 text-[var(--gold)]" />;
+      case 'Store': return <Store className="w-5 h-5 text-[var(--google-blue)]" />; // GBP
+      case 'ShieldCheck': return <ShieldCheck className="w-5 h-5 text-[var(--google-blue)]" />; // GBP
+      case 'Search': return <Search className="w-5 h-5 text-[var(--google-blue)]" />; // Search Console
+      default: return <Search className="w-5 h-5 text-[var(--gold)]" />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen">
+      
+      {/* 1. HERO SECTION (DARK: Jet Black #0A0A0A with Full-width Background Video) */}
+      <section 
+        ref={heroRef}
+        className="relative w-full min-h-[85vh] flex items-center bg-[#0A0A0A] pt-[96px] min-[700px]:pt-[108px] pb-10 min-[700px]:pb-14"
+      >
+        {/* Hero Video Container: capped at 2560px and centered for screens wider than 1920px */}
+        <div className="absolute inset-0 w-full max-w-[2560px] mx-auto overflow-hidden pointer-events-none z-0">
+          {/* Solid #0A0A0A background with a faint gold gradient fallback */}
+          <div 
+            className="absolute inset-0 bg-[#0A0A0A] pointer-events-none z-0" 
+            style={{
+              background: 'radial-gradient(ellipse at 50% 40%, rgba(201, 162, 39, 0.12) 0%, rgba(10, 10, 10, 0) 70%), #0A0A0A'
+            }}
+            aria-hidden="true"
+          />
+
+          {!prefersStatic && !hasVideoError && (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/hero-poster.jpg"
+              aria-hidden="true"
+              disablePictureInPicture
+              // @ts-expect-error disableRemotePlayback is standard HTMLVideoElement attribute
+              disableRemotePlayback=""
+              onCanPlay={() => setIsVideoLoaded(true)}
+              onPlaying={() => setIsVideoLoaded(true)}
+              onError={() => setHasVideoError(true)}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                zIndex: 0,
+                backfaceVisibility: 'hidden',
+                transform: 'translateZ(0)',
+                imageRendering: 'auto',
+                filter: 'brightness(1.2) contrast(1.1) saturate(1.15)',
+              }}
+              className={`pointer-events-none transition-opacity duration-[800ms] ease-in-out ${
+                isVideoLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <source src="/videos/hero-1080.webm" type="video/webm" />
+              <source src="/videos/hero-1080.mp4" type="video/mp4" />
+              <source src="/videos/hero-720.mp4" type="video/mp4" media="(max-width: 700px)" />
+              <source src="/videos/hero.mp4" type="video/mp4" />
+              <source src="https://api-f.streamable.com/api/v1/videos/kj5www/mp4" type="video/mp4" />
+            </video>
+          )}
+
+          {/* Subtle gold (#C9A227) light sweep: faint, slow-moving radial gold glow (14s) */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-[1] overflow-hidden motion-reduce:hidden"
+            aria-hidden="true"
+          >
+            <div 
+              className="absolute -top-[20%] -left-[20%] w-[140%] h-[140%] rounded-full animate-gold-sweep pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at 45% 45%, rgba(201, 162, 39, 0.11) 0%, rgba(201, 162, 39, 0.04) 40%, transparent 65%)',
+              }}
+            />
+          </div>
+
+          {/* Light overlay that only darkens behind the text (55% -> 25% -> 0% at 75%) + bottom 12% fade */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.25) 40%, rgba(10, 10, 10, 0) 75%), linear-gradient(to bottom, transparent 88%, #0A0A0A 100%)'
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Thin gold (#C9A227) line at the bottom of the hero */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-px bg-[#C9A227] z-10 pointer-events-none" 
+          aria-hidden="true" 
+        />
+
+        {/* Hero Content (Above overlay with high contrast, left-aligned matching navigation logo left edge) */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 min-[700px]:px-6 lg:px-8 flex justify-start">
+          
+          <div className="relative w-full max-w-[620px] lg:max-w-[58%] text-left flex flex-col items-start justify-center">
+            {/* Soft local shadow behind the text block instead of darkening the whole video */}
+            <div 
+              className="absolute -inset-x-8 sm:-inset-x-12 -inset-y-8 rounded-3xl pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(ellipse at 20% 50%, rgba(10,10,10,0.5), transparent 65%)'
+              }}
+              aria-hidden="true"
+            />
+            {/* Bold headline introducing Jewels and its SEO expertise */}
+            <h1 
+              style={{ 
+                textShadow: '0 2px 18px rgba(0,0,0,0.6)',
+                textWrap: 'balance'
+              }}
+              className="text-[clamp(1.5rem,6vw,2.1rem)] min-[700px]:text-[clamp(1.8rem,3.5vw,2.85rem)] font-heading font-[800] tracking-[-0.02em] text-[#FFFFFF] mb-3.5 leading-[1.15] text-left max-w-[18ch]"
+            >
+              Strategic SEO & Website Optimization for High-Growth Brands
+            </h1>
+
+            {/* Supporting line */}
+            <p 
+              style={{ textShadow: '0 2px 18px rgba(0,0,0,0.6)' }}
+              className="text-[0.95rem] min-[700px]:text-[1.05rem] text-[#E8E8E8] max-w-[48ch] mb-5 leading-[1.55] font-light text-left"
+            >
+              Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.
+            </p>
+
+            {/* Buttons: Request an SEO Consultation (gold), View SEO Portfolio (dark), Growth Calculator */}
+            <div className="flex flex-wrap items-center justify-start gap-3 w-full">
+              <button
+                onClick={() => onNavigate('contact')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-[var(--gold)]/25 hover:shadow-[var(--gold)]/35 focus-visible:ring-2 focus-visible:ring-[var(--gold)] whitespace-nowrap cursor-pointer active:scale-95 min-h-[44px]"
+              >
+                <span>Request an SEO Consultation</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => onNavigate('portfolio')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--line)] hover:border-[var(--gold)] text-[var(--white)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[44px]"
+              >
+                <span>View SEO Portfolio</span>
+              </button>
+
+              <button
+                onClick={() => onNavigate('calculator')}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[var(--card)] hover:bg-[#1E1E1E] border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] font-medium text-sm transition-all whitespace-nowrap cursor-pointer backdrop-blur-sm min-h-[44px]"
+              >
+                <Sparkles className="w-4 h-4 text-[var(--gold)]" />
+                <span>Growth Calculator</span>
+              </button>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center justify-start gap-2 text-xs sm:text-sm text-[var(--muted)] font-sans text-left">
+              <span>Enterprise & Local SEO</span>
+              <span aria-hidden="true">·</span>
+              <span>All Services Quoted Individually</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[var(--success)]">Verified Outcomes</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 2. EXPERTISE STRIP (Continuous right-to-left animation movement) */}
+      <section className="relative border-y border-[var(--line)] bg-[var(--card)]/90 py-5 overflow-hidden">
+        {/* Edge fade gradients for polished visual entry/exit */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[var(--ink)] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[var(--ink)] to-transparent z-10 pointer-events-none" />
+
+        <div className="w-full overflow-hidden">
+          <div className="animate-marquee-left flex items-center gap-12 text-sm font-medium text-[var(--muted)]">
+            {/* Loop Segment A */}
+            <div className="flex items-center gap-10 shrink-0">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segA-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment B (Identical for seamless infinite scroll) */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segB-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment C */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segC-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loop Segment D */}
+            <div className="flex items-center gap-10 shrink-0" aria-hidden="true">
+              <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded bg-[var(--ink)] border border-[var(--line)]">
+                Core Expertise
+              </span>
+              {CORE_AREAS.map((area, idx) => (
+                <div key={`segD-${idx}`} className="flex items-center gap-2.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  <span className="whitespace-nowrap tracking-wide">{area}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SERVICES PREVIEW (WHITE SECTION: #FFFFFF for rhythm, #FAFAFA cards with #E4E4E4 borders) */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--white)] text-[var(--ink)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2">
+                Capabilities & Optimization
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)]">
+                Specialized SEO Services
+              </h2>
+            </div>
+
+            <button
+              onClick={() => onNavigate('services')}
+              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer group"
+            >
+              <span>View all services</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {previewServices.map((service) => (
+              <div
+                key={service.id}
+                className="p-7 rounded-xl bg-[#FAFAFA] border border-[#E4E4E4] hover:border-[var(--gold)] hover:shadow-xl transition-all duration-200 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E4E4] flex items-center justify-center mb-5 group-hover:border-[var(--gold)] transition-colors">
+                    {getServiceIcon(service.iconName)}
+                  </div>
+                  <h3 className="text-lg font-heading font-medium text-[var(--ink)] mb-2.5">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-[#555555] leading-relaxed font-light">
+                    {service.shortDescription}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-[#E4E4E4]">
+                  <button
+                    onClick={() => onNavigate('contact', service.id)}
+                    className="text-sm font-semibold text-[var(--gold)] hover:text-[#0A0A0A] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Request a custom quote</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="text-sm text-[#777777]">
+              All services are quoted individually. Request a Custom Quote.
+            </p>
+          </div>
+
+          {/* Interactive Growth Calculator Spotlight Banner */}
+          <div className="mt-14 p-7 sm:p-8 rounded-2xl bg-[var(--ink)] border border-[var(--gold)]/30 text-[var(--white)] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
+            <div className="space-y-1.5 max-w-2xl text-left">
+              <div className="inline-flex items-center gap-2 text-sm font-sans uppercase tracking-wider text-[var(--gold)]">
+                <Sparkles className="w-4 h-4" />
+                <span>Interactive Modeling Tool</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-heading font-medium text-[var(--white)]">
+                Visualise Your Search Ranking Journey
+              </h3>
+              <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
+                Curious what an SEO climb looks like? Test starting positions, competition levels, and focus areas with our animated Growth Calculator.
+              </p>
+            </div>
+            <button
+              onClick={() => onNavigate('calculator')}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-lg shadow-[var(--gold)]/20 active:scale-95"
+            >
+              <span>Open Growth Calculator</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SELECTED WORK (DARK SECTION: #0A0A0A with #141414 cards & #2A2A2A borders) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--ink)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2">
+                Demonstrated Work
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
+                Selected Work
+              </h2>
+            </div>
+
+            <button
+              onClick={() => onNavigate('portfolio')}
+              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--gold)] hover:text-[var(--gold-hover)] transition-colors cursor-pointer group"
+            >
+              <span>Explore Complete Portfolio</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {selectedWork.map((project) => {
+              const isGbp = project.category === 'Google Business Profile';
+              return (
+                <div
+                  key={project.id}
+                  className="rounded-xl border border-[var(--line)] bg-[var(--card)] overflow-hidden flex flex-col justify-between group hover:border-[var(--gold)]/60 transition-colors"
+                >
+                  {/* Visual Thumbnail */}
+                  <div className="relative aspect-video bg-[var(--ink)] overflow-hidden border-b border-[var(--line)]">
+                    {project.imageUrl ? (
+                      <img
+                        src={project.imageUrl}
+                        alt={project.imageAlt || project.title}
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-sm font-sans">
+                        [Screenshot]
+                      </div>
+                    )}
+                    <div className={`absolute top-3 left-3 text-sm font-sans tracking-wider px-2 py-0.5 rounded backdrop-blur-sm ${
+                      isGbp 
+                        ? 'bg-[#4285F4]/20 border border-[#4285F4]/40 text-[var(--google-blue)]'
+                        : 'bg-black/80 border border-[var(--line)] text-[var(--gold)]'
+                    }`}>
+                      {project.category}
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-heading font-medium text-[var(--white)] mb-2 group-hover:text-[var(--gold-hover)] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-[var(--muted)] line-clamp-3 leading-relaxed mb-4 font-light">
+                        {project.caption}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-[var(--line)]">
+                      <button
+                        onClick={() => onNavigate('case-studies', project.id)}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--gold)] hover:text-[var(--white)] transition-colors cursor-pointer"
+                      >
+                        <span>View case study</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4B. FOUNDER SPOTLIGHT: MEET JEWELS (WHITE SECTION: #FFFFFF rhythm with #FAFAFA card & #E4E4E4 border) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#E4E4E4] bg-[var(--white)] text-[var(--ink)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center p-8 sm:p-12 rounded-2xl bg-[#FAFAFA] border border-[#E4E4E4]">
+            
+            {/* Framed Profile Photo with thin gold border (#C9A227) */}
+            <div className="lg:col-span-5 flex flex-col items-center">
+              <div className="relative max-w-[340px] sm:max-w-[380px] w-full mx-auto group">
+                <div 
+                  className="absolute -inset-1.5 rounded-2xl border border-[var(--gold)]/50 translate-x-2 translate-y-2 pointer-events-none transition-transform duration-300 group-hover:translate-x-2.5 group-hover:translate-y-2.5"
+                  aria-hidden="true"
+                />
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[var(--gold)] bg-black shadow-xl">
+                  <img
+                    src={CONTACT_DETAILS.PROFILE_PHOTO}
+                    alt="Profile photo of the founder of Jewels, SEO specialist"
+                    width={380}
+                    height={475}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none"
+                  />
+                </div>
+              </div>
+              <p className="text-sm font-sans text-[#777777] mt-4 text-center">
+                Founder & SEO Specialist · Jewels
+              </p>
+            </div>
+
+            {/* Direct Collaboration Story */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E4E4E4] text-sm text-[var(--gold)]">
+                <Sparkles className="w-4 h-4" />
+                <span className="tracking-wide uppercase font-medium text-sm">Direct Practitioner Collaboration</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-medium text-[var(--ink)] tracking-tight">
+                Work Directly With Jewels
+              </h2>
+
+              <p className="text-lg text-[var(--ink)] font-heading italic border-l-2 border-[var(--gold)] pl-4 py-1 leading-relaxed">
+                “Jewels helps businesses improve their online visibility, strengthen their search engine presence, and reach potential customers through strategic SEO and website optimization.”
+              </p>
+
+              <p className="text-sm text-[#555555] font-light leading-relaxed">
+                When you engage Jewels, you work directly with a dedicated SEO practitioner rather than being handed off to account managers. Every audit, keyword strategy, and technical recommendation is crafted specifically for your domain and commercial objectives.
+              </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
+                >
+                  <span>Request an SEO Consultation</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-[#F2F2F2] border border-[#D0D0D0] hover:border-[var(--gold)] text-[var(--ink)] text-sm font-sans font-medium transition-colors cursor-pointer"
+                >
+                  <span>About Jewels & Expertise</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. BEFORE AND AFTER SECTION (DARK SECTION: #0A0A0A with #141414 card & Red/Green Before/After labels) */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)] bg-[var(--ink)] text-[var(--white)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="p-8 sm:p-12 rounded-2xl bg-[var(--card)] border border-[var(--line)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              
+              <div className="lg:col-span-5 space-y-4">
+                <div className="inline-flex items-center gap-2 text-sm font-sans uppercase tracking-wider text-[var(--gold)]">
+                  <ArrowLeftRight className="w-4 h-4" />
+                  <span>Performance Documentation</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--white)]">
+                  Before and After SEO Results
+                </h2>
+                <p className="text-sm text-[var(--muted)] font-light leading-relaxed">
+                  Documenting direct comparative search progression. Systematic optimization of technical crawlability, structured keywords, and localized visibility generates measurable search trajectory over time.
+                </p>
+                <div className="pt-2">
+                  <button
+                    onClick={() => onNavigate('case-studies', 'results-before-after')}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--gold)] hover:bg-[var(--gold-hover)] text-[var(--ink)] font-semibold text-sm tracking-wider uppercase transition-colors cursor-pointer"
+                  >
+                    <span>Explore Case Studies</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div className="rounded-xl border border-[var(--line)] bg-[var(--ink)] p-2 shadow-2xl overflow-hidden group">
+                  <img
+                    src="https://i.postimg.cc/hGX07Vc6/SEO-Results-Before-and-After.png"
+                    alt="SEO Results Before and After comparative performance screenshot"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-auto rounded-lg object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                  />
+                  <div className="p-3 bg-[var(--card)] rounded-b-lg border-t border-[var(--line)] flex items-center justify-between text-sm font-sans">
+                    <span className="text-[var(--muted)]">Image 2: SEO Results Before & After</span>
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded bg-[var(--alert)]/10 text-[var(--alert)] border border-[var(--alert)]/40 text-sm font-sans">
+                        Before
+                      </span>
+                      <span className="text-[var(--muted)]">→</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--success)]/10 text-[var(--success)] border border-[var(--success)]/40 text-sm font-sans">
+                        After
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ ACCORDION (WHITE SECTION: #FFFFFF rhythm) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-[#E4E4E4] bg-[var(--white)] text-[var(--ink)]">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <span className="text-sm font-sans uppercase tracking-wider text-[var(--gold)] mb-2 block">
+            Common Questions
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-heading font-medium text-[var(--ink)] mb-3">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-sm text-[#555555] max-w-xl mx-auto">
+            Clear information about services, custom quotes, and getting started.
+          </p>
+        </div>
+
+        <FaqAccordion showOwnerNotice={false} theme="light" />
+      </section>
+
+      {/* 7. FINAL CTA BAND (DARK SECTION) */}
+      <CtaBand onNavigate={onNavigate} showFounderBadge={true} />
+
+    </div>
+  );
+};

@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+:root {
+  --black: #0A0A0A;     /* main background */
+  --charcoal: #141414;  /* cards on dark sections */
+  --graphite: #2A2A2A;  /* borders and dividers */
+  --gold: #C9A227;      /* brand accent, buttons, icons */
+  --gold-hover: #E2C25A;/* hover and active */
+  --white: #FFFFFF;     /* text on dark, light sections */
+  --muted: #A8A8A8;     /* secondary text on dark */
+  --light-card: #FAFAFA;/* cards on white sections */
+  --light-line: #E4E4E4;/* borders on white sections */
+
+  /* Aliases for backwards compatibility with existing variables */
+  --ink: var(--black);
+  --card: var(--charcoal);
+  --line: var(--graphite);
+
+  /* Functional accent exceptions */
+  --google-blue: #4285F4;
+  --success: #34A853;
+  --alert: #EA4335;
+
+  /* Font stacks */
+  --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+  --font-serif: var(--font-heading); /* Replaces any remaining serif usages with Plus Jakarta Sans */
+
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.25rem;
+
+  --color-black: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-graphite: var(--graphite);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-white: var(--white);
+  --color-muted: var(--muted);
+  --color-light-card: var(--light-card);
+  --color-light-line: var(--light-line);
+
+  --color-ink: var(--black);
+  --color-card: var(--charcoal);
+  --color-line: var(--graphite);
+  --color-google-blue: var(--google-blue);
+  --color-success: var(--success);
+  --color-alert: var(--alert);
+}
+
+html {
+  scroll-padding-top: 72px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Settle form elements */
+button, input, select, textarea, label {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Headings: Plus Jakarta Sans */
+h1, h2, h3, h4, h5, h6, .font-heading, .logo-wordmark, .section-title, .card-title, .big-number {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+h5 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Body text, paragraphs, forms, buttons, captions: Inter */
+p, li, blockquote {
+  font-family: var(--font-body);
+}
+
+/* Lead paragraphs */
+.lead-p, p.lead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+/* Buttons, navigation links, and pills/badges: Inter 500 or 600 */
+button, nav a, nav button, .btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Small text and captions: never below 14px (0.875rem) */
+small, .text-xs, .text-caption, caption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Button & Form Input Requirements */
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-gold:hover {
+  background-color: var(--gold-hover);
+}
+
+.btn-dark {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+.btn-dark:hover {
+  background-color: #1F1F1F;
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+/* Form inputs on dark backgrounds */
+.dark-form-input {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  color: var(--white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dark-form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+  outline: none;
+}
+.dark-form-input::placeholder {
+  color: var(--muted);
+}
+
+/* Continuous Right-to-Left Marquee Movement */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 26s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle gold light sweep animation (14 seconds) */
+@keyframes goldLightSweep {
+  0% {
+    transform: translate(-15%, -10%) scale(1);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translate(15%, 10%) scale(1.12);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translate(-15%, -10%) scale(1);
+    opacity: 0.08;
+  }
+}
+
+.animate-gold-sweep {
+  animation: goldLightSweep 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left {
+    animation: none;
+    transform: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .animate-gold-sweep {
+    animation: none !important;
+    display: none !important;
+  }
+
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth transitions */
+* {
+  box-sizing: border-box;
+}
